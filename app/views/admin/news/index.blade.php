@@ -9,17 +9,27 @@
 				<th>Erstellt</th>
 				<th>Korrigiert</th>
 				<th>Öffentlich</th>
+				<th>Löschen</th>
 			</tr>
 		@foreach($posts as $post)
+			@if($post->published == 1 && $post->corrected == 0)
+			<tr class="warning">
+			@elseif($post->published == 1)
+			<tr class="success">
+			@elseif($post->corrected == 1)
+			<tr class="info">
+			@else
 			<tr>
-				<td><a href="/admin/news/{{ $post->id }}">{{ $post->title }}</a></td>
-				<td><a href="/admin/news/{{ $post->id }}">{{ $post->user->first_name }}</a></td>
+			@endif
+				<td><a href="/admin/news/edit/{{ $post->id }}">{{ $post->title }}</a></td>
+				<td><a href="/admin/news/edit/{{ $post->id }}">{{ $post->user->first_name }}</a></td>
 				<td>{{ $post->created_at }}</td>
 				<td>{{ $post->corrected }}</td>
 				<td>{{ $post->published }}</td>
+				<td><a href="/admin/news/delete/{{ $post->id }}" class="delete">Löschen</a></td>
 			</tr>
 		@endforeach
 	</table>
-	<a href="/admin/news/new" class="btn btn-primary">Neue News schreiben</a>
+	<a href="/admin/news/create" class="btn btn-primary">Neue News schreiben</a>
 	
 @stop

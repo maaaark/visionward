@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title', "News - ".$post->title)
+@section('title', "Neue News")
 @section('content')
 
 	<script src="/js/plugins/file_upload.min.js"></script>
@@ -64,10 +64,9 @@
     });
 	</script>
 	
-	<!--{{ Form::open(array('action' => 'AdminPostsController@update')) }} -->
-	{{ Form::model($post, ['action' => ['AdminPostsController@update'], 'method' => 'post', 'files' => 'true']) }}
+	{{ Form::open(array('action' => 'AdminPostsController@save')) }}	
+	<input type="hidden" class="form-control" name="user_id" value="{{ Auth::user()->id }}" />
 	@include('admin.news.form')
-	<br/>
 	{{ Form::submit("Speichern", array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
 @stop

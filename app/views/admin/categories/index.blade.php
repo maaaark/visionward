@@ -6,15 +6,17 @@
 			<tr>
 				<th>ID</th>
 				<th>Name</th>
+				<th>News</th>
 				<th>Slug</th>
 				<th>Löschen</th>
 			</tr>
 		@foreach($categories as $category)
 			<tr>
-				<td><a href="/admin/categories/{{ $category->id }}">{{ $category->id }}</a></td>
-				<td><a href="/admin/categories/{{ $category->id }}">{{ $category->name }}</a></td>
-				<td><a href="/admin/categories/{{ $category->id }}">{{ $category->slug }}</a></td>
-				<td><a href="/admin/categories/delete/{{ $category->id }}" class="">Löschen</a></td>
+				<td><a href="/admin/categories/edit/{{ $category->id }}">{{ $category->id }}</a></td>
+				<td><a href="/admin/categories/edit/{{ $category->id }}">{{ $category->name }}</a></td>
+				<td><a href="/admin/categories/edit/{{ $category->id }}">{{ $category->posts->count() }} News</a></td>
+				<td><a href="/admin/categories/edit/{{ $category->id }}">{{ $category->slug }}</a></td>
+				<td><a href="/admin/categories/delete/{{ $category->id }}" class="delete">Löschen</a></td>
 			</tr>
 		@endforeach
 	</table>

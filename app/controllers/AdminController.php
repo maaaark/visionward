@@ -11,43 +11,47 @@ class AdminController extends \BaseController {
 		}
 	}
 	
-	public function news() {
-		$posts = Post::all();
-		return View::make("admin.news.index", compact("posts"));
-	}
-	
-	public function news_show($id) {
-		$post = Post::find($id);
-		$categories = Category::all();
-		return View::make("admin.news.show", compact("post", "categories"));
-	}
-	
+	/*
 	public function save_news() {
 		if(Auth::check()) {
-			$news = Post::find(Input::get('news_id'));
-			$news->content = Input::get('content');
-			$news->published = Input::get('published');
-			$news->title = Input::get('title');
-			
-			foreach($news->categories as $news_category) {
-				$news->categories()->detach($news_category->id);
-			}
-			
-			$categories = Input::get('category');
-			if(is_array($categories))
-			{
-			   foreach($categories as $category) {
-					$news->categories()->attach($category);
-			   }
-			}
+			$input = Input::all();
+			$validation = Validator::make($input, Category::$rules);
 
-			$news->save();
-			return Redirect::to("/admin/news/".$news->id)->with("success", "News gespeichert");
+			if ($validation->passes())
+			{
+				$news = Post::find(Input::get('news_id'));
+				$news->content = Input::get('content');
+				$news->published = Input::get('published');
+				$news->title = Input::get('title');
+			
+				foreach($news->categories as $news_category) {
+					$news->categories()->detach($news_category->id);
+				}
+			
+				$categories = Input::get('category');
+				if(is_array($categories))
+				{
+				   foreach($categories as $category) {
+						$news->categories()->attach($category);
+				   }
+				}
+				
+				$news->save();
+				return Redirect::to("/admin/news/".$news->id)->with("success", "News gespeichert");
+					
+			} else {
+				$messages = $validation->messages();
+				return Redirect::to('/admin/news/create')
+				->withInput()
+				->withErrors($validation)
+				->with('error', 'There were validation errors.');
+			}
+			
 		} else {
 			return Redirect::to('/admin');
 		}
 	}
-	
+	*/
 	public function logout()
 	{
 		Auth::logout();

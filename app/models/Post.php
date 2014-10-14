@@ -1,7 +1,19 @@
 <?php
 
 class Post extends \Eloquent {
-	protected $fillable = [];
+	protected $fillable = array('title', 'content', 'corrected', 'published', 'slug', 'excerpt', 'user_id');
+	
+	public static $rules = array(
+		'title'=>'required|min:3|unique:posts',
+		'excerpt'=>'required',
+		'content'=>'required'
+	);
+	
+	public static $update_rules = array(
+		'title'=>'required|min:3',
+		'excerpt'=>'required',
+		'content'=>'required'
+	);
 	
 	public function categories()
     {

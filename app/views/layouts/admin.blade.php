@@ -12,11 +12,12 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/admin.css">
-    <title>Visionward Admin Panel - @yield('content')</title>
+    <title>Visionward Admin Panel - @yield('title')</title>
 	<!-- Include Font Awesome -->
 	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 	<link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/admin.js"></script>
 	<script src="/js/froala_editor.min.js"></script>
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -51,7 +52,7 @@
             <li {{ Request::is('admin/news*') ? ' class="active"' : '' }}><a href="/admin/news">News</a></li>
             <li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
             <li><a href="#">Gallerien</a></li>
-			<li><a href="#">User</a></li>
+			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li><a href="#">Einstellungen</a></li>
           </ul>
         </div>
