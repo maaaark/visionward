@@ -6,14 +6,14 @@
 		<?php $i=1; $x=1; ?>
 		@foreach($posts as $post)
 			<li>
-				@if($i<=2)
+				@if($i<=3)
 					
 						<div class="news">
 						  <div class="row">
 						  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}"><img src="/img/news.jpg"/></a></div>
 						  <div class="col-md-9 text">
 							<h2><a href="/news/{{ $post->id }}">{{ $post->title }}</a></h2>
-							Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
+							{{ $post->excerpt }}
 							<div class="meta">
 								<span class="comments_count"><a href="/news/{{ $post->id }}#disqus_thread">0 Kommentare</a></span> {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
 							</div>

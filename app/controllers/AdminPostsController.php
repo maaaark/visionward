@@ -10,7 +10,8 @@ class AdminPostsController extends \BaseController {
 	public function edit($id) {
 		$post = Post::find($id);
 		$categories = Category::all();
-		return View::make("admin.news.show", compact("post", "categories"));
+		$galleries = Gallery::all();
+		return View::make("admin.news.show", compact("post", "categories", "galleries"));
 	}
 	
 	

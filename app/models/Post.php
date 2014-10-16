@@ -1,7 +1,7 @@
 <?php
 
 class Post extends \Eloquent {
-	protected $fillable = array('title', 'content', 'corrected', 'published', 'slug', 'excerpt', 'user_id');
+	protected $fillable = array('title', 'content', 'corrected', 'published', 'slug', 'excerpt', 'user_id', 'gallery_id', 'schedule_time', 'schedule_check');
 	
 	public static $rules = array(
 		'title'=>'required|min:3|unique:posts',
@@ -24,6 +24,11 @@ class Post extends \Eloquent {
 	public function user()
     {
         return $this->belongsTo('User');
+    }
+	
+	public function gallery()
+    {
+        return $this->belongsTo('Gallery');
     }
 	
 	public function hasCategory($key)

@@ -11,6 +11,12 @@
 			<td>Slug</td>
 			<td><input type="text" class="form-control" name="slug" value="" placeholder="Kategorie Slug" /></td>
 		</tr>
+		<tr>
+			<td width="200"><strong>Header Image</strong></td>
+			<td>
+				{{ Form::file('header_image') }}
+			</td>
+		</tr>
 	</table>
 	{{ Form::submit('Speichern', array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}

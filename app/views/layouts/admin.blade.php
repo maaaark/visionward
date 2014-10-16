@@ -51,7 +51,8 @@
             <li {{ Request::is('admin') ? ' class="active"' : '' }}><a href="/admin">Dashboard</a></li>
             <li {{ Request::is('admin/news*') ? ' class="active"' : '' }}><a href="/admin/news">News</a></li>
             <li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
-            <li><a href="#">Gallerien</a></li>
+            <li {{ Request::is('admin/galleries*') ? ' class="active"' : '' }}><a href="/admin/galleries">Gallerien</a></li>
+			<li {{ Request::is('admin/pictures*') ? ' class="active"' : '' }}><a href="/admin/pictures">Bilder</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li><a href="#">Einstellungen</a></li>
           </ul>

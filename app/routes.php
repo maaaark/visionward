@@ -29,6 +29,15 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::get('/categories/delete/{id}', 'AdminCategoriesController@destroy');
 	Route::get('/categories/edit/{id}', 'AdminCategoriesController@edit');
 	Route::post('/categories/update', 'AdminCategoriesController@update');
+	Route::post('/categories/save', 'AdminCategoriesController@save');
+	
+	// Pictures
+	Route::get('/pictures', 'AdminPicturesController@index');
+	Route::get('/pictures/create', 'AdminPicturesController@create');
+	Route::get('/pictures/delete/{id}', 'AdminPicturesController@destroy');
+	Route::get('/pictures/edit/{id}', 'AdminPicturesController@edit');
+	Route::post('/pictures/update', 'AdminPicturesController@update');
+	Route::post('/pictures/save', 'AdminPicturesController@save');
 	
 	// News	
 	Route::get('/news', 'AdminPostsController@index');
@@ -37,6 +46,14 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::get('/news/edit/{id}', 'AdminPostsController@edit');
 	Route::post('/news/update', 'AdminPostsController@update');
 	Route::post('/news/save', 'AdminPostsController@save');
+	
+	// Galery	
+	Route::get('/galleries', 'AdminGalleriesController@index');
+	Route::get('/galleries/create', 'AdminGalleriesController@create');
+	Route::get('/galleries/delete/{id}', 'AdminGalleriesController@destroy');
+	Route::get('/galleries/edit/{id}', 'AdminGalleriesController@edit');
+	Route::post('/galleries/update', 'AdminGalleriesController@update');
+	Route::post('/galleries/save', 'AdminGalleriesController@save');
 	
 	// Users
 	Route::get('/users', 'AdminUsersController@index');

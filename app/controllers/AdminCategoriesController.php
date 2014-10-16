@@ -22,6 +22,15 @@ class AdminCategoriesController extends \BaseController {
 
 		if ($validation->passes())
 		{
+			
+			if(Input::hasFile('header_image')) {
+				$file = Input::file('header_image');
+		        $filename = $file->getClientOriginalName();
+				$destinationPath = public_path().'/uploads/categories/'.$filename;
+		        $upload_success = $file->move($destinationPath, $filename);
+				$input["header_image"] = $filename;
+			}
+			
 	        Category::create($input);
 	        return Redirect::to('/admin/categories')->with("success", "Kategorie angelegt");	
 		} else {
@@ -36,11 +45,21 @@ class AdminCategoriesController extends \BaseController {
 	
 	public function update() {
 		$input = Input::all();
-
+		
 		$validation = Validator::make($input, Category::$update_rules);
 		if ($validation->passes())
 		{
 			$categoery = Category::find(Input::get('category_id'));
+			if(Input::hasFile('header_image')) {
+				$file = Input::file('header_image');
+		        $filename = $file->getClientOriginalName();
+				$destinationPath = public_path().'/uploads/categories/'.$filename;
+		        $upload_success = $file->move($destinationPath, $filename);
+				$input["header_image"] = $filename;
+			} else {
+				$input["header_image"] = $categoery->header_image;
+			}
+	        
 			$categoery->fill($input);
 			$categoery->save();
 			
