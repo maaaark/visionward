@@ -61,6 +61,15 @@ body {
 	margin-bottom: 15px;
 	border-bottom: 1px solid #e7e7e7;
 }
+h2.headline {
+	font-family: 'Fjalla One', sans-serif;
+	text-transform: uppercase;
+	font-size: 20px;
+	padding-bottom: 10px;
+	margin-top: 7px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #e7e7e7;
+}
 .sidebar .block {
 	margin-bottom: 50px;
 }
@@ -137,6 +146,32 @@ body {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+.champion_list li {
+	width: 75px;
+	float: left;
+	text-align: center;
+	list-style: none;
+	margin-bottom: 10px;
+	font-size: 12px;
+}
+.champion_list {
+	margin: 0;
+	padding: 0;
+}
+.champion_list li a {
+	padding-top: 5px;
+	display: block;
+	width: 100%;
+	color: #e84c3d;
+	text-decoration: none;
+	height: 100%;
+}
+.champion_list li a:hover {
+	background: #e7e7e7;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
 .comments_count a {
 	color: #e84c3d;
 	font-weight: bold;
@@ -157,7 +192,7 @@ body {
 }
 .server_region {
 	position: absolute;
-	background: #202528;
+	background: #e84c3d;
 	border: 0;
 	padding: 5px;
 	color: #fff;

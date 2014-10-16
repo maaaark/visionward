@@ -10,11 +10,11 @@
 		</tr>
 		<tr>
 			<td width="200"><strong>Excerpt</strong></td>
-			<td>{{ Form::textarea('excerpt', Input::old('excerpt'),  array('class' => 'edit_content wysiwyg')) }}</td>
+			<td>{{ Form::textarea('excerpt', Input::old('excerpt'),  array('class' => 'edit_content ckeditor')) }}</td>
 		</tr>
 		<tr>
 			<td width="200"><strong>Content</strong></td>
-			<td>{{ Form::textarea('content', Input::old('content'),  array('class' => 'edit_content wysiwyg')) }}</td>
+			<td>{{ Form::textarea('content', Input::old('content'),  array('class' => 'edit_content ckeditor')) }}</td>
 		</tr>
 		<tr>
 			<td width="200"><strong>Korrektur gelesen?</strong></td>

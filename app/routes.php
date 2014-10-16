@@ -13,6 +13,8 @@
 
 Route::resource('categories', 'CategoriesController');
 Route::resource('champions', 'ChampionsController');
+Route::resource('players', 'PlayersController');
+Route::resource('teams', 'TeamsController');
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::post('login', array('uses' => 'AdminController@doLogin'));

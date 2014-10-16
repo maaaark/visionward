@@ -17,7 +17,8 @@ class AdminPostsController extends \BaseController {
 	
 	public function create() {
 		$categories = Category::all();
-		return View::make("admin.news.create", compact("categories"));
+		$galleries = Gallery::all();
+		return View::make("admin.news.create", compact("categories", "galleries"));
 	}
 	
 	public function save() {

@@ -18,14 +18,8 @@
 	<link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/admin.js"></script>
-	<script src="/js/froala_editor.min.js"></script>
+	<script src="/js/ckeditor/ckeditor.js"></script>
 
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	  <script src="/js/froala_editor_ie8.min.js"></script>
-    <![endif]-->
   </head>
 
   <body>
@@ -53,6 +47,8 @@
             <li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
             <li {{ Request::is('admin/galleries*') ? ' class="active"' : '' }}><a href="/admin/galleries">Gallerien</a></li>
 			<li {{ Request::is('admin/pictures*') ? ' class="active"' : '' }}><a href="/admin/pictures">Bilder</a></li>
+			<li {{ Request::is('admin/teams*') ? ' class="active"' : '' }}><a href="/admin/teams">Teams</a></li>
+			<li {{ Request::is('admin/players*') ? ' class="active"' : '' }}><a href="/admin/players">Spieler</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li><a href="#">Einstellungen</a></li>
           </ul>

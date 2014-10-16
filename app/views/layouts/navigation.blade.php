@@ -4,6 +4,7 @@
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">PBE</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
+		<li {{ Request::is('teams/*') ? ' class="active"' : '' }} {{ Request::is('teams') ? ' class="active"' : '' }}><a href="/teams">PRO-TEAMS</a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">
