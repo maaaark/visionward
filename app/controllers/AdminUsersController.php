@@ -27,7 +27,8 @@ class AdminUsersController extends \BaseController {
 		if ($validation->passes())
 		{
 	        $user = User::create($input);
-			
+			$user->password = Hash::make(Input::get('password'));
+			$user->save();
 			// Role
 			foreach($user->roles as $role) {
 				$user->roles()->detach($role->id);

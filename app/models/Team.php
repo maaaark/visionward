@@ -2,6 +2,10 @@
 
 class Team extends \Eloquent {
 	protected $fillable = [];
+	protected $guarded = array('id');
+	public static $rules = [
+		// 'title' => 'required'
+	];
 	
 	public function players()
     {
@@ -11,6 +15,17 @@ class Team extends \Eloquent {
 	public function leagues()
     {
         return $this->belongsToMany('League');
+    }
+	
+	public function hasLeague($slug)
+    {
+        foreach($this->leagues as $league){
+            if($league->slug === $slug)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 	
 }

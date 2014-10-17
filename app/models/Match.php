@@ -1,7 +1,9 @@
 <?php
 
 class Match extends \Eloquent {
-
+	
+	protected $guarded = array('id');
+	
 	// Add your validation rules here
 	public static $rules = [
 		// 'title' => 'required'

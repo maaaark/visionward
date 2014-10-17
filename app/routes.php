@@ -30,6 +30,9 @@ Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
+	//Matches
+	Route::resource('matches', 'AdminMatchesController');
+	Route::resource('teams', 'AdminTeamsController');
 	
 	// Categories
 	Route::get('/categories', 'AdminCategoriesController@index');
@@ -70,6 +73,10 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::get('/users/edit/{id}', 'AdminUsersController@edit');
 	Route::post('/users/update', 'AdminUsersController@update');
 	Route::post('/users/save', 'AdminUsersController@save');
+	
+	
+	
+	
 	
 	
     Route::get('/', 'AdminController@index');

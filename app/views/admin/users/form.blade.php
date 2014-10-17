@@ -17,6 +17,10 @@
 			<td>{{ Form::text('last_name', Input::old('last_name'),  array('class' => 'form-control')) }}</td>
 		</tr>
 		<tr>
+			<td width="200"><strong>Password</strong></td>
+			<td>{{ Form::password('password', array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
 			<td width="200"><strong>Rollen</strong></td>
 			<td>
 				@foreach($roles as $role)
