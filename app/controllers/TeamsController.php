@@ -10,8 +10,13 @@ class TeamsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$teams = Team::all();
-		return View::make('teams.index', compact('teams'));
+		$eulcs = League::find(1);
+		$nalcs = League::find(2);
+		$ogn = League::find(3);
+		$gpl = League::find(4);
+		$lpl = League::find(5);
+		$challenger = League::find(6);
+		return View::make('teams.index', compact('eulcs', 'nalcs', 'ogn', 'gpl', 'lpl', 'challenger'));
 	}
 
 	/**
@@ -43,7 +48,7 @@ class TeamsController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $slug)
 	{
 		$team = Team::find($id);
 		return View::make('teams.show', compact('team'));

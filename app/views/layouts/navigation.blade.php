@@ -5,6 +5,7 @@
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">PBE</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
 		<li {{ Request::is('teams/*') ? ' class="active"' : '' }} {{ Request::is('teams') ? ' class="active"' : '' }}><a href="/teams">PRO-TEAMS</a></li>
+		<li {{ Request::is('matches/*') ? ' class="active"' : '' }} {{ Request::is('matches') ? ' class="active"' : '' }}><a href="/matches">MATCHES</a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">

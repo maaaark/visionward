@@ -42,9 +42,10 @@ class PlayersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($id, $slug)
 	{
-		//
+		$player = Player::find($id);
+		return View::make('players.show', compact('player'));
 	}
 
 	/**

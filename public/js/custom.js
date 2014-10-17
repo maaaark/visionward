@@ -32,5 +32,10 @@ $( document ).ready(function() {
 	  
 	});
 
+	
+	$("#show_result").click(function(){
+		$(".hidden_result").toggle();
+		$("#show_result").hide();
+	});
 
 });

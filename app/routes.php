@@ -15,13 +15,19 @@ Route::resource('categories', 'CategoriesController');
 Route::resource('champions', 'ChampionsController');
 Route::resource('players', 'PlayersController');
 Route::resource('teams', 'TeamsController');
+Route::resource('leagues', 'LeaguesController');
+Route::resource('matches', 'MatchesController');
+
+
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
-
+Route::get('/players/{id}/{slug}', 'PlayersController@show');
+Route::get('/teams/{id}/{slug}', 'TeamsController@show');
+Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	
