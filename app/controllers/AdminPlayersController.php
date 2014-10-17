@@ -21,8 +21,7 @@ class AdminPlayersController extends \BaseController {
 	public function create()
 	{
 		$teams = Team::all();
-		$leagues = League::all();
-		return View::make('admin.teams.create', compact('leagues', 'teams'));
+		return View::make('admin.players.create', compact('teams'));
 	}
 
 	/**
@@ -32,16 +31,16 @@ class AdminPlayersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Team::$rules);
+		$validator = Validator::make($data = Input::all(), Player::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 
-		Team::create($data);
+		Player::create($data);
 
-		return Redirect::route('admin.teams.index')->with("success", "Erolgreich gespeichert");
+		return Redirect::route('admin.players.index')->with("success", "Erolgreich gespeichert");
 	}
 
 
@@ -53,9 +52,9 @@ class AdminPlayersController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		$team = Team::find($id);
-		$leagues = League::all();
-		return View::make('admin.teams.edit', compact('team', 'leagues'));
+		$player = Player::find($id);
+		$teams = Team::all();
+		return View::make('admin.teams.edit', compact('player', 'teams'));
 	}
 
 	/**
@@ -66,18 +65,20 @@ class AdminPlayersController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$team = Team::findOrFail($id);
-
-		$validator = Validator::make($data = Input::all(), Team::$rules);
+		$player = Player::findOrFail($id);
+		$data = Input::all()
+		$validator = Validator::make($data = Input::all(), Player::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
+		if($data["team_id"] != $player->team_id) {
+			// 
+		}
+		$player->update($data);
 
-		$team->update($data);
-
-		return Redirect::route('admin.teams.index')->with("success", "Erolgreich gespeichert");
+		return Redirect::route('admin.players.index')->with("success", "Erolgreich gespeichert");
 	}
 
 	/**
@@ -88,9 +89,9 @@ class AdminPlayersController extends \BaseController {
 	 */
 	public function destroy($id)
 	{
-		Team::destroy($id);
+		Player::destroy($id);
 
-		return Redirect::route('admin.teams.index');
+		return Redirect::route('admin.players.index');
 	}
 
 }

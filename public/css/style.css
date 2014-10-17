@@ -244,6 +244,13 @@ h1.page_title {
 #show_result:hover {
 	cursor: pointer;
 }
+.left_team {
+	color: red;
+}
+.joined_team {
+	color: green;
+	font-weight: bold;
+}
 .team_box {
 	text-align: center;
 	width: 300px;

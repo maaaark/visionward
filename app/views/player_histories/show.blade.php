@@ -1,0 +1,1 @@
+/Users/marktomicki/web/visionward/app/views/player_histories/show.blade.php

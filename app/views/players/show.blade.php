@@ -46,17 +46,35 @@
 	<h3 class="headline">{{ $player->name }} Beschreibung</h3>
 	{{ $player->description }}<br/>
 	<br/>
-	<h3 class="headline">Platzierungen</h3>
-	<table class="table table-striped">
+	<table>
 		<tr>
-			<td width="75"><strong>Platz 1</strong></td>
-			<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-			<td>LCS Sommer Split 2014</td>
-		</tr>
-		<tr>
-			<td width="75"><strong>Platz 2</strong></td>
-			<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-			<td>LCS Frühlings Split 2014</td>
+			<td>
+				<h3 class="headline">Vorherige Teams</h3>
+				<table class="table table-striped">
+					@foreach($player->history as $history)
+					<tr>
+						<td><span class="left_team">{{ $history->old_team->name }}</span> -> <span class="joined_team">{{ $history->team->name }}</span></td>
+						<td>{{ $history->join_date }}</td>
+					</tr>
+					@endforeach
+				</table>
+			</td>
+			<td width="100"></td>
+			<td>
+				<h3 class="headline">Platzierungen</h3>
+				<table class="table table-striped">
+					<tr>
+						<td width="75"><strong>Platz 1</strong></td>
+						<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
+						<td>LCS Sommer Split 2014</td>
+					</tr>
+					<tr>
+						<td width="75"><strong>Platz 2</strong></td>
+						<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
+						<td>LCS Frühlings Split 2014</td>
+					</tr>
+				</table>
+			</td>
 		</tr>
 	</table>
 	<br/>
