@@ -20,7 +20,7 @@ Route::get('/login', 'AdminController@index');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 
 // News
-Route::get('/news/{id}', 'PostController@show');
+Route::get('/news/{id}/{slug}', 'PostController@show');
 
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {

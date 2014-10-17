@@ -1,6 +1,12 @@
 body {
 	font-family: 'Lato', sans-serif;
 }
+a {
+	color: #e84c3d;
+}
+a:hover {
+	color: #e84c3d;
+}
 #nav_logo {
 	display: none;
 	padding-left: 0 !important;
@@ -205,6 +211,12 @@ h1.page_title {
 	font-size: 60px;
 	margin-top: 75px;
 	text-shadow: 1px 2px #000;
+}
+.last_news {
+	font-size: 12px;
+}
+.last_news .post_meta {
+	font-size: 10px;
 }
 .clear {
 	clear: both;

@@ -8,7 +8,7 @@ class PostController extends BaseController {
 		return View::make('posts.index', compact('posts'));
 	}
 	
-	public function show($id)
+	public function show($id, $slug)
 	{
 		$post = Post::findOrFail($id);
 		return View::make('posts.show', compact('post'));
