@@ -8,7 +8,12 @@ class PlayerHistory extends \Eloquent {
         return $this->belongsTo('Player');
     }
 	
-	public function old_team()
+	public function team()
+    {
+        return $this->belongsTo('Team');
+    }
+	
+	public function oldteam()
     {
         return $this->belongsTo('Team', 'old_team_id');
     }

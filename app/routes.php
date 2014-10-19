@@ -33,6 +33,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	//Matches
 	Route::resource('matches', 'AdminMatchesController');
 	Route::resource('teams', 'AdminTeamsController');
+	Route::resource('players', 'AdminPlayersController');
 	
 	// Categories
 	Route::get('/categories', 'AdminCategoriesController@index');
