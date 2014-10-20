@@ -17,6 +17,7 @@ Route::resource('players', 'PlayersController');
 Route::resource('teams', 'TeamsController');
 Route::resource('leagues', 'LeaguesController');
 Route::resource('matches', 'MatchesController');
+Route::resource('counterpicks', 'CounterpicksController');
 
 
 Route::get('/', 'PostController@index');
@@ -28,6 +29,11 @@ Route::get('/news/{id}/{slug}', 'PostController@show');
 Route::get('/players/{id}/{slug}', 'PlayersController@show');
 Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
+Route::get('/counterpicks/{id}/{slug}', 'CounterpicksController@show');
+Route::get('/counterpicks/{id}/{slug}/{counter_champion_id}/{counter_champion_slug}', 'CounterpicksController@details');
+
+// Transfer
+Route::get('/transferlist', 'PlayersController@transferlist');
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	//Matches
