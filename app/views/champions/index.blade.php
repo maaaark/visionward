@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', "Champions")
 @section('content')
-	
+	<h2 class="headline">Champions</h2>
 	<ul class="champion_list">
 		@foreach($champions as $champion)
 			<li>

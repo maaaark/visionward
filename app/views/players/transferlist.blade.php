@@ -3,7 +3,7 @@
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	
-	<h2 class="headline">Spieler Transfers</h2>
+	<h2 class="headline_no_border">Spieler Transfers</h2>
 	<table width="100%">
 		<tr>
 			<td>

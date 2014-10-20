@@ -2,7 +2,7 @@
 @section('title', "Champions / ".$champion->name)
 @section('content')
 	
-	<h2 class="headline">{{ $champion->name }}, {{ $champion->title }}</h2>
+	<h2 class="headline_no_border">{{ $champion->name }}, {{ $champion->title }}</h2>
 	<table class="table table-striped champion_stats">
 		<tr>
 			<td rowspan="3"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion->key }}.png" class="img-circle" /></td>
@@ -24,4 +24,8 @@
 			<td>{{ $champion->movespeed }}</td>
 		</tr>
 	</table>
+	<br/>
+	<br/>
+	@include("counterpicks.list")
+	
 @stop
