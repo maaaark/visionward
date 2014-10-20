@@ -12,7 +12,7 @@
 			</tr>
 		@foreach($players as $player)
 			<tr>
-				<td><a href="/admin/players/{{ $player->id }}/edit">{{ $player->name }}</a></td>
+				<td><a href="/admin/players/{{ $player->id }}/edit">{{ $player->first_name }} '{{ $player->nickname }}' {{ $player->last_name }}</a></td>
 				<td><a href="/admin/players/{{ $player->id }}/edit">{{ $player->team->name }}</a></td>
 				<td><a href="/admin/players/edit/{{ $player->id }}/edit">{{ $player->role }}</a></td>
 				<td><a href="/admin/players/edit/{{ $player->id }}/edit">{{ $player->country }}</a></td>

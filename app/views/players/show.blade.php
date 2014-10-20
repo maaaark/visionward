@@ -48,19 +48,19 @@
 	<br/>
 	<table>
 		<tr>
-			<td>
+			<td width="340" valign="top">
 				<h3 class="headline">Vorherige Teams</h3>
 				<table class="table table-striped">
 					@foreach($player->history as $history)
 					<tr>
-						<td><span class="left_team">{{ $history->old_team->name }}</span> -> <span class="joined_team">{{ $history->team->name }}</span></td>
+						<td><span class="left_team">{{ $history->oldteam->name }}</span> -> <span class="joined_team">{{ $history->team->name }}</span></td>
 						<td>{{ $history->join_date }}</td>
 					</tr>
 					@endforeach
 				</table>
 			</td>
 			<td width="100"></td>
-			<td>
+			<td width="340" valign="top">
 				<h3 class="headline">Platzierungen</h3>
 				<table class="table table-striped">
 					<tr>

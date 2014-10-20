@@ -54,7 +54,7 @@ class AdminPlayersController extends \BaseController {
 	{
 		$player = Player::find($id);
 		$teams = Team::all();
-		return View::make('admin.teams.edit', compact('player', 'teams'));
+		return View::make('admin.players.edit', compact('player', 'teams'));
 	}
 
 	/**
@@ -66,7 +66,7 @@ class AdminPlayersController extends \BaseController {
 	public function update($id)
 	{
 		$player = Player::findOrFail($id);
-		$data = Input::all()
+		$data = Input::all();
 		$validator = Validator::make($data = Input::all(), Player::$rules);
 
 		if ($validator->fails())
@@ -74,7 +74,13 @@ class AdminPlayersController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		if($data["team_id"] != $player->team_id) {
-			// 
+			$change = new PlayerHistory;
+			$change->player_id = $player->id;
+			$change->team_id = $data["team_id"];
+			$change->old_team_id = $player->team_id;
+			$change->join_date = new DateTime('today');
+			$change->save();
+			
 		}
 		$player->update($data);
 

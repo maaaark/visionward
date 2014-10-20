@@ -16,6 +16,7 @@
 			<td width="200"><strong>Content</strong></td>
 			<td>{{ Form::textarea('content', Input::old('content'),  array('class' => 'edit_content ckeditor')) }}</td>
 		</tr>
+		@if(isset($post))
 		<tr>
 			<td width="200"><strong>Korrektur gelesen?</strong></td>
 			<td>{{ Form::checkbox('corrected', 1, Input::old('corrected')) }}</td>
@@ -24,6 +25,7 @@
 			<td width="200"><strong>Veröffentlicht</strong></td>
 			<td>{{ Form::checkbox('published', 1, Input::old('published')) }}</td>
 		</tr>
+		@endif
 		<tr>
 			<td width="200"><strong>Kategorien</strong></td>
 			<td>

@@ -1,4 +1,3 @@
-{{ Form::hidden('id', Input::old('gallery_id')) }}
 <table class="table table-striped">
 	<tr>
 		<td width="200"><strong>Name</strong></td>
@@ -20,9 +19,9 @@
 		<td width="200"><strong>Beschreibung</strong></td>
 		<td>{{ Form::textarea('description', Input::old('description'),  array('class' => 'form-control ckeditor')) }}</td>
 	</tr>
-	<!--<tr>
+	<tr>
 		<td width="200"><strong>Ligen</strong></td>
-		<td>
+		<td>			
 			@foreach($leagues as $league)
 					@if(isset($team))
 						@if($team->hasLeague($league->slug))
@@ -37,5 +36,5 @@
 					<br/>
 				@endforeach
 		</td>
-	</tr>-->
+	</tr>
 </table>

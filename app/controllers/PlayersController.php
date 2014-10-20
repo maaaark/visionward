@@ -47,6 +47,12 @@ class PlayersController extends \BaseController {
 		$player = Player::find($id);
 		return View::make('players.show', compact('player'));
 	}
+	
+	public function transferlist()
+	{
+		$transfers = PlayerHistory::orderBy("created_at", "DESC")->get();
+		return View::make('players.transferlist', compact('transfers'));
+	}
 
 	/**
 	 * Show the form for editing the specified resource.

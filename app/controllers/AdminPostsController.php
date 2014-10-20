@@ -73,6 +73,12 @@ class AdminPostsController extends \BaseController {
 		        $upload_success = $file->move($destinationPath, $filename);
 			}
 			
+			if(!Input::get('corrected')) {
+				$input["corrected"] = 0;
+			}
+			if(!Input::get('published')) {
+				$input["published"] = 0;
+			}
 			
 			// Category
 			foreach($post->categories as $news_category) {
