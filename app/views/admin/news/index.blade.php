@@ -7,6 +7,7 @@
 				<th>Titel</th>
 				<th>User</th>
 				<th>Erstellt</th>
+				<td>Status</td>
 				<th>Korrigiert</th>
 				<th>Öffentlich</th>
 				<th>Löschen</th>
@@ -24,6 +25,15 @@
 				<td><a href="/admin/news/edit/{{ $post->id }}">{{ $post->title }}</a></td>
 				<td><a href="/admin/news/edit/{{ $post->id }}">{{ $post->user->first_name }}</a></td>
 				<td>{{ $post->created_at }}</td>
+				<td>
+					@if($post->published == 1)
+						Veröffentlicht
+					@elseif($post->corrected == 1)
+						Korrigiert
+					@else
+						Warte auf Korrektur
+					@endif
+				</td>
 				<td>{{ $post->corrected }}</td>
 				<td>{{ $post->published }}</td>
 				<td><a href="/admin/news/delete/{{ $post->id }}" class="delete">Löschen</a></td>

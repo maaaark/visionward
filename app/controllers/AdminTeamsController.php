@@ -67,15 +67,34 @@ class AdminTeamsController extends \BaseController {
 	public function update($id)
 	{
 		$team = Team::findOrFail($id);
+		$data = Input::all();
+		// Role
+			foreach($team->leagues as $league) {
+				$team->leagues()->detach($league->id);
+			}
+			
+			$leagues = Input::get('league');
+			if(is_array($leagues))
+			{
+			   foreach($leagues as $league) {
+					$team->leagues()->attach($league);
+			   }
+			}
 
-		$validator = Validator::make($data = Input::all(), Team::$rules);
+		$validator = Validator::make($data, Team::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
-		$team->update($data);
+		
+		$team->name = Input::get('name');
+		$team->logo = Input::get('logo');
+		$team->country = Input::get('country');
+		$team->region = Input::get('region');
+		$team->description = Input::get('description');
+		$team->save();
+		//$team->update($data);
 
 		return Redirect::route('admin.teams.index')->with("success", "Erolgreich gespeichert");
 	}

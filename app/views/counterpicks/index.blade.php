@@ -1,0 +1,1 @@
+/home/mark/visionward/app/views/counterpicks/index.blade.php
