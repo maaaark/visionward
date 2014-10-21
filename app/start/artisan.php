@@ -12,3 +12,4 @@
 */
 
 Artisan::add(new PublishPosts);
+Artisan::add(new RefreshChampions);
