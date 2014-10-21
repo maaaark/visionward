@@ -38,8 +38,26 @@ class AdminTeamsController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
-		Team::create($data);
+		
+		$team = new Team;
+		$team->save();
+		$leagues = Input::get('league');
+		if(is_array($leagues))
+		{
+		   foreach($leagues as $league) {
+				$team->leagues()->attach($league);
+		   }
+		}
+			
+		$team->name = Input::get('name');
+		$team->logo = Input::get('logo');
+		$team->country = Input::get('country');
+		$team->region = Input::get('region');
+		$team->description = Input::get('description');
+		$team->save();
+		
+			
+		//Team::create($data);
 
 		return Redirect::route('admin.teams.index')->with("success", "Erolgreich gespeichert");
 	}

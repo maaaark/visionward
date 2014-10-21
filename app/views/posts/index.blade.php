@@ -2,6 +2,7 @@
 @section('title', "League of Legends News und eSport Coverage")
 @section('content')
 	<div class="container-fluid">
+	<h2 class="headline">Aktuelle League of Legends News</h2>
 	<ul class="news_list">
 		<?php $i=1; $x=1; ?>
 		@foreach($posts as $post)
@@ -10,7 +11,7 @@
 					
 						<div class="news">
 						  <div class="row">
-						  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/img/news.jpg"/></a></div>
+						  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="170" /></a></div>
 						  <div class="col-md-9 text">
 							<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 							{{ $post->excerpt }}

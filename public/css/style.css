@@ -84,6 +84,9 @@ a:hover {
 	font-size: 24px;
 	line-height: 60px;
 }
+.visionward_font {
+	font-family: 'Fjalla One', sans-serif;
+}
 .footer {
 	margin-top: 25px;
 	height: 200px;
@@ -123,6 +126,15 @@ h2.headline_no_border {
 .sidebar .block {
 	margin-bottom: 50px;
 }
+.sidebar a {
+	color: #333;
+}
+.sidebar a:hover {
+	text-decoration: none;
+}
+a.red {
+	color: #e84c3d;
+}
 .post_meta {
 	font-size: 12px;
 	margin-bottom: 15px;
@@ -146,6 +158,7 @@ h2.headline_no_border {
 	margin: 0;
 	padding: 0;
 }
+
 .news {
 	border-bottom: 1px solid #e7e7e7;
 	margin-bottom: 15px;

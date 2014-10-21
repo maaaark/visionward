@@ -1,9 +1,9 @@
-@extends('layouts.master')
-@section('title', "Transferliste" )
+@extends('layouts.small_header')
+@section('title', "Spieler Transfers" )
+@section('subtitle', "Alle League of Legends Spielertransfers in der Übersicht" )
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	
-	<h2 class="headline_no_border">Spieler Transfers</h2>
 	<table width="100%">
 		<tr>
 			<td>

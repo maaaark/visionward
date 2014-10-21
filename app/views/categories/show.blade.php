@@ -10,12 +10,12 @@
 				<li>
 					<div class="news">
 					  <div class="row">
-					  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}"><img src="/img/news.jpg"/></a></div>
+					  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/img/news.jpg"/></a></div>
 					  <div class="col-md-9 text">
-						<h2><a href="/news/{{ $post->id }}">{{ $post->title }}</a></h2>
+						<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 						{{ $post->excerpt }}
 						<div class="meta">
-							<span class="comments_count"><a href="/news/{{ $post->id }}#disqus_thread">0 Kommentare</a></span> {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
+							<span class="comments_count"><a href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread">0 Kommentare</a></span> {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
 						</div>
 					  </div>
 					  <div class="clear"></div>

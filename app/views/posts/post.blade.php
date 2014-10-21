@@ -8,5 +8,4 @@
 </div>
 -->
 {{ $post->content }}<br/>
-<br/><br/>
 @include("layouts.disqus")

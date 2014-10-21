@@ -1,14 +1,24 @@
 <div class="sidebar">
 	
+	<div class="block">
+		<h2 class="headline">Featured Content</h2>
+		<div class="content">
+			<img src="/img/worlds.jpg" />
+			<br/><br/>
+			<img src="/img/pbe.jpg" />
+		</div>
+	</div>
+	
+	
 	@if(!Request::is('/'))
 	<div class="block">
-		<div class="headline">Letzte News</div>
+		<h2 class="headline">Letzte News</h2>
 		<div class="content">
 			@foreach($last_posts as $post)
 				<table class="last_news">
 					<tr>
 						<td valign="top" width="60">
-							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="50" /></a>
+							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="http://visonward.lolquest.de/uploads/news/news.jpg" width="50" /></a>
 						</td>
 						<td valign="top">
 							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><strong>{{ $post->title }}</strong></a><br/>
@@ -25,26 +35,38 @@
 	
 	
 	<div class="block">
-		<div class="headline">Ausstehende Spiele</div>
+		<h2 class="headline_no_border">Ausstehende Spiele</h2>
 		<div class="content">
+			<table class="table table-striped visionward_font">
 			@foreach($matches as $match)
-				{{ $match->team->name }} vs. {{ $match->team2->name }}<br/>
+				<tr>
+					<td width="170"><a href="/matches/{{ $match->id }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" />&nbsp;&nbsp;{{ $match->team->name }}</a></td>
+					<td width="20"><a href="/matches/{{ $match->id }}">vs.</a></td>
+					<td width="170"><a href="/matches/{{ $match->id }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" height="20" />&nbsp;&nbsp;{{ $match->team2->name }}</a></td>
+				</tr>
 			@endforeach
+				<tr>
+					<td colspan="3" style="text-align: right;"><a href="/matches" class="red">Zeige alle Spiele</a></td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	
 	
 	<div class="block">
-		<div class="headline">Spieler Transfers</div>
+		<h2 class="headline_no_border">Spieler Transfers</h2>
 		<div class="content">
-			<table class="table table-striped">
+			<table class="table table-striped visionward_font">
 			@foreach($transfers as $transfer)
 				<tr>
-					<td><a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a></td>
-					<td class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->name }}"><img src="/img/teams/logos/{{ $transfer->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $transfer->oldteam->name }}</td>
-					<td class="new_team"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->name }}"><img src="/img/teams/logos/{{ $transfer->team->logo }}" height="20" />&nbsp;&nbsp;{{ $transfer->team->name }}</a></td>
+					<td width="120"><a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a></td>
+					<td width="120" class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->name }}"><img src="/img/teams/logos/{{ $transfer->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ str_limit($transfer->oldteam->name, $limit = 10, $end = '...') }}</td>
+					<td class="new_team" width="120"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->name }}"><img src="/img/teams/logos/{{ $transfer->team->logo }}" height="20" />&nbsp;&nbsp;{{ str_limit($transfer->team->name, $limit = 10, $end = '...') }}</a></td>
 				</tr>
 			@endforeach
+				<tr>
+					<td colspan="3" style="text-align: right;"><a href="/matches" class="red">Zeige alle Wechsel</a></td>
+				</tr>
 			</table>
 		</div>
 	</div>

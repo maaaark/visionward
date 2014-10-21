@@ -31,7 +31,7 @@
 	
 	<div class="container-fluid header_margin">
 		<div class="row">
-		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
+		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
 			<div class="container">
 				<h2 class="page_title">@yield('title')</h2>
 				<div class="header_subline">@yield('subtitle')</div>

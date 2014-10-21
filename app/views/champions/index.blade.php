@@ -1,5 +1,6 @@
 @extends('layouts.small_header')
 @section('title', "Champions")
+@section('subtitle', "Alle Champions aus Runterra")
 @section('content')
 	<ul class="champion_list">
 		@foreach($champions as $champion)

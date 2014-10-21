@@ -1,5 +1,6 @@
 @extends('layouts.small_header')
 @section('title', $post->title)
+@section('subtitle', $post->created_at->diffForHumans()." - gepostet von ".$post->user->username)
 @section('content')
 
 @if($post->published == 1)
