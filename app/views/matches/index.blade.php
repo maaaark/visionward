@@ -1,5 +1,5 @@
-@extends('layouts.master')
-@section('title', "Team Übersicht")
+@extends('layouts.small_header')
+@section('title', "Die nächsten Profi Spiele")
 @section('header_image',"pro_teams.jpg")
 @section('content')
 

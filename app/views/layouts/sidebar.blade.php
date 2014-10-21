@@ -35,9 +35,17 @@
 	
 	
 	<div class="block">
-		<div class="headline">SIDEBAR HEADLINE</div>
+		<div class="headline">Spieler Transfers</div>
 		<div class="content">
-			CONTENT
+			<table class="table table-striped">
+			@foreach($transfers as $transfer)
+				<tr>
+					<td><a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a></td>
+					<td class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->name }}"><img src="/img/teams/logos/{{ $transfer->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $transfer->oldteam->name }}</td>
+					<td class="new_team"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->name }}"><img src="/img/teams/logos/{{ $transfer->team->logo }}" height="20" />&nbsp;&nbsp;{{ $transfer->team->name }}</a></td>
+				</tr>
+			@endforeach
+			</table>
 		</div>
 	</div>
 	

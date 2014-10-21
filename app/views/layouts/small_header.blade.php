@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>visionward.net - @yield('title')</title>
+    <title>visonward.net - @yield('title')</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -31,43 +31,16 @@
 	
 	<div class="container-fluid header_margin">
 		<div class="row">
-		  <!-- Indicators -->
-		  <ol class="carousel-indicators">
-		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol>
-		  
-		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-		  <!-- Wrapper for slides -->
-		  <div class="carousel-inner">
-		  <div class="col-md-12 header item active" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
+		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 			<div class="container">
-				<h1 class="page_title">SLIDE 1</h1>
+				<h2 class="page_title">@yield('title')</h2>
+				<div class="header_subline">6 days ago - gepostet von Mark - Kategorien: eSport</div>
 			</div>
 		  </div>
-		  <div class="col-md-12 header item" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
-			<div class="container">
-				<h1 class="page_title">SLIDE 2</h1>
-			</div>
-		  </div>
-		</div> <!-- end carousel inner -->
-	  
-	  <!-- Controls -->
-	  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-	    <span class="glyphicon glyphicon-chevron-left"></span>
-	  </a>
-	  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-	    <span class="glyphicon glyphicon-chevron-right"></span>
-	  </a>
-	  
-		</div>
-		
-		  
 		</div>
 	</div>
 	<br/>
-	<div class="container">
+	<div class="container main_content">
 		<div class="row">
 		  <div class="col-xs-12 col-md-8">
 			@include('layouts.errors')
@@ -103,14 +76,14 @@
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>
 	<script>
-	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-	  ga('create', 'UA-51337940-3', 'auto');
-	  ga('send', 'pageview');
+  ga('create', 'UA-51337940-3', 'auto');
+  ga('send', 'pageview');
 
-	</script>
+</script>
   </body>
 </html>

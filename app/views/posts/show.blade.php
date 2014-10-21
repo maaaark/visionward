@@ -1,5 +1,5 @@
-@extends('layouts.no_header')
-@section('title', "News / ".$post->title)
+@extends('layouts.small_header')
+@section('title', $post->title)
 @section('content')
 
 @if($post->published == 1)

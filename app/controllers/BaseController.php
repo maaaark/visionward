@@ -34,6 +34,15 @@ class BaseController extends Controller {
 	   View::share('matches', $matches);
 	   
 	   
+	   // Transfers
+	   $transfers = Cache::get('transfers', function()
+	   {
+	       $transfers = PlayerHistory::orderBy("join_date", "DESC")->limit(3)->get();
+	       Cache::forever('transfers', $transfers);
+	       return $transfers;
+	   });
+	   View::share('transfers', $transfers);
+	   
 	}
 
 	   

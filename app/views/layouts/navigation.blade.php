@@ -1,6 +1,6 @@
 <ul>
 	<div class="col-md-8">
-		<li id="nav_logo"><a href="/"><img src="/img/visionward_icon.png" height="35" /> VISIONWARD</a></li>
+		<li id="nav_logo"><a href="/"><img src="/img/visionward_icon.png" height="35" />&nbsp;&nbsp;VISIONWARD</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">PBE</a></li>
 		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
