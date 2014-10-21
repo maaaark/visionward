@@ -38,7 +38,7 @@ class RefreshChampions extends Command {
 	public function fire()
 	{
 		$api_key = Config::get('api.key');
-		$summoner_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?dataById=true&champData=info,stats&api_key=".$api_key;
+		$summoner_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/champion?locale=de_DE&champData=all&api_key=".$api_key;
 		$json = @file_get_contents($summoner_data);
 		if($json === FALSE) {
 			return View::make('login');
@@ -74,7 +74,37 @@ class RefreshChampions extends Command {
 					$new_champion->crit = $champion["stats"]["crit"];
 					$new_champion->hpregenperlevel = $champion["stats"]["hpregenperlevel"];
 					$new_champion->armorperlevel = $champion["stats"]["armorperlevel"];
+					$new_champion->lore = $champion["lore"];
+					$i = 0;
+					foreach($champion["enemytips"] as $tip){
+						$i = $i+1;
+						if($i==1){
+							$new_champion->enemytips1= $tip;
+						}
+						if($i==2){
+							$new_champion->enemytips2= $tip;
+						}
+						if($i==3){
+							$new_champion->enemytips3= $tip;
+						}
+						
+					}
 					
+					
+					$i = 0;
+					foreach($champion["allytips"] as $tip2){
+						$i = $i+1;
+						if($i==1){
+							$new_champion->allytips1= $tip2;
+						}
+						if($i==2){
+							$new_champion->allytips2= $tip2;
+						}
+						if($i==3){
+							$new_champion->allytips3= $tip2;
+						}
+						
+					}
 					
 					$new_champion->save();
 					echo "Saved Champion".$champion["name"]."\n";

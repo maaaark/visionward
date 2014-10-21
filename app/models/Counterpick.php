@@ -19,5 +19,22 @@ class Counterpick extends \Eloquent {
     {
         return $this->belongsTo('Champion', 'champion_id', 'champion_id');
     }
+	
+	
 
+	public function championvotes($id, $vote)
+    {
+        $counter = DB::table('counterpicks')->where('id', '=', $id)->get();
+		if($vote == 'up'){
+			$counter->upvotes += 1;
+			$counter->votes += 1;
+		}elseif($vote == 'down'){
+			$counter->downvotes +=1;
+			$counter->votes -= 1;
+		}
+		$counter->save();
+		
+		$cookie = Cookie::make('visionward vote 24Std', 'bla', 3600);
+		$cockie->save();
+    }
 }
