@@ -1,5 +1,6 @@
 <div class="sidebar">
-
+	
+	@if(!Request::is('/'))
 	<div class="block">
 		<div class="headline">Letzte News</div>
 		<div class="content">
@@ -20,6 +21,18 @@
 			@endforeach
 		</div>
 	</div>
+	@endif
+	
+	
+	<div class="block">
+		<div class="headline">Ausstehende Spiele</div>
+		<div class="content">
+			@foreach($matches as $match)
+				{{ $match->team->name }} vs. {{ $match->team2->name }}<br/>
+			@endforeach
+		</div>
+	</div>
+	
 	
 	<div class="block">
 		<div class="headline">SIDEBAR HEADLINE</div>

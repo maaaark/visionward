@@ -11,7 +11,7 @@
 			</ul>
 		</li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
-		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/matches">COUNTERPICKS</a></li>
+		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/counterpicks">COUNTERPICKS</a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">

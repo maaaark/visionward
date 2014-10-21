@@ -22,6 +22,18 @@ class BaseController extends Controller {
 	       return $last_posts;
 	   });
 	   View::share('last_posts', $last_posts);
+	   
+	   
+	   // Matches
+	   $matches = Cache::get('matches', function()
+	   {
+	       $matches = Match::orderBy("game_date", "DESC")->limit(3)->get();
+	       Cache::forever('matches', $matches);
+	       return $matches;
+	   });
+	   View::share('matches', $matches);
+	   
+	   
 	}
 
 	   
