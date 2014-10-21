@@ -9,7 +9,7 @@ class CounterpicksController extends \BaseController {
 	 */
 	public function index()
 	{
-		$counterpicks = Counterpick::all();
+		$counterpicks = Counterpick::orderBy("votes", "DESC")->get();
 
 		return View::make('counterpicks.index', compact('counterpicks'));
 	}

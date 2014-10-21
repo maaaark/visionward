@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'visionward',
-			'username'  => 'root',
-			'password'  => 'root',
+			'database'  => 'visonward',
+			'username'  => 'visonward',
+			'password'  => 'BYeLyez8y94CEPaj',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

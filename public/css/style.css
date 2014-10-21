@@ -18,9 +18,10 @@ a:hover {
 }
 #nav_logo {
 	display: none;
-	padding-left: 0 !important;
 }
 .navigation {
+	font-family: 'Fjalla One', sans-serif;
+	font-size: 14px;
 	z-index: 100;
 	background: #202528;
 	color: #fff;
@@ -70,6 +71,9 @@ a:hover {
 	height: 60px;
 	background: url("/img/subsite.jpg");
 	margin-bottom: 15px;
+}
+.header_margin {
+	margin-top: 50px;
 }
 .subsite h1 {
 	font-family: 'Fjalla One', sans-serif;
@@ -224,13 +228,17 @@ h2.headline_no_border {
 }
 .multisearch {
 	height: 40px;
-	width: 370px;
+	width: 340px;
 	padding: 5px;
 	line-height: 40px;
 	border: 0px solid #000;
 	color: #202628;
 }
 .searchbox {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	margin-top: 0px;
 	position: relative;
 }
 .server_region {
@@ -240,7 +248,7 @@ h2.headline_no_border {
 	padding: 5px;
 	color: #fff;
 	top: 10px;
-	right: 10px;
+	right: 5px;
 }
 h1.page_title {
 	font-family: 'Fjalla One', sans-serif;
@@ -294,10 +302,10 @@ h1.page_title {
 	margin: 0 auto;
 }
 .new_team {
-	background: #dff0d8;
+	background: #dff0d8 !important;
 }
 .old_team {
-	background: #f3cfcf;
+	background: #f3cfcf !important;
 }
 .upvote {
 	background: #63a055;

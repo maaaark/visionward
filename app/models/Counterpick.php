@@ -17,7 +17,7 @@ class Counterpick extends \Eloquent {
 	
 	public function counter()
     {
-        return $this->belongsTo('Champion');
+        return $this->belongsTo('Champion', 'champion_id', 'champion_id');
     }
 
 }

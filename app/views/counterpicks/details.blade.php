@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', "Champions / ".$champion->name)
 @section('content')
-	<h2 class="headline_no_border">
+	<h2 class="headline">
 		{{ $champion->name }} 
 			@if($counterpick->type == "good")
 				ist gut gegen

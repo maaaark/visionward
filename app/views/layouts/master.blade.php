@@ -16,16 +16,6 @@
     <![endif]-->
   </head>
   <body>
-  
-	<div class="container-fluid">
-		<div class="row">
-		  <div class="col-md-12 header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
-			<div class="container">
-				<h1 class="page_title">VISIONWARD</h1>
-			</div>
-		  </div>
-		</div>
-	</div>
 	
 	<div class="container-fluid">
 		<div class="sticky">
@@ -38,8 +28,18 @@
 			</div>
 		</div>
 	</div>
-
-	<div class="container main_content">
+	
+	<div class="container-fluid header_margin">
+		<div class="row">
+		  <div class="col-md-12 header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
+			<div class="container">
+				<h1 class="page_title">VISIONWARD</h1>
+			</div>
+		  </div>
+		</div>
+	</div>
+	<br/>
+	<div class="container">
 		<div class="row">
 		  <div class="col-xs-12 col-md-8">
 			@include('layouts.errors')

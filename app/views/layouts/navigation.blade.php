@@ -1,9 +1,9 @@
 <ul>
 	<div class="col-md-8">
-		<li id="nav_logo"><a href="/">VISIONWARD</a></li>
+		<li id="nav_logo"><a href="/"><img src="/img/visionward_icon.png" height="35" /> VISIONWARD</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">PBE</a></li>
-		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS</a>
+		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a href="/teams">PRO TEAMS</a></li>
 				<li><a href="/matches">MATCHES</a></li>
@@ -11,9 +11,7 @@
 			</ul>
 		</li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
-		<li {{ Request::is('teams/*') ? ' class="active"' : '' }} {{ Request::is('teams') ? ' class="active"' : '' }}><a href="/teams">PRO-TEAMS</a></li>
-		<li {{ Request::is('matches/*') ? ' class="active"' : '' }} {{ Request::is('matches') ? ' class="active"' : '' }}><a href="/matches">MATCHES</a></li>
-		<li {{ Request::is('transferlist/*') ? ' class="active"' : '' }} {{ Request::is('transferlist') ? ' class="active"' : '' }}><a href="/transferlist">TRANSFERLIST</a></li>
+		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/matches">COUNTERPICKS</a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">
