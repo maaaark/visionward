@@ -1,8 +1,7 @@
-@extends('layouts.master')
-@section('title', "Champions / ".$champion->name)
+@extends('layouts.small_header')
+@section('title', $champion->name)
+@section('subtitle', $champion->title)
 @section('content')
-	
-	<h2 class="headline_no_border">{{ $champion->name }}, {{ $champion->title }}</h2>
 	<table class="table table-striped champion_stats">
 		<tr>
 			<td rowspan="3"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion->key }}.png" class="img-circle" /></td>

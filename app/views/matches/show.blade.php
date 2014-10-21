@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('title', $match->team->name." vs. ".$match->team2->name." - ".$match->league->name)
 @section('header_image',"pro_teams.jpg")
 @section('content')
@@ -13,7 +13,7 @@
 				<img src="/img/teams/logos/{{ $match->team->logo }}" width="150" />
 			</div>
 				<br/>
-				<h2 class="headline">Lineup {{ $match->team->name }}</h2>
+				<h2 class="headline_no_border">Lineup {{ $match->team->name }}</h2>
 				<table class="table table-striped">
 					@foreach($match->team->players as $player)
 					<tr>
@@ -54,7 +54,7 @@
 				<img src="/img/teams/logos/{{ $match->team2->logo }}" width="150" />
 			</div>
 				<br/>
-				<h2 class="headline">Lineup {{ $match->team2->name }}</h2>
+				<h2 class="headline_no_border">Lineup {{ $match->team2->name }}</h2>
 				<table class="table table-striped">
 					@foreach($match->team2->players as $player)
 					<tr>
@@ -80,7 +80,7 @@
 	</tr>
 </table>
 <br/>
-<h2 class="headline">Mehr Informationen</h2>
+<h2 class="headline_no_border">Mehr Informationen</h2>
 <table class="table table-striped">
 	@if($match->title != "")
 	<tr>

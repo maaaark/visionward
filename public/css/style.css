@@ -20,6 +20,9 @@ a:hover {
 	font-size: 22px;
 	padding-top: 1px;
 }
+.slider {
+	margin-top: 80px;
+}
 .navigation {
 	font-family: 'Fjalla One', sans-serif;
 	font-size: 14px;

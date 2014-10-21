@@ -1,9 +1,9 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('header_image', $category->header_image)
-@section('title', "Archiv / ".$category->name)
+@section('title', "Archiv von ".$category->name)
 @section('content')
 	<div class="container-fluid">
-	<div class="headline">Archiv von "{{ $category->name }}"</div>
+	<div class="headline"></div>
 		<ul class="news_list">
 		@foreach($category->posts as $post)
 			@if($post->published == 1)

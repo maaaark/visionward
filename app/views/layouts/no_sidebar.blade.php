@@ -31,9 +31,10 @@
 	
 	<div class="container-fluid header_margin">
 		<div class="row">
-		  <div class="col-md-12 header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
+		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 			<div class="container">
-				<h1 class="page_title">VISIONWARD</h1>
+				<h2 class="page_title">@yield('title')</h2>
+				<div class="header_subline">6 days ago - gepostet von Mark - Kategorien: eSport</div>
 			</div>
 		  </div>
 		</div>

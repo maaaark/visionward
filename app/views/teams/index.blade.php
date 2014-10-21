@@ -1,9 +1,7 @@
 @extends('layouts.no_sidebar')
-@section('title', "Team Übersicht")
+@section('title', "Professionelle League of Legends Teams")
 @section('header_image',"pro_teams.jpg")
 @section('content')
-
-<h2 class="headline">Professionelle League of Legends Teams</h2>
 	
 <table width="100%" class="team_overview">
 	<tr>

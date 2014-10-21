@@ -1,7 +1,7 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('title', "Counterpicks")
+@section('subtitle', "Wer ist gut gegen wen? Findet es heraus!")
 @section('content')
-	<h2 class="headline">Champions</h2>
 	<ul class="champion_list">
 		@foreach($counterpicks as $pick)
 			<li>

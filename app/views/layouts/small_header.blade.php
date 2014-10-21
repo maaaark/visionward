@@ -34,7 +34,7 @@
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 			<div class="container">
 				<h2 class="page_title">@yield('title')</h2>
-				<div class="header_subline">6 days ago - gepostet von Mark - Kategorien: eSport</div>
+				<div class="header_subline">@yield('subtitle')</div>
 			</div>
 		  </div>
 		</div>

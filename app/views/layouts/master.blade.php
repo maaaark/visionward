@@ -41,16 +41,19 @@
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner">
-		  <div class="col-md-12 header item active" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
-			<div class="container">
-				<h1 class="page_title">SLIDE 1</h1>
-			</div>
-		  </div>
-		  <div class="col-md-12 header item" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
-			<div class="container">
-				<h1 class="page_title">SLIDE 2</h1>
-			</div>
-		  </div>
+		  
+		  <div class="row">
+			  <div class="col-md-12 header item active container" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
+				<div class="container slider">
+					<div class="col-md-12 ">
+						<h2 class="page_title">@yield('title')</h2>
+						<div class="header_subline">Lorem Ipsum dolor Sit Amet</div>
+					</div>
+				</div>
+			  </div>
+	  	  </div>
+		  
+		
 		</div> <!-- end carousel inner -->
 	  
 	  <!-- Controls -->

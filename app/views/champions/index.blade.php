@@ -1,7 +1,6 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('title', "Champions")
 @section('content')
-	<h2 class="headline">Champions</h2>
 	<ul class="champion_list">
 		@foreach($champions as $champion)
 			<li>
