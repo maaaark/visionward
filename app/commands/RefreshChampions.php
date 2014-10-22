@@ -87,10 +87,7 @@ class RefreshChampions extends Command {
 						if($i==3){
 							$new_champion->enemytips3= $tip;
 						}
-						
 					}
-					
-					
 					$i = 0;
 					foreach($champion["allytips"] as $tip2){
 						$i = $i+1;
@@ -103,13 +100,25 @@ class RefreshChampions extends Command {
 						if($i==3){
 							$new_champion->allytips3= $tip2;
 						}
-						
 					}
-					
 					$new_champion->save();
-					echo "Saved Champion".$champion["name"]."\n";
+					echo "Saved Champion ".$champion["name"]."\n";
+					
 				}
 				unset($recent_champion);
+				
+				foreach($champion["skins"] as $skin){
+						$recent_skin = Skin::where('champion_id', '=', $champion["id"])->where('skin_id', '=', $skin['id'])->first();
+						if(!isset($recent_skin)) {
+							$new_skin = new Skin;
+							$new_skin->name = $skin['name'];
+							$new_skin->champion_id = $champion["id"];
+							$new_skin->skin_id = $skin['id'];
+							$new_skin->save();
+							echo "Saved skin ".$skin['name']."\n";
+						}
+					unset($recent_skin);
+				}
 			}
 		}
 		
