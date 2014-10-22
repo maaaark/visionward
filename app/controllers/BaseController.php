@@ -43,6 +43,16 @@ class BaseController extends Controller {
 	   });
 	   View::share('transfers', $transfers);
 	   
+	   // sale
+	   $champion_sales = Cache::get('champion_sales', function()
+	   {
+	       $champion_sales = Champion::orderBy("name", "ASC")->where("sale", true)->get();
+	       Cache::forever('champion_sales', $champion_sales);
+	       return $champion_sales;
+	   });
+	   View::share('champion_sales', $champion_sales);
+	   
+	   
 	}
 
 	   

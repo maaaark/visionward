@@ -33,6 +33,30 @@
 	</div>
 	@endif
 	
+	<div class="block">
+		<h2 class="headline_no_border">Champions und Skins im Angebot</h2>
+		<div class="content">
+			<table>
+				<tr>
+					<td valign="top">
+						<table class="table table-striped visionward_font">
+						@foreach($champion_sales as $champion_sale)
+							<tr>
+								<td width="30"><a href="/champions/{{ $champion_sale->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion_sale->key }}.png" class="img-circle" width="30" /></a></td>
+								<td width="150"><a href="/champions/{{ $champion_sale->key }}">{{ $champion_sale->name }}</a></td>
+							</tr>
+						@endforeach
+						</table>
+					</td>
+					<td valign="top">
+						
+					</td>
+				</tr>
+			</table>
+
+		</div>
+	</div>
+	
 	
 	<div class="block">
 		<h2 class="headline_no_border">Ausstehende Spiele</h2>

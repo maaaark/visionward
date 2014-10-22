@@ -8,7 +8,7 @@
 		<td>{{ Form::checkbox('sale') }}</td>
 	</tr>
 	<tr>
-		<td width="200"><strong>Free to play</strong></td>
+		<td width="200"><strong>Salce Preis</strong></td>
 		<td>{{ Form::text('sale_price') }}</td>
 	</tr>
 </table>
