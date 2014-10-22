@@ -1,7 +1,8 @@
 <?php
 
 class Champion extends \Eloquent {
-
+	
+	protected $guarded = array('id', 'champion_id');
 	
 	public function skins()
     {

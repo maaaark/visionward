@@ -16,6 +16,9 @@ a:hover {
 	color: #fff;
 	padding: 5px;
 }
+.f2p {
+	border: 5px solid rgba(0,123,255,0.75);
+}
 #nav_logo {
 	font-size: 22px;
 	padding-top: 1px;
