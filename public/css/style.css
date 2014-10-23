@@ -16,6 +16,9 @@ a:hover {
 	color: #fff;
 	padding: 5px;
 }
+a.button:hover {
+	color: #fff;
+}
 .f2p {
 	border: 5px solid rgba(0,123,255,0.75);
 }
@@ -44,14 +47,14 @@ a:hover {
 	float: left;
 	height: 50px;
 	line-height: 50px;
-	padding-left: 20px;
-	padding-right: 20px;
 }
 .navigation ul li:hover {
 	background: #e84c3d;
 	text-decoration: none;
 }
 .navigation ul li a {
+	padding-left: 20px;
+	padding-right: 20px;
 	text-decoration: none;
 }
 .navigation ul li.active {
@@ -66,7 +69,7 @@ a:hover {
 	display: none;
 	position: absolute;
 	background: #202528;
-	margin-left: -20px;
+	margin-left: 0px;
 }
 .navigation ul li ul li {
 }
@@ -226,6 +229,15 @@ a.red {
 	font-size: 12px;
 	
 }
+.counter_list li {
+	width: 100px;
+	float: left;
+	text-align: center;
+	list-style: none;
+	margin-bottom: 10px;
+	font-size: 12px;
+	
+}
 .champion_avatar {
 	position: relative;
 }
@@ -284,6 +296,8 @@ a.red {
 	color: #fff;
 	top: 10px;
 	right: 5px;
+	height: 30px;
+	line-height: 22px;
 }
 h1.page_title {
 	font-family: 'Fjalla One', sans-serif;
@@ -356,6 +370,16 @@ h2.page_title {
 }
 .upvote {
 	background: #63a055;
+	color: #fff;
+	font-weight: bold;
+	padding: 3px;
+	font-size: 12px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.votes {
+	background: #000;
 	color: #fff;
 	font-weight: bold;
 	padding: 3px;

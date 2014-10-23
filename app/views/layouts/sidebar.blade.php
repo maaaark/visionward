@@ -19,7 +19,7 @@
 							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="http://visonward.lolquest.de/uploads/news/news.jpg" width="50" /></a>
 						</td>
 						<td valign="top">
-							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><strong>{{ $post->title }}</strong></a><br/>
+							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><strong>{{ str_limit($post->title, $limit = 50, $end = '...') }}</strong></a><br/>
 							<div class="post_meta">
 								{{ $post->created_at->diffForHumans() }}
 							</div>

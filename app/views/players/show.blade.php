@@ -1,5 +1,6 @@
-@extends('layouts.master')
-@section('title', $player->nickname." - ".$player->team->name )
+@extends('layouts.small_header')
+@section('title', $player->nickname)
+@section('subtitle', $player->team->name)
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	
@@ -49,7 +50,7 @@
 	<table>
 		<tr>
 			<td width="340" valign="top">
-				<h3 class="headline">Vorherige Teams</h3>
+				<h3 class="headline_no_border">Vorherige Teams</h3>
 				<table class="table table-striped">
 					@foreach($player->history as $history)
 					<tr>
@@ -61,7 +62,7 @@
 			</td>
 			<td width="100"></td>
 			<td width="340" valign="top">
-				<h3 class="headline">Platzierungen</h3>
+				<h3 class="headline_no_border">Platzierungen</h3>
 				<table class="table table-striped">
 					<tr>
 						<td width="75"><strong>Platz 1</strong></td>
