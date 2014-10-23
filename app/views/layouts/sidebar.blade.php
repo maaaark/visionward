@@ -4,8 +4,6 @@
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
 			<img src="/img/worlds.jpg" />
-			<br/><br/>
-			<img src="/img/pbe.jpg" />
 		</div>
 	</div>
 	
@@ -40,6 +38,9 @@
 				<tr>
 					<td valign="top">
 						<table class="table table-striped visionward_font">
+							<tr>
+								<th colspan="2">Champions</th>
+							</tr>
 						@foreach($champion_sales as $champion_sale)
 							<tr>
 								<td width="30"><a href="/champions/{{ $champion_sale->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion_sale->key }}.png" class="img-circle" width="30" /></a></td>
@@ -49,7 +50,17 @@
 						</table>
 					</td>
 					<td valign="top">
-						
+						<table class="table table-striped visionward_font">
+							<tr>
+								<th colspan="2">Skins</th>
+							</tr>
+						@foreach($skin_sales as $skin_sale)
+							<tr>
+								<td width="30"><a href="/champions/{{ $skin_sale->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $skin_sale->champion->key }}.png" class="img-circle" width="30" /></a></td>
+								<td width="150"><a href="/champions/{{ $skin_sale->champion->key }}">{{ $skin_sale->name }}</a></td>
+							</tr>
+						@endforeach
+						</table>
 					</td>
 				</tr>
 			</table>

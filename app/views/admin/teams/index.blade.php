@@ -1,7 +1,8 @@
 ﻿@extends('layouts.admin')
 @section('title', "Teams")
 @section('content')
-	
+	<a href="/admin/teams/create" class="btn btn-primary">Neues Team erstellen</a><br/>
+	<br/>
 	<table class="table table-striped">
 			<tr>
 				<th>Name</th>

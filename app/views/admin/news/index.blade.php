@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('title', "News")
 @section('content')
-	
+	<a href="/admin/news/create" class="btn btn-primary">Neue News schreiben</a><br/>
+	<br/>
 	<table class="table table-striped">
 			<tr>
 				<th>Titel</th>

@@ -3,9 +3,9 @@
 class Skin extends \Eloquent {
 	
 	
-	public function team()
+	public function champion()
     {
-        return $this->belongsTo('Champion');
+        return $this->belongsTo('Champion', 'champion_id', 'champion_id');
     }
 	
 	
