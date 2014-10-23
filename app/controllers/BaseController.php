@@ -46,7 +46,7 @@ class BaseController extends Controller {
 	   // sale
 	   $champion_sales = Cache::get('champion_sales', function()
 	   {
-	       $champion_sales = Champion::orderBy("name", "ASC")->where("sale", true)->get();
+	       $champion_sales = Champion::orderBy("name", "ASC")->where("sale", "1")->get();
 	       Cache::forever('champion_sales', $champion_sales);
 	       return $champion_sales;
 	   });
