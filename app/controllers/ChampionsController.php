@@ -9,7 +9,7 @@ class ChampionsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$champions = Champion::orderBy('name', 'ASC')->get();
+		$champions = Champion::orderBy("f2p", "DESC")->orderBy('name', 'ASC')->get();
 		return View::make('champions.index', compact('champions'));
 	}
 

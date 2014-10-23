@@ -31,13 +31,27 @@ class AdminPlayersController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validator = Validator::make($data = Input::all(), Player::$rules);
+		$data = Input::all();
+		$validator = Validator::make($data, Player::$rules);
 
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
+		
+		if(Input::file('picture')) {
+			$file = Input::file('picture');
+			
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/img/players/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$data["picture"] = $filename;
+		}
+			
+			
 		Player::create($data);
 
 		return Redirect::route('admin.players.index')->with("success", "Erolgreich gespeichert");
@@ -80,8 +94,23 @@ class AdminPlayersController extends \BaseController {
 			$change->old_team_id = $player->team_id;
 			$change->join_date = new DateTime('today');
 			$change->save();
-			
 		}
+		
+		
+		if(Input::file('picture')) {
+			$file = Input::file('picture');
+			
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/img/players/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$data["picture"] = $filename;
+		} else {
+			$data["picture"] = $player->picture;
+		}
+		
 		$player->update($data);
 
 		return Redirect::route('admin.players.index')->with("success", "Erolgreich gespeichert");

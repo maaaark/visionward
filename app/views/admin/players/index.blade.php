@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('title', "Spieler")
 @section('content')
-	
+	<a href="/admin/players/create" class="btn btn-primary">Neuen Spieler erstellen</a><BR/>
+	<BR/>
 	<table class="table table-striped">
 			<tr>
 				<th>Name</th>

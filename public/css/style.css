@@ -224,6 +224,17 @@ a.red {
 	list-style: none;
 	margin-bottom: 10px;
 	font-size: 12px;
+	
+}
+.champion_avatar {
+	position: relative;
+}
+.free_week, .on_sale {
+	position: absolute;
+	left: 10px;
+}
+.champion_on_sale {
+	border: 5px solid rgba(36,165,19,1);
 }
 .champion_list {
 	margin: 0;

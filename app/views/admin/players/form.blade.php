@@ -43,4 +43,15 @@
 		<td width="200"><strong>Land</strong></td>
 		<td>{{ Form::text('country', Input::old('country'),  array('class' => 'form-control')) }}</td>
 	</tr>
+	
+	<tr>
+		<td width="200"><strong>Spielerbild</strong></td>
+		<td>
+			@if(isset($player))
+				@if($player->picture != "")
+					<img src="/img/players/{{ $player->picture }}">
+				@endif
+			@endif
+		{{ Form::file('picture') }}</td>
+	</tr>
 </table>
