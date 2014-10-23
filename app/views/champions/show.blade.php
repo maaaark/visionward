@@ -23,22 +23,15 @@
 			<td>{{ $champion->movespeed }}</td>
 		</tr>
 	</table>
-	Tipps:	<br/>
 	
-	als {{$champion->name}}	<br/>
-	@if($champion->allytips1)1. {{$champion->allytips1}}	<br/>	<br/>@endif
-	@if($champion->allytips2)2. {{$champion->allytips2}}	<br/>	<br/>@endif
-	@if($champion->allytips3)3. {{$champion->allytips3}}	<br/>	<br/>@endif
 	<br/>
-	gegen {{$champion->name}}	<br/>
-	@if($champion->enemytips1)1. {{$champion->enemytips1}}	<br/>	<br/>@endif
-	@if($champion->enemytips2)2. {{$champion->enemytips2}}	<br/>	<br/>@endif
-	@if($champion->enemytips3)3. {{$champion->enemytips3}}	<br/>	<br/>@endif
-	<br/>
-	<br/>
+
 	@include("counterpicks.list")
-		<br/>
 	<br/>
-	Geschichte:	{{ $champion->lore }}
+	<br/>	<br/>
+	@include("counterpicks.tips")
+	<br/>	<br/>
+	<h2 class="headline">Die Geschichte von {{ $champion->name }}</h2>
+	{{ $champion->lore }}
 	
 @stop

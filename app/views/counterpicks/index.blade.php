@@ -5,8 +5,8 @@
 	<ul class="champion_list">
 		@foreach($counterpicks as $pick)
 			<li>
-				<a href="/champions/{{ $pick->champion->key }}">
-					<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $pick->champion->key }}.png" class="img-circle" width="55" /><br/>
+				<a href="/champions/{{ $pick->counter->key }}">
+					<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="55" /><br/>
 					{{ $pick->counter->name }}
 				</a>
 			</li>
