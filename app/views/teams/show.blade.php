@@ -12,24 +12,48 @@
 			<td valign="top">
 				<br/>
 				<table class="table table-striped">
-					@foreach($team->players as $player)
+				
+					
 					<tr>
-						<td width="120"><strong>
-							@if($player->role == "top")
-								Top-Lane
-							@elseif($player->role == "jungle")
-								Jungler
-							@elseif($player->role == "mid")
-								Mid-Lane
-							@elseif($player->role == "adcarry")
-								AD-Carry
-							@elseif($player->role == "support")
-								Supporter
-							@endif
-						</strong></td>
-						<td><img src="/img/flags/{{ $player->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $player->id }}/{{ $player->nickname }}">{{ $player->nickname }}</a></td>
+						<td width="120"><strong>Top-Lane</strong></td>
+						@if($top)
+						<td><img src="/img/flags/{{ $top->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $top->id }}/{{ $top->nickname }}">{{ $top->nickname }}</a></td>
+						@else
+						<td>Kein Spieler</td>
+						@endif
+					</tr>					
+					<tr>
+						<td width="120"><strong>Jungle</strong></td>
+						@if($jungle)
+						<td><img src="/img/flags/{{ $jungle->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $jungle->id }}/{{ $jungle->nickname }}">{{ $jungle->nickname }}</a></td>
+						@else
+						<td>Kein Spieler</td>
+						@endif
 					</tr>
-					@endforeach
+					<tr>
+						<td width="120"><strong>Mid-Lane</strong></td>
+						@if($mid)
+						<td><img src="/img/flags/{{ $mid->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $mid->id }}/{{ $mid->nickname }}">{{ $mid->nickname }}</a></td>
+						@else
+						<td>Kein Spieler</td>
+						@endif
+					</tr>
+					<tr>
+						<td width="120"><strong>AD-Carry</strong></td>
+						@if($adc)
+						<td><img src="/img/flags/{{ $adc->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $mid->id }}/{{ $mid->nickname }}">{{ $mid->nickname }}</a></td>
+						@else
+						<td>Kein Spieler</td>
+						@endif
+					</tr>
+					<tr>
+						<td width="120"><strong>Support</strong></td>
+						@if($support)
+						<td><img src="/img/flags/{{ $support->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $support->id }}/{{ $support->nickname }}">{{ $support->nickname }}</a></td>
+						@else
+						<td>Kein Spieler</td>
+						@endif
+					</tr>
 				</table>
 			</td>
 		</tr>

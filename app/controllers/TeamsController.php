@@ -51,7 +51,12 @@ class TeamsController extends \BaseController {
 	public function show($id, $slug)
 	{
 		$team = Team::find($id);
-		return View::make('teams.show', compact('team'));
+		$top = $team->getRole("top");
+		$jungle = $team->getRole("jungle");
+		$mid = $team->getRole("mid");
+		$adc = $team->getRole("adcarry");
+		$support = $team->getRole("support");
+		return View::make('teams.show', compact('team', 'top', 'jungle', 'mid', 'adc', 'support'));
 	}
 
 	/**

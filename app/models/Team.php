@@ -28,4 +28,11 @@ class Team extends \Eloquent {
         return false;
     }
 	
+	public function getRole($role) {
+		$player = Player::where("team_id", "=", $this->id)->where("role", "=", $role)->first();
+		if($player) {
+			return $player;
+		}
+	}
+	
 }
