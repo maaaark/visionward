@@ -23,6 +23,28 @@
 			<td>{{ $champion->movespeed }}</td>
 		</tr>
 	</table>
+	<table>
+		@foreach($skills as $skill)
+		<tr>
+			<td><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion->value}}/img/spell/{{ $skill->icon}}"/></td>
+			<td><strong>{{ $skill->name }}</strong></br>{{ $skill->description }}</td>
+		</tr>
+		@endforeach
+	</table>
+	
+	<table>
+		<tr>
+		@foreach($skins as $skin)
+			<td><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ $champion->name }}_{{ $skin->skin_id}}.jpg" width="100px"/></td>
+		@endforeach
+		</tr>
+		<tr>
+		@foreach($skins as $skin)
+			<td><strong>{{ $skin->name }}</strong></td>
+		@endforeach
+		</tr>
+	</table>
+	
 	
 	<br/>
 
