@@ -9,8 +9,6 @@
 		  
 		  <img src="/img/header/@yield('header_image', 'header.jpg')">
 		  <img src="/img/header/@yield('header_image', 'header.jpg')">
-		  <img src="/img/header/@yield('header_image', 'header.jpg')">
-		  <img src="/img/header/@yield('header_image', 'header.jpg')">
 		
 		  </div> <!-- end carousel inner -->
 	  
