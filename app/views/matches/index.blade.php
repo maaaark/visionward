@@ -1,9 +1,10 @@
 @extends('layouts.small_header')
 @section('title', "Die nächsten Profi Spiele")
+@section('subtitle', "Professionelle League of Legends Spiele in der Übersicht")
 @section('header_image',"pro_teams.jpg")
 @section('content')
 
-<div class="headline">Letzte Matches</div>
+<h2 class="headline_no_border">Letzte Matches</h2>
 	
 <table width="100%" class="table table-striped">
 	@foreach($matches as $match)

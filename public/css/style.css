@@ -95,9 +95,13 @@ a.button:hover {
 }
 .footer {
 	margin-top: 25px;
-	height: 200px;
+	height: 100px;
 	background: #202528;
 	color: #fff;
+}
+.gallery_description {
+	padding: 10px;
+	background: #f9f9f9;
 }
 .copy {
 	color: #767c7e;

@@ -76,7 +76,7 @@
 		</tr>
 	</table>
 	<br/>
-	<h3 class="headline">Teilnehmende Ligen</h3>
+	<h3 class="headline_no_border">Teilnehmende Ligen</h3>
 	<table class="table table-striped">
 		@foreach($team->leagues as $league)
 		<tr>
@@ -88,7 +88,7 @@
 	<h3 class="headline">{{ $team->name }} Beschreibung</h3>
 	{{ $team->description }}<br/>
 	<br/>
-	<h3 class="headline">Platzierungen</h3>
+	<h3 class="headline_no_border">Platzierungen</h3>
 	<table class="table table-striped">
 		<tr>
 			<td width="75"><strong>Platz 1</strong></td>
