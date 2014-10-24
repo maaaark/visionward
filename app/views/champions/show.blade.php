@@ -35,7 +35,7 @@
 	<table>
 		<tr>
 		@foreach($skins as $skin)
-			<td><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ $champion->name }}_{{ $skin->skin_id}}.jpg" width="100px"/></td>
+			<td><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ $champion->key }}_{{ $skin->skin_id}}.jpg" width="100px"/></td>
 		@endforeach
 		</tr>
 		<tr>
