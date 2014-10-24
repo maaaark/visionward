@@ -36,6 +36,8 @@
 				<option value="mid">Mid-Lane</option>
 				<option value="adcarry">AD-Carry</option>
 				<option value="support">Supporter</option>
+				<option value="coach">Coach</option>
+				<option value="sub">Ersatzspieler</option>
 			</select>
 		</td>
 	</tr>

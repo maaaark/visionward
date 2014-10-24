@@ -402,6 +402,11 @@ h2.page_title {
 	font-size: 12px;
 	margin-left: 10px;
 }
+.info_hover {
+	background: #fff;
+	padding: 10px;
+	border: 1px solid #929292;
+}
 .center {
 	text-align: center;
 }

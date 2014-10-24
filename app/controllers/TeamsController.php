@@ -56,7 +56,9 @@ class TeamsController extends \BaseController {
 		$mid = $team->getRole("mid");
 		$adc = $team->getRole("adcarry");
 		$support = $team->getRole("support");
-		return View::make('teams.show', compact('team', 'top', 'jungle', 'mid', 'adc', 'support'));
+		$coach = $team->getRole("coach");
+		$sub = $team->getRole("sub");
+		return View::make('teams.show', compact('team', 'top', 'jungle', 'mid', 'adc', 'support', 'sub', 'coach'));
 	}
 
 	/**

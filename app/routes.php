@@ -26,7 +26,10 @@ Route::post('login', array('uses' => 'AdminController@doLogin'));
 
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
+
 Route::get('/players/{id}/{slug}', 'PlayersController@show');
+Route::get('/players_tooltip/{id}', 'PlayersController@tooltip');
+
 Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 Route::get('/counterpicks/{id}/{slug}', 'CounterpicksController@show');

@@ -90,4 +90,9 @@ class PlayersController extends \BaseController {
 		//
 	}
 
+	public function tooltip($id)
+	{
+		$player = Player::find($id);
+		return Response::json(array('player' => $player, 'team' => $player->team));
+	}
 }

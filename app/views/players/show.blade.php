@@ -3,8 +3,7 @@
 @section('subtitle', $player->team->name)
 @section('header_image',"pro_teams.jpg")
 @section('content')
-	
-	<h2 class="headline">{{ $player->nickname }} - {{ $player->team->name }}</h2>
+
 	<table width="100%">
 		<tr>
 			<td width="220" valign="top">
