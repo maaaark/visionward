@@ -1,5 +1,6 @@
-@extends('layouts.master')
-@section('title', "Champions / ".$champion->name)
+@extends('layouts.small_header')
+@section('title', $champion->name." vs. ".$counter->name)
+@section('subtitle', $champion->title." vs. ".$counter->title)
 @section('content')
 	<h2 class="headline">
 		{{ $champion->name }} 
@@ -25,7 +26,9 @@
 		<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $counter->key }}.png" class="img-circle" width="100" />
 	  </div>
 	</div>
-
+	<br/><br/>
+	<h2 class="headline">So spielt ihr gegen {{ $counter->name }}</h2>
+	{{ $counterpick->description }}
 	<br/><br/>
 	@include("layouts.disqus")
 @stop

@@ -12,11 +12,9 @@
   <div class="col-xs-12 col-md-6">
 	<h2 class="headline_no_border">Tipps gegen {{ $champion->name }}</h2>
 	<table class="table table-striped">
-		<tr>
 			@if($champion->enemytips1)<tr><td>1. {{$champion->enemytips1}}</td></tr>@endif
 			@if($champion->enemytips2)<tr><td>2. {{$champion->enemytips2}}</td></tr>@endif
 			@if($champion->enemytips3)<tr><td>3. {{$champion->enemytips3}}</td></tr>@endif
-		</tr>
 	</table>
   </div>
 </div>

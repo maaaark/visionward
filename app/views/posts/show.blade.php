@@ -3,8 +3,17 @@
 @section('subtitle', $post->created_at->diffForHumans()." - gepostet von ".$post->user->username)
 @section('content')
 	
+	@if(Auth::check())
+		@if(Auth::user()->hasRole("admin") || Auth::user()->hasRole("mod"))
+			<a href="/admin/news/edit/{{ $post->id }}">News bearbeiten</a><br/><br/>
+		@endif
+	@endif
+	
 @if($post->published == 1)
 	@include("posts.post")
+	@if($post->gallery)
+		@include("posts.gallery")
+	@endif	
 @else
 	@if(Auth::check())
 		@if(Auth::user()->hasRole("admin") || Auth::user()->hasRole("mod"))
