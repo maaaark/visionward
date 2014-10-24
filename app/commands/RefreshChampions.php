@@ -44,7 +44,8 @@ class RefreshChampions extends Command {
 			return View::make('login');
 		} else {
 			$obj = json_decode($json, true);
-			
+			$version = Setting::where('key', '=', 'patch_number')->first();
+			if($version){ $version->value = $obj['version']; $version->save();}
 			foreach($obj["data"] as $champion) {
 				$recent_champion = Champion::where('champion_id', '=', $champion["id"])->first();
 				if(!isset($recent_champion)) {
@@ -53,7 +54,6 @@ class RefreshChampions extends Command {
 					$new_champion->title = $champion["title"];
 					$new_champion->champion_id = $champion["id"];
 					$new_champion->key = $champion["key"];
-					
 					$new_champion->attackrange = $champion["stats"]["attackrange"];
 					$new_champion->mpperlevel = $champion["stats"]["mpperlevel"];
 					$new_champion->mp = $champion["stats"]["mp"];
@@ -102,22 +102,47 @@ class RefreshChampions extends Command {
 						}
 					}
 					$new_champion->save();
-					echo "Saved Champion ".$champion["name"]."\n";
 					
+				}else{
+					$champion_data = "https://euw.api.pvp.net/api/lol/euw/v1.2/champion/".$champion["id"]."?api_key=".$api_key;
+					$json2 = @file_get_contents($champion_data);
+					if($json2 === FALSE) {
+						return View::make('login');
+					} else {
+						$data = json_decode($json2, true);
+						if($data["freeToPlay"] != $recent_champion->f2p){
+							$recent_champion->f2p = $data["freeToPlay"];
+						}
+						$recent_champion->save();
+					}
 				}
 				unset($recent_champion);
 				
 				foreach($champion["skins"] as $skin){
-						$recent_skin = Skin::where('champion_id', '=', $champion["id"])->where('skin_id', '=', $skin['id'])->first();
+						$recent_skin = Skin::where('champion_id', '=', $champion["id"])->where('skin_id', '=', $skin['num'])->first();
+						
 						if(!isset($recent_skin)) {
 							$new_skin = new Skin;
 							$new_skin->name = $skin['name'];
 							$new_skin->champion_id = $champion["id"];
-							$new_skin->skin_id = $skin['id'];
+							$new_skin->skin_id = $skin['num'];
 							$new_skin->save();
-							echo "Saved skin ".$skin['name']."\n";
 						}
 					unset($recent_skin);
+				}
+				
+				foreach($champion["spells"] as $skill){
+						$recent_skill = Skill::where('champion_id', '=', $champion["id"])->where('name', '=', $skill['name'])->first();
+						
+						if(!isset($recent_skill)) {
+							$recent_skill = new Skill;
+							$recent_skill->name = $skill['name'];
+							$recent_skill->champion_id = $champion["id"];
+							$recent_skill->description = $skill['description'];
+							$recent_skill->icon = $skill['image']['full'];
+							$recent_skill->save();
+						}
+					unset($recent_skill);
 				}
 			}
 		}
