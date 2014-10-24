@@ -9,6 +9,11 @@ class Champion extends \Eloquent {
         return $this->hasMany('Skin');
     }
 	
+	public function skills()
+    {
+        return $this->hasMany('Skill');
+    }
+	
 	// Add your validation rules here
 	public static $rules = [
 		// 'title' => 'required'

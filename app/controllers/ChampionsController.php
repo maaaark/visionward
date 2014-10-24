@@ -51,11 +51,13 @@ class ChampionsController extends \BaseController {
 	public function show($name)
 	{	
 		$champion = Champion::where('key', '=', $name)->first();
-		
+		$skills = Skill::where('champion_id', '=', $champion->champion_id)->get();
 		$good = Counterpick::where("type", "=", "good")->where("champion_id", "=", $champion->champion_id)->get();
 		$bad = Counterpick::where("type", "=", "bad")->where("champion_id", "=", $champion->champion_id)->get();
+		$skins = Skin::where("champion_id", "=", $champion->champion_id)->orderBy("skin_id", "ASC")->get();
 		
-		return View::make('champions.show', compact('champion', 'bad', 'good'));
+		
+		return View::make('champions.show', compact('champion', 'bad', 'good', 'skills', 'skins'));
 	}
 
 	/**
