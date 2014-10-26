@@ -18,6 +18,7 @@ Route::resource('teams', 'TeamsController');
 Route::resource('leagues', 'LeaguesController');
 Route::resource('matches', 'MatchesController');
 Route::resource('counterpicks', 'CounterpicksController');
+Route::resource('searches', 'SearchesController');
 
 
 Route::get('/', 'PostController@index');

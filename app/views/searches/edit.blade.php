@@ -1,0 +1,1 @@
+/home/matthias/visionward/app/views/searches/edit.blade.php
