@@ -23,37 +23,63 @@
 			<td>{{ $champion->movespeed }}</td>
 		</tr>
 	</table>
-	<table>
-		@foreach($skills as $skill)
-		<tr>
-			<td><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion->value}}/img/spell/{{ $skill->icon}}"/></td>
-			<td><strong>{{ $skill->name }}</strong></br>{{ $skill->description }}</td>
-		</tr>
-		@endforeach
-	</table>
 	
-	<table>
-		<tr>
-		@foreach($skins as $skin)
-			<td><img src="http://ddragon.leagueoflegends.com/cdn/img/champion/loading/{{ $champion->key }}_{{ $skin->skin_id}}.jpg" width="100px"/></td>
-		@endforeach
-		</tr>
-		<tr>
-		@foreach($skins as $skin)
-			<td><strong>{{ $skin->name }}</strong></td>
-		@endforeach
-		</tr>
-	</table>
-	
-	
-	<br/>
 
-	@include("counterpicks.list")
-	<br/>
-	<br/>	<br/>
-	@include("counterpicks.tips")
-	<br/>	<br/>
-	<h2 class="headline">Die Geschichte von {{ $champion->name }}</h2>
-	{{ $champion->lore }}
+	<!-- Nav tabs -->
+	<ul class="nav nav-tabs" role="tablist" id="champion_tabs">
+	  <li class="active"><a href="#skills" role="tab" data-toggle="tab">Fähigkeiten</a></li>
+	  <li><a href="#counter" role="tab" data-toggle="tab">Konter</a></li>
+	   <li><a href="#skins" role="tab" data-toggle="tab">Skins</a></li>
+	  <li><a href="#tipps" role="tab" data-toggle="tab">Tipps</a></li>
+	  <li><a href="#lore" role="tab" data-toggle="tab">Geschichte</a></li>
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+	  <div class="tab-pane active" id="skills">
+		<br/>
+		<h2 class="headline_no_border">Fähigkeiten von {{ $champion->name }}</h2>
+		<table class="table table-striped">
+			@foreach($skills as $skill)
+			<tr>
+				<td vlaign="top"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion->value}}/img/spell/{{ $skill->icon}}" class="img-circle" /></td>
+				<td vlaign="top"><strong>{{ $skill->name }}</strong></br>{{ $skill->description }}</td>
+			</tr>
+			@endforeach
+		</table>
+	  </div>
+	  <div class="tab-pane" id="counter">
+	  <br/>
+		<h2 class="headline">Konter zu {{ $champion->name }}</h2>
+		@include("counterpicks.list")</div>
+	  <div class="tab-pane" id="skins">
+		<br/>
+		<h2 class="headline_no_border">{{ $champion->name }} Skins</h2>
+		<table class="table table-striped">
+		@foreach($skins as $skin)
+			<tr>
+				<td width="200">
+					@if($skin->name == "default")
+						<strong>Standard Skin</strong>
+					@else
+						<strong>{{ $skin->name }}</strong>
+					@endif
+				</td>
+				<td>
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{ $champion->key }}_{{ $skin->skin_id}}.jpg" width="550px"/>
+				</td>
+			</tr>
+		@endforeach
+		</table>
+	  </div>
+	  <div class="tab-pane" id="tipps"><br/>@include("counterpicks.tips")</div>
+	  <div class="tab-pane" id="lore">
+		<br/>
+		  <h2 class="headline">Die Geschichte von {{ $champion->name }}</h2>
+		{{ $champion->lore }}
+	  </div>
+	</div>
+	<br/><br/>
+	@include("layouts.disqus")
 	
 @stop

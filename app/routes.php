@@ -85,11 +85,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::post('/users/update', 'AdminUsersController@update');
 	Route::post('/users/save', 'AdminUsersController@save');
 	
-	
-	
-	
-	
-	
     Route::get('/', 'AdminController@index');
 	Route::get('logout', 'AdminController@logout');
 	Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));
