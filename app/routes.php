@@ -26,14 +26,18 @@ Route::post('login', array('uses' => 'AdminController@doLogin'));
 
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
+Route::post('/counterpicks/create_counter', 'CounterpicksController@create_counter');
 
 Route::get('/players/{id}/{slug}', 'PlayersController@show');
 Route::get('/players_tooltip/{id}', 'PlayersController@tooltip');
+Route::get('/counterpicks/create/{id}', 'CounterpicksController@create');
+
 
 Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 Route::get('/counterpicks/{id}/{slug}', 'CounterpicksController@show');
 Route::get('/counterpicks/{id}/{slug}/{counter_champion_id}/{counter_champion_slug}', 'CounterpicksController@details');
+Route::get('/championvotes/{id}/{vote}', 'CounterpicksController@championvotes');
 
 // Transfer
 Route::get('/transferlist', 'PlayersController@transferlist');
@@ -89,4 +93,5 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::get('logout', 'AdminController@logout');
 	Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));
 	Route::post('/admin/news/save', array('uses' => 'AdminController@save_news'));
+	
 });

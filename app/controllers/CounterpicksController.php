@@ -19,9 +19,15 @@ class CounterpicksController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($id)
 	{
-		return View::make('counterpicks.create');
+		$champions = Champion::orderBy('name', 'ASC')->get();
+		$champ = Champion::find($id);
+		if($champ){
+		return View::make('counterpicks.create',  compact('champions', 'champ'));
+		}else{
+			return Redirect::to("/counterpicks")->with('error', 'Unbekannter Champion');	
+		}
 	}
 
 	/**
@@ -117,4 +123,53 @@ class CounterpicksController extends \BaseController {
 		return Redirect::route('counterpicks.index');
 	}
 
+	public function championvotes($id, $vote)
+    {
+		$cookie = false;
+		if(Cookie::get('Visionward_countervotes'.$id)){}else{
+        $counter = Counterpick::where('id', '=', $id)->first();
+		if($vote == 'up' && $counter){
+			$counter->upvotes += 1;
+			$counter->votes += 1;
+		}elseif($vote == 'down' && $counter){
+			$counter->downvotes +=1;
+			$counter->votes -= 1;
+		}
+		$counter->save();
+		$cookie = Cookie::forever('Visionward_countervotes'.$id, $id);
+		}
+		if($cookie){
+			return Redirect::back()->withCookie($cookie);
+		}else{
+			return Redirect::back()->with('error', 'Du hast bereits für diesen Konter gevotet');
+		}
+    }
+
+	public function create_counter()
+    {
+		$champ = Champion::where('champion_id', '=', Input::get('champ'))->first();
+		$counter = Champion::where('champion_id', '=', Input::get('choose_counter'))->first();
+		$type = Input::get('choose_type');
+		if($type == 'Gut gegen'){
+			$type = 'good';
+		}elseif($type == 'Schlecht gegen'){
+			$type = 'bad';
+		}
+		if($champ && $counter && $type == 'bad' or $type == 'good'){
+			$check_counter = Counterpick::where('champion_id', '=', Input::get('champ'))->where('counter_champion_id', '=', Input::get('choose_counter'))->where('type','=', $type)->first(); 
+		
+		if(!$check_counter){
+			$new_counter = new Counterpick;
+			$new_counter->champion_id =Input::get('champ');
+			$new_counter->counter_champion_id = Input::get('choose_counter');
+			$new_counter->type = $type;
+			$new_counter->save();
+			return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('error', 'Konter angelegt');	
+		}else{
+			return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('error', 'dieser Konter ist bereits angelegt');
+		}
+		}
+		return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('error', 'Fehler in den Daten');	
+    }
+	
 }

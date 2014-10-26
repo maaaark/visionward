@@ -82,16 +82,12 @@ class ChampionsController extends \BaseController {
 	public function update($id)
 	{
 		$champion = Champion::findOrFail($id);
-
 		$validator = Validator::make($data = Input::all(), Champion::$rules);
-
 		if ($validator->fails())
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
 		$champion->update($data);
-
 		return Redirect::route('champions.index');
 	}
 

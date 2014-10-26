@@ -115,6 +115,59 @@ class RefreshChampions extends Command {
 						}
 						$recent_champion->save();
 					}
+					$recent_champion->name = $champion["name"];
+					$recent_champion->title = $champion["title"];
+					$recent_champion->champion_id = $champion["id"];
+					$recent_champion->key = $champion["key"];
+					$recent_champion->attackrange = $champion["stats"]["attackrange"];
+					$recent_champion->mpperlevel = $champion["stats"]["mpperlevel"];
+					$recent_champion->mp = $champion["stats"]["mp"];
+					$recent_champion->attackdamage = $champion["stats"]["attackdamage"];
+					$recent_champion->hp = $champion["stats"]["hp"];
+					$recent_champion->hpperlevel = $champion["stats"]["hpperlevel"];
+					$recent_champion->attackdamageperlevel = $champion["stats"]["attackdamageperlevel"];
+					$recent_champion->armor = $champion["stats"]["armor"];
+					$recent_champion->mpregenperlevel = $champion["stats"]["mpregenperlevel"];
+					$recent_champion->hpregen = $champion["stats"]["hpregen"];
+					$recent_champion->critperlevel = $champion["stats"]["critperlevel"];
+					$recent_champion->spellblockperlevel = $champion["stats"]["spellblockperlevel"];
+					$recent_champion->mpregen = $champion["stats"]["mpregen"];
+					$recent_champion->attackspeedperlevel = $champion["stats"]["attackspeedperlevel"];
+					$recent_champion->spellblock = $champion["stats"]["spellblock"];
+					$recent_champion->movespeed = $champion["stats"]["movespeed"];
+					$recent_champion->attackspeedoffset = $champion["stats"]["attackspeedoffset"];
+					$recent_champion->crit = $champion["stats"]["crit"];
+					$recent_champion->hpregenperlevel = $champion["stats"]["hpregenperlevel"];
+					$recent_champion->armorperlevel = $champion["stats"]["armorperlevel"];
+					$recent_champion->lore = $champion["lore"];
+					$i = 0;
+					foreach($champion["enemytips"] as $tip){
+						$i = $i+1;
+						if($i==1){
+							$recent_champion->enemytips1= $tip;
+						}
+						if($i==2){
+							$recent_champion->enemytips2= $tip;
+						}
+						if($i==3){
+							$recent_champion->enemytips3= $tip;
+						}
+					}
+					$i = 0;
+					foreach($champion["allytips"] as $tip2){
+						$i = $i+1;
+						if($i==1){
+							$recent_champion->allytips1= $tip2;
+						}
+						if($i==2){
+							$recent_champion->allytips2= $tip2;
+						}
+						if($i==3){
+							$recent_champion->allytips3= $tip2;
+						}
+					}
+					$recent_champion->save();
+					
 				}
 				unset($recent_champion);
 				
@@ -127,6 +180,11 @@ class RefreshChampions extends Command {
 							$new_skin->champion_id = $champion["id"];
 							$new_skin->skin_id = $skin['num'];
 							$new_skin->save();
+						}else{
+							$recent_skin->name = $skin['name'];
+							$recent_skin->champion_id = $champion["id"];
+							$recent_skin->skin_id = $skin['num'];
+							$recent_skin->save();	
 						}
 					unset($recent_skin);
 				}
@@ -135,7 +193,13 @@ class RefreshChampions extends Command {
 						$recent_skill = Skill::where('champion_id', '=', $champion["id"])->where('name', '=', $skill['name'])->first();
 						
 						if(!isset($recent_skill)) {
-							$recent_skill = new Skill;
+							$new_skill = new Skill;
+							$new_skill->name = $skill['name'];
+							$new_skill->champion_id = $champion["id"];
+							$new_skill->description = $skill['description'];
+							$new_skill->icon = $skill['image']['full'];
+							$new_skill->save();
+						}else{
 							$recent_skill->name = $skill['name'];
 							$recent_skill->champion_id = $champion["id"];
 							$recent_skill->description = $skill['description'];
