@@ -1,7 +1,13 @@
 <ul>
 	<div class="col-md-8">
-		<li id="nav_logo"><a href="/"><img src="/img/visionward_icon.png" height="35" />&nbsp;&nbsp;VISIONWARD</a></li>
+		<li id="nav_logo"><a href="/">FLASH <img src="/img/flashignite_logo.png" height="35" /> IGNITE</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
+		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="/guides">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+			<ul class="submenu">
+				<li><a class="inactive" href="#">CHAMPIONS</a></li>
+				<li><a href="/videos">VIDEOS</a></li>
+			</ul>
+		</li>
 		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a href="/teams">PRO TEAMS</a></li>
@@ -17,13 +23,13 @@
 	<li style="padding: 0;">
 		<div class="searchbox">
 			<input type="text" placeholder="Summoner, News, Champion, ..." class="multisearch" />
-			<input type="submit" class="server_region" value="Suchen" />
-			<!--<select class="server_region">
+			<input type="submit" class="search_button" value="Suchen" />
+			<select class="server_region">
 				<option value="euw">EU-West</option>
 				<option value="eune">EU-NE</option>
 				<option value="tr">TR</option>
 				<option value="na">NA</option>
-			</select>-->
+			</select>
 		</div>
 	</li>
 	</div>

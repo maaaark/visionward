@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>visionward.net - @yield('title')</title>
+    <title>flashignite.com - @yield('title')</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/style.css">
@@ -61,7 +61,7 @@
 	</div>
 	
 	<script type="text/javascript">
-    var disqus_shortname = 'heyitsmark'; // required: replace example with your forum shortname
+    var disqus_shortname = 'flashignite'; // required: replace example with your forum shortname
     (function () {
         var s = document.createElement('script'); s.async = true;
         s.type = 'text/javascript';

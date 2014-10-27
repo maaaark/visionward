@@ -48,9 +48,20 @@ class AdminTeamsController extends \BaseController {
 				$team->leagues()->attach($league);
 		   }
 		}
+		
+		if(Input::file('logo')) {
+			$file = Input::file('logo');
+			
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/img/teams/logos/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$data["logo"] = $filename;
+		}
 			
 		$team->name = Input::get('name');
-		$team->logo = Input::get('logo');
 		$team->country = Input::get('country');
 		$team->region = Input::get('region');
 		$team->description = Input::get('description');
@@ -106,8 +117,21 @@ class AdminTeamsController extends \BaseController {
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
 		
+		if(Input::file('logo')) {
+			$file = Input::file('logo');
+			
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/img/teams/logos/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$team->logo = $filename;
+		} else {
+			$data["logo"] = $team->logo;
+		}
+		
 		$team->name = Input::get('name');
-		$team->logo = Input::get('logo');
 		$team->country = Input::get('country');
 		$team->region = Input::get('region');
 		$team->description = Input::get('description');

@@ -10,7 +10,7 @@
 		</tr>
 		<tr>
 			<td width="200"><strong>Excerpt</strong></td>
-			<td>{{ Form::textarea('excerpt', Input::old('excerpt'),  array('class' => 'edit_content ckeditor')) }}</td>
+			<td>{{ Form::textarea('excerpt', Input::old('excerpt'),  array('class' => 'edit_content ckeditor', 'id' => 'news_editor')) }}</td>
 		</tr>
 		<tr>
 			<td width="200"><strong>Content</strong></td>

@@ -10,7 +10,7 @@
 			<table class="table table-striped">
 				@foreach($eulcs->teams as $team)
 				<tr>
-					<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+					<td><img src="/img/teams/logos/{{ $team->logo }}" width="18" />&nbsp;&nbsp;<img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
 				</tr>
 				@endforeach
 			</table>
@@ -20,7 +20,7 @@
 			<table class="table table-striped">
 				@foreach($nalcs->teams as $team)
 				<tr>
-					<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+					<td><img src="/img/teams/logos/{{ $team->logo }}" width="18" />&nbsp;&nbsp;<img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
 				</tr>
 				@endforeach
 			</table>
@@ -30,7 +30,7 @@
 			<table class="table table-striped">
 				@foreach($ogn->teams as $team)
 				<tr>
-					<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+					<td><img src="/img/teams/logos/{{ $team->logo }}" width="18" />&nbsp;&nbsp;<img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
 				</tr>
 				@endforeach
 			</table>
@@ -40,7 +40,7 @@
 			<table class="table table-striped">
 				@foreach($gpl->teams as $team)
 				<tr>
-					<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+					<td><img src="/img/teams/logos/{{ $team->logo }}" width="18" />&nbsp;&nbsp;<img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
 				</tr>
 				@endforeach
 			</table>
@@ -50,7 +50,7 @@
 			<table class="table table-striped">
 				@foreach($lpl->teams as $team)
 				<tr>
-					<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+					<td><img src="/img/teams/logos/{{ $team->logo }}" width="18" />&nbsp;&nbsp;<img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
 				</tr>
 				@endforeach
 			</table>

@@ -87,11 +87,13 @@ class AdminPlayersController extends \BaseController {
 		{
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-		if($data["team_id"] != $player->team_id) {
+		
+		if($data["team_id"] != $player->team_id || $data["role"] != $player->role) {
 			$change = new PlayerHistory;
 			$change->player_id = $player->id;
 			$change->team_id = $data["team_id"];
 			$change->old_team_id = $player->team_id;
+			$change->old_role = $player->role;
 			$change->join_date = new DateTime('today');
 			$change->save();
 		}

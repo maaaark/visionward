@@ -53,9 +53,12 @@ a.button:hover {
 	text-decoration: none;
 }
 .navigation ul li a {
-	padding-left: 20px;
-	padding-right: 20px;
+	padding-left: 15px;
+	padding-right: 15px;
 	text-decoration: none;
+}
+.navigation ul li ul li a.inactive {
+	color: grey;
 }
 .navigation ul li.active {
 	background: #e84c3d;
@@ -299,6 +302,17 @@ a.red {
 	padding: 5px;
 	color: #fff;
 	top: 10px;
+	right: 60px;
+	height: 30px;
+	line-height: 22px;
+}
+.search_button {
+	position: absolute;
+	background: #e84c3d;
+	border: 0;
+	padding: 5px;
+	color: #fff;
+	top: 10px;
 	right: 5px;
 	height: 30px;
 	line-height: 22px;
@@ -424,4 +438,27 @@ h2.page_title {
 }
 .clear {
 	clear: both;
+}
+
+/* Themes for different contexts */
+.bs-callout {
+  margin: 20px 0;
+  padding: 15px 30px 15px 15px;
+  border-left: 5px solid #eee;
+}
+.bs-callout-success {
+	background-color: #a0df8f;
+	border-color: #287215;
+}
+.bs-callout-danger {
+	background-color: #f6b2b0;
+	border-color: #d9534f;
+}
+.bs-callout-warning {
+	background-color: #fff9e8;
+	border-color: #f0ad4e;
+}
+.bs-callout-info {
+	background-color: #f4f8fa;
+	border-color: #5bc0de;
 }

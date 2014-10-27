@@ -5,7 +5,12 @@
 	</tr>
 	<tr>
 		<td width="200"><strong>Logo</strong></td>
-		<td>{{ Form::text('logo', Input::old('logo'),  array('class' => 'form-control')) }}</td>
+		<td>@if(isset($team))
+				@if($team->logo != "")
+					<img src="/img/teams/logos/{{ $team->logo }}" width="200">
+				@endif
+			@endif
+		{{ Form::file('logo') }}</td>
 	</tr>
 	<tr>
 		<td width="200"><strong>Land</strong></td>
