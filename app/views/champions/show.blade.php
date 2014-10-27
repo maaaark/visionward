@@ -50,7 +50,6 @@
 	  </div>
 	  <div class="tab-pane" id="counter">
 	  <br/>
-		<h2 class="headline">Konter zu {{ $champion->name }}</h2>
 		@include("counterpicks.list")</div>
 	  <div class="tab-pane" id="skins">
 		<br/>

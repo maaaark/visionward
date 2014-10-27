@@ -100,7 +100,7 @@
 				</tr>
 			@endforeach
 				<tr>
-					<td colspan="3" style="text-align: right;"><a href="/matches" class="red">Zeige alle Wechsel</a></td>
+					<td colspan="3" style="text-align: right;"><a href="/transferlist" class="red">Zeige alle Wechsel</a></td>
 				</tr>
 			</table>
 		</div>

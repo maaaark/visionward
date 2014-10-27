@@ -23,6 +23,7 @@ Route::resource('searches', 'SearchesController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
+Route::get('/team', 'HomeController@team');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 
 // News

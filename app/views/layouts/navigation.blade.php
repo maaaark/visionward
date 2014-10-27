@@ -5,7 +5,7 @@
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="/guides">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a class="inactive" href="#">CHAMPIONS</a></li>
-				<li><a href="/videos">VIDEOS</a></li>
+				<li><a href="/categories/videos">VIDEOS</a></li>
 			</ul>
 		</li>
 		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>

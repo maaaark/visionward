@@ -160,11 +160,12 @@ class CounterpicksController extends \BaseController {
 		
 		if(!$check_counter){
 			$new_counter = new Counterpick;
-			$new_counter->champion_id =Input::get('champ');
+			$new_counter->champion_id = Input::get('champ');
+			$new_counter->description = Input::get('description');
 			$new_counter->counter_champion_id = Input::get('choose_counter');
 			$new_counter->type = $type;
 			$new_counter->save();
-			return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('error', 'Konter angelegt');	
+			return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('success', 'Konter angelegt');	
 		}else{
 			return Redirect::to("/counterpicks/".Input::get('champ').'/'.$champ->key)->with('error', 'dieser Konter ist bereits angelegt');
 		}

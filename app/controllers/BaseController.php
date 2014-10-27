@@ -11,7 +11,7 @@ class BaseController extends Controller {
 		$matches = Match::orderBy("game_date", "DESC")->limit(3)->get();
 		$champion_sales = Champion::orderBy("name", "ASC")->where("sale", true)->get();
 		$skin_sales = Skin::orderBy("name", "ASC")->where("sale", true)->get();
-		$transfers = PlayerHistory::orderBy("join_date", "DESC")->limit(3)->get();
+		$transfers = PlayerHistory::orderBy("created_at", "DESC")->limit(3)->get();
 		$patchversion = Setting::where('key', '=', 'patch_number')->first();
 
 		View::share('champion_sales', $champion_sales);

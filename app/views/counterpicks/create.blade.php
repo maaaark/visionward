@@ -1,19 +1,16 @@
 @extends('layouts.master')
 @section('title', "Neuer Konterpick")
 @section('content')
-	<h2 class="headline">Neuer Konterpick</h2>
-	
-
-	
-
+	<h2 class="headline_no_border">Neuer Konterpick</h2>
 	  
 	 {{ Form::open(array('action' => 'CounterpicksController@create_counter')) }}	
 	<table class="table table-striped">
 		<tr>
-			<td>champ</td>
-			<td>ist</td>
-			<td>Konter art</td>
-			<td>Konter</td>
+			<th>Champion</th>
+			<th></th>
+			<th>ist</th>
+			<th>Konter</th>
+			<th>Rolle</th>
 		</tr>
 		<tr>
 			<td>
@@ -41,6 +38,20 @@
 						@endif
 					@endforeach
 			   </select>				
+			</td>
+			<td>
+				<select name="role">
+					<option value="top">Top-Lane</option>
+					<option value="jungle">Jungle</option>
+					<option value="mid">Mid-Lane</option>
+					<option value="adcarry">AD-Carry</option>
+					<option value="support">Supporter</option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="5">
+				<textarea name="description" style="width: 100%; height: 150px; padding: 10px;" placeholder="So spielt ihr gegen diesen Champion"></textarea>
 			</td>
 		</tr>
 	</table>

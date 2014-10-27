@@ -423,6 +423,7 @@ h2.page_title {
 .info_hover {
 	background: #fff;
 	padding: 10px;
+	padding-bottom: 0px;
 	border: 1px solid #929292;
 }
 .nav-tabs>li.active>a:hover {
