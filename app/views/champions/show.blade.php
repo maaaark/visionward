@@ -65,7 +65,7 @@
 					@endif
 				</td>
 				<td>
-					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{ $champion->key }}_{{ $skin->skin_id}}.jpg" width="550px"/>
+					<img src="http://ddragon.leagueoflegends.com/cdn/img/champion/splash/{{ $champion->key }}_{{ $skin->skin_id}}.jpg" width="100%"/>
 				</td>
 			</tr>
 		@endforeach

@@ -17,7 +17,7 @@
   </head>
   <body>
 	
-	<div class="container-fluid">
+
 		<div class="sticky">
 			<div class="row">
 				<div class="navigation">
@@ -27,9 +27,10 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 	
-	<div class="container-fluid header_margin">
+	
+	<div class="container-fluid header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <!-- Indicators 
 		  <ol class="carousel-indicators">
@@ -45,10 +46,8 @@
 		  <div class="row">
 			  <div class="col-md-12 header item active container" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 				<div class="container slider">
-					<div class="col-md-12 ">
-						<h2 class="page_title">@yield('title')</h2>
-						<div class="header_subline">Lorem Ipsum dolor Sit Amet</div>
-					</div>
+					<h2 class="page_title">@yield('title')</h2>
+					<div class="header_subline">Lorem Ipsum dolor Sit Amet</div>
 				</div>
 			  </div>
 	  	  </div>
@@ -69,6 +68,8 @@
 		  
 		</div>
 	</div>
+	
+	
 	<br/>
 	<div class="container">
 		<div class="row">
@@ -82,15 +83,15 @@
 		</div>
 	</div>
 
-	<div class="container-fluid">
-		<div class="row">
-		  <div class="col-md-12 footer">
-			<div class="container">
-				@include('layouts.footer')
-			</div>
-		  </div>
+
+	<div class="row">
+	  <div class="col-md-12 footer">
+		<div class="container">
+			@include('layouts.footer')
 		</div>
+	  </div>
 	</div>
+
 	
 	<script type="text/javascript">
     var disqus_shortname = 'flashignite'; // required: replace example with your forum shortname
@@ -104,6 +105,7 @@
     
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+	<script src="/js/tooltipsy.min.js"></script>
 	<script src="/js/custom.js"></script>
 	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

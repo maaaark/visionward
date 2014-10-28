@@ -71,6 +71,9 @@ class AdminPostsController extends \BaseController {
 		        $mime_type = $file->getMimeType();
 		        $extension = $file->getClientOriginalExtension();
 		        $upload_success = $file->move($destinationPath, $filename);
+				$input["image"] = $filename;
+			} else {
+				$input["image"] = $post->image;
 			}
 			
 			if(!Input::get('corrected')) {
@@ -92,13 +95,8 @@ class AdminPostsController extends \BaseController {
 					$post->categories()->attach($category);
 			   }
 			}
-
 			
-			$post->fill($input);
-			if(Input::file('image')) {
-				$post->image = $filename;
-			}
-			$post->save();
+			$post->update($input);
 			
 	        return Redirect::to('/admin/news/edit/'.Input::get('id'))->with("success", "News geupdated");	
 		} else {

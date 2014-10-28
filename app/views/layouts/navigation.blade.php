@@ -1,5 +1,33 @@
-<ul>
-	<div class="col-md-8">
+<div class="visible-xs-* visible-sm-* hidden-md hidden-lg">
+	<ul>
+		<li><a href="/">FLASH <img src="/img/flashignite_logo.png" height="35" /> IGNITE</a></li>
+		<li>
+			<a href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
+			<ul class="submenu_mobile">
+				<li><a href="/">NEWS</a></li>
+				<li><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+					<ul class="sub_submenu_mobile">
+						<li><a href="/teams">CHAMPIONS</a></li>
+						<li><a href="/matches">VIDEOS</a></li>
+					</ul>
+				</li>
+				<li><a href="#">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+					<ul class="sub_submenu_mobile">
+						<li><a href="/teams">PRO TEAMS</a></li>
+						<li><a href="/matches">MATCHES</a></li>
+						<li><a href="/transferlist">TRANSFERLISTE</a></li>
+					</ul>
+				</li>
+				<li><a href="/categories/pbe">RIOT TRACKER</a></li>
+				<li><a href="/champions">CHAMPIONS</a></li>
+				<li><a href="/counterpicks">COUNTERPICKS</a></li>
+			</ul>
+		</li>
+		<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
+	</ul>
+</div>
+<ul class="hidden-xs hidden-sm">
+	<div class="col-md-8" style="padding-left: 0; margin-left: 0;">
 		<li id="nav_logo"><a href="/">FLASH <img src="/img/flashignite_logo.png" height="35" /> IGNITE</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="/guides">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>

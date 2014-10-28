@@ -14,11 +14,11 @@ class BaseController extends Controller {
 		$transfers = PlayerHistory::orderBy("created_at", "DESC")->limit(3)->get();
 		$patchversion = Setting::where('key', '=', 'patch_number')->first();
 
-		View::share('champion_sales', $champion_sales);
-		View::share('skin_sales', $skin_sales);
-		View::share('matches', $matches);
-		View::share('last_posts', $last_posts);
-		View::share('transfers', $transfers);
+		View::share('global_champion_sales', $champion_sales);
+		View::share('global_skin_sales', $skin_sales);
+		View::share('global_matches', $matches);
+		View::share('global_last_posts', $last_posts);
+		View::share('global_transfers', $transfers);
 		View::share('patchversion', $patchversion);
 	}
 

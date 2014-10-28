@@ -1,15 +1,13 @@
 @extends('layouts.master')
 @section('title', "League of Legends News und eSport Coverage")
 @section('content')
-	<div class="container-fluid">
 	<h2 class="headline">Aktuelle League of Legends News</h2>
 	<ul class="news_list">
 		<?php $i=1; $x=1; ?>
 		@foreach($posts as $post)
 			<li>
 				@if($i<=3)
-					
-						<div class="news">
+					<div class="news">
 						  <div class="row">
 						  <div class="col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="170" /></a></div>
 						  <div class="col-md-9 text">
@@ -42,9 +40,8 @@
 					</div>
 				@endif
 			</li>
-			
 			<?php $i++; ?>
 		@endforeach
 	</ul>
-	</div>
+
 @stop

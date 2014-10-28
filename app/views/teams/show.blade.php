@@ -12,8 +12,6 @@
 			<td valign="top">
 				<br/>
 				<table class="table table-striped">
-				
-					
 					<tr>
 						<td width="120"><strong>Top-Lane</strong></td>
 						@if($top)

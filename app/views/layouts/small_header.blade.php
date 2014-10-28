@@ -17,7 +17,7 @@
   </head>
   <body>
 	
-	<div class="container-fluid">
+
 		<div class="sticky">
 			<div class="row">
 				<div class="navigation">
@@ -27,18 +27,14 @@
 				</div>
 			</div>
 		</div>
-	</div>
+
 	
-	<div class="container-fluid header_margin">
+	<div class="container-fluid header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
 			<div class="container">
-
-
-						<h2 class="page_title">@yield('title')</h2>
-						<div class="header_subline">@yield('subtitle')</div>
-
-
+				<h2 class="page_title">@yield('title')</h2>
+				<div class="header_subline">@yield('subtitle')</div>
 			</div>
 		  </div>
 		</div>
@@ -48,6 +44,12 @@
 		<div class="row">
 		  <div class="col-xs-12 col-md-8">
 			@include('layouts.errors')
+			<div class="visible-xs-* visible-sm-* hidden-md hidden-lg header_margin">
+				<br/>
+				<h2 class="mobile_page_title">@yield('title')</h2>
+				<div class="mobile_header_subline">@yield('subtitle')</div>
+				<br/>
+			</div>
 			@yield('content')
 		  </div>
 		  <div class="col-xs-12 col-md-4">
@@ -56,7 +58,6 @@
 		</div>
 	</div>
 
-	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-md-12 footer">
 			<div class="container">
@@ -64,7 +65,7 @@
 			</div>
 		  </div>
 		</div>
-	</div>
+
 	
 	<script type="text/javascript">
     var disqus_shortname = 'flashignite'; // required: replace example with your forum shortname
