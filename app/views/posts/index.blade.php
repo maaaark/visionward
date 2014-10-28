@@ -9,7 +9,7 @@
 				@if($i<=3)
 					<div class="news">
 						  <div class="row">
-						  <div class="col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="170" /></a></div>
+						  <div class="col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="100%" /></a></div>
 						  <div class="col-md-9 text">
 							<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 							{{ $post->excerpt }}
