@@ -16,7 +16,7 @@
 				<table class="last_news">
 					<tr>
 						<td valign="top" width="60">
-							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="http://visonward.lolquest.de/uploads/news/news.jpg" width="50" /></a>
+							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="50" /></a>
 						</td>
 						<td valign="top">
 							<a href="/news/{{ $post->id }}/{{ $post->slug }}"><strong>{{ str_limit($post->title, $limit = 50, $end = '...') }}</strong></a><br/>
