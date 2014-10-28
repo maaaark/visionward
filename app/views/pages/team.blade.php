@@ -1,176 +1,63 @@
-@extends('layouts.small_header')
+@extends('layouts.no_sidebar')
 @section('title', "Flashignite.com Team" )
 @section('subtitle', "Die Personen hinter der Seite" )
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	
-	<table width="100%">
-		<tr>
-			<td valign="top" width="225">
-				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
-			</td>
-			<td valign="top">
-				<h2 class="headline_no_border">Mark Tomicki</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="120"><strong>Name</strong></td>
-						<td>Mark Tomicki</td>
-					</tr>
-					<tr>
-						<td width="120"><strong>Alter</strong></td>
-						<td>27 Jahre</td>
-					</tr>
-					<tr>
-						<td><strong>Summoner</strong></td>
-						<td>heyitsmark</td>
-					</tr>
-					<tr>
-						<td><strong>Aufgabe</strong></td>
-						<td>Design, Code, Konzept</td>
-					</tr>
-					<tr>
-						<td><strong>Und sonst?</strong></td>
-						<td>
-							Gründer von baronbuff, lolquest, the-force.eu.<br>
-							Immer für eine spannende Idee zu haben und Mädchen für alles.
-						</td>
-					</tr>
-				</table>
-				<br/><br/>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="225">
-				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
-			</td>
-			<td valign="top">
-				<h2 class="headline_no_border">Hans Dürr</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="120"><strong>Name</strong></td>
-						<td>Hans Dürr</td>
-					</tr>
-					<tr>
-						<td width="120"><strong>Alter</strong></td>
-						<td>100 Jahre</td>
-					</tr>
-					<tr>
-						<td><strong>Summoner</strong></td>
-						<td>liq</td>
-					</tr>
-					<tr>
-						<td><strong>Aufgabe</strong></td>
-						<td>Management, Konzept</td>
-					</tr>
-					<tr>
-						<td><strong>Und sonst?</strong></td>
-						<td>
-							-
-						</td>
-					</tr>
-				</table>
-				<br/><br/>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="225">
-				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
-			</td>
-			<td valign="top">
-				<h2 class="headline_no_border">Patrick Lange</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="120"><strong>Name</strong></td>
-						<td>Patrick Lange</td>
-					</tr>
-					<tr>
-						<td width="120"><strong>Alter</strong></td>
-						<td>24 Jahre</td>
-					</tr>
-					<tr>
-						<td><strong>Summoner</strong></td>
-						<td>Minke</td>
-					</tr>
-					<tr>
-						<td><strong>Aufgabe</strong></td>
-						<td>Content</td>
-					</tr>
-					<tr>
-						<td><strong>Und sonst?</strong></td>
-						<td>
-							-
-						</td>
-					</tr>
-				</table>
-				<br/><br/>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="225">
-				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
-			</td>
-			<td valign="top">
-				<h2 class="headline_no_border">Klaus Brandt</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="120"><strong>Name</strong></td>
-						<td>Klaus Brandt</td>
-					</tr>
-					<tr>
-						<td width="120"><strong>Alter</strong></td>
-						<td>27 Jahre</td>
-					</tr>
-					<tr>
-						<td><strong>Summoner</strong></td>
-						<td>sualk</td>
-					</tr>
-					<tr>
-						<td><strong>Aufgabe</strong></td>
-						<td>Code</td>
-					</tr>
-					<tr>
-						<td><strong>Und sonst?</strong></td>
-						<td>
-							-
-						</td>
-					</tr>
-				</table>
-				<br/><br/>
-			</td>
-		</tr>
-		<tr>
-			<td valign="top" width="225">
-				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
-			</td>
-			<td valign="top">
-				<h2 class="headline_no_border">Matthias</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="120"><strong>Name</strong></td>
-						<td>Matthias</td>
-					</tr>
-					<tr>
-						<td width="120"><strong>Alter</strong></td>
-						<td>28 Jahre</td>
-					</tr>
-					<tr>
-						<td><strong>Summoner</strong></td>
-						<td>ryanjermaine</td>
-					</tr>
-					<tr>
-						<td><strong>Aufgabe</strong></td>
-						<td>Code</td>
-					</tr>
-					<tr>
-						<td><strong>Und sonst?</strong></td>
-						<td>
-							-
-						</td>
-					</tr>
-				</table>
-				<br/><br/>
-			</td>
-		</tr>
-	</table>
 	
+	<div class="row">
+		<div class="col-md-3">
+			<h2 class="headline">Mark Tomicki</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>heyitsmark<br/>
+			<strong>Aufgabe: </strong>Design, Code, Konzept<br/>
+			<br/>
+			Gründer von baronbuff, lolquest, the-force.eu. Immer für eine spannende Idee zu haben und Mädchen für alles.
+		</div>
+		<div class="col-md-3">
+			<h2 class="headline">Hans Dürr</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>liq<br/>
+			<strong>Aufgabe: </strong>Management, Konzept<br/>
+			<br/>
+			-
+		</div>
+		<div class="col-md-3">
+			<h2 class="headline">Patrick Lange</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>Minke<br/>
+			<strong>Aufgabe: </strong>Content<br/>
+			<br/>
+			-
+		</div>
+		<div class="col-md-3">
+			<h2 class="headline">Klaus Brandt</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>sualk<br/>
+			<strong>Aufgabe: </strong>Code<br/>
+			<br/>
+			-
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div class="row">
+		<div class="col-md-3">
+			<h2 class="headline">Matthias</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>ryanjermaine<br/>
+			<strong>Aufgabe: </strong>Code<br/>
+			<br/>
+			-
+		</div>
+	</div>
 @stop

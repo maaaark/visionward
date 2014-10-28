@@ -31,12 +31,12 @@
 	
 	<div class="container-fluid header_margin">
 		<div class="row">
-		  <!-- Indicators -->
+		  <!-- Indicators 
 		  <ol class="carousel-indicators">
 		    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
 		    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-		  </ol>
+		  </ol>-->
 		  
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Wrapper for slides -->

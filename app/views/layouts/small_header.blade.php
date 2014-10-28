@@ -33,12 +33,12 @@
 		<div class="row">
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
 			<div class="container">
-				<div class="container">
-					<div class="col-md-12 ">
+
+
 						<h2 class="page_title">@yield('title')</h2>
 						<div class="header_subline">@yield('subtitle')</div>
-					</div>
-				</div>
+
+
 			</div>
 		  </div>
 		</div>
