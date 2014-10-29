@@ -49,7 +49,7 @@
 	<table>
 		<tr>
 			<td width="340" valign="top">
-				<h3 class="headline_no_border">Vorherige Teams</h3>
+				<h2 class="headline_no_border">Vorherige Teams</h2>
 				<table class="table table-striped">
 					@foreach($player->history as $history)
 					<tr>
@@ -61,7 +61,7 @@
 			</td>
 			<td width="100"></td>
 			<td width="340" valign="top">
-				<h3 class="headline_no_border">Platzierungen</h3>
+				<h2 class="headline_no_border">Platzierungen</h2>
 				<table class="table table-striped">
 					<tr>
 						<td width="75"><strong>Platz 1</strong></td>

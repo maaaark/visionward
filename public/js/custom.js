@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
-
+	
+		
 	var stickyOffset = $('.sticky').offset().top;
 	var sticky = $('.sticky'),
 		  scroll = $(window).scrollTop();

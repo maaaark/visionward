@@ -79,6 +79,21 @@ a.button:hover {
 .navigation ul li:hover ul {
 	display: block;
 }
+.navigation ul li:hover ul.submenu_mobile li {
+	clear: both;
+}
+.navigation ul li:hover ul.submenu_mobile ul.sub_submenu_mobile li {
+	margin-right: 0;
+	padding-right: 0;
+}
+.navigation ul li:hover ul.submenu_mobile ul.sub_submenu_mobile {
+	display: none;
+}
+.navigation ul li:hover ul.submenu_mobile li:hover ul.sub_submenu_mobile {
+	display: block;
+	margin-left: 100px;
+	margin-top: -55px;
+}
 .subsite {
 	height: 60px;
 	background: url("/img/subsite.jpg");
@@ -329,12 +344,22 @@ h1.page_title {
 	font-family: 'Fjalla One', sans-serif;
 	text-shadow: 1px 2px #000;
 }
+.mobile_header_subline {
+	color: #e84c3d;
+	font-family: 'Fjalla One', sans-serif;
+}
 h2.page_title {
 	font-family: 'Fjalla One', sans-serif;
 	color: #fff;
 	margin-top: 30px;
 	font-size: 32px;
 	text-shadow: 1px 2px #000;
+}
+h2.mobile_page_title {
+	font-family: 'Fjalla One', sans-serif;
+	color: #000;
+	margin-top: 30px;
+	font-size: 22px;
 }
 .last_news {
 	font-size: 12px;
