@@ -44,11 +44,11 @@
 				<img src="/img/team/mark.jpg" class="img-circle" width="200" height="200" />
 			</td>
 			<td valign="top">
-				<h2 class="headline_no_border">Hans Dürr</h2>
+				<h2 class="headline_no_border">Hans Christian Dürr</h2>
 				<table class="table table-striped">
 					<tr>
 						<td width="120"><strong>Name</strong></td>
-						<td>Hans Dürr</td>
+						<td>Hans Christian Dürr</td>
 					</tr>
 					<tr>
 						<td width="120"><strong>Alter</strong></td>
