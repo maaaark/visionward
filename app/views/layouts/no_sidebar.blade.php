@@ -17,13 +17,12 @@
   </head>
   <body>
   
-	<div class="container-fluid">
-		<div class="sticky">
-			<div class="row">
-				<div class="navigation">
-					<div class="container">
-						@include('layouts.navigation')
-					</div>
+
+	<div class="sticky">
+		<div class="row">
+			<div class="navigation">
+				<div class="container">
+					@include('layouts.navigation')
 				</div>
 			</div>
 		</div>
@@ -33,8 +32,10 @@
 		<div class="row">
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 			<div class="container">
-				<h2 class="page_title">@yield('title')</h2>
-				<div class="header_subline">6 days ago - gepostet von Mark - Kategorien: eSport</div>
+				<span class="headline_background">
+					<h2 class="page_title">@yield('title')</h2>
+					<div class="header_subline">@yield('subtitle')</div>
+				</span>
 			</div>
 		  </div>
 		</div>
@@ -70,7 +71,8 @@
     }());
     </script>
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+	<script src="/js/tooltipsy.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>
 	<script>

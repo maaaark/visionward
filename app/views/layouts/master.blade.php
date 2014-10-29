@@ -46,8 +46,10 @@
 		  <div class="row">
 			  <div class="col-md-12 header item active container" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
 				<div class="container slider">
-					<h2 class="page_title">@yield('title')</h2>
-					<div class="header_subline">Lorem Ipsum dolor Sit Amet</div>
+					<span class="headline_background">
+						<h2 class="page_title">@yield('title')</h2>
+						<div class="header_subline">Lorem Ipsum dolor Sit Amet</div>
+					</span>
 				</div>
 			  </div>
 	  	  </div>
