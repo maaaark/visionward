@@ -29,7 +29,7 @@
 		</div>
 
 	
-	<div class="container-fluid header_margin hidden-xs hidden-sm">
+	<div class="header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
 			<div class="container">

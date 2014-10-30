@@ -30,7 +30,7 @@
 
 	
 	
-	<div class="container-fluid header_margin hidden-xs hidden-sm">
+	<div class="header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <!-- Indicators 
 		  <ol class="carousel-indicators">

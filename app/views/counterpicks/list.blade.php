@@ -14,6 +14,7 @@
 	</table>
 	<div class="center">
 		<a href="/counterpicks/create/{{$champion->id}}" class="button">Neuen Konterpick erstellen</a>
+		<br/><br/><br/>
 	</div>
   </div>
   <div class="col-xs-12 col-md-6">
@@ -32,6 +33,7 @@
 	</table>
 	<div class="center">
 		<a href="/counterpicks/create/{{$champion->id}}" class="button">Neuen Konterpick erstellen</a>
+		<br/><br/><br/>
 	</div>
   </div>
 </div>
