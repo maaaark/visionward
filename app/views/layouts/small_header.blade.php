@@ -17,18 +17,19 @@
   </head>
   <body>
 	
-
+	<div class="container-fluid">
 		<div class="sticky">
 			<div class="row">
 				<div class="navigation">
 					<div class="container">
-						@include('layouts.navigation')
+					@include('layouts.navigation')
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-	
+	<div class="container-fluid">
 	<div class="header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <div class="col-md-12 small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
@@ -40,6 +41,7 @@
 			</div>
 		  </div>
 		</div>
+	</div>
 	</div>
 	<br/>
 	<div class="container main_content">
@@ -60,13 +62,13 @@
 		</div>
 	</div>
 
+	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-md-12 footer">
-			<div class="container">
 				@include('layouts.footer')
-			</div>
 		  </div>
 		</div>
+	</div>
 
 	
 	<script type="text/javascript">

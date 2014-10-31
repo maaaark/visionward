@@ -1,6 +1,7 @@
 @extends('layouts.master')
 @section('title', "League of Legends News und eSport Coverage")
 @section('content')
+	
 	<h2 class="headline">Aktuelle League of Legends News</h2>
 	<ul class="news_list">
 		<?php $i=1; $x=1; ?>

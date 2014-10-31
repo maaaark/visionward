@@ -18,18 +18,20 @@
   <body>
 	
 
-		<div class="sticky">
-			<div class="row">
-				<div class="navigation">
-					<div class="container">
+		<div class="container-fluid">
+			<div class="sticky">
+				<div class="row">
+					<div class="navigation">
+						<div class="container">
 						@include('layouts.navigation')
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	
-	
+	<div class="container-fluid">
 	<div class="header_margin hidden-xs hidden-sm">
 		<div class="row">
 		  <!-- Indicators 
@@ -70,7 +72,7 @@
 		  
 		</div>
 	</div>
-	
+</div>
 	
 	<br/>
 	<div class="container">
@@ -86,12 +88,12 @@
 	</div>
 
 
-	<div class="row">
-	  <div class="col-md-12 footer">
-		<div class="container">
-			@include('layouts.footer')
+	<div class="container-fluid">
+		<div class="row">
+		  <div class="col-md-12 footer">
+				@include('layouts.footer')
+		  </div>
 		</div>
-	  </div>
 	</div>
 
 	
