@@ -19,12 +19,14 @@ Route::resource('leagues', 'LeaguesController');
 Route::resource('matches', 'MatchesController');
 Route::resource('counterpicks', 'CounterpicksController');
 Route::resource('searches', 'SearchesController');
+Route::resource('feedbacks', 'FeedbacksController');
 
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::get('/team', 'HomeController@team');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
+Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');

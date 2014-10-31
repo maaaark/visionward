@@ -16,7 +16,7 @@
 			Gründer von baronbuff, lolquest, the-force.eu. Immer für eine spannende Idee zu haben und Mädchen für alles.
 		</div>
 		<div class="col-md-3">
-			<h2 class="headline">Hans Dürr</h2>
+			<h2 class="headline">Hans Christian Dürr</h2>
 			<div style="text-align: center;">
 				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
