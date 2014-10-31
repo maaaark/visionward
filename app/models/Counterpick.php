@@ -20,6 +20,10 @@ class Counterpick extends \Eloquent {
         return $this->belongsTo('Champion', 'champion_id', 'champion_id');
     }
 	
+	public function lane()
+    {
+        return $this->belongsTo('Lane');
+    }
 	
 
 

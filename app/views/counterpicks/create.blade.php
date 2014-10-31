@@ -40,7 +40,7 @@
 			   </select>				
 			</td>
 			<td>
-				<select name="role">
+				<select name="lane">
 					<option value="top">Top-Lane</option>
 					<option value="jungle">Jungle</option>
 					<option value="mid">Mid-Lane</option>

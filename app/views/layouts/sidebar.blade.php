@@ -43,7 +43,7 @@
 							</tr>
 						@foreach($global_champion_sales as $champion_sale)
 							<tr>
-								<td width="30"><a href="/champions/{{ $champion_sale->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion_sale->key }}.png" class="img-circle" width="30" /></a></td>
+								<td width="30"><a href="/champions/{{ $champion_sale->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion_sale->key }}.png" class="img-circle" width="30" /></a></td>
 								<td width="150"><a href="/champions/{{ $champion_sale->key }}">{{ $champion_sale->name }}</a></td>
 							</tr>
 						@endforeach
@@ -56,7 +56,7 @@
 							</tr>
 						@foreach($global_skin_sales as $skin_sale)
 							<tr>
-								<td width="30"><a href="/champions/{{ $skin_sale->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $skin_sale->champion->key }}.png" class="img-circle" width="30" /></a></td>
+								<td width="30"><a href="/champions/{{ $skin_sale->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $skin_sale->champion->key }}.png" class="img-circle" width="30" /></a></td>
 								<td width="150"><a href="/champions/{{ $skin_sale->champion->key }}">{{ $skin_sale->name }}</a></td>
 							</tr>
 						@endforeach

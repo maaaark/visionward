@@ -2,13 +2,20 @@
 @section('title', "Counterpicks")
 @section('subtitle', "Wer ist gut gegen wen? Findet es heraus!")
 @section('content')
-	
+	Ihr wollt wissen welcher Champion besonders gut gegen einen bestimmten anderen Champion ist?<br/>
+	Dann sucht euren Champion aus der Liste und seht was seine Stärken und Schwächen sind.<br/>
+	Habt ihr Tipps gegen oder für einen bestimmtes Matchup? Tragt es ein und stimmt mit ab.<br/>
+	<br/>
+	<br/>
+	<h2 class="headline">Mein Champion</h2>
 	<div class="row">
 		@foreach($counterpicks as $pick)
-			<div class="col-md-2 col-sm-3 col-xs-6">
+			<div class="col-md-2 col-sm-3 col-xs-6 center">
 				<a href="/counterpicks/{{ $pick->counter->champion_id }}/{{ $pick->counter->key }}">
-				<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="100" /><br/>
-				{{ $pick->counter->name }}
+				<div class="champion_avatar">
+					<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="75" /><br/>
+					{{ $pick->counter->name }}
+				</div>
 				</a>
 				<br/><br/>
 			</div>

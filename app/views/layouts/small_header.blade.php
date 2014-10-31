@@ -66,7 +66,9 @@
 	<div class="container-fluid">
 		<div class="row">
 		  <div class="col-md-12 footer">
+			  	<div class="container">
 				@include('layouts.footer')
+			</div>
 		  </div>
 		</div>
 	</div>

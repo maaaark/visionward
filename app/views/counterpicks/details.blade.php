@@ -14,7 +14,7 @@
 		
 	<div class="row">
 	  <div class="col-xs-12 col-md-5 center">
-		<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" />
+		<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" />
 	  </div>
 	  <div class="col-xs-12 col-md-2 center">
 		<h3>vs.</h3>
@@ -23,7 +23,7 @@
 		<div class="downvote">{{ $counterpick->downvotes }} Downvotes</div>
 	  </div>
 	  <div class="col-xs-12 col-md-5 center">
-		<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $counter->key }}.png" class="img-circle" width="100" />
+		<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $counter->key }}.png" class="img-circle" width="100" />
 	  </div>
 	</div>
 	<br/><br/>

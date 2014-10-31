@@ -16,7 +16,7 @@ class AddDownvotesToCounterpicks extends Migration {
 		{
 			$table->integer("downvotes")->default(0);
 			$table->integer("upvotes")->default(0);
-			$table->string("lane");
+			$table->integer("lane_id");
 		});
 	}
 
