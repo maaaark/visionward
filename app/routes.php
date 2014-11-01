@@ -19,12 +19,14 @@ Route::resource('leagues', 'LeaguesController');
 Route::resource('matches', 'MatchesController');
 Route::resource('counterpicks', 'CounterpicksController');
 Route::resource('searches', 'SearchesController');
+Route::resource('feedbacks', 'FeedbacksController');
 
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::get('/team', 'HomeController@team');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
+Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 
 // Search
 Route::post('/search', 'SearchesController@show_result');
@@ -42,7 +44,8 @@ Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 Route::get('/counterpicks/{id}/{slug}', 'CounterpicksController@show');
 Route::get('/counterpicks/{id}/{slug}/{counter_champion_id}/{counter_champion_slug}', 'CounterpicksController@details');
-Route::get('/championvotes/{id}/{vote}', 'CounterpicksController@championvotes');
+Route::get('/championupvotes/{id}', 'CounterpicksController@championupvotes');
+Route::get('/championdownvotes/{id}', 'CounterpicksController@championdownvotes');
 
 // Transfer
 Route::get('/transferlist', 'PlayersController@transferlist');

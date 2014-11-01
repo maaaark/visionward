@@ -12,10 +12,9 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/admin.css">
-    <title>Visionward Admin Panel - @yield('title')</title>
+    <title>Flashignite Admin Panel - @yield('title')</title>
 	<!-- Include Font Awesome -->
 	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link href="/css/froala_editor.min.css" rel="stylesheet" type="text/css" />
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/admin.js"></script>
 	<script src="/js/ckeditor/ckeditor.js"></script>
@@ -33,7 +32,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Visionward Admin Panel</a>
+          <a class="navbar-brand" href="#">Flashignite Admin Panel</a>
         </div>
       </div>
     </div>
@@ -62,11 +61,7 @@
         </div>
       </div>
     </div>
-
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-		<script>
+	<script>
 	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

@@ -12,5 +12,28 @@ class HomeController extends BaseController {
 	{
 		return View::make('pages.team');
 	}
+	
+	public function feedback()
+	{
+		$data = Input::all();
+		$id = uniqid();
+		$feedback = new Feedback;
+		$feedback->note = $data["note"];
+		$feedback->url = $data["url"];
+		$feedback->img = $id;
+		
+		$img = $data["img"];
+		$img = str_replace('data:image/png;base64,', '', $img);
+		$img = str_replace(' ', '+', $img);
+		$data2 = base64_decode($img);
+			
+		$file = public_path()."/img/feedback/".$id.".png";
+		$success = file_put_contents($file, $data2);
+		$feedback->save();
+		
+		return $data;
+	}
+	
+	
 
 }

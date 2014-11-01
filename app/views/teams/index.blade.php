@@ -1,5 +1,6 @@
 @extends('layouts.no_sidebar')
 @section('title', "Professionelle League of Legends Teams")
+@section('subtitle', "Europa, Nordamerika, Korea, China und Taiwan")
 @section('header_image',"pro_teams.jpg")
 @section('content')
 			
