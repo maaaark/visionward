@@ -103,5 +103,28 @@ class SearchesController extends \BaseController {
 
 		return Redirect::route('searches.index');
 	}
+	
+	
+	public function show_result()
+	{
+		$input = Input::all();
+		//var_dump($input);die("qwe");
+		$this->_generateNewsResult($input['search']);
+	}
+	
+	protected function _generateNewsResult($searchString)
+	{
+		//var_dump($searchString);
+		$results = DB::table('posts')
+			->where('title', 'LIKE', '%'.$searchString.'%')
+			->orWhere('content', 'LIKE', '%'.$searchString.'%')
+			->get();
+			
+		$countResult = count($results);
+		//foreach($results as $result) {
+		//	var_dump($result->title);
+		//}
+		//var_dump($countResult);die("qwe");
+	}
 
 }

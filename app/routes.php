@@ -26,6 +26,9 @@ Route::get('/login', 'AdminController@index');
 Route::get('/team', 'HomeController@team');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 
+// Search
+Route::post('/search', 'SearchesController@show_result');
+
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
 Route::post('/counterpicks/create_counter', 'CounterpicksController@create_counter');
