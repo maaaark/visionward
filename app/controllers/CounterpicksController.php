@@ -123,22 +123,48 @@ class CounterpicksController extends \BaseController {
 		return Redirect::route('counterpicks.index');
 	}
 
-	public function championvotes($id, $vote)
+	public function championdownvotes($id)
     {
 		$cookie = false;
-		if(Cookie::get('Visionward_countervotes'.$id)){}else{
+		$cookie2 = false;
+		if(Cookie::get('Visionward_countervotes'.$id.'down')){}else{
         $counter = Counterpick::where('id', '=', $id)->first();
-		if($vote == 'up' && $counter){
-			$counter->upvotes += 1;
-			$counter->votes += 1;
-		}elseif($vote == 'down' && $counter){
 			$counter->downvotes +=1;
 			$counter->votes -= 1;
+			$cookie = Cookie::forever('Visionward_countervotes'.$id.'down', $id);
+			if(Cookie::get('Visionward_countervotes'.$id.'up')){
+				$cookie2 = Cookie::forget('Visionward_countervotes'.$id.'up');
+				$counter->upvotes -= 1;
+			}
+			$counter->save();
 		}
-		$counter->save();
-		$cookie = Cookie::forever('Visionward_countervotes'.$id, $id);
+		if($cookie && $cookie2){
+			return Redirect::back()->withCookie($cookie)->withCookie($cookie2);
+		}elseif($cookie){
+			return Redirect::back()->withCookie($cookie);
+		}else{
+			return Redirect::back()->with('error', 'Du hast bereits für diesen Konter gevotet');
 		}
-		if($cookie){
+    }
+	
+	public function championupvotes($id)
+    {
+		$cookie = false;
+		$cookie2 = false;
+		if(Cookie::get('Visionward_countervotes'.$id.'up')){}else{
+        $counter = Counterpick::where('id', '=', $id)->first();
+			$counter->upvotes += 1;
+			$counter->votes += 1;
+			$cookie = Cookie::forever('Visionward_countervotes'.$id.'up', $id);
+			if(Cookie::get('Visionward_countervotes'.$id.'down')){
+				$cookie2 = Cookie::forget('Visionward_countervotes'.$id.'down');
+				$counter->downvotes -=1;
+			}
+			$counter->save();
+		}
+		if($cookie && $cookie2){
+			return Redirect::back()->withCookie($cookie)->withCookie($cookie2);
+		}elseif($cookie){
 			return Redirect::back()->withCookie($cookie);
 		}else{
 			return Redirect::back()->with('error', 'Du hast bereits für diesen Konter gevotet');
