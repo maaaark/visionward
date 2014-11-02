@@ -50,14 +50,16 @@
 	<div class="col-md-4">
 	<li style="padding: 0;">
 		<div class="searchbox">
-			<input type="text" placeholder="Summoner, News, Champion, ..." class="multisearch" />
+		<form action="/search" method="post">
+			<input type="text" placeholder="Summoner, News, Champion, ..." class="multisearch" name="search" />
 			<input type="submit" class="search_button" value="Suchen" />
-			<select class="server_region">
-				<option value="euw">EU-West</option>
-				<option value="eune">EU-NE</option>
-				<option value="tr">TR</option>
-				<option value="na">NA</option>
-			</select>
+				<select class="server_region" name="server_region">
+					<option value="euw">EU-West</option>
+					<option value="eune">EU-NE</option>
+					<option value="tr">TR</option>
+					<option value="na">NA</option>
+				</select>
+			</form>
 		</div>
 	</li>
 	</div>
