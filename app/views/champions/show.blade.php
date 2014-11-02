@@ -2,26 +2,30 @@
 @section('title', $champion->name)
 @section('subtitle', $champion->title)
 @section('content')
-
-		<div class="row">
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Schaden</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</div>
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Leben</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Reichweite</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->attackrange }}</div>
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Mana</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</div>
-		</div>
-		<div class="row">
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Rüstung</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</div>
-			<div class="col-md-3 col-sm-6 col-xs-6"><strong>Geschwindigkeit</strong></div>
-			<div class="col-md-3 col-sm-6 col-xs-6">{{ $champion->movespeed }}</div>
-		</div>
-	<br/><br/>
+	
+	<table class="table table-striped">
+		<tr>
+			<td rowspan="3"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" /></a></td>
+			<td><strong>Schaden</strong></td>
+			<td>{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</td>
+			<td><strong>Leben</strong></td>
+			<td>{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</td>
+		</tr>
+		<tr>
+			<td><strong>Reichweite</strong></td>
+			<td>{{ $champion->attackrange }}</td>
+			<td><strong>Mana</strong></td>
+			<td>{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</td>
+		</tr>
+		<tr>
+			<td><strong>Rüstung</strong></td>
+			<td>{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</td>
+			<td><strong>Geschwindigkeit</strong></td>
+			<td>{{ $champion->movespeed }}</td>
+		</tr>
+	</table>
+	
+	<br/>
 
 	<!-- Nav tabs -->
 	<ul class="nav nav-tabs" role="tablist" id="champion_tabs">

@@ -19,7 +19,7 @@
 						@elseif($champion->sale == true)
 							<div class="on_sale"><img src="/img/angebot.png" alt="Im Angebot" /></div>
 						@endif
-						<img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $champion->key }}.png" class="img-circle {{ $class }}" width="55" /><br/>
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle {{ $class }}" width="55" /><br/>
 						{{ $champion->name }}
 					</div>
 				</a>

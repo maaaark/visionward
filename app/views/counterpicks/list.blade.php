@@ -4,9 +4,10 @@
 	<table class="table table-striped">
 	@foreach($good as $g)
 		<tr>
-			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
+			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
 			<td valign="top">
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
+
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
 					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
 				@else
@@ -31,9 +32,10 @@
 	<table class="table table-striped">
 	@foreach($bad as $g)
 		<tr>
-			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/4.17.1/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
+			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
 			<td valign="top">
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
+
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
 					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
 				@else

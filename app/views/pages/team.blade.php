@@ -14,16 +14,26 @@
 			<strong>Aufgabe: </strong>Design, Code, Konzept<br/>
 			<br/>
 			Gründer von baronbuff, lolquest, the-force.eu. Immer für eine spannende Idee zu haben und Mädchen für alles.
+			<br/>
+			<br/>
+			<div class="center">
+				<a href="https://twitter.com/heyitsmaaaark" target="blank"><img src="/img/twitter.png" alt="@heyitsmaaaark" width="35" /></a>
+			</div>
 		</div>
 		<div class="col-md-3">
 			<h2 class="headline">Hans Christian Dürr</h2>
 			<div style="text-align: center;">
-				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+				<img src="/img/team/liq.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
-			<strong>Summoner: </strong>liq<br/>
+			<strong>Summoner: </strong>Liqq<br/>
 			<strong>Aufgabe: </strong>Management, Konzept<br/>
 			<br/>
-			-
+			Mitgründer diverser Gaming-Projekte <br/>und -Websites. Liebt Esports, Pasta und die Arbeit mit enthusiastischen Talenten.
+			<br/>
+			<br/>
+			<div class="center">
+				<a href="https://twitter.com/followLiq" target="blank"><img src="/img/twitter.png" alt="@followLiq" width="35" /></a>
+			</div>
 		</div>
 		<div class="col-md-3">
 			<h2 class="headline">Patrick Lange</h2>
