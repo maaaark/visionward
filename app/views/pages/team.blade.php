@@ -38,13 +38,30 @@
 		<div class="col-md-3">
 			<h2 class="headline">Patrick Lange</h2>
 			<div style="text-align: center;">
-				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+				<img src="/img/team/minke.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>Minke<br/>
 			<strong>Aufgabe: </strong>Content<br/>
 			<br/>
-			-
+			Ex-Baronbuff Redakteur, Pokémon Fanboy, Serienjunkie und Langschläfer. Außerdem bestes Bärenkostüm EU.
 		</div>
+		<div class="col-md-3">
+			<h2 class="headline">Laura</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/laura.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>Nü<br/>
+			<strong>Aufgabe: </strong>Redaktion<br/>
+			<br/>
+			Kunterbunte Filmliebhaberin, die mithilfe des geordneten Chaos, die Weltherrschaft an sich reißen wird. Gaming Nerd seit 1995.
+			<br/>
+			<div class="center">
+				<a href="https://twitter.com/nusliful" target="blank"><img src="/img/twitter.png" alt="@nusliful" width="35" /></a>
+			</div>
+		</div>
+	</div>
+	<br/><br/><br/>
+	<div class="row">
 		<div class="col-md-3">
 			<h2 class="headline">Klaus Brandt</h2>
 			<div style="text-align: center;">
@@ -55,18 +72,17 @@
 			<br/>
 			-
 		</div>
-	</div>
-	<br/><br/><br/>
-	<div class="row">
 		<div class="col-md-3">
 			<h2 class="headline">Matthias</h2>
 			<div style="text-align: center;">
 				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>ryanjermaine<br/>
-			<strong>Aufgabe: </strong>Code<br/>
+			<strong>Aufgabe: </strong>Redaktion<br/>
 			<br/>
 			-
+		</div>
+		
 		</div>
 	</div>
 @stop
