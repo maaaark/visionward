@@ -41,7 +41,8 @@ Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');
 Route::get('/counterpicks/{id}/{slug}', 'CounterpicksController@show');
 Route::get('/counterpicks/{id}/{slug}/{counter_champion_id}/{counter_champion_slug}', 'CounterpicksController@details');
-Route::get('/championvotes/{id}/{vote}', 'CounterpicksController@championvotes');
+Route::get('/championupvotes/{id}', 'CounterpicksController@championupvotes');
+Route::get('/championdownvotes/{id}', 'CounterpicksController@championdownvotes');
 
 // Transfer
 Route::get('/transferlist', 'PlayersController@transferlist');

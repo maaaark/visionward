@@ -7,8 +7,17 @@
 			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
 			<td valign="top">
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
-				<a href="/championvotes/{{ $g->id}}/up"><span class="upvote">{{ $g->upvotes }} Gut</span></a> <a href="/championvotes/{{ $g->id}}/down"><span class="downvote">{{ $g->downvotes }} Schlecht</span></a>
-				<span class="votes">{{ $g->lane->lane }}</span>
+
+				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
+					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
+				@else
+					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} Upvotes</span></a> 
+				@endif
+				@if(Cookie::get('Visionward_countervotes'.$g->id.'down') == true)
+				<span class="downvote_done">{{ $g->downvotes }} Downvotes</span>
+				@else
+				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} Downvotes</span></a>
+				@endif
 			</td>
 		</tr>
 	@endforeach
@@ -26,9 +35,17 @@
 			<td width="65"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $g->champion->key }}.png" class="img-circle" width="50" /></a></td>
 			<td valign="top">
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
-				<a href="/championvotes/{{ $g->id}}/up"><span class="upvote">{{ $g->upvotes }} Gut</span></a>
-				<a href="/championvotes/{{ $g->id}}/down"><span class="downvote">{{ $g->downvotes }} Schlecht</span></a>
-				<span class="votes">{{ $g->lane->lane }}</span>
+
+				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
+					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
+				@else
+					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} Upvotes</span></a> 
+				@endif
+				@if(Cookie::get('Visionward_countervotes'.$g->id.'down') == true)
+				<span class="downvote_done">{{ $g->downvotes }} Downvotes</span>
+				@else
+				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} Downvotes</span></a>
+				@endif
 			</td>
 		</tr>
 	@endforeach
