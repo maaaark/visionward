@@ -65,12 +65,12 @@
 		<div class="col-md-3">
 			<h2 class="headline">Klaus Brandt</h2>
 			<div style="text-align: center;">
-				<img src="/img/team/mark.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+				<img src="/img/team/klaus.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>sualk<br/>
 			<strong>Aufgabe: </strong>Code<br/>
 			<br/>
-			-
+			Teil der Ideenschmiede und Umsetzung von lolquest und the-force.eu. Es macht immer wieder Spaß die eigenen Ideen zu coden, zu sehen wie diese funktionieren und sich weiter Entwickeln und andere Menschen daran teilhaben zu lassen.
 		</div>
 		<div class="col-md-3">
 			<h2 class="headline">Matthias MacKenzie</h2>
