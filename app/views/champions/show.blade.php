@@ -44,7 +44,7 @@
 		<table class="table table-striped">
 			@foreach($skills as $skill)
 			<tr>
-				<td vlaign="top"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion->value}}/img/spell/{{ $skill->icon}}" class="img-circle" /></td>
+				<td vlaign="top"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/{{ $skill->icon}}" class="img-circle" /></td>
 				<td vlaign="top"><strong>{{ $skill->name }}</strong></br>{{ $skill->description }}</td>
 			</tr>
 			@endforeach
