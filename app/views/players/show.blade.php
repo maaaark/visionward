@@ -33,7 +33,7 @@
 					</tr>
 					<tr>
 						<td><strong>Team</strong></td>
-						<td><a href="/teams/{{ $player->team->id }}/{{ $player->team->name }}">{{ $player->team->name }}</td>
+						<td><a href="/teams/{{ $player->team->id }}/{{ $player->team->slug }}">{{ $player->team->name }}</td>
 					</tr>
 					<tr>
 						<td><strong>Geboren in</strong></td>

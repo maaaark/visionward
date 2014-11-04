@@ -60,7 +60,7 @@ class AdminTeamsController extends \BaseController {
 			$upload_success = $file->move($destinationPath, $filename);
 			$data["logo"] = $filename;
 		}
-			
+		$team->slug = Str::slug(Input::get('name'));	
 		$team->name = Input::get('name');
 		$team->country = Input::get('country');
 		$team->region = Input::get('region');
@@ -131,6 +131,7 @@ class AdminTeamsController extends \BaseController {
 			$data["logo"] = $team->logo;
 		}
 		
+		$team->slug = Str::slug($team->name);
 		$team->name = Input::get('name');
 		$team->country = Input::get('country');
 		$team->region = Input::get('region');

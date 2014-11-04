@@ -13,3 +13,4 @@
 
 Artisan::add(new PublishPosts);
 Artisan::add(new RefreshChampions);
+Artisan::add(new Run);

@@ -10,7 +10,7 @@
 	<h2 class="headline">Mein Champion</h2>
 	<div class="row">
 		@foreach($counterpicks as $pick)
-			<div class="col-md-2 col-sm-3 col-xs-6 center">
+			<div class="col-md-2 col-sm-2 col-xs-3 center">
 				<a href="/counterpicks/{{ $pick->counter->champion_id }}/{{ $pick->counter->key }}">
 				<div class="champion_avatar">
 					<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="75" /><br/>

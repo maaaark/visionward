@@ -10,13 +10,13 @@
 	@foreach($matches as $match)
 	<tr>
 		<td width="180">
-			<a href="/teams/{{ $match->team->id }}/{{ $match->team->name }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team->name }}</span></a>
+			<a href="/teams/{{ $match->team->id }}/{{ $match->team->slug }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team->name }}</span></a>
 		</td>
 		<td width="30">
 			vs.
 		</td>
 		<td width="180">
-			<a href="/teams/{{ $match->team2->id }}/{{ $match->team2->name }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team2->name }}</span></a>
+			<a href="/teams/{{ $match->team2->id }}/{{ $match->team2->slug }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team2->name }}</span></a>
 		</td>
 		<td width="180">
 			<a href="/leagues/{{ $match->league->id }}/{{ $match->league->slug }}"><img src="/img/leagues/{{ $match->league->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->league->name }}</span></a>
