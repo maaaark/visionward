@@ -20,13 +20,16 @@ Route::resource('matches', 'MatchesController');
 Route::resource('counterpicks', 'CounterpicksController');
 Route::resource('searches', 'SearchesController');
 Route::resource('feedbacks', 'FeedbacksController');
-
+Route::resource('items', 'ItemsController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::get('/team', 'HomeController@team');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 Route::post('/feedback', array('uses' => 'HomeController@feedback'));
+
+// Summoner
+Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
 
 // Search
 Route::post('/search', 'SearchesController@show_result');

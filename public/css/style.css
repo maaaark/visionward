@@ -94,6 +94,9 @@ a.button:hover {
 	margin-left: 100px;
 	margin-top: -55px;
 }
+a.champion_link img {
+	height: 1em;
+}
 .subsite {
 	height: 60px;
 	background: url("/img/subsite.jpg");

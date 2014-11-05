@@ -39,6 +39,13 @@ $( document ).ready(function() {
 		$("#show_result").hide();
 	});
 	
+	
+	
+	$( "a.champion_link" ).each(function( index ) {
+		var champion_image = $(this).attr('rel');
+		var old_text = $(this).text();
+		$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/'+champion_image+'.png" class="img-circle"> '+old_text);
+	});
 
 
 	$('.player_tooltip').tooltipsy({
