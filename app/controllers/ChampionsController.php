@@ -59,7 +59,14 @@ class ChampionsController extends \BaseController {
 		
 		return View::make('champions.show', compact('champion', 'bad', 'good', 'skills', 'skins'));
 	}
+	
+	public function skill($id)
+	{
+		$skill = Skill::find($id);
 
+		return View::make('skills.show', compact('skill'));
+	}
+	
 	/**
 	 * Show the form for editing the specified champion.
 	 *

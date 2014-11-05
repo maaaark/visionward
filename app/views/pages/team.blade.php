@@ -41,7 +41,7 @@
 				<img src="/img/team/minke.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>Minke<br/>
-			<strong>Aufgabe: </strong>Content<br/>
+			<strong>Aufgabe: </strong>Redaktion<br/>
 			<br/>
 			Ex-Baronbuff Redakteur, Pokémon Fanboy, Serienjunkie und Langschläfer. Außerdem bestes Bärenkostüm EU.
 		</div>
@@ -78,7 +78,7 @@
 				<img src="/img/team/ryanjermaine.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>ryanjermaine<br/>
-			<strong>Aufgabe: </strong>Redaktion<br/>
+			<strong>Aufgabe: </strong>Code<br/>
 			<br/>
 			Teil des Teams wurde ich durch lolquest.net . Seitdem unterstütze ich Mark wo es nur geht. Meistens übernehm ich die Sachen die irgendwann mal anfallen :)
 			<br/>

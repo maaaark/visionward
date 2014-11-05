@@ -31,6 +31,9 @@ Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 // Summoner
 Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
 
+// Skill
+Route::get('/skills/{id}', 'ChampionsController@skill');
+
 // Search
 Route::post('/search', 'SearchesController@show_result');
 

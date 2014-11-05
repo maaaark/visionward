@@ -16,35 +16,20 @@ $( document ).ready(function() {
 		$(".main_content").css("margin-top", "0px");
 	  }
 	
-	/*
-	$(window).scroll(function(){
-	  var sticky = $('.sticky'),
-		  scroll = $(window).scrollTop();
-
-	  if (scroll >= stickyOffset) {
-		sticky.addClass('fixed');
-		$("#nav_logo").show();
-		$(".main_content").css("margin-top", "80px");
-	  } else {
-		sticky.removeClass('fixed');
-		$("#nav_logo").hide();
-		$(".main_content").css("margin-top", "0px");
-	  }
-	  
-	});
-	*/
-	
 	$("#show_result").click(function(){
 		$(".hidden_result").toggle();
 		$("#show_result").hide();
 	});
 	
-	
-	
-	$( "a.champion_link" ).each(function( index ) {
-		var champion_image = $(this).attr('rel');
-		var old_text = $(this).text();
-		$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/'+champion_image+'.png" class="img-circle"> '+old_text);
+	$( ".article a" ).each(function( index ) {
+		var link = $(this).attr('href');
+		var test = link.split('/');
+		if(test[3]=="champions") {
+			var value = link.substring(link.lastIndexOf('/')+1);
+			var champion_image = $(this).attr('rel');
+			var old_text = $(this).text();
+			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
+		}
 	});
 
 
