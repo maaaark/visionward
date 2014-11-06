@@ -2,8 +2,8 @@
 @section('title', "Counterpicks")
 @section('subtitle', "Wer ist gut gegen wen? Findet es heraus!")
 @section('content')
-	Ihr wollt wissen welcher Champion besonders gut gegen einen bestimmten anderen Champion ist?<br/>
-	Dann sucht euren Champion aus der Liste und seht was seine Stärken und Schwächen sind.<br/>
+	Ihr wollt wissen welcher Champion besonders gut gegen einen bestimmten anderen Champion ist?
+	Dann sucht euren Champion aus der Liste und seht was seine Stärken und Schwächen sind.
 	Habt ihr Tipps gegen oder für einen bestimmtes Matchup? Tragt es ein und stimmt mit ab.<br/>
 	<br/>
 	<br/>

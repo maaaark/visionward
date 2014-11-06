@@ -1,3 +1,13 @@
+@if($team->id == 57)
+<table class="table table-striped">
+	@foreach($team->members as $member)
+	<tr>
+		<td width="120"><strong>{{ $member->role }}</strong></td>
+		<td><img src="/img/flags/{{ $member->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $member->id }}/{{ $member->nickname }}" class="player_tooltip" rel="{{ $member->id }}">{{ $member->nickname }}</a></td>
+	</tr>	
+	@endforeach				
+</table>
+@else
 <table class="table table-striped">
 	<tr>
 		<td width="120"><strong>Top-Lane</strong></td>
@@ -57,3 +67,4 @@
 		@endif
 	</tr>
 </table>
+@endif
