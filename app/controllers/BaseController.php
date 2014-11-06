@@ -13,6 +13,7 @@ class BaseController extends Controller {
 		$skin_sales = Skin::orderBy("name", "ASC")->where("sale", true)->get();
 		$transfers = PlayerHistory::orderBy("created_at", "DESC")->limit(3)->get();
 		$patchversion = Setting::where('key', '=', 'patch_number')->first();
+		$settings = Setting::all();
 		
 		View::share('global_champion_sales', $champion_sales);
 		View::share('global_skin_sales', $skin_sales);
@@ -20,6 +21,7 @@ class BaseController extends Controller {
 		View::share('global_last_posts', $last_posts);
 		View::share('global_transfers', $transfers);
 		View::share('patchversion', $patchversion['attributes']['value']);
+		View::share('global_settings', $settings);
 	}
 
 	   
