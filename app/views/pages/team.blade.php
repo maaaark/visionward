@@ -63,6 +63,20 @@
 	<br/><br/><br/>
 	<div class="row">
 		<div class="col-md-3">
+			<h2 class="headline">Christian Seder</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/vlesk.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>Vlesk<br/>
+			<strong>Aufgabe: </strong>Streaming, Videos<br/>
+			<br/>
+			Arbeitet mit Medien und Sozialen Netzwerken, außerdem aufstrebeneder Streamer, Riven-Ass und zukünftiger Challenger-Spieler, denn Master ist nicht gut genug.
+			<br/>
+			<div class="center">
+				<a href="https://twitter.com/vlesk" target="blank"><img src="/img/twitter.png" alt="@vlesk" width="35" /></a>
+			</div>
+		</div>
+		<div class="col-md-3">
 			<h2 class="headline">Klaus Brandt</h2>
 			<div style="text-align: center;">
 				<img src="/img/team/klaus.jpg" class="img-circle" width="150" height="150" /><br/><br/>

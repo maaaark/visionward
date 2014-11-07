@@ -59,8 +59,8 @@ class CounterpicksController extends \BaseController {
 	{
 		$champion = Champion::where("champion_id", "=", $id)->first();
 		
-		$good = Counterpick::where("type", "=", "good")->where("champion_id", "=", $id)->get();
-		$bad = Counterpick::where("type", "=", "bad")->where("champion_id", "=", $id)->get();
+		$good = Counterpick::where("type", "=", "good")->where("champion_id", "=", $id)->orderBy("upvotes", "desc")->get();
+		$bad = Counterpick::where("type", "=", "bad")->where("champion_id", "=", $id)->orderBy("upvotes", "desc")->get();
 		
 		return View::make('counterpicks.show', compact('champion', 'good', 'bad'));
 	}
