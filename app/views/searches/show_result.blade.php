@@ -3,12 +3,26 @@
 @section('subtitle', "" )
 @section('header_image',"pro_teams.jpg")
 @section('content')
-	<?php
 	
-		//die("qwe");
-		//var_dump($news); die("qwer");
+	@if($summoner != "")
+	<div style="margin-bottom: 40px;">
+		<div><strong>Suchergebnisse für Summoner</strong></div>
+		<div class="summoner_search">
+			<table>
+				<tr>
+					<td width="65"><a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" class="img-circle" width="50"></a></td>
+					<td valign="top">
+						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
+						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
+					</td>
+				</tr>
+			</table>
+			
+		</div>
+		
+	</div>
+	@endif
 	
-	?>
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für News</strong></div>
 		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($news) }} Ergebnisse gefunden.</small></div>

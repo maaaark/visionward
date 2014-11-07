@@ -108,12 +108,43 @@ class SearchesController extends \BaseController {
 	public function show_result()
 	{
 		$input = Input::all();
-		//var_dump($input);die("qwe");
+		$summoner = "";
+		if($input['server_region'] != "none") {
+			
+			$clean_summoner_name = str_replace(" ", "", $input['search']);
+			$clean_summoner_name = strtolower($clean_summoner_name);
+			$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
+			
+			$api_key = Config::get('api.key');
+			
+			$summoner = Summoner::where("region", "=", $input['server_region'])->where("name", "=", $input['search'])->first();
+			if(!isset($summoner)) {
+				$summoner_data = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
+				$json = @file_get_contents($summoner_data);
+				if($json === FALSE) {
+					//return false;
+				} else {
+					$obj = json_decode($json, true);
+					$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",Input::get('region'))->first();
+					if(!$summoner) {
+						$summoner = new Summoner;
+						$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
+						$summoner->name = $obj[$clean_summoner_name]["name"];
+						$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
+						$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
+						$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
+						$summoner->region = $input['server_region'];
+						$summoner->save();
+					}
+				}
+			}
+		}
+		
 		$news = $this->_generateNewsResult($input['search']);
 		$champs = $this->_generateChampResult($input['search']);
 		$players = $this->_generatePlayerResult($input['search']);
 		$teams = $this->_generateTeamResult($input['search']);
-		return View::make('searches.show_result', compact('news', 'champs', 'players', 'teams'));
+		return View::make('searches.show_result', compact('news', 'champs', 'players', 'teams', 'summoner'));
 	}
 	
 	protected function _generateNewsResult($searchString)

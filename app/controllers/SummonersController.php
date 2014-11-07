@@ -58,28 +58,36 @@ class SummonersController extends \BaseController {
 		
 		$api_key = Config::get('api.key');
 		
-		$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
-		$json = @file_get_contents($summoner_data);
-		if($json === FALSE) {
-			return $json;
-			//return Redirect::to('/')->withInput()->with('error', "API Fehler");
-		} else {
-			$obj = json_decode($json, true);
-			$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",Input::get('region'))->first();
-			if(!$summoner) {
-				$summoner = new Summoner;
-				$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
-				$summoner->name = $obj[$clean_summoner_name]["name"];
-				$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
-				$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
-				$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
-				$summoner->region = $region;
-				$summoner->save();
+		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $clean_summoner_name)->first();
+		
+		if(!isset($summoner)) {
+			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
+			$json = @file_get_contents($summoner_data);
+			if($json === FALSE) {
+				return $json;
+				//return Redirect::to('/')->withInput()->with('error', "API Fehler");
+			} else {
+				$obj = json_decode($json, true);
+				$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",Input::get('region'))->first();
+				if(!$summoner) {
+					$summoner = new Summoner;
+					$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
+					$summoner->name = $obj[$clean_summoner_name]["name"];
+					$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
+					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
+					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
+					$summoner->region = $region;
+					$summoner->save();
+				}
+				
+				$summoner->refresh_games();
+				return View::make('summoners.show', compact('summoner'));			
 			}
-			
+		} else {
 			$summoner->refresh_games();
-			return View::make('summoners.show', compact('summoner'));			
-		}
+			return View::make('summoners.show', compact('summoner'));
+		}	
+		
 	}
 
 	/**

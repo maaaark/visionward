@@ -54,6 +54,7 @@
 			<input type="text" placeholder="Summoner, News, Champion, ..." class="multisearch" name="search" />
 			<input type="submit" class="search_button" value="Suchen" />
 				<select class="server_region" name="server_region">
+					<option value="none">Region</option>
 					<option value="euw">EU-West</option>
 					<option value="eune">EU-NE</option>
 					<option value="tr">TR</option>
