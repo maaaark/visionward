@@ -103,6 +103,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::post('/users/update', 'AdminUsersController@update');
 	Route::post('/users/save', 'AdminUsersController@save');
 	
+	// Settings
+	Route::get('/settings', 'AdminSettingsController@index');
+	Route::get('/settings/edit/{id}', 'AdminSettingsController@edit');
+	Route::post('/settings/update', 'AdminSettingsController@update');
+	
+	
     Route::get('/', 'AdminController@index');
 	Route::get('logout', 'AdminController@logout');
 	Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));

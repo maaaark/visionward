@@ -50,7 +50,7 @@
 			<li {{ Request::is('admin/players*') ? ' class="active"' : '' }}><a href="/admin/players">Spieler</a></li>
 			<li {{ Request::is('admin/champions*') ? ' class="active"' : '' }}><a href="/admin/champions">Champions</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
-			<li><a href="#">Einstellungen</a></li>
+			<li {{ Request::is('admin/settings*') ? ' class="active"' : '' }}><a href="/admin/settings">Einstellungen</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
