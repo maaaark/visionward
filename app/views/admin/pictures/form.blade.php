@@ -14,7 +14,7 @@
 	<tr>
 		<td width="200"><strong>URL</strong></td>
 		<td>
-			{{ Form::text('url', "http://visonward.lolquest.de/uploads/galleries/".$picture->destination."/".$picture->filename,  array('class' => 'form-control')) }}
+			{{ Form::text('url', "http://flashignite.com/uploads/galleries/".$picture->destination."/".$picture->filename,  array('class' => 'form-control')) }}
 		</td>
 	</tr>
 	@endif

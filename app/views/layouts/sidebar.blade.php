@@ -9,11 +9,16 @@
 	@endforeach
 			
 	@if($settingsArray['stream_isactive'] === "1")
+	<div class="block">
+		<h2 class="headline">Livestream</h2>
+		<div class="content">
 		@if($settingsArray['stream_platform'] === "twitch")
 			<iframe src="http://www.twitch.tv/{{$settingsArray['stream_name']}}/embed" frameborder="0" scrolling="no" width="360" height="220"></iframe>
 		@elseif($settingsArray['stream_platform'] === "hitbox")
 			<iframe width="360" height="203" src="http://hitbox.tv/#!/embed/{{$settingsArray['stream_name']}}" frameborder="0" allowfullscreen></iframe>
 		@endif
+		</div>
+	</div>
 	@endif
 	
 	<div class="block">
