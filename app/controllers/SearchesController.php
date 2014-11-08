@@ -139,12 +139,13 @@ class SearchesController extends \BaseController {
 				}
 			}
 		}
-		
+		//var_dump($input['search']);die("qwe");
+		$searchString = $input['search'];
 		$news = $this->_generateNewsResult($input['search']);
 		$champs = $this->_generateChampResult($input['search']);
 		$players = $this->_generatePlayerResult($input['search']);
 		$teams = $this->_generateTeamResult($input['search']);
-		return View::make('searches.show_result', compact('news', 'champs', 'players', 'teams', 'summoner'));
+		return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 	}
 	
 	protected function _generateNewsResult($searchString)

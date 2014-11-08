@@ -26,43 +26,56 @@
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für News</strong></div>
 		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($news) }} Ergebnisse gefunden.</small></div>
+		<table class="table table-striped">
 		@foreach ($news as $singleNews)
-			<?php //var_dump($singleNews); ?>
-			<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333;">
-				<div><strong><a href="/news/{{$singleNews->id}}/{{$singleNews->slug}}">{{$singleNews->title}}</a></strong></div>
-				<div><small>{{$singleNews->slug}}</small></div>
-			</div>
+			<tr>
+				<td width="55"><img  src="<?=Croppa::url('/uploads/news/'.$singleNews->image, 50, null)?>"  width="50"/></td>
+				<td><div><strong><a href="/news/{{$singleNews->id}}/{{$singleNews->slug}}">{{$singleNews->title}}</a></strong></div>
+				<div><small>{{$singleNews->excerpt}}</small></div></td>
+			</tr>
 		@endforeach
+		</table>
 	</div>
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für Champions</strong></div>
 		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($champs) }} Champions gefunden.</small></div>
+		<table class="table table-striped">
 		@foreach ($champs as $singleChamp)
 			<?php //var_dump($singleChamp);die("qwe"); ?>
-			<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333;">
-				<div><a href="/champions/{{ $singleChamp->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $singleChamp->key }}.png" class="img-circle" width="30" /></a><strong><a href="/champions/{{$singleChamp->key}}">{{$singleChamp->name}}</a></strong></div>
-				<div><small>{{$singleChamp->title}}</small></div>
-			</div>
+			<tr>
+				<td width="55"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $singleChamp->key }}.png" class="img-circle" width="45" /></td>
+				<td><div><strong><a href="/champions/{{$singleChamp->key}}">{{$singleChamp->name}}</a></strong></div>
+				<div><small>{{$singleChamp->title}}</small></div></td>
+			</tr>
 		@endforeach
+		</table>
 	</div>
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für Spieler</strong></div>
 		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($players) }} Spieler gefunden.</small></div>
+		<table class="table table-striped">
 		@foreach ($players as $singlePlayer)
 			<?php //var_dump($singlePlayer);die("qwe"); ?>
-			<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333;">
-				<div><img src="/img/players/{{$singlePlayer->picture}}" width="32"><strong><a href="/players/{{$singlePlayer->id}}/{{$singlePlayer->nickname}}">{{$singlePlayer->first_name}} "{{$singlePlayer->nickname}}" {{$singlePlayer->last_name}}</a></strong></div>
-			</div>
+			<tr>
+				<td width="55"><img src="<?=Croppa::url('/img/players/'.$singlePlayer->picture, 45, 45)?>" class="img-circle" /></td>
+				<td><div><strong><a href="/champions/{{$singleChamp->key}}">{{$singlePlayer->nickname}}</a></strong></div>
+				<div><small>{{$singlePlayer->first_name}} {{$singlePlayer->last_name}}</small></div></td>
+			</tr>
+			
 		@endforeach
+		</table>
 	</div>
 	<div>
 		<div><strong>Suchergebnisse für Teams</strong></div>
 		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($teams) }} Teams gefunden.</small></div>
+		<table class="table table-striped">
 		@foreach ($teams as $singleTeam)
 			<?php //var_dump($singleTeam);die("qwe"); ?>
-			<div style="margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #333;">
-				<div><img src="/img/teams/logos/{{$singleTeam->logo}}" height="32"><strong><a href="/teams/{{$singleTeam->id}}/{{$singleTeam->name}}">{{$singleTeam->name}}</a></strong></div>
-			</div>
+			<tr>
+				<td width="55"><img src="<?=Croppa::url('/img/teams/logos/'.$singleTeam->logo, 45, null)?>" height="45"></td>
+				<td style="vertical-align: middle;"><strong><a href="/teams/{{$singleTeam->id}}/{{$singleTeam->name}}">{{$singleTeam->name}}</a></strong></td>
+			</tr>
 		@endforeach
+		</table>
 	</div>
 @stop
