@@ -56,6 +56,17 @@
 				</div>
 			  </div>
 			</div>
+			
+			<div class="item">
+			  <div class="col-md-12 header item active container" style="background: url('/img/header/soraka_full.jpg');">
+				<div class="container slider">
+					<span class="headline_background">
+						<h2 class="page_title">Reaper Soraka</h2>
+						<div class="header_subline">Der neue Skin ist nun verfügbar!</div>
+					</span>
+				</div>
+			  </div>
+			</div>
 
 			<div class="item">
 			  <div class="col-md-12 header item active container" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
