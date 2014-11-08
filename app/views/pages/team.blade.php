@@ -65,7 +65,7 @@
 		<div class="col-md-3">
 			<h2 class="headline">Oli Wagner</h2>
 			<div style="text-align: center;">
-				<img src="/img/team/vlesk.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+				<img src="/img/team/oli.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>Samson<br/>
 			<strong>Aufgabe: </strong>Redaktion<br/>
