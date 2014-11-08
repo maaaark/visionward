@@ -63,6 +63,17 @@
 	<br/><br/><br/>
 	<div class="row">
 		<div class="col-md-3">
+			<h2 class="headline">Samantha Post</h2>
+			<div style="text-align: center;">
+				<img src="/img/team/samy.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+			</div>
+			<strong>Summoner: </strong>Opf3rmagn3t<br/>
+			<strong>Aufgabe: </strong>Redaktion<br/>
+			<br/>
+			Enthusiastische Gamerin, Anime- und Serienfreak, Zelda-Fangirl und leidenschaftliche Cosplayerin.
+			<br/>
+		</div>
+		<div class="col-md-3">
 			<h2 class="headline">Oli Wagner</h2>
 			<div style="text-align: center;">
 				<img src="/img/team/oli.jpg" class="img-circle" width="150" height="150" /><br/><br/>
@@ -97,6 +108,10 @@
 			<br/>
 			Teil der Ideenschmiede und Umsetzung von lolquest und the-force.eu. Es macht immer wieder Spaß die eigenen Ideen zu coden, zu sehen wie diese funktionieren und sich weiter Entwickeln und andere Menschen daran teilhaben zu lassen.
 		</div>
+		
+		</div>
+		<br/><br/><br/>
+	<div class="row">
 		<div class="col-md-3">
 			<h2 class="headline">Matthias MacKenzie</h2>
 			<div style="text-align: center;">
@@ -112,7 +127,6 @@
 				<a href="https://twitter.com/ryanjermaine86" target="blank"><img src="/img/twitter.png" alt="@ryanjermaine86" width="35" /></a>
 			</div>
 		</div>
-		
-		</div>
+	</div>
 	</div>
 @stop
