@@ -46,7 +46,11 @@
 	
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für News</strong></div>
-		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($news) }} Ergebnisse gefunden.</small></div>
+		@if (count($news) === 1)
+			<div style="margin-bottom: 15px;"><small>Es wurde {{ count($news) }} News gefunden.</small></div>
+		@else
+			<div style="margin-bottom: 15px;"><small>Es wurden {{ count($news) }} News gefunden.</small></div>
+		@endif
 		<table class="table table-striped">
 		@foreach ($news as $singleNews)
 			<tr>
@@ -59,10 +63,14 @@
 	</div>
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für Champions</strong></div>
-		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($champs) }} Champions gefunden.</small></div>
+		@if (count($champs) === 1)
+			<div style="margin-bottom: 15px;"><small>Es wurde {{ count($champs) }} Champion gefunden.</small></div>
+		@else
+			<div style="margin-bottom: 15px;"><small>Es wurden {{ count($champs) }} Champions gefunden.</small></div>
+		@endif
 		<table class="table table-striped">
+		<?php //var_dump(count($champs));die("Qwe");?>
 		@foreach ($champs as $singleChamp)
-			<?php //var_dump($singleChamp);die("qwe"); ?>
 			<tr>
 				<td width="55"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $singleChamp->key }}.png" class="img-circle" width="45" /></td>
 				<td><div><strong><a href="/champions/{{$singleChamp->key}}">{{$singleChamp->name}}</a></strong></div>
@@ -73,13 +81,16 @@
 	</div>
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für Spieler</strong></div>
-		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($players) }} Spieler gefunden.</small></div>
+		@if (count($players) === 1)
+			<div style="margin-bottom: 15px;"><small>Es wurde {{ count($players) }} Spieler gefunden.</small></div>
+		@else
+			<div style="margin-bottom: 15px;"><small>Es wurden {{ count($players) }} Spieler gefunden.</small></div>
+		@endif
 		<table class="table table-striped">
 		@foreach ($players as $singlePlayer)
-			<?php //var_dump($singlePlayer);die("qwe"); ?>
 			<tr>
 				<td width="55"><img src="<?=Croppa::url('/img/players/'.$singlePlayer->picture, 45, 45)?>" class="img-circle" /></td>
-				<td><div><strong><a href="/champions/{{$singleChamp->key}}">{{$singlePlayer->nickname}}</a></strong></div>
+				<td><div><strong><a href="/players/{{$singlePlayer->id}}/{{$singlePlayer->nickname}}">{{$singlePlayer->nickname}}</a></strong></div>
 				<div><small>{{$singlePlayer->first_name}} {{$singlePlayer->last_name}}</small></div></td>
 			</tr>
 			
@@ -88,7 +99,12 @@
 	</div>
 	<div>
 		<div><strong>Suchergebnisse für Teams</strong></div>
-		<div style="margin-bottom: 15px;"><small>Es wurden {{ count($teams) }} Teams gefunden.</small></div>
+		@if (count($teams) === 1)
+			<div style="margin-bottom: 15px;"><small>Es wurde {{ count($teams) }} Team gefunden.</small></div>
+		@else
+			<div style="margin-bottom: 15px;"><small>Es wurden {{ count($teams) }} Teams gefunden.</small></div>
+		@endif
+		
 		<table class="table table-striped">
 		@foreach ($teams as $singleTeam)
 			<?php //var_dump($singleTeam);die("qwe"); ?>
