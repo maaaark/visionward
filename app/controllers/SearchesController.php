@@ -123,7 +123,7 @@ class SearchesController extends \BaseController {
 					//return false;
 				} else {
 					$obj = json_decode($json, true);
-					$summoner = Summoner::where("name","=",$clean_summoner_name)->where("region","=",$input['server_region'])->first();
+					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
 					if(!$summoner) {
 						$summoner = new Summoner;
 						$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
