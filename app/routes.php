@@ -21,6 +21,7 @@ Route::resource('counterpicks', 'CounterpicksController');
 Route::resource('searches', 'SearchesController');
 Route::resource('feedbacks', 'FeedbacksController');
 Route::resource('items', 'ItemsController');
+Route::resource('users', 'UsersController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
