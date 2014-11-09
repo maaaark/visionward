@@ -127,6 +127,9 @@ a.champion_link img {
 .copy {
 	color: #767c7e;
 }
+.game_detail_toggle  {
+	display: none;
+}
 .headline {
 	font-family: 'Fjalla One', sans-serif;
 	text-transform: uppercase;
