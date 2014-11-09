@@ -4,7 +4,7 @@
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	
-	@if($summoner != "")
+	@if($summoner)
 	<div style="margin-bottom: 40px;">
 		<div><strong>Suchergebnisse für Summoner</strong></div>
 		<div class="summoner_search">
@@ -15,6 +15,27 @@
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
 					</td>
+					@if($summoner->ranked_wins != false && $summoner->ranked_losses != false && $summoner->ranked_losses != false)
+					<td width="50px"></td>
+					<td>
+						<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}
+					</td>
+						<td width="50px"></td>
+					<td>
+						Gewertete Spiele: </br>{{ $summoner->ranked_wins+$summoner->ranked_losses}}
+						
+							@if($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100>=50)
+								(<font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)
+							@else
+								(<font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)
+							@endif
+						</td>
+					</td>
+						<td width="50px"></td>
+					<td>
+						Normale Siege: {{ $summoner->unranked_wins}}
+					</td>
+					@endif
 				</tr>
 			</table>
 			

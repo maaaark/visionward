@@ -4,6 +4,49 @@
 @section('header_image',"summoner_header.jpg")
 @section('content')
 
+
+	<table width="100%" class="profile">
+		<tr>
+			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
+				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" /> {{$summoner->name}}<br/>
+			</td>
+			<td width="400" valign="top">
+				<table class="table table-striped" stlye="width: 100%;">
+					<tr>
+						<td width="130" class="attribute">Normale Siege:</td>
+						<td width="130" class="attribute">{{ $summoner->unranked_wins}}</td>
+					</tr>
+					<tr>
+						<td width="130" class="attribute">Gewertete Spiele 4. Saison</td>
+						<td width="130" class="attribute">{{ $summoner->ranked_wins+$summoner->ranked_losses}}</td>
+					</tr>
+					<tr>
+						<td width="130" class="attribute">Gewertete</br> Siege / Niederlagen</td>
+						<td width="130" class="attribute"></br>
+						@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
+						{{ $summoner->ranked_wins}} / {{ $summoner->ranked_losses}} 
+						@if($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100>=50)
+							(<font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)</td>
+						@else
+							(<font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)</td>
+						@endif
+						@endif
+						</tr>
+				</table>
+			</td>
+			<td valign="top">
+				<div class="profile_season_stats">
+					<table class="table table-striped" style="margin-bottom: 0;text-align: center">
+						<tr>
+							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="100" class="img-circle" /></br>{{$summoner->solo_tier}} {{$summoner->solo_division}}</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</table>
+</br></br>
+<h3>Letzten Spiele</h3></br>
 		<table class="table">
 			@foreach($summoner->games as $game)
 				<?php 
