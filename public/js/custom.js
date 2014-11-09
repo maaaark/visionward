@@ -55,6 +55,13 @@ $( document ).ready(function() {
 	  e.preventDefault()
 	  $(this).tab('show')
 	})
+	
+
+
+	$('.toggle_game_details').click( function() {
+        $('.game_details-' + $(this).attr('id')).toggle();
+		return false;
+    });
 
 });
 

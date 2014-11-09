@@ -45,7 +45,7 @@
 			</td>
 		</tr>
 	</table>
-</br></br>
+
 <h3>Letzten Spiele</h3></br>
 		<table class="table">
 			@foreach($summoner->games as $game)
@@ -58,7 +58,7 @@
 				?>
 				<tr class="<?php echo $class; ?>">
 					<td>
-						<a href="/counterpicks/{{ $game->champion->champion_id }}/{{ $game->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $game->champion->key }}.png" class="img-circle" width="35" /></a>
+						<a href="/champions/{{ $game->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $game->champion->key }}.png" class="img-circle" width="35" /></a>
 					</td>
 					<td class="game_kda">
 					{{ $game->championsKilled }} / {{ $game->numDeaths }} / {{ $game->assists }}<br/>
@@ -80,8 +80,9 @@
 						@foreach($game->items as $item)
 							<a href="/items/{{ $item->id }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/{{ $item->id }}.png" data-toggle="tooltip" data-placement="top" title="{{ $item->name }}" width="35" class="img-circle items" ></a>
 						@endforeach	
+						
 					</td>
-
+					<td><a href="#" class="toggle_game_details" id="{{ $game->id }}">Details</a></td>
 					
 				</tr>
 				<tr class="game_detail_toggle game_details-{{ $game->id }}" >
