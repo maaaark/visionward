@@ -8,7 +8,7 @@
 	<table width="100%" class="profile">
 		<tr>
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
-				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" /> {{$summoner->name}}<br/>
+				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" /></br> {{$summoner->name}}<br/>
 			</td>
 			<td width="400" valign="top">
 				<table class="table table-striped" stlye="width: 100%;">
