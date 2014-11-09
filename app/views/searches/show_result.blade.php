@@ -15,7 +15,7 @@
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
 					</td>
-					@if($summoner->ranked_wins != false && $summoner->ranked_losses != false && $summoner->ranked_losses != false)
+					@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
 					<td width="50px"></td>
 					<td>
 						<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}

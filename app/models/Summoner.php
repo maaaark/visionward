@@ -289,7 +289,7 @@ class Summoner extends \Eloquent {
 				$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 				$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 				$summoner->region = $region;
-				
+				$summoner->save();
 				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
 				$json2 = @file_get_contents($summoner_stats);
 				if($json2 === FALSE) {
@@ -351,7 +351,9 @@ class Summoner extends \Eloquent {
 				}
 				$summoner->save();
 				
-				$summoner->refresh_games();	
+				$summoner->refresh_games();
+				return $summoner;
+				
 			}		
 		
 	}
