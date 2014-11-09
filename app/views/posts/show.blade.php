@@ -1,6 +1,6 @@
 @extends('layouts.small_header')
 @section('title', $post->title)
-@section('subtitle', "<a href='/users/".$post->user->id."'>".$post->created_at->diffForHumans()." - gepostet von ".$post->user->username)
+@section('subtitle', "<a href='/users/".$post->user->id."'>".$post->created_at->diffForHumans()." - gepostet von ".$post->user->username."</a>")
 @section('content')
 	
 	@if(Auth::check())
