@@ -143,6 +143,7 @@ class SearchesController extends \BaseController {
 				$summoner2 = new Summoner;
 				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
 			}
+					$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
 		}
 		//var_dump($input['search']);die("qwe");
 		$searchString = $input['search'];
@@ -150,7 +151,7 @@ class SearchesController extends \BaseController {
 		$champs = $this->_generateChampResult($input['search']);
 		$players = $this->_generatePlayerResult($input['search']);
 		$teams = $this->_generateTeamResult($input['search']);
-		$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
+
 		return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 	}
 	
