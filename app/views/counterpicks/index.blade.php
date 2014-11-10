@@ -1,5 +1,5 @@
 @extends('layouts.small_header')
-@section('title', "Counterpicks")
+@section('title', "Konterpicks")
 @section('subtitle', "Wer ist gut gegen wen? Findet es heraus!")
 @section('content')
 	Ihr wollt wissen welcher Champion besonders gut gegen einen bestimmten anderen Champion ist?

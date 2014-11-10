@@ -9,14 +9,14 @@
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
 
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
-					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
+					<span class="upvote_done">{{ $g->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></span>
 				@else
-					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} Upvotes</span></a> 
+					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></span></a> 
 				@endif
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'down') == true)
-				<span class="downvote_done">{{ $g->downvotes }} Downvotes</span>
+				<span class="downvote_done">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span>
 				@else
-				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} Downvotes</span></a>
+				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span></a>
 				@endif
 			</td>
 		</tr>
@@ -37,14 +37,14 @@
 				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}/{{ $g->champion->champion_id }}/{{ $g->champion->key }}">{{ $g->champion->name }}</a><br/>
 
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'up') == true)
-					<span class="upvote_done">{{ $g->upvotes }} Upvotes</span>
+					<span class="upvote_done">{{ $g->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></span>
 				@else
-					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} Upvotes</span></a> 
+					<a href="/championupvotes/{{ $g->id}}"><span class="upvote">{{ $g->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></span></a> 
 				@endif
 				@if(Cookie::get('Visionward_countervotes'.$g->id.'down') == true)
-				<span class="downvote_done">{{ $g->downvotes }} Downvotes</span>
+				<span class="downvote_done">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span>
 				@else
-				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} Downvotes</span></a>
+				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span></a>
 				@endif
 			</td>
 		</tr>

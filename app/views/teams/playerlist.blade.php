@@ -55,7 +55,7 @@
 		@if($coach)
 		<td><img src="/img/flags/{{ $coach->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $coach->id }}/{{ $coach->nickname }}" class="player_tooltip" rel="{{ $coach->id }}">{{ $coach->nickname }}</a></td>
 		@else
-		<td>Kein Coach</td>
+		<td>Nicht bekannt</td>
 		@endif
 	</tr>
 	<tr>
@@ -63,7 +63,7 @@
 		@if($sub)
 		<td><img src="/img/flags/{{ $sub->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $sub->id }}/{{ $sub->nickname }}" class="player_tooltip" rel="{{ $sub->id }}">{{ $sub->nickname }}</a></td>
 		@else
-		<td>Keine Ersatzspieler</td>
+		<td>Nicht bekannt</td>
 		@endif
 	</tr>
 </table>

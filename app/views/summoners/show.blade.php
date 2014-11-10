@@ -17,7 +17,7 @@
 						<td width="130" class="attribute">{{ $summoner->unranked_wins}}</td>
 					</tr>
 					<tr>
-						<td width="130" class="attribute">Gewertete Spiele 4. Saison</td>
+						<td width="130" class="attribute">Gewertete Spiele Saison 4</td>
 						<td width="130" class="attribute">{{ $summoner->ranked_wins+$summoner->ranked_losses}}</td>
 					</tr>
 					<tr>
@@ -70,7 +70,7 @@
 					</td>
 					<td class="game_kda">
 						{{ $game->subType }}<br/>
-						{{ $game->minionsKilled }} CS ( {{ $game->neutralMinionsKilled }} neutral )
+						{{ $game->minionsKilled }} CS ( {{ $game->neutralMinionsKilled }} neutrale )
 					</td>
 					<td>
 						<img src="/img/spells/{{ $game->spell1 }}.png" width="35" class="img-circle" > 
@@ -94,41 +94,41 @@
 							</tr>
 							@endif
 							<tr>
-								<td><strong>Gold earned</strong></td>
+								<td><strong>Gold verdient</strong></td>
 								<td>{{ $game->goldEarned }}</td>
-								<td><strong>Wards placed</strong></td>
+								<td><strong>Wards platziert</strong></td>
 								<td>{{ $game->wardPlaced }}</td>
-								<td><strong>Wards destroyed</strong></td>
+								<td><strong>Wards zerstört</strong></td>
 								<td>{{ $game->wardKilled }}</td>
 							</tr>
 							<tr>
-								<td><strong>Total damage Taken</strong></td>
+								<td><strong>Schaden bekommen</strong></td>
 								<td>{{ $game->totalDamageTaken }}</td>
-								<td><strong>Total damage Dealt</strong></td>
+								<td><strong>Schaden verursacht</strong></td>
 								<td>{{ $game->totalDamageDealt }}</td>
-								<td><strong>Total Heal</strong></td>
+								<td><strong>Gesamte Heilung</strong></td>
 								<td>{{ $game->totalHeal }}</td>
 							</tr>
 							<tr>
-								<td><strong>Game lenght</strong></td>
+								<td><strong>Spieldauer</strong></td>
 								<td>{{ gmdate("i", $game->timePlayed) }} min</td>
 								<td><strong>Team</strong></td>
 								<td>
 									@if($game->teamId == 100)
-										Blue
+										Blau
 									@else
-										Purple
+										Lila
 									@endif
 								</td>
-								<td><strong>Turrets destroyed</strong></td>
+								<td><strong>Türme zerstört</strong></td>
 								<td>{{ $game->turretsKilled }}</td>
 							</tr>
 							<tr>
 								<td><strong>Killingsprees</strong></td>
 								<td>{{ $game->killingSprees }}</td>
-								<td><strong>Game Date</strong></td>
+								<td><strong>Datum</strong></td>
 								<td>{{ date("d.m.Y H:i", $game->createDate/1000) }}</td>
-								<td><strong>Enemy Jungle Minions</strong></td>
+								<td><strong>Gegnerische neutrale Monster</strong></td>
 								<td>{{ $game->neutralMinionsKilledEnemyJungle }}</td>
 							</tr>
 							<tr>
@@ -144,27 +144,27 @@
 								<td>{{ $game->quadraKills }}</td>
 								<td><strong>Pentakills</strong></td>
 								<td>{{ $game->pentaKills }}</td>
-								<td><strong>First blood kill</strong></td>
+								<td><strong>Erstes Blut</strong></td>
 								<td>{{ $game->firstBloodKill }}</td>
 							</tr>
 							<tr>
-								<td><strong>Tower kills (Team)</strong></td>
+								<td><strong>Türme zerstört (Team)</strong></td>
 								<td>{{ $game->towerKills }}</td>
-								<td><strong>Inhibitor kills (Team)</strong></td>
+								<td><strong>Inhibitoren zerstört (Team)</strong></td>
 								<td>{{ $game->inhibitorKills }}</td>
-								<td><strong>First tower (Team)</strong></td>
+								<td><strong>Erster Turm (Team)</strong></td>
 								<td>{{ $game->firstTower }}</td>
 							</tr>
 							<tr>
-								<td><strong>First Dragon (Team)</strong></td>
+								<td><strong>Erster Drache (Team)</strong></td>
 								<td>{{ $game->firstDragon }}</td>
-								<td><strong>First Baron (Team)</strong></td>
+								<td><strong>Erster Baron (Team)</strong></td>
 								<td>{{ $game->firstBaron }}</td>
-								<td><strong>First blood (Team)</strong></td>
+								<td><strong>Erstes Blut (Team)</strong></td>
 								<td>{{ $game->firstBlood }}</td>
 							</tr>
 							<tr>
-								<td><strong>Dragons (Team)</strong></td>
+								<td><strong>Drachen (Team)</strong></td>
 								<td>{{ $game->dragonKills }}</td>
 								<td><strong>Barons (Team)</strong></td>
 								<td>{{ $game->baronKills }}</td>

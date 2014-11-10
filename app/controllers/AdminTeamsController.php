@@ -62,6 +62,7 @@ class AdminTeamsController extends \BaseController {
 		}
 		$team->slug = Str::slug(Input::get('name'));	
 		$team->name = Input::get('name');
+        $team->shorthandle = Input::get('shorthandle');
 		$team->country = Input::get('country');
 		$team->region = Input::get('region');
 		$team->description = Input::get('description');
@@ -130,7 +131,7 @@ class AdminTeamsController extends \BaseController {
 		} else {
 			$data["logo"] = $team->logo;
 		}
-		
+        $team->shorthandle = Input::get('shorthandle');
 		$team->slug = Str::slug($team->name);
 		$team->name = Input::get('name');
 		$team->country = Input::get('country');
