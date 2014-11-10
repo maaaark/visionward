@@ -437,6 +437,7 @@ h2.mobile_page_title {
 .upvote {
 	background: #63a055;
 	color: #fff;
+    width: 100px;
 	font-weight: bold;
 	padding: 3px;
 	font-size: 12px;
@@ -468,6 +469,7 @@ h2.mobile_page_title {
 	padding: 3px;
 	background: #db2d2d;
 	color: #fff;
+    width: 100px;
 	font-weight: bold;
 	font-size: 12px;
 	-webkit-border-radius: 3px;

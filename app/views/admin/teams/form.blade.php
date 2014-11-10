@@ -3,6 +3,10 @@
 		<td width="200"><strong>Name</strong></td>
 		<td>{{ Form::text('name', Input::old('name'),  array('class' => 'form-control')) }}</td>
 	</tr>
+    <tr>
+		<td width="200"><strong>Shorthandle</strong></td>
+		<td>{{ Form::text('shorthandle', Input::old('name'),  array('class' => 'form-control')) }}</td>
+	</tr>
 	<tr>
 		<td width="200"><strong>Logo</strong></td>
 		<td>@if(isset($team))

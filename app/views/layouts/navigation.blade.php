@@ -20,7 +20,7 @@
 				</li>
 				<li><a href="/categories/pbe">RIOT TRACKER</a></li>
 				<li><a href="/champions">CHAMPIONS</a></li>
-				<li><a href="/counterpicks">COUNTERPICKS</a></li>
+				<li><a href="/counterpicks">KONTERPICKS</a></li>
 			</ul>
 		</li>
 		<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -45,7 +45,7 @@
 		</li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">RIOT TRACKER</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
-		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/counterpicks">COUNTERPICKS</a></li>
+		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/counterpicks">KONTERPICKS</a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">

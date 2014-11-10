@@ -23,7 +23,7 @@
 		<div class="col-md-3">
 			<h2 class="headline">Hans Christian Dürr</h2>
 			<div style="text-align: center;">
-				<img src="/img/team/liq.jpg" class="img-circle" width="150" height="150" /><br/><br/>
+				<img src="/img/team/liq.png" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
 			<strong>Summoner: </strong>Liqq<br/>
 			<strong>Aufgabe: </strong>Management, Konzept<br/>
@@ -78,7 +78,7 @@
 			<div style="text-align: center;">
 				<img src="/img/team/oli.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
-			<strong>Summoner: </strong>Samson<br/>
+			<strong>Summoner: </strong>Samsonn411<br/>
 			<strong>Aufgabe: </strong>Redaktion<br/>
 			<br/>
 			Ex-Baronbuff Mitarbeiter, Fußballfan und chaotischer Rumtreiber, der für jeden Spaß zu haben ist. Außerdem One Piece, Pokémon und Razer Fanboy.

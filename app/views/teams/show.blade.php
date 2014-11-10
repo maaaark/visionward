@@ -25,9 +25,11 @@
 		@endforeach
 	</table>
 	<br/>
+    @if($team->description != "")
 	<h2 class="headline">{{ $team->name }} Beschreibung</h2>
 	{{ $team->description }}<br/>
 	<br/>
+    @endif
 	<h2 class="headline_no_border">Platzierungen</h2>
 	<table class="table table-striped">
 		<tr>
