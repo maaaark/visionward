@@ -123,7 +123,7 @@ class SearchesController extends \BaseController {
 					//return false;
 				} else {
 					$obj = json_decode($json, true);
-					$summoner = Summoner::where("name","=",$clean_summoner_name)->where("region","=",$input['server_region'])->first();
+					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
 					if(!$summoner) {
 						$summoner = new Summoner;
 						$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
@@ -143,6 +143,7 @@ class SearchesController extends \BaseController {
 				$summoner2 = new Summoner;
 				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
 			}
+					$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
 		}
 		//var_dump($input['search']);die("qwe");
 		$searchString = $input['search'];
@@ -150,7 +151,7 @@ class SearchesController extends \BaseController {
 		$champs = $this->_generateChampResult($input['search']);
 		$players = $this->_generatePlayerResult($input['search']);
 		$teams = $this->_generateTeamResult($input['search']);
-		$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
+
 		return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 	}
 	
