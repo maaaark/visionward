@@ -10,7 +10,7 @@
 	<tr>
 		<td valign="top">
 			<div class="team_box">
-				<img src="/img/teams/logos/{{ $match->team->logo }}" width="150" />
+				<a href="/teams/{{ $match->team->id }}/{{ $match->team->slug }}"><img src="/img/teams/logos/{{ $match->team->logo }}" width="150" /></a>
 			</div>
 				<br/>
 				<h2 class="headline_no_border">Lineup {{ $match->team->name }}</h2>
@@ -80,7 +80,7 @@
 		</td>
 		<td valign="top">
 			<div class="team_box">
-				<img src="/img/teams/logos/{{ $match->team2->logo }}" width="150" />
+                <a href="/teams/{{ $match->team2->id }}/{{ $match->team2->slug }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" width="150" /></a>
 			</div>
 				<br/>
 				<h2 class="headline_no_border">Lineup {{ $match->team2->name }}</h2>
@@ -140,7 +140,7 @@
 <table class="table table-striped">
 	@if($match->title != "")
 	<tr>
-		<td width="120"><strong>Ttiel</strong></td>
+		<td width="120"><strong>Titel</strong></td>
 		<td>
 			{{ $match->title }}
 		</td>
