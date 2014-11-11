@@ -32,16 +32,13 @@
     @endif
 	<h2 class="headline_no_border">Platzierungen</h2>
 	<table class="table table-striped">
+        @foreach($team->placements as $placement)
 		<tr>
-			<td width="75"><strong>Platz 1</strong></td>
-			<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-			<td>LCS Sommer Split 2014</td>
+			<td width="75"><strong>Platz {{ $placement->place }}</strong></td>
+			<td width="25"><img src="/img/teams/{{ $placement->league->logo }}" height="20" /></td>
+			<td>{{ $placement->league->name }}</td>
 		</tr>
-		<tr>
-			<td width="75"><strong>Platz 2</strong></td>
-			<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-			<td>LCS Frühlings Split 2014</td>
-		</tr>
+        @endforeach
 	</table>
 	<br/>
 	
