@@ -23,7 +23,10 @@ class AdminMatchesController extends \BaseController {
 	{
 		$teams = Team::all();
 		$leagues = League::all();
-		return View::make('admin.matches.create', compact('leagues', 'teams'));
+        $players = orderBy("name", "ASC")->get();
+		$champions = Champion::orderBy("nickname", "ASC")->get();
+        
+		return View::make('admin.matches.create', compact('leagues', 'teams', 'players', 'champions'));
 	}
 
 	/**
@@ -69,8 +72,10 @@ class AdminMatchesController extends \BaseController {
 		$match = Match::find($id);
 		$teams = Team::all();
 		$leagues = League::all();
-		
-		return View::make('admin.matches.edit', compact('match', 'leagues', 'teams'));
+        $players = Player::orderBy("nickname", "ASC")->get();
+		$champions = Champion::orderBy("name", "ASC")->get();
+        
+		return View::make('admin.matches.edit', compact('match', 'leagues', 'teams', 'players', 'champions'));
 	}
 
 	/**
@@ -82,13 +87,8 @@ class AdminMatchesController extends \BaseController {
 	public function update($id)
 	{
 		$match = Match::findOrFail($id);
+        $data = Input::all();
 
-		$validator = Validator::make($data = Input::all(), Match::$rules);
-
-		if ($validator->fails())
-		{
-			return Redirect::back()->withErrors($validator)->withInput();
-		}
 
 		$match->update($data);
 

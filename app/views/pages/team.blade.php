@@ -46,7 +46,7 @@
 			Ex-Baronbuff Redakteur, Pokémon Fanboy, Serienjunkie und Langschläfer. Außerdem bestes Bärenkostüm EU.
 		</div>
 		<div class="col-md-3">
-			<h2 class="headline">Laura</h2>
+			<h2 class="headline">Laura Die</h2>
 			<div style="text-align: center;">
 				<img src="/img/team/laura.jpg" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
