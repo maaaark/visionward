@@ -16,7 +16,7 @@ class CreatePlacementsTable extends Migration {
 		{
 			$table->increments('id');
 			$table->integer('team_id');
-			$table->integer('place');
+			$table->string('place');
 			$table->integer('league_id');
 			$table->timestamp('place_date');
 			$table->timestamps();

@@ -13,6 +13,11 @@ class HomeController extends BaseController {
 		return View::make('pages.team');
 	}
 	
+	public function impressum()
+	{
+		return View::make('pages.legal');
+	}
+	
 	public function feedback()
 	{
 		$data = Input::all();
