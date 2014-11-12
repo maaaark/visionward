@@ -9,7 +9,7 @@ class AdminPlacementsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$placements = Placement::all();
+		$placements = Placement::orderBy("order", "ASC")->get();
 		return View::make('admin.placements.index', compact('placements'));
 	}
 

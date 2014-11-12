@@ -7,6 +7,7 @@
 				<th>Team</th>
 				<th>Platz</th>
 				<th>Liga</th>
+				<th>Order</th>
                 <th></th>
 			</tr>
 		@foreach($placements as $placement)
@@ -14,6 +15,7 @@
 				<td><a href="/admin/placements/{{ $placement->id }}/edit">{{ $placement->team->name }}</a></td>
 				<td><a href="/admin/placements/{{ $placement->id }}/edit">{{ $placement->place }}</a></td>
 				<td><a href="/admin/placements/edit/{{ $placement->id }}/edit">{{ $placement->league->name }}</a></td>
+				<td><a href="/admin/placements/edit/{{ $placement->id }}/edit">{{ $placement->order }}</a></td>
 				<td>
 					{{ Form::open(array('url' => 'admin/placements/' . $placement->id, 'class' => '')) }}
 						{{ Form::hidden('_method', 'DELETE') }}

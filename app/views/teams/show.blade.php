@@ -32,7 +32,7 @@
     @endif
 	<h2 class="headline_no_border">Platzierungen</h2>
 	<table class="table table-striped">
-        @foreach($team->placements as $placement)
+        @foreach($placements as $placement)
 		<tr>
 			<td width="75"><strong>Platz {{ $placement->place }}</strong></td>
 			<td width="25"><img src="/img/teams/{{ $placement->league->logo }}" height="20" /></td>
