@@ -1,6 +1,5 @@
 @extends('layouts.small_header')
 @section('title', $league->name)
-@section('subtitle', $league->description)
 @section('header_image',"pro_teams.jpg")
 @section('content')
 	

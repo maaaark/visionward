@@ -30,8 +30,8 @@
 		<td width="200"><strong>Platzierung</strong></td>
 		<td>{{ Form::text('place', Input::old('place'),  array('class' => 'form-control')) }}</td>
 	</tr>
-	<tr>
-		<td width="200"><strong>Datum</strong></td>
-		<td>{{ Form::text('place_date', Input::old('place_date'),  array('class' => 'form-control')) }}</td>
+    <tr>
+		<td width="200"><strong>Sortierung</strong></td>
+		<td>{{ Form::text('order', Input::old('order'),  array('class' => 'form-control')) }}</td>
 	</tr>
 </table>
