@@ -8,7 +8,7 @@ class Counterpick extends \Eloquent {
 	];
 
 	// Don't forget to fill this array
-	protected $fillable = [];
+	protected $guarded = array('id');
 	
 	public function champion()
     {

@@ -76,7 +76,10 @@ class AdminUsersController extends \BaseController {
 			   }
 			}
 
-			$user->fill($input);
+			$user->update($input);
+			if(Input::get('password') != "") {
+				$user->password = Hash::make(Input::get('password'));
+			}
 			$user->save();
 			
 	        return Redirect::to('/admin/users/edit/'.Input::get('id'))->with("success", "User updated");	

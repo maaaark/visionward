@@ -97,16 +97,11 @@ class CounterpicksController extends \BaseController {
 	public function update($id)
 	{
 		$counterpick = Counterpick::findOrFail($id);
-
 		$validator = Validator::make($data = Input::all(), Counterpick::$rules);
-
-		if ($validator->fails())
-		{
+		if ($validator->fails()){
 			return Redirect::back()->withErrors($validator)->withInput();
 		}
-
 		$counterpick->update($data);
-
 		return Redirect::route('counterpicks.index');
 	}
 
