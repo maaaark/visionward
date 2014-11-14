@@ -17,7 +17,19 @@
 			<td>{{ Form::text('last_name', Input::old('last_name'),  array('class' => 'form-control')) }}</td>
 		</tr>
 		<tr>
-			<td width="200"><strong>Password</strong></td>
+			<td width="200"><strong>Aufgaben</strong></td>
+			<td>{{ Form::text('task', Input::old('task'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
+			<td width="200"><strong>Bild</strong></td>
+			<td>{{ Form::text('image', Input::old('image'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
+			<td width="200"><strong>Beschreibung</strong></td>
+			<td>{{ Form::textarea('description', Input::old('description'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
+			<td width="200"><strong>Neues Password</strong></td>
 			<td>{{ Form::password('password', array('class' => 'form-control')) }}</td>
 		</tr>
 		<tr>
