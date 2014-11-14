@@ -518,7 +518,9 @@ h2.mobile_page_title {
 .clear {
 	clear: both;
 }
-
+.item {
+	background-position: center !important;
+}
 
 /* Fix Navigation at small size */
 @media (max-width: 1196px) {
