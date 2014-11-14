@@ -521,7 +521,15 @@ h2.mobile_page_title {
 .item {
 	background-position: center !important;
 }
-
+.games_won {
+	color: #287215;
+}
+.games_loss {
+	color: #ff0000;
+}
+.kda {
+	font-size: 11px;
+}
 /* Fix Navigation at small size */
 @media (max-width: 1196px) {
 	.navigation ul li a {
