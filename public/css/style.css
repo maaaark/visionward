@@ -527,6 +527,12 @@ h2.mobile_page_title {
 .games_loss {
 	color: #ff0000;
 }
+.black_link {
+	color: #333;
+}
+.profile_season_stats {
+	text-align: center;
+}
 .kda {
 	font-size: 11px;
 }

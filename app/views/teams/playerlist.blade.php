@@ -1,8 +1,20 @@
 @if($team->id == 57)
 <table class="table table-striped">
-	@foreach($team->members as $member)
+	@foreach($team->players as $member)
 	<tr>
-		<td width="120"><strong>{{ $member->role }}</strong></td>
+		<td width="120"><strong>
+			@if($member->role == "top")
+			Top-Lane
+			@elseif($member->role == "jungle")
+			Jungler
+			@elseif($member->role == "mid")
+			Mid-Lane
+			@elseif($member->role == "adcarry")
+			AD-Carry
+			@elseif($member->role == "support")
+			Supporter
+			@endif
+		</strong></td>
 		<td><img src="/img/flags/{{ $member->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $member->id }}/{{ $member->nickname }}" class="player_tooltip" rel="{{ $member->id }}">{{ $member->nickname }}</a></td>
 	</tr>	
 	@endforeach				

@@ -22,7 +22,16 @@
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
 				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />
 			</td>
-			<td width="400" valign="top">
+			<td valign="top" width="150">
+				<div class="profile_season_stats">
+					<table style="margin-bottom: 0;text-align: center;" width="150">
+						<tr>
+							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td valign="top">
 				<table class="table table-striped" stlye="width: 100%;">
 					<tr>
 						<td width="150" class="attribute"><strong>Normale Siege</strong></td>
@@ -46,15 +55,7 @@
 						</tr>
 				</table>
 			</td>
-			<td valign="top">
-				<div class="profile_season_stats">
-					<table class="table table-striped" style="margin-bottom: 0;text-align: center">
-						<tr>
-							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="100" class="img-circle" /></br>{{$summoner->solo_tier}} {{$summoner->solo_division}}</td>
-						</tr>
-					</table>
-				</div>
-			</td>
+			
 		</tr>
 	</table>
 
