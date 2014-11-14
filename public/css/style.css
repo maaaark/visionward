@@ -518,8 +518,24 @@ h2.mobile_page_title {
 .clear {
 	clear: both;
 }
-
-
+.item {
+	background-position: center !important;
+}
+.games_won {
+	color: #287215;
+}
+.games_loss {
+	color: #ff0000;
+}
+.black_link {
+	color: #333;
+}
+.profile_season_stats {
+	text-align: center;
+}
+.kda {
+	font-size: 11px;
+}
 /* Fix Navigation at small size */
 @media (max-width: 1196px) {
 	.navigation ul li a {

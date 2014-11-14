@@ -63,7 +63,8 @@ class SummonersController extends \BaseController {
 				$summoner = new Summoner;
 				$summoner->refresh_summoner($region, $clean_summoner_name);
 			}
-			return View::make('summoners.show', compact('summoner'));			
+			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->limit(10)->get();
+			return View::make('summoners.show', compact('summoner', 'games'));			
 	}		
 	
 

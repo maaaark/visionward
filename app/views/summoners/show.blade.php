@@ -1,54 +1,67 @@
-@extends('layouts.small_header')
+@extends('layouts.summoners')
 @section('title', $summoner->name)
-@section('subtitle', $summoner->region)
+@if($summoner->region == "euw")
+	<?php $region = "EU-West"; ?>
+@elseif($summoner->region == "na")
+	<?php $region = "Nordamerika"; ?>
+@elseif($summoner->region == "tr")
+	<?php $region = "Türkei"; ?>
+@elseif($summoner->region == "eune")
+	<?php $region = "Europa Nord-Ost"; ?>
+@elseif($summoner->region == "KR")
+	<?php $region = "Korea"; ?>
+@elseif($summoner->region == "ru")
+	<?php $region = "Russland"; ?>
+@endif
+@section('subtitle', $region)
 @section('header_image',"summoner_header.jpg")
 @section('content')
-
 
 	<table width="100%" class="profile">
 		<tr>
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
-				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" /></br> {{$summoner->name}}<br/>
+				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />
 			</td>
-			<td width="400" valign="top">
+			<td valign="top" width="150">
+				<div class="profile_season_stats">
+					<table style="margin-bottom: 0;text-align: center;" width="150">
+						<tr>
+							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong></td>
+						</tr>
+					</table>
+				</div>
+			</td>
+			<td valign="top">
 				<table class="table table-striped" stlye="width: 100%;">
 					<tr>
-						<td width="130" class="attribute">Normale Siege:</td>
-						<td width="130" class="attribute">{{ $summoner->unranked_wins}}</td>
+						<td width="150" class="attribute"><strong>Normale Siege</strong></td>
+						<td class="attribute">{{ $summoner->unranked_wins}} Siege</td>
 					</tr>
 					<tr>
-						<td width="130" class="attribute">Gewertete Spiele Saison 4</td>
-						<td width="130" class="attribute">{{ $summoner->ranked_wins+$summoner->ranked_losses}}</td>
+						<td width="100" class="attribute"><strong>Gewertete Spiele</strong></td>
+						<td class="attribute">{{ $summoner->ranked_wins+$summoner->ranked_losses}} Spiele</td>
 					</tr>
 					<tr>
-						<td width="130" class="attribute">Gewertete</br> Siege / Niederlagen</td>
-						<td width="130" class="attribute"></br>
+						<td width="100" class="attribute"><strong>Gewertete</br> Siege / Niederlagen</strong></td>
+						<td class="attribute">
 						@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
-						{{ $summoner->ranked_wins}} / {{ $summoner->ranked_losses}} 
+						{{ $summoner->ranked_wins}} gewonnen / {{ $summoner->ranked_losses}} verloren<br/> 
 						@if($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100>=50)
-							(<font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)</td>
+							<span class="kda"><font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
 						@else
-							(<font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}%</font> Siegesrate)</td>
+							<span class="kda"><font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
 						@endif
 						@endif
 						</tr>
 				</table>
 			</td>
-			<td valign="top">
-				<div class="profile_season_stats">
-					<table class="table table-striped" style="margin-bottom: 0;text-align: center">
-						<tr>
-							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="100" class="img-circle" /></br>{{$summoner->solo_tier}} {{$summoner->solo_division}}</td>
-						</tr>
-					</table>
-				</div>
-			</td>
+			
 		</tr>
 	</table>
 
-<h3>Letzten Spiele</h3></br>
+<h3 class="headline">Letzten Spiele</h3>
 		<table class="table">
-			@foreach($summoner->games as $game)
+			@foreach($games as $game)
 				<?php 
 					if($game["win"]==true) {
 						$class = "success";
@@ -178,6 +191,7 @@
 		</table>
 	
 <br/>
-	
+<h2 class="headline">Kommentare zu {{ $summoner->name }}</h2>
+@include('layouts.disqus')
 @stop
 
