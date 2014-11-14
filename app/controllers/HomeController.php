@@ -10,7 +10,8 @@ class HomeController extends BaseController {
 	
 	public function team()
 	{
-		return View::make('pages.team');
+		$users = User::all();
+		return View::make('pages.team', compact('users'));
 	}
 	
 	public function impressum()
