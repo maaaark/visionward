@@ -24,7 +24,7 @@
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
-			<img src="/img/worlds.jpg" width="100%" />
+			<img src="<?=Croppa::url('/img/worlds.jpg', 360, null)?>" width="100%" />
 		</div>
 	</div>
 	
@@ -96,9 +96,9 @@
 			<table class="table table-striped visionward_font">
 			@foreach($global_matches as $match)
 				<tr>
-					<td width="170"><a href="/matches/{{ $match->id }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" />&nbsp;&nbsp;{{ $match->team->name }}</a></td>
+					<td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team->name }}</a></td>
 					<td width="20"><a href="/matches/{{ $match->id }}">vs.</a></td>
-					<td width="170"><a href="/matches/{{ $match->id }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" height="20" />&nbsp;&nbsp;{{ $match->team2->name }}</a></td>
+					<td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team2->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team2->name }}</a></td>
 				</tr>
 			@endforeach
 				<tr>
@@ -116,8 +116,8 @@
 			@foreach($global_transfers as $transfer)
 				<tr>
 					<td width="120"><a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a></td>
-					<td width="120" class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->slug }}"><img src="/img/teams/logos/{{ $transfer->oldteam->logo }}" height="20" /><span class="hidden-xs hidden-sm">&nbsp;&nbsp;{{ str_limit($transfer->oldteam->shorthandle, $limit = 10, $end = '...') }}</span></td>
-					<td class="new_team" width="120"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->slug }}"><img src="/img/teams/logos/{{ $transfer->team->logo }}" height="20" /><span class="hidden-xs hidden-sm">&nbsp;&nbsp;{{ str_limit($transfer->team->shorthandle, $limit = 10, $end = '...') }}</span></a></td>
+					<td width="120" class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->slug }}"><img src="<?=Croppa::url('/img/teams/logos/'.$transfer->oldteam->logo, 20, null)?>" height="20" /><span class="hidden-xs hidden-sm">&nbsp;&nbsp;{{ str_limit($transfer->oldteam->shorthandle, $limit = 10, $end = '...') }}</span></td>
+					<td class="new_team" width="120"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->slug }}"><img src="<?=Croppa::url('/img/teams/logos/'.$transfer->team->logo, 20, null)?>" height="20" /><span class="hidden-xs hidden-sm">&nbsp;&nbsp;{{ str_limit($transfer->team->shorthandle, $limit = 10, $end = '...') }}</span></a></td>
 				</tr>
 			@endforeach
 				<tr>
