@@ -58,7 +58,7 @@ class TeamsController extends \BaseController {
 		$support = $team->getRole("support");
 		$coach = $team->getRole("coach");
 		$sub = $team->getRole("sub");
-		$placements = Placement::where("team_id", "=", $team->id)->orderBy("order", "ASC");
+		$placements = Placement::where("team_id", "=", $team->id)->orderBy("order", "ASC")->get();
 		return View::make('teams.show', compact('team', 'top', 'jungle', 'mid', 'adc', 'support', 'sub', 'coach', 'placements'));
 	}
 

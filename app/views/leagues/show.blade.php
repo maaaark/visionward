@@ -7,7 +7,7 @@
 	<table width="100%">
 		<tr>
 			<td width="220" valign="top">
-				<img src="/img/leagues/{{ $league->logo }}" width="200" />
+				<img src="/img/teams/{{ $league->logo }}" width="200" />
 			</td>
 			<td>
 				<br/>
