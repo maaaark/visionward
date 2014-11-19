@@ -167,7 +167,9 @@ h2.headline_no_border {
 	margin-bottom: 0px;
 	border-bottom: 0px solid #e7e7e7;
 }
-
+.team_member {
+	height: 550px;
+}
 .sidebar .block {
 	margin-bottom: 50px;
 }
