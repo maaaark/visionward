@@ -20,7 +20,7 @@
 	<table class="table table-striped">
 		@foreach($team->leagues as $league)
 		<tr>
-			<td><img src="/img/leagues/{{ $league->logo }}" height="20" />&nbsp;&nbsp;<a href="/leagues/{{ $league->id }}/{{ $league->slug }}">{{ $league->name }}</a></td>
+			<td><img src="/img/teams/{{ $league->logo }}" height="20" />&nbsp;&nbsp;<a href="/leagues/{{ $league->id }}/{{ $league->slug }}">{{ $league->name }}</a></td>
 		</tr>
 		@endforeach
 	</table>
@@ -35,8 +35,8 @@
         @foreach($placements as $placement)
 		<tr>
 			<td width="75"><strong>Platz {{ $placement->place }}</strong></td>
-			<td width="25"><img src="/img/teams/{{ $placement->league->logo }}" height="20" /></td>
-			<td>{{ $placement->league->name }}</td>
+			<td width="25"><a href="/leagues/{{ $placement->league->id }}/{{ $placement->league->slug }}"><img src="/img/teams/{{ $placement->league->logo }}" height="20" /></a></td>
+			<td><a href="/leagues/{{ $placement->league->id }}/{{ $placement->league->slug }}">{{ $placement->league->name }}</a></td>
 		</tr>
         @endforeach
 	</table>
