@@ -10,7 +10,7 @@ class HomeController extends BaseController {
 	
 	public function team()
 	{
-		$users = User::all();
+		$users = User::orderBy("order", "ASC")->get();
 		return View::make('pages.team', compact('users'));
 	}
 	
