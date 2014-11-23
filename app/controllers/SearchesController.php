@@ -126,14 +126,14 @@ class SearchesController extends \BaseController {
 					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
 					if(!$summoner) {
 						$summoner = new Summoner;
-						$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
-						$summoner->name = $obj[$clean_summoner_name]["name"];
-						$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
-						$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
-						$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
-						$summoner->region = $input['server_region'];
-						$summoner->save();
 					}
+					$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
+					$summoner->name = $obj[$clean_summoner_name]["name"];
+					$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
+					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
+					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
+					$summoner->region = $input['server_region'];
+					$summoner->save();
 				}
 			
 			$summoner2 = Summoner::where("name","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
