@@ -32,7 +32,7 @@
 						<table class="news_small">
 							<tr class="{{ $class }}">
 								<td width="40"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/img/league_icon.jpg" style="margin-left: 10px;" /></a></td>
-								<td width="90"><span class="meta">{{ $post->created_at->diffForHumans() }}&nbsp;&nbsp;</span></td>
+								<td width="90"><span class="meta">{{ Helpers::diffForHumans($post->created_at) }}&nbsp;&nbsp;</span></td>
 								<td width="80"><span class="comments_count"><a href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread">0 Kommentare</a></span></td>
 								<td><a class="small_headline" href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></td>
 							</tr>
