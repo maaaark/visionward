@@ -383,20 +383,20 @@ class Summoner extends \Eloquent {
 						$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("champion_id","=", $champstats['id'])->where("season","=", 4)->first();
 						if(!$stats) {
 							$stats = new Seasonchampstat;
-						}else{
-							$stats->summoner_id = $summoner_id;
-							$stats->champion_id = $champstats['id'];
-							$stats->wins = $champstats['stats']['totalSessionsWon'];
-							$stats->losses = $champstats['stats']['totalSessionsLost'];
-							$stats->kills = $champstats['stats']['totalChampionKills'];
-							$stats->deaths = $champstats['stats']['totalDeathsPerSession'];
-							$stats->assists = $champstats['stats']['totalAssists'];
-							$stats->creeps = $champstats['stats']['totalMinionKills'];
-							$stats->games = $champstats['stats']['totalSessionsPlayed'];
-							$stats->season = 4;
-							$stats->touch();
-							$stats->save();
 						}
+						$stats->summoner_id = $summoner_id;
+						$stats->champion_id = $champstats['id'];
+						$stats->wins = $champstats['stats']['totalSessionsWon'];
+						$stats->losses = $champstats['stats']['totalSessionsLost'];
+						$stats->kills = $champstats['stats']['totalChampionKills'];
+						$stats->deaths = $champstats['stats']['totalDeathsPerSession'];
+						$stats->assists = $champstats['stats']['totalAssists'];
+						$stats->creeps = $champstats['stats']['totalMinionKills'];
+						$stats->games = $champstats['stats']['totalSessionsPlayed'];
+						$stats->season = 4;
+						$stats->touch();
+						$stats->save();
+						
 					}elseif($champstats['id'] == 0){
 						$rankedstats = Seasonrankedstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
 						if(!$rankedstats){
