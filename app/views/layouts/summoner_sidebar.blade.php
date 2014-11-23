@@ -1,3 +1,4 @@
+<a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh" class="red">Update Summoner</a>
 <h2 class="headline_no_border">Saison 4 Champions</h2>
 <table class="table table-striped">
 	@foreach($stats as $stat)
