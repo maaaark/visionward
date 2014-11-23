@@ -57,6 +57,10 @@
 			</td>
 			
 		</tr>
+		<tr align="right">
+		<td></td><td></td><td>
+			<a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh" class="red">Update Summoner</a></td>
+		</tr>
 	</table>
 
 <h3 class="headline">Letzten Spiele</h3>
