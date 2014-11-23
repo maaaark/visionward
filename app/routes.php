@@ -32,6 +32,7 @@ Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 
 // Summoner
 Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
+Route::get('/summoner/{region}/{summoner_name}/refresh', 'SummonersController@refresh_button');
 
 // Skill
 Route::get('/skills/{id}', 'ChampionsController@skill');

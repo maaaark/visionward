@@ -59,15 +59,38 @@ class SummonersController extends \BaseController {
 		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
 			if($summoner) {
 				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
 			}else{
 				$summoner = new Summoner;
 				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
 			}
-			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->limit(10)->get();
-			return View::make('summoners.show', compact('summoner', 'games'));			
+			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->orderBy('games', 'desc')->take(5)->get();
+			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->first();
+			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->orderBy('createDate', 'desc')->take(10)->get();
+			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));			
 	}		
 	
-
+	public function refresh_button($region, $summoner_name)
+	{
+		//Input::get('summoner_name')
+		$clean_summoner_name = str_replace(" ", "", $summoner_name);
+		$clean_summoner_name = strtolower($clean_summoner_name);
+		$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
+		
+		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
+			if($summoner) {
+				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 1);
+			}else{
+				$summoner = new Summoner;
+				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 1);
+			}
+			return Redirect::back();		
+	}		
+	
+	
 	/**
 	 * Show the form for editing the specified summoner.
 	 *

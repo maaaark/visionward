@@ -1,4 +1,4 @@
-@extends('layouts.summoners')
+@extends('layouts.summoners',  array('stats' => $stats, 'rankedstats' => $rankedstats))
 @section('title', $summoner->name)
 @if($summoner->region == "euw")
 	<?php $region = "EU-West"; ?>
@@ -56,6 +56,10 @@
 				</table>
 			</td>
 			
+		</tr>
+		<tr align="right">
+		<td></td><td></td><td>
+			<a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh" class="red">Update Summoner</a></td>
 		</tr>
 	</table>
 

@@ -16,6 +16,17 @@ class Summoner extends \Eloquent {
         return $this->hasMany('Game', 'summoner_id', 'summoner_id');
     }
 	
+	public function seasonchampstats()
+    {
+        return $this->hasMany('Seasonchampstat')
+			->order_by('games', 'desc');
+    }
+	
+	public function seasonrankedstats()
+    {
+        return $this->belongsTo('Seasonrankedstat');
+    }
+	
 	public function refresh_games()
 	{
 				$api_key = Config::get('api.key');
@@ -270,6 +281,7 @@ class Summoner extends \Eloquent {
 			
 			
 	}
+	
 	public function refresh_summoner($region, $clean_summoner_name){
 		$api_key = Config::get('api.key');
 		$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
@@ -349,12 +361,75 @@ class Summoner extends \Eloquent {
 						}
 					}
 				}
-				$summoner->save();
-				
 				$summoner->refresh_games();
+				$summoner->save();
 				return $summoner;
-				
 			}		
-		
 	}
+	
+	public function refresh_seasonchampstats($region, $summoner_id, $update){
+		$api_key = Config::get('api.key');
+		$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(172800))->first();
+		if($stats or $update == 1){
+			$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner_id."/ranked?season=SEASON4&api_key=".$api_key;
+			$json = @file_get_contents($summoner_stats);
+			if($json === FALSE) {
+				return $json;
+				//return Redirect::to('/')->withInput()->with('error', "API Fehler");
+			} else {
+				$obj = json_decode($json, true);
+				foreach($obj['champions'] as $champstats){
+					if($champstats['id'] != 0){
+						$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("champion_id","=", $champstats['id'])->where("season","=", 4)->first();
+						if(!$stats) {
+							$stats = new Seasonchampstat;
+						}else{
+							$stats->summoner_id = $summoner_id;
+							$stats->champion_id = $champstats['id'];
+							$stats->wins = $champstats['stats']['totalSessionsWon'];
+							$stats->losses = $champstats['stats']['totalSessionsLost'];
+							$stats->kills = $champstats['stats']['totalChampionKills'];
+							$stats->deaths = $champstats['stats']['totalDeathsPerSession'];
+							$stats->assists = $champstats['stats']['totalAssists'];
+							$stats->creeps = $champstats['stats']['totalMinionKills'];
+							$stats->games = $champstats['stats']['totalSessionsPlayed'];
+							$stats->season = 4;
+							$stats->touch();
+							$stats->save();
+						}
+					}elseif($champstats['id'] == 0){
+						$rankedstats = Seasonrankedstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
+						if(!$rankedstats){
+							$rankedstats = new Seasonrankedstat;
+						}
+						$rankedstats->summoner_id = $summoner_id;
+						$rankedstats->wins = $champstats['stats']['totalSessionsWon'];
+						$rankedstats->losses = $champstats['stats']['totalSessionsLost'];
+						$rankedstats->kills = $champstats['stats']['totalChampionKills'];
+						$rankedstats->deaths = $champstats['stats']['totalDeathsPerSession'];
+						$rankedstats->assists = $champstats['stats']['totalAssists'];
+						$rankedstats->creeps = $champstats['stats']['totalMinionKills'];
+						$rankedstats->games = $champstats['stats']['totalSessionsPlayed'];
+						$rankedstats->doublekills = $champstats['stats']['totalDoubleKills'];
+						$rankedstats->tripplekills = $champstats['stats']['totalTripleKills'];
+						$rankedstats->quadrakills = $champstats['stats']['totalQuadraKills'];
+						$rankedstats->pentakills = $champstats['stats']['totalPentaKills'];
+						$rankedstats->maxkills = $champstats['stats']['maxChampionsKilled'];
+						$rankedstats->maxdeaths = $champstats['stats']['maxNumDeaths'];
+						$rankedstats->neutralcreeps = $champstats['stats']['totalNeutralMinionsKilled'];
+						$rankedstats->gold = $champstats['stats']['totalGoldEarned'];
+						$rankedstats->damagetaken = $champstats['stats']['totalDamageTaken'];
+						$rankedstats->damage = $champstats['stats']['totalDamageDealt'];
+						$rankedstats->touch();
+						$rankedstats->season = 4;
+						$rankedstats->save();
+					}
+				unset($stats);
+				}
+				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->orderBy('games', 'desc')->get();
+				return $stats;
+			}
+		}
+	}
+
 }
