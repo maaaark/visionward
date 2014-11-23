@@ -1,4 +1,4 @@
-@extends('layouts.summoners')
+@extends('layouts.summoners',  array('stats' => $stats, 'rankedstats' => $rankedstats))
 @section('title', $summoner->name)
 @if($summoner->region == "euw")
 	<?php $region = "EU-West"; ?>

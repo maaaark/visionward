@@ -59,12 +59,16 @@ class SummonersController extends \BaseController {
 		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
 			if($summoner) {
 				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id);
 			}else{
 				$summoner = new Summoner;
 				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id);
 			}
-			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->limit(10)->get();
-			return View::make('summoners.show', compact('summoner', 'games'));			
+			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->orderBy('games', 'desc')->take(5)->get();
+			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->first();
+			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->orderBy('createDate', 'desc')->take(10)->get();
+			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));			
 	}		
 	
 

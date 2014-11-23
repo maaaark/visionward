@@ -9,6 +9,11 @@ class Champion extends \Eloquent {
         return $this->hasMany('Skin');
     }
 	
+	public function seasonchampstats()
+    {
+        return $this->hasMany('seasonchampstat');
+    }
+	
 	public function skills()
     {
         return $this->hasMany('Skill');
