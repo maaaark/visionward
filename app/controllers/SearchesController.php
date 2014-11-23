@@ -139,9 +139,11 @@ class SearchesController extends \BaseController {
 			$summoner2 = Summoner::where("name","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
 			if($summoner2) {
 				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
+				$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
 			}else{
 				$summoner2 = new Summoner;
 				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
+				$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
 			}
 					$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
 		}

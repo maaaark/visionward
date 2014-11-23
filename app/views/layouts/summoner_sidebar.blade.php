@@ -2,7 +2,7 @@
 <table class="table table-striped">
 	@foreach($stats as $stat)
 	<tr>
-		<td valign="top" width="65"><a href="/champions/{{ $stat->champion->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $stat->champion->name }}.png" class="img-circle" width="50" /></a></td>
+		<td valign="top" width="65"><a href="/champions/{{ $stat->champion->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $stat->champion->key }}.png" class="img-circle" width="50" /></a></td>
 		<td valign="top">
 			<strong><a class="black_link" href="/champions/{{ $stat->champion->name }}">{{ $stat->champion->name }}</a></strong>&nbsp;&nbsp;&nbsp;<span class="kda"><span class="games_won">{{ $stat->wins }}</span>/<span class="games_loss">{{ $stat->losses }}</span> 
 			(@if($stat->wins != 0 && $stat->losses != 0)
