@@ -58,7 +58,7 @@
 			@yield('content')
 		  </div>
 		  <div class="col-xs-12 col-md-4">
-			@include('layouts.summoner_sidebar',  array('stats' => $stats, 'rankedstats' => $rankedstats))
+			@include('layouts.summoner_sidebar',  array('stats' => $stats, 'rankedstats' => $rankedstats, 'summoner' => $summoner))
 		  </div>
 		</div>
 	</div>

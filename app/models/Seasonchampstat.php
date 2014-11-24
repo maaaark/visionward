@@ -16,6 +16,6 @@ class Seasonchampstat extends \Eloquent {
 	
 	public function summoner()
     {
-        return $this->belongsTo('Summoner');
+        return $this->belongsTo('Summoner', 'summoner_id','summoner_id');
     }
 }
