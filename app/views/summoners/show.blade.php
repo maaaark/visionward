@@ -1,4 +1,4 @@
-@extends('layouts.summoners',  array('stats' => $stats, 'rankedstats' => $rankedstats))
+@extends('layouts.summoners',  array('stats' => $stats, 'rankedstats' => $rankedstats, 'summoner' => $summoner))
 @section('title', $summoner->name)
 @if($summoner->region == "euw")
 	<?php $region = "EU-West"; ?>
@@ -27,7 +27,7 @@
 				<div class="profile_season_stats">
 					<table style="margin-bottom: 0;text-align: center;" width="150">
 						<tr>
-							<td colspan="3"><img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong></td>
+							<td colspan="3">@if($summoner->summonerLevel ==30)<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong>@endif</td>
 						</tr>
 					</table>
 				</div>

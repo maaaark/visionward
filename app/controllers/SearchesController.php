@@ -134,18 +134,19 @@ class SearchesController extends \BaseController {
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $input['server_region'];
 					$summoner->save();
-				}
+				
 			
-			$summoner2 = Summoner::where("name","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
-			if($summoner2) {
-				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
-				$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
-			}else{
-				$summoner2 = new Summoner;
-				$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
-				$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
-			}
+					$summoner2 = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
+					if($summoner2) {
+						$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
+						$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
+					}else{
+						$summoner2 = new Summoner;
+						$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
+						$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
+					}
 					$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
+				}
 		}
 		//var_dump($input['search']);die("qwe");
 		$searchString = $input['search'];

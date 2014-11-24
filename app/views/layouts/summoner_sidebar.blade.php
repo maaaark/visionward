@@ -1,6 +1,8 @@
 <a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh"><div class="updater_summoner">Update Summoner</div></a>
+@if($summoner->summonerLevel == 30)
 <h2 class="headline_no_border">Saison 4 Champions</h2>
 <table class="table table-striped">
+	
 	@foreach($stats as $stat)
 	<tr>
 		<td valign="top" width="65"><a href="/champions/{{ $stat->champion->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $stat->champion->key }}.png" class="img-circle" width="50" /></a></td>
@@ -83,3 +85,4 @@
 		<td valign="top">{{number_format($rankedstats->pentakills , 0 , '.' , '.' )}}</td>
 	</tr>
 </table>
+@endif
