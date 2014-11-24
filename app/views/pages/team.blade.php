@@ -10,7 +10,7 @@
 			<div style="text-align: center;">
 				<img src="/img/team/{{ $user->image }}" class="img-circle" width="150" height="150" /><br/><br/>
 			</div>
-			<strong>Summoner: </strong>{{ $user->username }}<br/>
+			<strong>Summoner: </strong><a href="/summoner/euw/{{ $user->username }}">{{ $user->username }}</a><br/>
 			<strong>Aufgabe: </strong>{{ $user->task }}<br/>
 			<br/>
 			{{ $user->description }}

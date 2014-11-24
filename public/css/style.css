@@ -26,6 +26,33 @@ a.button:hover {
 	font-size: 22px;
 	padding-top: 1px;
 }
+.last_games tr {
+	border-bottom: 5px solid #fff;
+	font-size: 12px;
+}
+.win_header {
+	background: #50B350;
+	height: 10px;
+	line-height: 10px;
+	font-size: 12px;
+}
+.game_details {
+	font-size: 12px;
+	padding-top: 0px !important;
+	margin-top: 0px !important;
+}
+.updater_summoner {
+	background: #e84c3d;
+	color: #fff;
+	font-weight: bold;
+	text-align: center;
+	width: 360px !important;
+	padding: 10px;
+	margin-bottom: 25px;
+}
+.loss_header {
+	background: #ED8888;
+}
 .slider {
 	margin-top: 80px;
 }
