@@ -20,6 +20,7 @@
 	<table width="100%" class="profile">
 		<tr>
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
+				<br/>
 				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />
 			</td>
 			<td valign="top" width="150">
@@ -59,15 +60,37 @@
 	</table>
 
 <h3 class="headline">Letzten Spiele</h3>
-		<table class="table">
+		<table class="table last_games">
 			@foreach($games as $game)
 				<?php 
 					if($game["win"]==true) {
 						$class = "success";
+						$header_class = "win_header";
 					} else {
 						$class = "danger";
+						$header_class = "loss_header";
 					}
 				?>
+				<tr style="border-bottom: 0 !important;">
+					<td class="<?php echo $header_class; ?>" colspan="6">
+						@if($game->subType == "CAP_5x5")
+							Team Builder
+						@elseif($game->subType == "NORMAL")
+							Normales Spiel
+						@elseif($game->subType == "ARAM_UNRANKED_5x5")
+							ARAM
+						@elseif($game->subType == "RANKED_TEAM_5x5")
+							Ranked Team
+						@elseif($game->subType == "RANKED_TEAM_5x5")
+							Ranked Team
+						@elseif($game->subType == "RANKED_SOLO_5x5")
+							Solo Ranked
+						@elseif($game->subType == "RANKED_TEAM_3x3")
+							Ranked 3er Team
+						@endif
+						
+						 - {{ date("d.m.Y H:i", $game->createDate/1000) }} Uhr</td>
+				</tr>
 				<tr class="<?php echo $class; ?>">
 					<td>
 						<a href="/champions/{{ $game->champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $game->champion->key }}.png" class="img-circle" width="35" /></a>
@@ -81,7 +104,6 @@
 					@endif
 					</td>
 					<td class="game_kda">
-						{{ $game->subType }}<br/>
 						{{ $game->minionsKilled }} CS ( {{ $game->neutralMinionsKilled }} neutrale )
 					</td>
 					<td>
@@ -99,7 +121,7 @@
 				</tr>
 				<tr class="game_detail_toggle game_details-{{ $game->id }}" >
 					<td colspan="6" class="game_details">
-						<table class="table">
+						<table class="table table-striped">
 							@if($game->incomplete == true)
 							<tr>
 								<td colspan="6"><span class="incomplete">This Match Data is incomplete! The Riot API doesn't provide all informations for this game.</span></td>
@@ -168,20 +190,12 @@
 								<td>{{ $game->firstTower }}</td>
 							</tr>
 							<tr>
-								<td><strong>Erster Drache (Team)</strong></td>
-								<td>{{ $game->firstDragon }}</td>
-								<td><strong>Erster Baron (Team)</strong></td>
-								<td>{{ $game->firstBaron }}</td>
 								<td><strong>Erstes Blut (Team)</strong></td>
 								<td>{{ $game->firstBlood }}</td>
-							</tr>
-							<tr>
 								<td><strong>Drachen (Team)</strong></td>
 								<td>{{ $game->dragonKills }}</td>
 								<td><strong>Barons (Team)</strong></td>
 								<td>{{ $game->baronKills }}</td>
-								<td><strong></strong></td>
-								<td></td>
 							</tr>
 						</table>
 					</td>
