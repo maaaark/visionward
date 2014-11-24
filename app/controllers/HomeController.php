@@ -18,6 +18,10 @@ class HomeController extends BaseController {
 	{
 		return View::make('pages.legal');
 	}
+	public function datenschutz()
+	{
+		return View::make('pages.datenschutz');
+	}
 	
 	public function feedback()
 	{
