@@ -26,6 +26,10 @@ a.button:hover {
 	font-size: 22px;
 	padding-top: 1px;
 }
+.autor_box {
+	background: #f9f9f9;
+	padding: 10px;
+}
 .last_games tr {
 	border-bottom: 5px solid #fff;
 	font-size: 12px;
