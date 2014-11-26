@@ -21,15 +21,9 @@ class Helpers {
 		} else if ($timediff >= $hours && $timediff < $days) {
 			$outputTime = round($timediff / $days);
 			$html = "vor " . $outputTime . " Stunden";
-		} else if ($timediff >= $days && $timediff < $oneWeek) {
+		} else if ($timediff >= $days && $timediff < $normalDate) {
 			$outputTime = round($timediff / $days);
 			$html = "vor " . $outputTime . " Tagen";
-		} else if ($timediff >= $days && $timediff < $oneWeek) {
-			$outputTime = $timediff / $oneWeek;
-			$html = "vor einer Woche";
-		} else if ($timediff >= $oneWeek && $timediff < $normalDate) {
-			$outputTime = $timediff / $twoWeek;
-			$html = "vor 2 Wochen";
 		} else {
 			$html = date("d.m.Y", $created_timestamp);
 		}

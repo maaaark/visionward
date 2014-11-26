@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('title', "Admin Login")
 @section('content')
 

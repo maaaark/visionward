@@ -40,39 +40,44 @@
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <!-- Wrapper for slides -->
 		  <div class="carousel-inner">
-		  
-		  <div class="item active">
-			  <div class="col-md-12 header item active container" style="background: url('/img/header/reaper_soraka.jpg');">
-				<div class="container slider">
-					<span class="headline_background">
-						<h2 class="page_title">Reaper Soraka</h2>
-						<div class="header_subline">Der neue Skin ist nun verfügbar!</div>
-					</span>
+		  <?php 
+		  $i = 0;
+		  ?>
+		  @foreach ($slider as $sliderSingle)
+			@if ($i === 0)
+				<div class="item active">
+			@else
+				<div class="item">
+			@endif
+				  <div class="col-md-12 header item active container" style="background: url('/uploads/sliders/{{ $sliderSingle->destination }}/{{ $sliderSingle->filename }}');">
+					<div class="container slider">
+						<span class="headline_background">
+						@if($sliderSingle->url)
+						<?php
+							$urlPart = substr($sliderSingle->url, 0, 7);
+							//var_dump($urlPart);
+							
+						?>
+								@if($urlPart === "http://")
+									<a href="{{ $sliderSingle->url }}" title="{{ $sliderSingle->headline }}" target="_blank">
+								@else
+									<a href="{{ $sliderSingle->url }}" title="{{ $sliderSingle->headline }}">
+								@endif
+								<h2 class="page_title">{{ $sliderSingle->headline }}</h2>
+								<div class="header_subline">{{ $sliderSingle->subheadline }}</div>
+							</a>
+							
+						@else
+							<h2 class="page_title">{{ $sliderSingle->headline }}</h2>
+							<div class="header_subline">{{ $sliderSingle->subheadline }}</div>
+						@endif
+						
+						</span>
+					</div>
+				  </div>
 				</div>
-			  </div>
-			</div>
-			
-			<div class="item">
-			  <div class="col-md-12 header item active container" style="background: url('/img/header/soraka_full.jpg');">
-				<div class="container slider">
-					<span class="headline_background">
-						<h2 class="page_title">Reaper Soraka</h2>
-						<div class="header_subline">Der neue Skin ist nun verfügbar!</div>
-					</span>
-				</div>
-			  </div>
-			</div>
-
-			<div class="item">
-			  <div class="col-md-12 header item active container" style="background: url(/img/header/@yield('header_image', 'header.jpg'));">
-				<div class="container slider">
-					<span class="headline_background">
-						<h2 class="page_title">@yield('title')</h2>
-						<div class="header_subline">Flashignite.com geht live!</div>
-					</span>
-				</div>
-			  </div>
-			</div>
+				<?php $i++; ?>
+		  @endforeach
 			
 		</div> <!-- end carousel inner -->
 	  

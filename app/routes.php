@@ -115,6 +115,14 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::get('/settings/edit/{id}', 'AdminSettingsController@edit');
 	Route::post('/settings/update', 'AdminSettingsController@update');
 	
+	// Sliders
+	Route::get('/sliders', 'AdminSlidersController@index');
+	Route::get('/sliders/create', 'AdminSlidersController@create');
+	Route::get('/sliders/delete/{id}', 'AdminSlidersController@destroy');
+	Route::get('/sliders/edit/{id}', 'AdminSlidersController@edit');
+	Route::post('/sliders/update', 'AdminSlidersController@update');
+	Route::post('/sliders/save', 'AdminSlidersController@save');
+	
 	
     Route::get('/', 'AdminController@index');
 	Route::get('logout', 'AdminController@logout');
