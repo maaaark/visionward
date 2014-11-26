@@ -163,8 +163,7 @@
 				</td>
 			</tr>
 		</table>
-		<br/>
-		
+
 		</div>
 	</div>
 	@foreach($match->children as $child)
