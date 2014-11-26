@@ -95,11 +95,13 @@
 		<div class="content">
 			<table class="table table-striped visionward_font">
 			@foreach($global_matches as $match)
+				@if($match->parent_game == 0)
 				<tr>
 					<td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team->name }}</a></td>
 					<td width="20"><a href="/matches/{{ $match->id }}">vs.</a></td>
 					<td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team2->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team2->name }}</a></td>
 				</tr>
+				@endif
 			@endforeach
 				<tr>
 					<td colspan="3" style="text-align: right;"><a href="/matches" class="red">Zeige alle Spiele</a></td>
