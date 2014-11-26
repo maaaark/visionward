@@ -24,7 +24,7 @@
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
-			<img src="<?=Croppa::url('/img/worlds.jpg', 360, null)?>" width="100%" />
+			<img src="<?=Croppa::url('/img/worlds.jpg', 360, null)?>" />
 		</div>
 	</div>
 	

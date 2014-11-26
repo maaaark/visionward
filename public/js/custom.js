@@ -48,6 +48,18 @@ $( document ).ready(function() {
 	  $(this).tab('show')
 	})
 	
+	$('.show_ranked_champions').click(function (e) {
+	 	e.preventDefault()
+		$(".hide_stats").toggle();
+		var text = $(".show_ranked_champions").text();
+		if(text == "Zeige Top 5 Champions") {
+			$(".show_ranked_champions").text("Zeige alle Champions");
+		} else {
+			$(".show_ranked_champions").text("Zeige Top 5 Champions");
+		}
+		
+	})
+	
 
 
 	$('.toggle_game_details').click( function() {
