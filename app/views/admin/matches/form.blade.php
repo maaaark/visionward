@@ -311,6 +311,9 @@
 		<td width="200"><strong>Gewinner</strong></td>
 		<td>
 			<select name="winner_team_id">
+			@if($match->winner_team_id != 0)
+				<option value="{{ $match->winner_team_id }}">{{ $match->winner->name }}</option>
+			@endif
 				<option value="{{ $match->team->id }}">{{ $match->team->name }}</option>
 				<option value="{{ $match->team2->id }}">{{ $match->team2->name }}</option>	
 			</select>

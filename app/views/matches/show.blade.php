@@ -169,12 +169,129 @@
 	</div>
 	@foreach($match->children as $child)
 		<div class="tab-pane" id="game{{$child->id}}">
-			{{ $child->title }}
+			<table class="result_table">
+			<tr>
+				<td valign="top">
+						<span class="hidden_result">
+						@if($child->winner_team_id == $child->team->id)
+							<div class="match_winner">WINNER</div>
+						@else
+							<div class="match_loser">LOSER</div>
+						@endif
+						</span>
+						<h2 class="headline_no_border">Lineup {{ $child->team->name }}</h2>
+						<table class="table table-striped">
+
+							<tr>
+								<td width="120"><strong>
+									Top-Lane
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team1topchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team1topchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team1topplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team1_top_player }}/{{ $match->team1topplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team1_top_player }}">{{ $child->team1topplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Jungle
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team1junglechampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team1junglechampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team1jungleplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team1_jungle_player }}/{{ $match->team1jungleplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team1_jungle_player }}">{{ $child->team1jungleplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Mid-Lane
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team1midchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team1midchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team1midplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team1_mid_player }}/{{ $match->team1midplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team1_mid_player }}">{{ $child->team1midplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									AD-Carry
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team1adcchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team1adcchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team1adcplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team1_adc_player }}/{{ $match->team1adcplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team1_adc_player }}">{{ $child->team1adcplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Support
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team1supportchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team1supportchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team1supportplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team1_support_player }}/{{ $match->team1supportplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team1_support_player }}">{{ $child->team1supportplayer->nickname }}</a>
+		                        </td>
+							</tr>
+						</table>
+				</td>
+
+				<td valign="top">
+						<span class="hidden_result">
+						@if($child->winner_team_id == $child->team2->id)
+							<div class="match_winner">WINNER</div>
+						@else
+							<div class="match_loser">LOSER</div>
+						@endif
+						</span>
+						<h2 class="headline_no_border">Lineup {{ $child->team2->name }}</h2>
+						<table class="table table-striped">
+							<tr>
+								<td width="120"><strong>
+									Top-Lane
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team2topchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team2topchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team2topplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team2_top_player }}/{{ $match->team2topplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team2_top_player }}">{{ $child->team2topplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Jungle
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team2junglechampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team2junglechampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team2jungleplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team2_jungle_player }}/{{ $match->team2jungleplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team2_jungle_player }}">{{ $child->team2jungleplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Mid-Lane
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team2midchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team2midchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team2midplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team2_mid_player }}/{{ $match->team2midplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team2_mid_player }}">{{ $child->team2midplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									AD-Carry
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team2adcchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team2adcchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team2adcplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team2_adc_player }}/{{ $match->team2adcplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team2_adc_player }}">{{ $child->team2adcplayer->nickname }}</a>
+		                        </td>
+							</tr>
+		                    <tr>
+								<td width="120"><strong>
+									Support
+								</strong></td>
+								<td>
+		                            <a href="/champions/{{ $child->team2supportchampion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $child->team2supportchampion->key }}.png" class="img-circle" width="20" /></a>&nbsp;&nbsp;<img src="/img/flags/{{ $match->team2supportplayer->country }}.png" />&nbsp;&nbsp;<a href="/players/{{ $match->team2_support_player }}/{{ $match->team2supportplayer->nickname }}" class="player_tooltip" rel="{{ 
+		                                $child->team2_support_player }}">{{ $child->team2supportplayer->nickname }}</a>
+		                        </td>
+							</tr>
+						</table>
+			
+				</td>
+			</tr>
+		</table>
 		</div>
 	@endforeach
-	<div class="tab-pane" id="game3">
-		Game 3
-	</div>
 </div>
 <br/>
 		<h2 class="headline_no_border">Mehr Informationen</h2>
