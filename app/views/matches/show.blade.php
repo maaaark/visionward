@@ -47,9 +47,9 @@
 				<td valign="top">
 						<span class="hidden_result">
 						@if($match->winner_team_id == $match->team->id)
-							<div class="match_winner">WINNER</div>
+							<div class="match_winner">Gewinner</div>
 						@else
-							<div class="match_loser">LOSER</div>
+							<div class="match_loser">Verlierer</div>
 						@endif
 						</span>
 						<h2 class="headline_no_border">Lineup {{ $match->team->name }}</h2>
@@ -106,9 +106,9 @@
 				<td valign="top">
 						<span class="hidden_result">
 						@if($match->winner_team_id == $match->team2->id)
-							<div class="match_winner">WINNER</div>
+							<div class="match_winner">Gewinner</div>
 						@else
-							<div class="match_loser">LOSER</div>
+							<div class="match_loser">Verlierer</div>
 						@endif
 						</span>
 						<h2 class="headline_no_border">Lineup {{ $match->team2->name }}</h2>
@@ -174,9 +174,9 @@
 				<td valign="top">
 						<span class="hidden_result">
 						@if($child->winner_team_id == $child->team->id)
-							<div class="match_winner">WINNER</div>
+							<div class="match_winner">Gewinner</div>
 						@else
-							<div class="match_loser">LOSER</div>
+							<div class="match_loser">Verlierer</div>
 						@endif
 						</span>
 						<h2 class="headline_no_border">Lineup {{ $child->team->name }}</h2>
@@ -233,9 +233,9 @@
 				<td valign="top">
 						<span class="hidden_result">
 						@if($child->winner_team_id == $child->team2->id)
-							<div class="match_winner">WINNER</div>
+							<div class="match_winner">Gewinner</div>
 						@else
-							<div class="match_loser">LOSER</div>
+							<div class="match_loser">Verlierer</div>
 						@endif
 						</span>
 						<h2 class="headline_no_border">Lineup {{ $child->team2->name }}</h2>
