@@ -34,6 +34,9 @@ a.button:hover {
 	border-bottom: 5px solid #fff;
 	font-size: 12px;
 }
+.hide_stats {
+	display: none;
+}
 .win_header {
 	background: #50B350;
 	height: 10px;
@@ -435,10 +438,24 @@ h2.mobile_page_title {
 	width: 100%;
 }
 .result_table {
-	margin: 0 auto;
+	width: 100%;
 }
 .result_value {
 	text-align: center;
+}
+.match_winner {
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+	background: #50B350;
+	margin-bottom: 15px;
+}
+.match_loser {
+	margin: 5px;
+	background: #ED8888;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 15px;
 }
 .hidden_result {
 	margin-top: 10px;

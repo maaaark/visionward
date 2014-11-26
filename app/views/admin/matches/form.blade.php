@@ -21,16 +21,20 @@
 		<td width="200"><strong>Team 1 Top Lane</strong></td>
 		<td>
 			<select name="team1_top_player">
+				@if(isset($match))
 				@if($match->team1_top_player != 0)
 				<option value="{{ $match->team1_top_player }}">{{ $match->team1topplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team1_top_champion">
+				@if(isset($match))
 				@if($match->team1_top_champion != 0)
 				<option value="{{ $match->team1_top_champion }}">{{ $match->team1topchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -42,16 +46,20 @@
 		<td width="200"><strong>Team 1 Jungle</strong></td>
 		<td>
 			<select name="team1_jungle_player">
+				@if(isset($match))
 				@if($match->team1_jungle_player != 0)
 				<option value="{{ $match->team1_jungle_player }}">{{ $match->team1jungleplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team1_jungle_champion">
+				@if(isset($match))
 				@if($match->team1_jungle_champion != 0)
 				<option value="{{ $match->team1_jungle_champion }}">{{ $match->team1junglechampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -63,16 +71,20 @@
 		<td width="200"><strong>Team 1 Mid Lane</strong></td>
 		<td>
 			<select name="team1_mid_player">
+				@if(isset($match))
 				@if($match->team1_mid_player != 0)
 				<option value="{{ $match->team1_mid_player }}">{{ $match->team1midplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team1_mid_champion">
+				@if(isset($match))
 				@if($match->team1_mid_champion != 0)
 				<option value="{{ $match->team1_mid_champion }}">{{ $match->team1midchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -84,16 +96,20 @@
 		<td width="200"><strong>Team 1 ADC</strong></td>
 		<td>
 			<select name="team1_adc_player">
+				@if(isset($match))
 				@if($match->team1_adc_player != 0)
 				<option value="{{ $match->team1_adc_player }}">{{ $match->team1adcplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team1_adc_champion">
+				@if(isset($match))
 				@if($match->team1_adc_champion != 0)
 				<option value="{{ $match->team1_adc_champion }}">{{ $match->team1adcchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -105,16 +121,20 @@
 		<td width="200"><strong>Team 1 Support</strong></td>
 		<td>
 			<select name="team1_support_player">
+				@if(isset($match))
 				@if($match->team1_support_player != 0)
 				<option value="{{ $match->team1_support_player }}">{{ $match->team1supportplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team1_support_champion">
+				@if(isset($match))
 				@if($match->team1_support_champion != 0)
 				<option value="{{ $match->team1_support_champion }}">{{ $match->team1supportchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -140,16 +160,20 @@
 		<td width="200"><strong>Team 2 Top Lane</strong></td>
 		<td>
 			<select name="team2_top_player">
+				@if(isset($match))
 				@if($match->team2_top_player != 0)
 				<option value="{{ $match->team2_top_player }}">{{ $match->team2topplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team2_top_champion">
+				@if(isset($match))
 				@if($match->team2_top_champion != 0)
 				<option value="{{ $match->team2_top_champion }}">{{ $match->team2topchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -161,16 +185,20 @@
 		<td width="200"><strong>Team 2 Jungle</strong></td>
 		<td>
 			<select name="team2_jungle_player">
+				@if(isset($match))
 				@if($match->team2_jungle_player != 0)
 				<option value="{{ $match->team2_jungle_player }}">{{ $match->team2jungleplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team2_jungle_champion">
+				@if(isset($match))
 				@if($match->team2_jungle_champion != 0)
 				<option value="{{ $match->team2_jungle_champion }}">{{ $match->team2junglechampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -182,16 +210,20 @@
 		<td width="200"><strong>Team 2 Mid Lane</strong></td>
 		<td>
 			<select name="team2_mid_player">
+				@if(isset($match))
 				@if($match->team2_mid_player != 0)
 				<option value="{{ $match->team2_mid_player }}">{{ $match->team2midplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team2_mid_champion">
+				@if(isset($match))
 				@if($match->team2_mid_champion != 0)
 				<option value="{{ $match->team2_mid_champion }}">{{ $match->team2midchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -203,16 +235,20 @@
 		<td width="200"><strong>Team 2 ADC</strong></td>
 		<td>
 			<select name="team2_adc_player">
+				@if(isset($match))
 				@if($match->team2_adc_player != 0)
 				<option value="{{ $match->team2_adc_player }}">{{ $match->team2adcplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team2_adc_champion">
+				@if(isset($match))
 				@if($match->team2_adc_champion != 0)
 				<option value="{{ $match->team2_adc_champion }}">{{ $match->team2adcchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -224,16 +260,20 @@
 		<td width="200"><strong>Team 2 Support</strong></td>
 		<td>
 			<select name="team2_support_player">
+				@if(isset($match))
 				@if($match->team2_support_player != 0)
 				<option value="{{ $match->team2_support_player }}">{{ $match->team2supportplayer->nickname }}</option>	
+				@endif
 				@endif
 				@foreach($players as $player)
 				<option value="{{ $player->id }}">{{ $player->nickname }}</option>
 				@endforeach
 			</select>
             <select name="team2_support_champion">
+				@if(isset($match))
 				@if($match->team2_support_champion != 0)
 				<option value="{{ $match->team2_support_champion }}">{{ $match->team2supportchampion->name }}</option>	
+				@endif
 				@endif
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
@@ -255,8 +295,8 @@
 		</td>
 	</tr>
 	<tr>
-		<td width="200"><strong>Best of</strong></td>
-		<td>{{ Form::text('bestof', Input::old('bestof'),  array('class' => 'form-control')) }}</td>
+		<td width="200"><strong>Gehört zum Spiel</strong></td>
+		<td>{{ Form::text('parent_game', Input::old('parent_match'),  array('class' => 'form-control')) }}</td>
 	</tr>
 	<tr>
 		<td width="200"><strong>Punkte Team 1</strong></td>
@@ -271,6 +311,9 @@
 		<td width="200"><strong>Gewinner</strong></td>
 		<td>
 			<select name="winner_team_id">
+			@if($match->winner_team_id != 0)
+				<option value="{{ $match->winner_team_id }}">{{ $match->winner->name }}</option>
+			@endif
 				<option value="{{ $match->team->id }}">{{ $match->team->name }}</option>
 				<option value="{{ $match->team2->id }}">{{ $match->team2->name }}</option>	
 			</select>

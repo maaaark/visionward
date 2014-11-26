@@ -82,6 +82,9 @@ class AdminPostsController extends \BaseController {
 			if(!Input::get('published')) {
 				$input["published"] = 0;
 			}
+			if(!Input::get('schedule_check')) {
+				$input["schedule_check"] = 0;
+			}
 			
 			// Category
 			foreach($post->categories as $news_category) {
