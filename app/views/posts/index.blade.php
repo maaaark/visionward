@@ -44,5 +44,5 @@
 			<?php $i++; ?>
 		@endforeach
 	</ul>
-
+	{{ $posts->links() }}
 @stop

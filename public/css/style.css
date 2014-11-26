@@ -2,13 +2,13 @@ body {
 	font-family: 'Lato', sans-serif;
 }
 a {
-	color: #e84c3d;
+	color: #f25825;
 }
 a:hover {
-	color: #e84c3d;
+	color: #f25825;
 }
 .button {
-	background: #e84c3d;
+	background: #f25825;
 	-webkit-border-radius: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -26,9 +26,16 @@ a.button:hover {
 	font-size: 22px;
 	padding-top: 1px;
 }
+.autor_box {
+	background: #f9f9f9;
+	padding: 10px;
+}
 .last_games tr {
 	border-bottom: 5px solid #fff;
 	font-size: 12px;
+}
+.hide_stats {
+	display: none;
 }
 .win_header {
 	background: #50B350;
@@ -36,13 +43,21 @@ a.button:hover {
 	line-height: 10px;
 	font-size: 12px;
 }
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+	background-color: #f25825 !important;
+	border-color: #f25825 !important;
+	color: #fff !important;
+}
+.pagination>li>a, .pagination>li>span {
+	color: #f25825 !important;
+}
 .game_details {
 	font-size: 12px;
 	padding-top: 0px !important;
 	margin-top: 0px !important;
 }
 .updater_summoner {
-	background: #e84c3d;
+	background: #f25825;
 	color: #fff;
 	font-weight: bold;
 	text-align: center;
@@ -76,7 +91,7 @@ a.button:hover {
 	line-height: 50px;
 }
 .navigation ul li:hover {
-	background: #e84c3d;
+	background: #333a3e;
 	text-decoration: none;
 }
 .navigation ul li a {
@@ -88,7 +103,7 @@ a.button:hover {
 	color: grey;
 }
 .navigation ul li.active {
-	background: #e84c3d;
+	background: #333a3e;
 }
 
 .navigation ul li a {
@@ -213,7 +228,7 @@ h2.headline_no_border {
 	background: #f0f0f0;
 }
 a.red {
-	color: #e84c3d;
+	color: #f25825;
 }
 .post_meta {
 	font-size: 12px;
@@ -289,7 +304,7 @@ a.red {
 .comments_count {
 	width: 80px;
 	text-align: center;
-	color: #e84c3d;
+	color: #f25825;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
@@ -330,7 +345,7 @@ a.red {
 	padding-top: 5px;
 	display: block;
 	width: 100%;
-	color: #e84c3d;
+	color: #f25825;
 	text-decoration: none;
 	height: 100%;
 }
@@ -341,7 +356,7 @@ a.red {
 	border-radius: 5px;
 }
 .comments_count a {
-	color: #e84c3d;
+	color: #f25825;
 	font-weight: bold;
 	font-size: 10px;
 	padding: 3px;
@@ -364,7 +379,7 @@ a.red {
 }
 .server_region {
 	position: absolute;
-	background: #e84c3d;
+	background: #f25825;
 	border: 0;
 	padding: 5px;
 	color: #fff;
@@ -375,7 +390,7 @@ a.red {
 }
 .search_button {
 	position: absolute;
-	background: #e84c3d;
+	background: #f25825;
 	border: 0;
 	padding: 5px;
 	color: #fff;
@@ -392,12 +407,12 @@ h1.page_title {
 	text-shadow: 1px 2px #000;
 }
 .header_subline {
-	color: #e84c3d;
+	color: #f25825;
 	font-family: 'Fjalla One', sans-serif;
 	text-shadow: 1px 2px #000;
 }
 .mobile_header_subline {
-	color: #e84c3d;
+	color: #f25825;
 	font-family: 'Fjalla One', sans-serif;
 }
 h2.page_title {
@@ -423,10 +438,24 @@ h2.mobile_page_title {
 	width: 100%;
 }
 .result_table {
-	margin: 0 auto;
+	width: 100%;
 }
 .result_value {
 	text-align: center;
+}
+.match_winner {
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+	background: #00ff00;
+	margin-bottom: 15px;
+}
+.match_loser {
+	margin: 5px;
+	background: #ff0000;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 15px;
 }
 .hidden_result {
 	margin-top: 10px;
@@ -434,7 +463,7 @@ h2.mobile_page_title {
 }
 #show_result {
 	margin-top: 10px;
-	background: #e84c3d;
+	background: #f25825;
 	color: #fff;
 	font-weight: bold;
 	padding: 5px;
@@ -529,7 +558,7 @@ h2.mobile_page_title {
 	color: #fff;
 }
 .nav-tabs>li.active>a {
-	background: #e84c3d !important;
+	background: #f25825 !important;
 	color: #fff;
 	font-weight: bold;
 }

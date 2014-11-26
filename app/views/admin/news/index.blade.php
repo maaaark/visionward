@@ -41,6 +41,7 @@
 			</tr>
 		@endforeach
 	</table>
+	{{ $posts->links() }}<br/>
 	<a href="/admin/news/create" class="btn btn-primary">Neue News schreiben</a>
 	
 @stop

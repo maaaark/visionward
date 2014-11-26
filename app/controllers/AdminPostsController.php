@@ -3,7 +3,7 @@
 class AdminPostsController extends \BaseController {
 	
 	public function index() {
-		$posts = Post::orderBy("created_at", "DESC")->get();
+		$posts = Post::orderBy("created_at", "DESC")->paginate(20);
 		return View::make("admin.news.index", compact("posts"));
 	}
 	
@@ -81,6 +81,9 @@ class AdminPostsController extends \BaseController {
 			}
 			if(!Input::get('published')) {
 				$input["published"] = 0;
+			}
+			if(!Input::get('schedule_check')) {
+				$input["schedule_check"] = 0;
 			}
 			
 			// Category

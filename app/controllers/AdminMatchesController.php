@@ -23,8 +23,8 @@ class AdminMatchesController extends \BaseController {
 	{
 		$teams = Team::all();
 		$leagues = League::all();
-        $players = orderBy("name", "ASC")->get();
-		$champions = Champion::orderBy("nickname", "ASC")->get();
+        $players = Player::orderBy("nickname", "ASC")->get();
+		$champions = Champion::orderBy("name", "ASC")->get();
         
 		return View::make('admin.matches.create', compact('leagues', 'teams', 'players', 'champions'));
 	}
