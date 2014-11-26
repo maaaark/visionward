@@ -1,6 +1,6 @@
 <div class="visible-xs-* visible-sm-* hidden-md hidden-lg">
 	<ul>
-		<li><a href="/">FLASH <img src="/img/flashignite_logo.png" height="35" /> IGNITE</a></li>
+		<li><a href="/"><img src="/img/flashignite_logo.png" height="35" /> FLASHIGNITE</a></li>
 		<li>
 			<a href="#"><span class="glyphicon glyphicon-align-justify"></span></a>
 			<ul class="submenu_mobile">
@@ -28,7 +28,7 @@
 </div>
 <ul class="hidden-xs hidden-sm">
 	<div class="col-md-8" style="padding-left: 0; margin-left: 0;">
-		<li id="nav_logo"><a href="/">FLASH <img src="/img/flashignite_logo.png" height="35" /> IGNITE</a></li>
+		<li id="nav_logo"><a href="/"><img src="/img/flashignite_logo.png" height="35" /> FLASHIGNITE</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="/guides">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">

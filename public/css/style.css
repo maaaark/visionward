@@ -80,7 +80,7 @@ a.button:hover {
 	line-height: 50px;
 }
 .navigation ul li:hover {
-	background: #f25825;
+	background: #333a3e;
 	text-decoration: none;
 }
 .navigation ul li a {
@@ -92,7 +92,7 @@ a.button:hover {
 	color: grey;
 }
 .navigation ul li.active {
-	background: #f25825;
+	background: #333a3e;
 }
 
 .navigation ul li a {

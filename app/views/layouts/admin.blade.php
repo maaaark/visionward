@@ -12,6 +12,8 @@
 	<link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/admin.css">
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
     <title>Flashignite Admin Panel - @yield('title')</title>
 	<!-- Include Font Awesome -->
 	<link href="/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
