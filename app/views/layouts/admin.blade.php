@@ -46,6 +46,7 @@
             <li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
             <li {{ Request::is('admin/galleries*') ? ' class="active"' : '' }}><a href="/admin/galleries">Gallerien</a></li>
 			<li {{ Request::is('admin/pictures*') ? ' class="active"' : '' }}><a href="/admin/pictures">Bilder</a></li>
+			<li {{ Request::is('admin/sliders*') ? ' class="active"' : '' }}><a href="/admin/sliders">Slider</a></li>
 			<li {{ Request::is('admin/teams*') ? ' class="active"' : '' }}><a href="/admin/teams">Teams</a></li>
               <li {{ Request::is('admin/leagues*') ? ' class="active"' : '' }}><a href="/admin/leagues">Ligen</a></li>
 			<li {{ Request::is('admin/players*') ? ' class="active"' : '' }}><a href="/admin/players">Spieler</a></li>
