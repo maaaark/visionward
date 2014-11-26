@@ -40,6 +40,14 @@ a.button:hover {
 	line-height: 10px;
 	font-size: 12px;
 }
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+	background-color: #f25825 !important;
+	border-color: #f25825 !important;
+	color: #fff !important;
+}
+.pagination>li>a, .pagination>li>span {
+	color: #f25825 !important;
+}
 .game_details {
 	font-size: 12px;
 	padding-top: 0px !important;

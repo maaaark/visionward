@@ -3,7 +3,7 @@
 class AdminPostsController extends \BaseController {
 	
 	public function index() {
-		$posts = Post::orderBy("created_at", "DESC")->get();
+		$posts = Post::orderBy("created_at", "DESC")->paginate(20);
 		return View::make("admin.news.index", compact("posts"));
 	}
 	
