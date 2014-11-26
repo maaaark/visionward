@@ -5,11 +5,38 @@
 
 <h2 class="headline">{{ $match->team->name }} vs. {{ $match->team2->name }} - {{ $match->league->name }}</h2>
 
-
+<table>
+	<tr>
+		<td>
+			<div class="team_box">
+				<a href="/teams/{{ $match->team->id }}/{{ $match->team->slug }}"><img src="/img/teams/logos/{{ $match->team->logo }}" width="150" /></a>
+			</div>
+		</td>
+		<td width="200" style="text-align: center;">
+			<h3>vs.</h3>
+			@if($match->winner_team_id == 0)
+				Noch kein Gewinner eingetragen
+			@else
+				<span id="show_result">Ergebnis zeigen</span>
+				<span class="hidden_result">
+					<h2>{{ $match->result_team_1 }}:{{ $match->result_team_2 }}</h2>
+					{{ $match->winner->name }} gewinnt
+				</span>
+			@endif
+		</td>
+		<td>
+			<div class="team_box">
+                <a href="/teams/{{ $match->team2->id }}/{{ $match->team2->slug }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" width="150" /></a>
+			</div>
+		</td>
+	</tr>
+</table>
+<br/>
 <ul class="nav nav-tabs" role="tablist" id="champion_tabs">
 	<li class="active"><a href="#game1" role="tab" data-toggle="tab">Spiel 1</a></li>
-	<li><a href="#game2" role="tab" data-toggle="tab">Spiel 2</a></li>
-	<li><a href="#game3" role="tab" data-toggle="tab">Spiel 3</a></li>
+	@foreach($match->children as $child)
+	<li><a href="#game{{$child->id}}" role="tab" data-toggle="tab">{{$child->title}}</a></li>
+	@endforeach
 </ul>
 <br/>
 <div class="tab-content">
@@ -18,11 +45,13 @@
 		<table class="result_table">
 			<tr>
 				<td valign="top">
-					<div class="team_box">
-						<a href="/teams/{{ $match->team->id }}/{{ $match->team->slug }}"><img src="/img/teams/logos/{{ $match->team->logo }}" width="150" /></a>
-					</div>
-						<br/>
-				
+						<span class="hidden_result">
+						@if($match->winner_team_id == $match->team->id)
+							<div class="match_winner">WINNER</div>
+						@else
+							<div class="match_loser">LOSER</div>
+						@endif
+						</span>
 						<h2 class="headline_no_border">Lineup {{ $match->team->name }}</h2>
 						<table class="table table-striped">
 
@@ -71,28 +100,17 @@
 		                                $match->team1_support_player }}">{{ $match->team1supportplayer->nickname }}</a>
 		                        </td>
 							</tr>
-
 						</table>
-			
 				</td>
-				<td width="200" valign="top" class="result_value">
-			
-					<h3>vs.</h3>
-					@if($match->winner_team_id == 0)
-						Noch kein Gewinner eingetragen
-					@else
-						<span id="show_result">Ergebnis zeigen</span>
-						<span class="hidden_result">
-							<h2>{{ $match->result_team_1 }}:{{ $match->result_team_2 }}</h2>
-							{{ $match->winner->name }} gewinnt
-						</span>
-					@endif
-				</td>
+
 				<td valign="top">
-					<div class="team_box">
-		                <a href="/teams/{{ $match->team2->id }}/{{ $match->team2->slug }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" width="150" /></a>
-					</div>
-						<br/>
+						<span class="hidden_result">
+						@if($match->winner_team_id == $match->team2->id)
+							<div class="match_winner">WINNER</div>
+						@else
+							<div class="match_loser">LOSER</div>
+						@endif
+						</span>
 						<h2 class="headline_no_border">Lineup {{ $match->team2->name }}</h2>
 						<table class="table table-striped">
 							<tr>
@@ -149,9 +167,11 @@
 		
 		</div>
 	</div>
-	<div class="tab-pane" id="game2">
-		Game 2
-	</div>
+	@foreach($match->children as $child)
+		<div class="tab-pane" id="game{{$child->id}}">
+			{{ $child->title }}
+		</div>
+	@endforeach
 	<div class="tab-pane" id="game3">
 		Game 3
 	</div>

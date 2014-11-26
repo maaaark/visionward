@@ -438,10 +438,24 @@ h2.mobile_page_title {
 	width: 100%;
 }
 .result_table {
-	margin: 0 auto;
+	width: 100%;
 }
 .result_value {
 	text-align: center;
+}
+.match_winner {
+	padding: 5px;
+	margin: 5px;
+	text-align: center;
+	background: #00ff00;
+	margin-bottom: 15px;
+}
+.match_loser {
+	margin: 5px;
+	background: #ff0000;
+	text-align: center;
+	padding: 5px;
+	margin-bottom: 15px;
 }
 .hidden_result {
 	margin-top: 10px;

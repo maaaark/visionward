@@ -17,6 +17,16 @@ class Match extends \Eloquent {
         return $this->belongsTo('Team', 'team_id_1');
     }
 	
+	public function parent()
+    {
+        return $this->belongsTo('Match', 'parent_game');
+    }
+	
+	public function children()
+    {
+        return $this->hasMany('Match', 'parent_game');
+    }
+	
 	public function team2()
     {
         return $this->belongsTo('Team', 'team_id_2');
