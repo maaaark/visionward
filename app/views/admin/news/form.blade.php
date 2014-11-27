@@ -86,4 +86,10 @@
 				{{ Form::text('schedule_time', Input::old('schedule_time'),  array('class' => 'form-control')) }}
 			</td>
 		</tr>
+		<tr>
+			<td><strong>Autorenbox anzeigen?</strong></td>
+			<td>
+				{{ Form::checkbox('show_autorbox', 1, Input::old('show_autorbox')) }}
+			</td>
+		</tr>
 	</table>

@@ -8,6 +8,7 @@
 </div>
 -->
 {{ $post->content }}<br/>
+@if($post->show_autorbox == 1)
 <div class="autor_box">
 	<table>
 		<tr>
@@ -16,10 +17,11 @@
 			</td>
 			<td valign="top">
 				Artikel wurde geschrieben von: <strong><a href="/users/{{ $post->user->id }}">{{ $post->user->first_name }} '{{ $post->user->username }}' {{ $post->user->last_name }}</a></strong><br/>
-				<i>{{ $post->user->description }}</i>
+				<i>{{ $post->user->autor_text }}</i>
 			</td>
 		</tr>
 	</table>
 </div>
+@endif
 <br/>
 @include("layouts.disqus")

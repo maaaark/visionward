@@ -30,4 +30,24 @@ class Helpers {
 		
         return $html;
     }
+	
+	public static function niceRole($role) {
+		
+		if($role == "adcarry") {
+			$nice_role = "Ad-Carry";
+		} elseif($role == "coach") {
+			$nice_role = "Coach";
+		} elseif($role == "top") {
+			$nice_role = "Top-Lane";
+		} elseif($role == "mid") {
+			$nice_role = "Mid-Lane";
+		} elseif($role == "support") {
+			$nice_role = "Supporter";
+		} elseif($role == "jungle") {
+			$nice_role = "Jungle";
+		} elseif($role == "sub") {
+			$nice_role = "Ersatzspieler";
+		} 
+        return $nice_role;
+    }
 }
