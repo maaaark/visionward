@@ -29,6 +29,11 @@
 			<td>{{ Form::textarea('description', Input::old('description'),  array('class' => 'form-control')) }}</td>
 		</tr>
 		<tr>
+			<td width="200"><strong>Autoren Box Text</strong></td>
+			<td>{{ Form::textarea('autor_text', Input::old('autor_text'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		
+		<tr>
 			<td width="200"><strong>Neues Password</strong></td>
 			<td>{{ Form::password('password', array('class' => 'form-control')) }}</td>
 		</tr>

@@ -1,7 +1,7 @@
 <?php
 
 class Post extends \Eloquent {
-	protected $fillable = array('title', 'content', 'corrected', 'published', 'slug', 'excerpt', 'user_id', 'gallery_id', 'schedule_time', 'schedule_check', 'image');
+	protected $fillable = array('title', 'content', 'corrected', 'published', 'slug', 'excerpt', 'user_id', 'gallery_id', 'schedule_time', 'schedule_check', 'image', 'show_autorbox');
 	
 	public static $rules = array(
 		'title'=>'required|min:3',
