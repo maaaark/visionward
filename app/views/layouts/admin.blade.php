@@ -50,12 +50,14 @@
 			<li {{ Request::is('admin/pictures*') ? ' class="active"' : '' }}><a href="/admin/pictures">Bilder</a></li>
 			<li {{ Request::is('admin/sliders*') ? ' class="active"' : '' }}><a href="/admin/sliders">Slider</a></li>
 			<li {{ Request::is('admin/teams*') ? ' class="active"' : '' }}><a href="/admin/teams">Teams</a></li>
-              <li {{ Request::is('admin/leagues*') ? ' class="active"' : '' }}><a href="/admin/leagues">Ligen</a></li>
+            <li {{ Request::is('admin/leagues*') ? ' class="active"' : '' }}><a href="/admin/leagues">Ligen</a></li>
 			<li {{ Request::is('admin/players*') ? ' class="active"' : '' }}><a href="/admin/players">Spieler</a></li>
             <li {{ Request::is('admin/matches*') ? ' class="active"' : '' }}><a href="/admin/matches">Matches</a></li>
             <li {{ Request::is('admin/placements*') ? ' class="active"' : '' }}><a href="/admin/placements">Platzierungen</a></li>
             <li {{ Request::is('admin/counterpicks*') ? ' class="active"' : '' }}><a href="/admin/counterpicks">Counterpicks</a></li>
 			<li {{ Request::is('admin/champions*') ? ' class="active"' : '' }}><a href="/admin/champions">Champions</a></li>
+			<li {{ Request::is('admin/skins*') ? ' class="active"' : '' }}><a href="/admin/skins">Skins</a></li>
+			<li {{ Request::is('admin/vips*') ? ' class="active"' : '' }}><a href="/admin/vips">VIPs</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li {{ Request::is('admin/settings*') ? ' class="active"' : '' }}><a href="/admin/settings">Einstellungen</a></li>
           </ul>

@@ -14,6 +14,7 @@
 				<li><a href="#">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
 						<li><a href="/teams">PRO TEAMS</a></li>
+						<li><a href="/vips">CASTER / HOSTS</a></li>
 						<li><a href="/matches">MATCHES</a></li>
 						<li><a href="/transferlist">TRANSFERLISTE</a></li>
 					</ul>
@@ -39,6 +40,7 @@
 		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a href="/teams">PRO TEAMS</a></li>
+				<li><a href="/vips">CASTER / HOSTS</a></li>
 				<li><a href="/matches">MATCHES</a></li>
 				<li style="margin-right: 0px;"><a href="/transferlist">TRANSFERLISTE</a></li>
 			</ul>
