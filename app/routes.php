@@ -22,6 +22,7 @@ Route::resource('searches', 'SearchesController');
 Route::resource('feedbacks', 'FeedbacksController');
 Route::resource('items', 'ItemsController');
 Route::resource('users', 'UsersController');
+Route::resource('vips', 'VipsController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
@@ -40,6 +41,9 @@ Route::get('/skills/{id}', 'ChampionsController@skill');
 
 // Search
 Route::post('/search', 'SearchesController@show_result');
+
+// VIPs
+Route::get('/vips/{id}/{slug}', 'VipsController@show');
 
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
@@ -65,6 +69,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::resource('matches', 'AdminMatchesController');
     Route::resource('placements', 'AdminPlacementsController');
     Route::resource('leagues', 'AdminLeaguesController');
+	Route::resource('vips', 'AdminVipsController');
 	Route::resource('skins', 'AdminSkinsController');
 	Route::resource('teams', 'AdminTeamsController');
 	Route::resource('players', 'AdminPlayersController');
