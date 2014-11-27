@@ -10,7 +10,6 @@
 				<img src="/img/teams/logos/{{ $team->logo }}" width="200" /><br/>
 			</td>
 			<td valign="top">
-				<br/>
 				@include("teams.playerlist")
 			</td>
 		</tr>

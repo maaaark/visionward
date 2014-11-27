@@ -31,7 +31,7 @@
 	<div class="col-md-8" style="padding-left: 0; margin-left: 0;">
 		<li id="nav_logo"><a href="/"><img src="/img/flashignite_logo.png" height="35" style="margin-top: -6px;" /> FLASH IGNITE</a></li>
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
-		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="/guides">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a class="inactive" href="#">CHAMPIONS</a></li>
 				<li><a href="/categories/videos">VIDEOS</a></li>

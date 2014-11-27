@@ -43,40 +43,27 @@
 			</td>
 		</tr>
 	</table>
+	<br/>
+	@if($player->description != "")
 	<h3 class="headline">{{ $player->name }} Beschreibung</h3>
 	{{ $player->description }}<br/>
 	<br/>
-	<table>
-		<tr>
-			<td width="340" valign="top">
-				<h2 class="headline_no_border">Vorherige Teams</h2>
-				<table class="table table-striped">
-					@foreach($player->history as $history)
-					<tr>
-						<td><span class="left_team">{{ $history->oldteam->name }}</span> -> <span class="joined_team">{{ $history->team->name }}</span></td>
-						<td>{{ $history->join_date }}</td>
-					</tr>
-					@endforeach
-				</table>
-			</td>
-			<td width="100"></td>
-			<td width="340" valign="top">
-				<h2 class="headline_no_border">Platzierungen</h2>
-				<table class="table table-striped">
-					<tr>
-						<td width="75"><strong>Platz 1</strong></td>
-						<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-						<td>LCS Sommer Split 2014</td>
-					</tr>
-					<tr>
-						<td width="75"><strong>Platz 2</strong></td>
-						<td width="25"><img src="/img/teams/euLCS.png" height="20" /></td>
-						<td>LCS Frühlings Split 2014</td>
-					</tr>
-				</table>
-			</td>
-		</tr>
-	</table>
+	@endif
+		<h2 class="headline_no_border">Vorherige Teams</h2>
+		<table class="table table-striped">
+			<tr>
+				<th>Vorheriges Team</th>
+				<th>Neues Team</th>
+				<th>Wechseldatum</th>
+			</tr>
+			@foreach($player->history as $history)
+			<tr>
+				<td><a href="/teams/{{ $history->oldteam->id }}/{{ $history->oldteam->slug }}"><img src="/img/teams/logos/{{ $history->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $history->oldteam->name }}</a></td>
+				<td><a href="/teams/{{ $history->team->id }}/{{ $history->team->slug }}"><img src="/img/teams/logos/{{ $history->team->logo }}" height="20" />&nbsp;&nbsp;{{ $history->team->name }}</a></td>
+				<td>{{ $history->join_date }}</td>
+			</tr>
+			@endforeach
+		</table>
 	<br/>
 	
 <br/>

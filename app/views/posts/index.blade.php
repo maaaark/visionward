@@ -10,8 +10,8 @@
 				@if($i<=3)
 					<div class="news">
 						  <div class="row">
-						  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 165, null)?>" width="100%" /></a></div>
-						  <div class="col-md-9 text">
+						  <div class="col-sm-3 col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 165, null)?>" /></a></div>
+						  <div class="col-sm-9 col-md-9 text">
 							<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 							{{ $post->excerpt }}
 							<div class="meta">
