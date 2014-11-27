@@ -56,6 +56,7 @@
             <li {{ Request::is('admin/placements*') ? ' class="active"' : '' }}><a href="/admin/placements">Platzierungen</a></li>
             <li {{ Request::is('admin/counterpicks*') ? ' class="active"' : '' }}><a href="/admin/counterpicks">Counterpicks</a></li>
 			<li {{ Request::is('admin/champions*') ? ' class="active"' : '' }}><a href="/admin/champions">Champions</a></li>
+			<li {{ Request::is('admin/skins*') ? ' class="active"' : '' }}><a href="/admin/skins">Skins</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li {{ Request::is('admin/settings*') ? ' class="active"' : '' }}><a href="/admin/settings">Einstellungen</a></li>
           </ul>

@@ -65,6 +65,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::resource('matches', 'AdminMatchesController');
     Route::resource('placements', 'AdminPlacementsController');
     Route::resource('leagues', 'AdminLeaguesController');
+	Route::resource('skins', 'AdminSkinsController');
 	Route::resource('teams', 'AdminTeamsController');
 	Route::resource('players', 'AdminPlayersController');
 	Route::resource('champions', 'AdminChampionsController');
