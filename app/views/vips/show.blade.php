@@ -10,7 +10,7 @@
 				<table class="table table-striped">
 					<tr>
 						<td width="120"><strong>Name</strong></td>
-						<td>{{$vip->first_name}} '{{$vip->nickname}}' {{$vip->last_name}}</td>
+						<td><img src="/img/flags/{{ $vip->country }}.png" />&nbsp;&nbsp;{{$vip->first_name}} '{{$vip->nickname}}' {{$vip->last_name}}</td>
 					</tr>
 					<tr>
 						<td><strong>Aufgabe</strong></td>
