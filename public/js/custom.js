@@ -66,6 +66,20 @@ $( document ).ready(function() {
         $('.game_details-' + $(this).attr('id')).toggle();
 		return false;
     });
+	
+	
+	$( ".champion_filter" ).keyup(function() {
+		var input = $(this).val().toLowerCase();
+		if(input == "") {
+			$( ".champion_list li" ).show();
+		} else {
+			$( ".champion_list li" ).hide();
+			$( ".champion_list li[name*='"+input+"']" ).show();
+		}
+	});
+
+
+
 
 });
 

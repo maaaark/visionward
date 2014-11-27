@@ -30,6 +30,17 @@ a.button:hover {
 	background: #f9f9f9;
 	padding: 10px;
 }
+.filterbox {
+	background: #f25825;
+	padding: 10px;
+	color: #333333;
+	font-weight: normal;
+	margin-bottom: 15px;
+}
+.filterbox input {
+	width: 100%;
+	padding: 5px;
+}
 .last_games tr {
 	border-bottom: 5px solid #fff;
 	font-size: 12px;

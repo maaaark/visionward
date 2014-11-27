@@ -9,9 +9,20 @@
 	<br/>
 	<h2 class="headline">Mein Champion</h2>	
 	
+	<div class="filterbox">
+		<input type="text" name="champion_filter" class="champion_filter" placeholder="Champion Suche" />
+	</div>
+	
 	<ul class="champion_list">
 		@foreach($counterpicks as $pick)
-			<li>
+			<?php 
+				if(Str::lower($pick->counter->key) == "monkeyking") {
+					$champkey = "wukong";
+				} else {
+					$champkey = Str::lower($pick->counter->key);
+				} 
+			?>
+			<li name="{{ $champkey }}">
 				<a href="/champions/{{ $pick->counter->key }}">
 					<div class="champion_avatar">
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="55" /><br/>
