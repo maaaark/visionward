@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Flashignite Admin Panel</a>
+          <a class="navbar-brand" href="#">Flashignite Admin Panel</a> - <a class="navbar-brand" href="/">Zur Webseite</a>
         </div>
       </div>
     </div>

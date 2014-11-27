@@ -9,9 +9,5 @@
 	@endforeach
 	<br/>
 	<h2 class="headline">Vorname 'Nickname' Nachname</h2>
-	<img src="/img/vips/banner22.png" />
-	<img src="/img/vips/banner2.png" />
-	<img src="/img/vips/banner3.png" />
-	<img src="/img/vips/banner.png" />
-	<img src="/img/vips/banner_hover.png" />
+	<img class="grayscale" src="/img/vips/banner2.png" />
 @stop
