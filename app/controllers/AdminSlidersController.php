@@ -34,6 +34,8 @@ class AdminSlidersController extends \BaseController {
 				$url = $input['url'];
 				$headline = $input['headline'];
 				$subheadline = $input['subheadline'];
+				$published = $input['published'];
+				$order = $input['order'];
 				
 				//var_dump($link,$headline,$subheadline);die("qwe");
 				
@@ -45,6 +47,8 @@ class AdminSlidersController extends \BaseController {
 				$slider->headline = $headline;
 				$slider->subheadline = $subheadline;
 				$slider->destination = $id;
+				$slider->published = $published;
+				$slider->order = $order;
 				//var_dump($slider);die("qwe");
 				
 				$slider->save();
@@ -72,6 +76,8 @@ class AdminSlidersController extends \BaseController {
 			$slider->url = Input::get('url');
 			$slider->headline = Input::get('headline');
 			$slider->subheadline = Input::get('subheadline');
+			$slider->published = Input::get('published');
+			$slider->order = Input::get('order');
 			//$slider->fill($input);
 			
 			if(Input::file('images')) {

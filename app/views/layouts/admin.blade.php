@@ -60,6 +60,7 @@
 			<li {{ Request::is('admin/vips*') ? ' class="active"' : '' }}><a href="/admin/vips">VIPs</a></li>
 			<li {{ Request::is('admin/users*') ? ' class="active"' : '' }}><a href="/admin/users">User</a></li>
 			<li {{ Request::is('admin/settings*') ? ' class="active"' : '' }}><a href="/admin/settings">Einstellungen</a></li>
+			<li><a href="/logout">Logout</a></li>
           </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
