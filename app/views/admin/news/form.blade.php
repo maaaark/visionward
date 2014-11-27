@@ -4,6 +4,19 @@
 			<td width="200"><strong>Titel</strong></td>
 			<td>{{ Form::text('title', Input::old('title'),  array('class' => 'form-control')) }}</td>
 		</tr>
+		@if(isset($post))
+		<tr>
+			<td width="200"><strong>Autor</strong></td>
+			<td>
+				<select name="user_id">
+						<option value="{{ $post->user_id }}">{{ $post->user->username }}</option>
+				@foreach($users as $user)
+						<option value="{{ $user->id }}">{{ $user->username }}</option>
+				@endforeach
+				</select>
+			</td>
+		</tr>
+		@endif
 		<tr>
 			<td width="200"><strong>Slug</strong></td>
 			<td>{{ Form::text('slug', Input::old('slug'),  array('class' => 'form-control')) }}</td>
