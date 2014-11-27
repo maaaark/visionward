@@ -11,7 +11,8 @@ class AdminPostsController extends \BaseController {
 		$post = Post::find($id);
 		$categories = Category::all();
 		$galleries = Gallery::all();
-		return View::make("admin.news.show", compact("post", "categories", "galleries"));
+		$users = User::all();
+		return View::make("admin.news.show", compact("post", "categories", "galleries", 'users'));
 	}
 	
 	
