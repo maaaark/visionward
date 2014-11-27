@@ -19,7 +19,7 @@
 			<a href="/teams/{{ $match->team2->id }}/{{ $match->team2->slug }}"><img src="/img/teams/logos/{{ $match->team2->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team2->name }}</span></a>
 		</td>
 		<td width="180">
-			<a href="/leagues/{{ $match->league->id }}/{{ $match->league->slug }}"><img src="/img/leagues/{{ $match->league->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->league->name }}</span></a>
+			<a href="/leagues/{{ $match->league->id }}/{{ $match->league->slug }}"><img src="/img/leagues/{{ $match->league->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ str_limit($match->league->name, $limit = 15, $end = '...') }}</span></a>
 		</td>
 		<td>
 			@if($match->game_date >= date('Y-m-d H:i:s'))
