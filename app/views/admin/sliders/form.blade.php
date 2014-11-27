@@ -28,4 +28,16 @@
 				{{ Form::text('url', Input::old('url'),  array('class' => 'form-control')) }}
 		</td>	
 	</tr>
+	<tr>
+		<td width="200"><strong>Veröffentlicht</strong></td>
+		<td>
+				{{ Form::checkbox('published', 1, Input::old('published')) }}
+		</td>	
+	</tr>
+	<tr>
+		<td width="200"><strong>Sortierung</strong></td>
+		<td>
+				{{ Form::text('order', Input::old('order'),  array('class' => 'form-control')) }}
+		</td>	
+	</tr>
 </table>

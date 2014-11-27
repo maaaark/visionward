@@ -26,6 +26,7 @@ Route::resource('vips', 'VipsController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
+Route::get('/logout', 'AdminController@logout');
 Route::get('/team', 'HomeController@team');
 Route::get('/datenschutz', 'HomeController@datenschutz');
 Route::get('/impressum', 'HomeController@impressum');
@@ -131,7 +132,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	
 	
     Route::get('/', 'AdminController@index');
-	Route::get('logout', 'AdminController@logout');
+	Route::get('/logout', 'AdminController@logout');
 	Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));
 	Route::post('/admin/news/save', array('uses' => 'AdminController@save_news'));
 	
