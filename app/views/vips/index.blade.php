@@ -7,4 +7,7 @@
 		<a href="/vips/{{ $vip->id }}/{{ $vip->slug }}"><img src="/img/vips/{{ $vip->header_image }}" /></a>
 		<br/><br/>
 	@endforeach
+	<br/>
+	<h2 class="headline">Vorname 'Nickname' Nachname</h2>
+	<img class="grayscale" src="/img/vips/banner2.png" />
 @stop

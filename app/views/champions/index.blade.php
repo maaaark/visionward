@@ -2,8 +2,20 @@
 @section('title', "Champions")
 @section('subtitle', "Alle Champions aus Runterra")
 @section('content')
+	<h2 class="headline">Champions</h2>	
+	<div class="filterbox">
+		<input type="text" name="champion_filter" class="champion_filter" placeholder="Champion Suche" />
+	</div>
+	
 	<ul class="champion_list">
 		@foreach($champions as $champion)
+			<?php 
+				if(Str::lower($champion->key) == "monkeyking") {
+					$champkey = "wukong";
+				} else {
+					$champkey = Str::lower($champion->key);
+				} 
+			?>
 			@if($champion->f2p == true)
 				<?php $class="f2p"; ?>
 			@elseif($champion->sale == true)
@@ -11,7 +23,7 @@
 			@else
 				<?php $class=""; ?>
 			@endif
-			<li>
+			<li name="{{ $champkey }}">
 				<a href="/champions/{{ $champion->key }}">
 					<div class="champion_avatar">
 						@if($champion->f2p == true)
