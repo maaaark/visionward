@@ -52,6 +52,7 @@ Route::post('/counterpicks/create_counter', 'CounterpicksController@create_count
 
 Route::get('/players/{id}/{slug}', 'PlayersController@show');
 Route::get('/players_tooltip/{id}', 'PlayersController@tooltip');
+Route::get('/casters_tooltip/{id}', 'VipsController@tooltip');
 Route::get('/counterpicks/create/{id}', 'CounterpicksController@create');
 
 
