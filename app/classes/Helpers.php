@@ -31,6 +31,22 @@ class Helpers {
         return $html;
     }
 	
+	public static function niceLane($lane) {
+		
+		if($lane == "top") {
+			$nice_lane = "Top-Lane";
+		} elseif($lane == "jungle") {
+			$nice_lane = "Jungle";
+		} elseif($lane == "adc") {
+			$nice_lane = "AD-Carry";
+		} elseif($lane == "mid") {
+			$nice_lane = "Mid-Lane";
+		} elseif($lane == "support") {
+			$nice_lane = "Supporter";
+		}
+        return $nice_lane;
+    }
+	
 	public static function niceRole($role) {
 		
 		if($role == "adcarry") {

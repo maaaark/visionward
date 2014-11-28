@@ -18,6 +18,7 @@
 				@else
 				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span></a>
 				@endif
+				<span class="vote_lane">{{ Helpers::niceRole($g->lane) }}</span>
 			</td>
 		</tr>
 	@endforeach
@@ -46,6 +47,7 @@
 				@else
 				<a href="/championdownvotes/{{ $g->id}}"><span class="downvote">{{ $g->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></span></a>
 				@endif
+				<span class="vote_lane">{{ Helpers::niceRole($g->lane) }}</span>
 			</td>
 		</tr>
 	@endforeach
