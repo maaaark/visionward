@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.small_header')
 @section('title', "Neuer Konterpick")
 @section('content')
 	<h2 class="headline_no_border">Neuer Konterpick</h2>

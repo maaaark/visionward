@@ -15,3 +15,4 @@ Artisan::add(new PublishPosts);
 Artisan::add(new RefreshChampions);
 Artisan::add(new RefreshItems);
 Artisan::add(new Run);
+Artisan::add(new RefreshChampionVotes);

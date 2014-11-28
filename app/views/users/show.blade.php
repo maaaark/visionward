@@ -16,7 +16,7 @@
 				</tr>
 				<tr>
 					<td width="110"><strong>Summoner</strong></td>
-					<td>{{ $user->username }}</td>
+					<td><a href="/summoner/euw/{{ $user->username }}">{{ $user->username }}</a></td>
 				</tr>
 				<tr>
 					<td width="110"><strong>Aufgabe</strong></td>

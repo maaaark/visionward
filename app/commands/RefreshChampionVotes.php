@@ -4,21 +4,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class Run extends Command {
+class RefreshChampionVotes extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'run:function';
+	protected $name = 'refresh:championvotes';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'custom function';
+	protected $description = 'Refreshing Votes for all Champions';
 
 	/**
 	 * Create a new command instance.
@@ -48,7 +48,9 @@ class Run extends Command {
 			
 			$champion->votes = $votes;
 			$champion->save();
-			echo $votes." Votes fÃ¼r ".$champion->name." gespeichert\n";
+			//echo $votes." Votes für ".$champion->name." gespeichert\n";
 		}
 	}
+
+
 }

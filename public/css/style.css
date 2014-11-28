@@ -562,6 +562,15 @@ h2.mobile_page_title {
 	-moz-border-radius: 3px;
 	border-radius: 3px;
 }
+.vote_lane {
+	background: #000;
+	color: #fff;
+	padding: 3px;
+	font-size: 12px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
 .downvote_done {
 	padding: 3px;
 	background: #e08a8a;

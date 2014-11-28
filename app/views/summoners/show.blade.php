@@ -104,6 +104,7 @@
 					@endif
 					</td>
 					<td class="game_kda">
+						{{ gmdate("i", $game->timePlayed) }} Minuten<br/>
 						{{ $game->minionsKilled }} CS ( {{ $game->neutralMinionsKilled }} neutrale )
 					</td>
 					<td>

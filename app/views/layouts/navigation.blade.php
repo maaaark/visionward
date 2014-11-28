@@ -19,9 +19,10 @@
 						<li><a href="/transferlist">TRANSFERLISTE</a></li>
 					</ul>
 				</li>
-				<li><a href="/categories/pbe">RIOT TRACKER</a></li>
+				<li><a href="/categories/pbe">PBE</a></li>
 				<li><a href="/champions">CHAMPIONS</a></li>
 				<li><a href="/counterpicks">KONTERPICKS</a></li>
+				<li><a href="/tools">TOOLS</a></li>
 			</ul>
 		</li>
 		<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -45,9 +46,10 @@
 				<li style="margin-right: 0px;"><a href="/transferlist">TRANSFERLISTE</a></li>
 			</ul>
 		</li>
-		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">RIOT TRACKER</a></li>
+		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="/categories/pbe">PBE</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="/champions">CHAMPIONS</a></li>
 		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="/counterpicks">KONTERPICKS</a></li>
+		<li {{ Request::is('tools/*') ? ' class="active"' : '' }} {{ Request::is('tools') ? ' class="active"' : '' }}><a href="/tools">TOOLS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a></li>
 	</div>
 	<div class="col-md-4">
 	<li style="padding: 0;">

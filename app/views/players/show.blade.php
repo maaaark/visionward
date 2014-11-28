@@ -7,7 +7,7 @@
 	<table width="100%">
 		<tr>
 			<td width="220" valign="top">
-				<img src="/img/players/{{ $player->picture }}" width="200" />
+				<img src="/img/players/{{ $player->picture }}" class="img-circle" width="200" />
 			</td>
 			<td>
 				<table class="table table-striped">
@@ -45,7 +45,7 @@
 	</table>
 	<br/>
 	@if($player->description != "")
-	<h3 class="headline">{{ $player->name }} Beschreibung</h3>
+	<h2 class="headline">{{ $player->name }} Beschreibung</h2>
 	{{ $player->description }}<br/>
 	<br/>
 	@endif
@@ -58,14 +58,14 @@
 			</tr>
 			@foreach($player->history as $history)
 			<tr>
-				<td><a href="/teams/{{ $history->oldteam->id }}/{{ $history->oldteam->slug }}"><img src="/img/teams/logos/{{ $history->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $history->oldteam->name }}</a></td>
-				<td><a href="/teams/{{ $history->team->id }}/{{ $history->team->slug }}"><img src="/img/teams/logos/{{ $history->team->logo }}" height="20" />&nbsp;&nbsp;{{ $history->team->name }}</a></td>
+				<td width="250" class="old_team"><a href="/teams/{{ $history->oldteam->id }}/{{ $history->oldteam->slug }}"><img src="/img/teams/logos/{{ $history->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $history->oldteam->name }}</a></td>
+				<td width="250" class="new_team"><a href="/teams/{{ $history->team->id }}/{{ $history->team->slug }}"><img src="/img/teams/logos/{{ $history->team->logo }}" height="20" />&nbsp;&nbsp;{{ $history->team->name }}</a></td>
 				<td>{{ $history->join_date }}</td>
 			</tr>
 			@endforeach
 		</table>
 	<br/>
 	
-<br/>
-	
+<h2 class="headline">Kommenare zu {{ $player->nickname }}</h2>
+@include("layouts.disqus")
 @stop

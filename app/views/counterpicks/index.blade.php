@@ -13,20 +13,20 @@
 	</div>
 	
 	<ul class="champion_list">
-		@foreach($counterpicks as $pick)
+		@foreach($champions as $champion)
 			<?php 
-				if(Str::lower($pick->counter->key) == "monkeyking") {
+				if(Str::lower($champion->key) == "monkeyking") {
 					$champkey = "wukong";
 				} else {
-					$champkey = Str::lower($pick->counter->key);
+					$champkey = Str::lower($champion->key);
 				} 
 			?>
 			<li name="{{ $champkey }}">
-				<a href="/counterpicks/{{ $pick->counter->champion_id }}/{{ $pick->counter->key }}">
+				<a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}">
 					<div class="champion_avatar">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $pick->counter->key }}.png" class="img-circle" width="55" /><br/>
-						{{ $pick->counter->name }}
-						<span class="votes_overlay">{{ $pick->votes }}</span>
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="55" /><br/>
+						{{ $champion->name }}
+						<span class="votes_overlay">{{ $champion->votes }}</span>
 					</div>
 				</a>
 			</li>

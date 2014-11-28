@@ -21,6 +21,8 @@
 		<div class="upvote">{{ $counterpick->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></div> 
 		<br/>
 		<div class="downvote">{{ $counterpick->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></div>
+		<br/>
+		<div style="width: 100px;" class="vote_lane">{{ Helpers::niceRole($counterpick->lane) }}</div>
 	  </div>
 	  <div class="col-xs-12 col-md-5 center">
 		<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $counter->key }}.png" class="img-circle" width="100" />
