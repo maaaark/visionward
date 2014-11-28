@@ -21,6 +21,14 @@
 			<td>{{ Form::text('task', Input::old('task'),  array('class' => 'form-control')) }}</td>
 		</tr>
 		<tr>
+			<td width="200"><strong>Twitter</strong></td>
+			<td>{{ Form::text('twitter', Input::old('twitter'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
+			<td width="200"><strong>Twitch</strong></td>
+			<td>{{ Form::text('twitch', Input::old('twitch'),  array('class' => 'form-control')) }}</td>
+		</tr>
+		<tr>
 			<td width="200"><strong>Bild</strong></td>
 			<td>{{ Form::text('image', Input::old('image'),  array('class' => 'form-control')) }}</td>
 		</tr>

@@ -40,7 +40,8 @@
         @endforeach
 	</table>
 	<br/>
-	
-<br/>
+	<h2 class="headline">Kommentare zu {{ $team->name }}</h2>
+	@include("layouts.disqus")
+
 	
 @stop

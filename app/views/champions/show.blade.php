@@ -3,27 +3,34 @@
 @section('subtitle', $champion->title)
 @section('content')
 	
-	<table class="table table-striped">
+	<table width="100%">
 		<tr>
-			<td rowspan="3"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" /></a></td>
-			<td><strong>Schaden</strong></td>
-			<td>{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</td>
-			<td><strong>Leben</strong></td>
-			<td>{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</td>
-		</tr>
-		<tr>
-			<td><strong>Reichweite</strong></td>
-			<td>{{ $champion->attackrange }}</td>
-			<td><strong>Mana</strong></td>
-			<td>{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</td>
-		</tr>
-		<tr>
-			<td><strong>Rüstung</strong></td>
-			<td>{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</td>
-			<td><strong>Geschwindigkeit</strong></td>
-			<td>{{ $champion->movespeed }}</td>
+			<td width="120" valign="top"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" /></a></td>
+			<td>
+				<table class="table table-striped">
+					<tr>
+						<td><strong>Schaden</strong></td>
+						<td>{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</td>
+						<td><strong>Leben</strong></td>
+						<td>{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</td>
+					</tr>
+					<tr>
+						<td><strong>Reichweite</strong></td>
+						<td>{{ $champion->attackrange }}</td>
+						<td><strong>Mana</strong></td>
+						<td>{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</td>
+					</tr>
+					<tr>
+						<td><strong>Rüstung</strong></td>
+						<td>{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</td>
+						<td><strong>Geschwindigkeit</strong></td>
+						<td>{{ $champion->movespeed }}</td>
+					</tr>
+				</table>
+			</td>
 		</tr>
 	</table>
+	
 	
 	<br/>
 
