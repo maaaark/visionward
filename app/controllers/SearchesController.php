@@ -133,7 +133,28 @@ class SearchesController extends \BaseController {
 					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $input['server_region'];
+					$summoner_stats = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
+					$json2 = @file_get_contents($summoner_stats);
+					if($json2 === FALSE) {
+						return $json2;
+						//return Redirect::to('/')->withInput()->with('error', "API Fehler");
+					} else {
+						$obj2 = json_decode($json2, true);
+						foreach($obj2["playerStatSummaries"] as $gamemode){
+							if($gamemode["playerStatSummaryType"] == 'RankedSolo5x5'){
+								$summoner->ranked_wins = $gamemode['wins'];
+								$summoner->ranked_losses = $gamemode['losses'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'Unranked'){
+								$summoner->unranked_wins = $gamemode['wins'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'RankedTeam5x5'){
+								$summoner->teamranked_wins = $gamemode['wins'];
+								$summoner->teamranked_losses = $gamemode['losses'];
+							}
+						}
 					$summoner->save();
+					}
 				}
 		}
 		//var_dump($input['search']);die("qwe");

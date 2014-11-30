@@ -291,9 +291,6 @@ class Summoner extends \Eloquent {
 			} else {
 				$obj = json_decode($json, true);
 				$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",$region)->first();
-				if(!$summoner) {
-					$summoner = new Summoner;
-				}
 				$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
 				$summoner->name = $obj[$clean_summoner_name]["name"];
 				$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
@@ -303,7 +300,6 @@ class Summoner extends \Eloquent {
 				if($summoner->created_at == $summoner->updated_at){
 					$update = 1;
 				}
-				$summoner->save();
 				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
 				$json2 = @file_get_contents($summoner_stats);
 				if($json2 === FALSE) {
@@ -324,10 +320,11 @@ class Summoner extends \Eloquent {
 							$summoner->teamranked_losses = $gamemode['losses'];
 						}
 					}
+				$summoner->save();
 				}
 				
 				$stattest = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
-				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(172800))->first();
+				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
 				if($stats or $update == 1 or !$stattest ){
 					$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
 					$json3 = @file_get_contents($summoner_rankedstats);
@@ -366,7 +363,6 @@ class Summoner extends \Eloquent {
 						}
 					}
 					$summoner->save();
-					return $summoner;
 				}
 			}
 	}

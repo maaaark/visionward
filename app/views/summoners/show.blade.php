@@ -23,13 +23,13 @@
 		<tr>
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
 				<br/>
-				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />
+				@if($summoner->summonerLevel ==30 and $summoner->solo_division != "none")<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />@endif
 			</td>
 			<td valign="top" width="150">
 				<div class="profile_season_stats">
 					<table style="margin-bottom: 0;text-align: center;" width="150">
 						<tr>
-							<td colspan="3">@if($summoner->summonerLevel ==30 and $summoner->solo_tier != 'none')<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong>@endif</td>
+							<td colspan="3">@if($summoner->summonerLevel ==30 and $summoner->solo_division != "none")<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}}</strong>@endif</td>
 						</tr>
 					</table>
 				</div>
