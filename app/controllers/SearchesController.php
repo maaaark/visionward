@@ -120,7 +120,7 @@ class SearchesController extends \BaseController {
 			$summoner_data = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 				$json = @file_get_contents($summoner_data);
 				if($json === FALSE) {
-					//return false;
+					return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 006");
 				} else {
 					$obj = json_decode($json, true);
 					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
