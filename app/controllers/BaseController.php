@@ -37,5 +37,49 @@ class BaseController extends Controller {
 			$this->layout = View::make($this->layout);
 		}
 	}
+	
+	protected function _generateNewsResult($searchString)
+	{
+		//var_dump($searchString);
+		$searches = DB::table('posts')
+			->where('title', 'LIKE', '%'.$searchString.'%')
+			->orWhere('content', 'LIKE', '%'.$searchString.'%')
+			->get();
+			
+		//$countResult = count($results);
+		//foreach($results as $result) {
+		//	var_dump($result->title);
+		//}
+		//var_dump($countResult);die("qwe");
+		return $searches;
+	}
+	
+	protected function _generateChampResult($searchString)
+	{
+		$searches = DB::table('champions')
+			->where('name', 'LIKE', '%'.$searchString.'%')
+			->orWhere('key', 'LIKE', '%'.$searchString.'%')
+			->orWhere('title', 'LIKE', '%'.$searchString.'%')
+			->get();
+		return $searches;
+	}
+	
+	protected function _generatePlayerResult($searchString)
+	{
+		$searches = DB::table('players')
+			->where('nickname', 'LIKE', '%'.$searchString.'%')
+			->orWhere('first_name', 'LIKE', '%'.$searchString.'%')
+			->orWhere('last_name', 'LIKE', '%'.$searchString.'%')
+			->get();
+		return $searches;
+	}
+	
+	protected function _generateTeamResult($searchString)
+	{
+		$searches = DB::table('teams')
+			->where('name', 'LIKE', '%'.$searchString.'%')
+			->get();
+		return $searches;
+	}
 
 }
