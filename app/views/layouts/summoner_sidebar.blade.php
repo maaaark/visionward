@@ -1,3 +1,4 @@
+letztes update: {{$summoner->updated_at}}
 <a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh"><div class="updater_summoner">Update Summoner</div></a>
 @if($summoner->summonerLevel == 30)
 <h2 class="headline_no_border">Saison 4 Champions</h2>
@@ -39,6 +40,7 @@
 	</tr>
 </table>
 <br/>
+@if($rankedstats->kills != 0)
 <h2 class="headline_no_border">Saison 4 Statistik</h2>
 <table class="table table-striped">
 	<tr>
@@ -96,4 +98,5 @@
 		<td valign="top">{{number_format($rankedstats->pentakills , 0 , '.' , '.' )}}</td>
 	</tr>
 </table>
+@endif
 @endif
