@@ -57,18 +57,49 @@ class SummonersController extends \BaseController {
 		$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
 		
 		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
-			if($summoner) {
-				$summoner->refresh_summoner($region, $clean_summoner_name);
-				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
-			}else{
-				$summoner = new Summoner;
-				$summoner->refresh_summoner($region, $clean_summoner_name);
-				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
-			}
+		if($summoner) {
+			$summoner->refresh_games();
+			$summoner->refresh_summoner($region, $clean_summoner_name, $summoner->summoner_id, 0);
+			$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
 			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->orderBy('games', 'desc')->get();
 			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->first();
 			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->orderBy('createDate', 'desc')->take(10)->get();
-			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));			
+			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));	
+		}else{
+			$searchString = $summoner_name;
+			$news = $this->_generateNewsResult($summoner_name);
+			$champs = $this->_generateChampResult($summoner_name);
+			$players = $this->_generatePlayerResult($summoner_name);
+			$teams = $this->_generateTeamResult($summoner_name);
+			$summoner = "";
+		
+			$clean_summoner_name = str_replace(" ", "", $summoner_name);
+			$clean_summoner_name = strtolower($clean_summoner_name);
+			$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
+			
+			$api_key = Config::get('api.key');
+			
+			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
+				$json = @file_get_contents($summoner_data);
+				if($json === FALSE) {
+					//return false;
+				} else {
+					$obj = json_decode($json, true);
+					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$region)->first();
+					if(!$summoner) {
+						$summoner = new Summoner;
+					}
+					$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
+					$summoner->name = $obj[$clean_summoner_name]["name"];
+					$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
+					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
+					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
+					$summoner->region = $region;
+					$summoner->save();		
+					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$region)->first();
+				}
+			return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
+		}
 	}		
 	
 	public function refresh_button($region, $summoner_name)
@@ -80,11 +111,11 @@ class SummonersController extends \BaseController {
 		
 		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
 			if($summoner) {
-				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$summoner->refresh_summoner($region, $clean_summoner_name, $summoner->summoner_id, 1);
 				$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 1);
 			}else{
 				$summoner = new Summoner;
-				$summoner->refresh_summoner($region, $clean_summoner_name);
+				$summoner->refresh_summoner($region, $clean_summoner_name, $summoner->summoner_id, 1);
 				$summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 1);
 			}
 			return Redirect::back();		

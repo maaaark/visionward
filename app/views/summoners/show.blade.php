@@ -12,6 +12,8 @@
 	<?php $region = "Korea"; ?>
 @elseif($summoner->region == "ru")
 	<?php $region = "Russland"; ?>
+@else
+	<?php $region = "none"; ?>
 @endif
 @section('subtitle', $region)
 @section('header_image',"summoner_header.jpg")
@@ -27,7 +29,7 @@
 				<div class="profile_season_stats">
 					<table style="margin-bottom: 0;text-align: center;" width="150">
 						<tr>
-							<td colspan="3">@if($summoner->summonerLevel ==30)<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong>@endif</td>
+							<td colspan="3">@if($summoner->summonerLevel ==30 and $summoner->solo_tier != 'none')<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}} (56 LP)</strong>@endif</td>
 						</tr>
 					</table>
 				</div>
@@ -38,22 +40,27 @@
 						<td width="150" class="attribute"><strong>Normale Siege</strong></td>
 						<td class="attribute">{{ $summoner->unranked_wins}} Siege</td>
 					</tr>
+					@if($summoner->ranked_wins != 0 or $summoner->ranked_losses != 0)
 					<tr>
 						<td width="100" class="attribute"><strong>Gewertete Spiele</strong></td>
 						<td class="attribute">{{ $summoner->ranked_wins+$summoner->ranked_losses}} Spiele</td>
-					</tr>
+					</tr>	
 					<tr>
 						<td width="100" class="attribute"><strong>Gewertete</br> Siege / Niederlagen</strong></td>
 						<td class="attribute">
-						@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
-						{{ $summoner->ranked_wins}} gewonnen / {{ $summoner->ranked_losses}} verloren<br/> 
-						@if($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100>=50)
-							<span class="kda"><font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
+						@if($summoner->ranked_losses != 0)
+							{{ $summoner->ranked_wins}} gewonnen / {{ $summoner->ranked_losses}} verloren<br/> 
+							@if($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100>=50)
+								<span class="kda"><font style="color:#63A055">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
+							@else
+								<span class="kda"><font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
+							@endif
 						@else
-							<span class="kda"><font style="color:#DB2D2D">{{round($summoner->ranked_wins/($summoner->ranked_wins+$summoner->ranked_losses)*100,2)}}% Siegesrate</font></span></td>
+							{{ $summoner->ranked_wins}} gewonnen / {{ $summoner->ranked_losses}} verloren<br/>
+							<span class="kda"><font style="color:#63A055">100% Siegesrate</font></span></td>
 						@endif
-						@endif
-						</tr>
+					</tr>
+					@endif
 				</table>
 			</td>
 		</tr>

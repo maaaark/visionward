@@ -282,9 +282,9 @@ class Summoner extends \Eloquent {
 			
 	}
 	
-	public function refresh_summoner($region, $clean_summoner_name){
-		$api_key = Config::get('api.key');
-		$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
+	public function refresh_summoner($region, $clean_summoner_name, $summoner_id, $update){
+			$api_key = Config::get('api.key');
+			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 			$json = @file_get_contents($summoner_data);
 			if($json === FALSE) {
 				return $json;
@@ -301,6 +301,9 @@ class Summoner extends \Eloquent {
 				$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 				$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 				$summoner->region = $region;
+				if($summoner->created_at == $summoner->updated_at){
+					$update = 1;
+				}
 				$summoner->save();
 				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
 				$json2 = @file_get_contents($summoner_stats);
@@ -324,47 +327,50 @@ class Summoner extends \Eloquent {
 					}
 				}
 				
-				$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
-				$json3 = @file_get_contents($summoner_rankedstats);
-				if($json3 === FALSE) {
-					return $json3;
-					//return Redirect::to('/')->withInput()->with('error', "API Fehler");
-				} else {
-					$obj3 = json_decode($json3, true);
-					foreach($obj3[$summoner->summoner_id] as $ranked){
-						if($ranked['queue']=="RANKED_SOLO_5x5"){
-							$summoner->solo_name = $ranked["name"];
-							$summoner->solo_tier = $ranked["tier"];
-							foreach($ranked['entries'] as $division){
-								if($division['playerOrTeamId'] == $summoner->summoner_id){
-									$summoner->solo_division = $division["division"];
+				$stattest = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
+				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(172800))->first();
+				if($stats or $update == 1 or !$stattest ){
+					$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
+					$json3 = @file_get_contents($summoner_rankedstats);
+					if($json3 === FALSE) {
+						return $json3;
+						//return Redirect::to('/')->withInput()->with('error', "API Fehler");
+					} else {
+						$obj3 = json_decode($json3, true);
+						foreach($obj3[$summoner->summoner_id] as $ranked){
+							if($ranked['queue']=="RANKED_SOLO_5x5"){
+								$summoner->solo_name = $ranked["name"];
+								$summoner->solo_tier = $ranked["tier"];
+								foreach($ranked['entries'] as $division){
+									if($division['playerOrTeamId'] == $summoner->summoner_id){
+										$summoner->solo_division = $division["division"];
+									}
 								}
 							}
-						}
-						if($ranked['queue']=="RANKED_TEAM_3x3"){
-							$summoner->team3_name = $ranked["name"];
-							$summoner->team3_tier = $ranked["tier"];
-							foreach($ranked['entries'] as $division){
-								if($division['playerOrTeamId'] == $summoner->summoner_id){
-									$summoner->team3_division = $division["division"];
+							if($ranked['queue']=="RANKED_TEAM_3x3"){
+								$summoner->team3_name = $ranked["name"];
+								$summoner->team3_tier = $ranked["tier"];
+								foreach($ranked['entries'] as $division){
+									if($division['playerOrTeamId'] == $summoner->summoner_id){
+										$summoner->team3_division = $division["division"];
+									}
 								}
 							}
-						}
-						if($ranked['queue']=="RANKED_TEAM_5x5"){
-							$summoner->team5_name = $ranked["name"];
-							$summoner->team5_tier = $ranked["tier"];
-							foreach($ranked['entries'] as $division){
-								if($division['playerOrTeamId'] == $summoner->summoner_id){
-									$summoner->team5_division = $division["division"];
+							if($ranked['queue']=="RANKED_TEAM_5x5"){
+								$summoner->team5_name = $ranked["name"];
+								$summoner->team5_tier = $ranked["tier"];
+								foreach($ranked['entries'] as $division){
+									if($division['playerOrTeamId'] == $summoner->summoner_id){
+										$summoner->team5_division = $division["division"];
+									}
 								}
 							}
 						}
 					}
+					$summoner->save();
+					return $summoner;
 				}
-				$summoner->refresh_games();
-				$summoner->save();
-				return $summoner;
-			}		
+			}
 	}
 	
 	public function refresh_seasonchampstats($region, $summoner_id, $update){

@@ -117,7 +117,7 @@ class SearchesController extends \BaseController {
 			
 			$api_key = Config::get('api.key');
 			
-			$summoner_data = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.4/summoner/by-name/".$input['search']."?api_key=".$api_key;
+			$summoner_data = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 				$json = @file_get_contents($summoner_data);
 				if($json === FALSE) {
 					//return false;
@@ -134,18 +134,6 @@ class SearchesController extends \BaseController {
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $input['server_region'];
 					$summoner->save();
-				
-			
-					$summoner2 = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
-					if($summoner2) {
-						$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
-						$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
-					}else{
-						$summoner2 = new Summoner;
-						$summoner2->refresh_summoner($input['server_region'], $clean_summoner_name);
-						$summoner->refresh_seasonchampstats($input['server_region'], $summoner->summoner_id, 0);
-					}
-					$summoner = Summoner::where("summoner_id","=",$summoner->summoner_id)->where("region","=",$input['server_region'])->first();
 				}
 		}
 		//var_dump($input['search']);die("qwe");
@@ -158,48 +146,6 @@ class SearchesController extends \BaseController {
 		return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 	}
 	
-	protected function _generateNewsResult($searchString)
-	{
-		//var_dump($searchString);
-		$searches = DB::table('posts')
-			->where('title', 'LIKE', '%'.$searchString.'%')
-			->orWhere('content', 'LIKE', '%'.$searchString.'%')
-			->get();
-			
-		//$countResult = count($results);
-		//foreach($results as $result) {
-		//	var_dump($result->title);
-		//}
-		//var_dump($countResult);die("qwe");
-		return $searches;
-	}
-	
-	protected function _generateChampResult($searchString)
-	{
-		$searches = DB::table('champions')
-			->where('name', 'LIKE', '%'.$searchString.'%')
-			->orWhere('key', 'LIKE', '%'.$searchString.'%')
-			->orWhere('title', 'LIKE', '%'.$searchString.'%')
-			->get();
-		return $searches;
-	}
-	
-	protected function _generatePlayerResult($searchString)
-	{
-		$searches = DB::table('players')
-			->where('nickname', 'LIKE', '%'.$searchString.'%')
-			->orWhere('first_name', 'LIKE', '%'.$searchString.'%')
-			->orWhere('last_name', 'LIKE', '%'.$searchString.'%')
-			->get();
-		return $searches;
-	}
-	
-	protected function _generateTeamResult($searchString)
-	{
-		$searches = DB::table('teams')
-			->where('name', 'LIKE', '%'.$searchString.'%')
-			->get();
-		return $searches;
-	}
+
 
 }
