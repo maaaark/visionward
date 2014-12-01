@@ -26,7 +26,7 @@ class CreateArticlesTable extends Migration {
 			$table->integer('gallery_id');
 			$table->timestamp('scheduled_time');
 			$table->boolean('schedule_check');
-			$table->integer('show_autorbox');
+			$table->integer('show_autorbox')->default(1);
 			$table->timestamps();
 		});
 	}

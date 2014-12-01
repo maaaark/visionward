@@ -31,10 +31,9 @@
 			<table>
 				<tr>
 					<td> <a class="navbar-brand" href="#">Flashignite Admin Panel</a></td>
-					<td><a class="" href="/">Zur Webseite</a></td>
+					<td><a class="" href="/" target="_blank">Zur Webseite</a></td>
 				</tr>
 			</table>
-         
         </div>
       </div>
     </div>
@@ -45,7 +44,8 @@
           <ul class="nav nav-sidebar">
             <li {{ Request::is('admin') ? ' class="active"' : '' }}><a href="/admin">Dashboard</a></li>
             <li {{ Request::is('admin/news*') ? ' class="active"' : '' }}><a href="/admin/news">News</a></li>
-            <li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
+            <li {{ Request::is('admin/articles*') ? ' class="active"' : '' }}><a href="/admin/articles">Artikel</a></li>
+			<li {{ Request::is('admin/categories*') ? ' class="active"' : '' }}><a href="/admin/categories">Kategorien</a></li>
             <li {{ Request::is('admin/galleries*') ? ' class="active"' : '' }}><a href="/admin/galleries">Gallerien</a></li>
 			<li {{ Request::is('admin/pictures*') ? ' class="active"' : '' }}><a href="/admin/pictures">Bilder</a></li>
 			<li {{ Request::is('admin/sliders*') ? ' class="active"' : '' }}><a href="/admin/sliders">Slider</a></li>
