@@ -30,6 +30,15 @@ a.button:hover {
 	background: #f9f9f9;
 	padding: 10px;
 }
+.zitat_rechts {
+	font-size: 16px;
+	color: red;
+	margin: 10px;
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
+	width: 200px;
+	position: relative;
+}
 .votes_overlay {
 	position: absolute;
 	top: 0;

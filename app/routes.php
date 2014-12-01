@@ -47,6 +47,9 @@ Route::post('/search', 'SearchesController@show_result');
 // VIPs
 Route::get('/vips/{id}/{slug}', 'VipsController@show');
 
+// Articles
+Route::get('/articles/{id}/{slug}', 'ArticlesController@show');
+
 // News
 Route::get('/news/{id}/{slug}', 'PostController@show');
 Route::post('/counterpicks/create_counter', 'CounterpicksController@create_counter');
@@ -78,6 +81,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::resource('players', 'AdminPlayersController');
 	Route::resource('champions', 'AdminChampionsController');
 	Route::resource('counterpicks', 'AdminCounterpicksController');
+	Route::resource('articles', 'AdminArticlesController');
 	
 	// Categories
 	Route::get('/categories', 'AdminCategoriesController@index');
