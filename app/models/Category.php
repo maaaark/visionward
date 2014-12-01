@@ -17,4 +17,5 @@ class Category extends \Eloquent {
     {
         return $this->belongsToMany('Post')->orderBy('id','DESC');
     }
+
 }
