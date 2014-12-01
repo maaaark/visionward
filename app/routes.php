@@ -23,6 +23,7 @@ Route::resource('feedbacks', 'FeedbacksController');
 Route::resource('items', 'ItemsController');
 Route::resource('users', 'UsersController');
 Route::resource('vips', 'VipsController');
+Route::resource('articles', 'ArticlesController');
 
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');

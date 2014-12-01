@@ -17,4 +17,9 @@ class Gallery extends \Eloquent {
     {
         return $this->hasMany('Post');
     }
+	
+	public function articles()
+    {
+        return $this->hasMany('Article');
+    }
 }
