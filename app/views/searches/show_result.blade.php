@@ -18,7 +18,7 @@
 					@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
 					<td width="50px"></td>
 					<td>
-						<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}
+						@if($summoner->solo_division != 'none')<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}@endif
 					</td>
 						<td width="50px"></td>
 					<td>

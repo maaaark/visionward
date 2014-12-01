@@ -60,10 +60,11 @@ class SummonersController extends \BaseController {
 		if($summoner) {
 			$summoner->refresh_games();
 			$summoner->refresh_summoner($region, $clean_summoner_name, $summoner->summoner_id, 0);
-			$stats = $summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
+			$summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
 			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->orderBy('games', 'desc')->get();
 			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->first();
 			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->orderBy('createDate', 'desc')->take(10)->get();
+			$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
 			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));	
 		}else{
 			$searchString = $summoner_name;
@@ -72,11 +73,6 @@ class SummonersController extends \BaseController {
 			$players = $this->_generatePlayerResult($summoner_name);
 			$teams = $this->_generateTeamResult($summoner_name);
 			$summoner = "";
-		
-			$clean_summoner_name = str_replace(" ", "", $summoner_name);
-			$clean_summoner_name = strtolower($clean_summoner_name);
-			$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
-			
 			$api_key = Config::get('api.key');
 			
 			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
@@ -94,11 +90,31 @@ class SummonersController extends \BaseController {
 					$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
 					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
-					$summoner->region = $region;
-					$summoner->save();		
-					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$region)->first();
+					$summoner->region = $region;					
+					$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
+					$json2 = @file_get_contents($summoner_stats);
+					if($json2 === FALSE) {
+						return $json2;
+						//return Redirect::to('/')->withInput()->with('error', "API Fehler");
+					} else {
+						$obj2 = json_decode($json2, true);
+						foreach($obj2["playerStatSummaries"] as $gamemode){
+							if($gamemode["playerStatSummaryType"] == 'RankedSolo5x5'){
+								$summoner->ranked_wins = $gamemode['wins'];
+								$summoner->ranked_losses = $gamemode['losses'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'Unranked'){
+								$summoner->unranked_wins = $gamemode['wins'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'RankedTeam5x5'){
+								$summoner->teamranked_wins = $gamemode['wins'];
+								$summoner->teamranked_losses = $gamemode['losses'];
+							}
+						}
+					$summoner->save();
+					}
+					return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 				}
-			return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
 		}
 	}		
 	
