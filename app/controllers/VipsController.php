@@ -10,7 +10,7 @@ class VipsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$vips = Vip::all();
+		$vips = Vip::orderBy('order', 'ASC')->get();
 		return View::make('vips.index', compact('vips'));
 	}
 

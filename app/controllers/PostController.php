@@ -6,8 +6,15 @@ class PostController extends BaseController {
 	{
 		$posts = Post::orderBy('created_at', 'DESC')->where("published", "=", 1)->paginate(13);
 		$slider = Slider::where("published", "=", 1)->orderBy("order", "ASC")->get();
-		//var_dump($slider);
-		return View::make('posts.index', compact('posts', 'slider'));
+		
+		if(array_key_exists('page', $_GET)) {
+			$page = intval($_GET['page']);
+		} else {
+			$page = 1;
+		}
+		
+		
+		return View::make('posts.index', compact('posts', 'slider', 'page'));
 	}
 	
 	public function show($id, $slug)

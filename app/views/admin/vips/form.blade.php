@@ -47,4 +47,8 @@
 		<td width="200"><strong>Beschreibung</strong></td>
 		<td>{{ Form::textarea('description', Input::old('description'),  array('class' => 'form-control')) }}</td>
 	</tr>
+	<tr>
+		<td width="200"><strong>Sortierung</strong></td>
+		<td>{{ Form::text('order', Input::old('order'),  array('class' => 'form-control')) }}</td>
+	</tr>
 </table>
