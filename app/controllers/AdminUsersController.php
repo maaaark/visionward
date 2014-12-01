@@ -57,6 +57,7 @@ class AdminUsersController extends \BaseController {
 		$input = Input::all();
 		$roles = Input::get('role');
 		
+		
 		$validation = Validator::make($input, User::$rules);
 		if ($validation->passes())
 		{
@@ -75,7 +76,7 @@ class AdminUsersController extends \BaseController {
 					$user->roles()->attach($role);
 			   }
 			}
-
+//var_dump(Input::get('order'));die("qwe");
 			$user->update($input);
 			if(Input::get('password') != "") {
 				$user->password = Hash::make(Input::get('password'));

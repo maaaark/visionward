@@ -21,7 +21,7 @@ class Helpers {
 		} else if ($timediff >= $hours && $timediff < $days) {
 			$outputTime = round($timediff / $days);
 			$html = "vor " . $outputTime . " Stunden";
-		} else if ($timediff >= $days && $timediff < $normalDate) {
+		} else if ($timediff >= $days && $timediff < $twoWeek) {
 			$outputTime = round($timediff / $days);
 			$html = "vor " . $outputTime . " Tagen";
 		} else {

@@ -45,6 +45,11 @@
 			<td width="200"><strong>Neues Password</strong></td>
 			<td>{{ Form::password('password', array('class' => 'form-control')) }}</td>
 		</tr>
+		
+		<tr>
+			<td width="200"><strong>Sortierung</strong></td>
+			<td>{{ Form::text('order', Input::old('order'),  array('class' => 'form-control')) }}</td>
+		</tr>
 		<tr>
 			<td width="200"><strong>Rollen</strong></td>
 			<td>
