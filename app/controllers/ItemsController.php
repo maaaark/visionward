@@ -24,6 +24,12 @@ class ItemsController extends \BaseController {
 		return View::make('items.create');
 	}
 
+	public function item_tooltip($id)
+	{
+		$item = Item::find($id);
+		return Response::json(array('item' => $item));
+	}
+
 	/**
 	 * Store a newly created item in storage.
 	 *
