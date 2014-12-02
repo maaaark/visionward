@@ -30,6 +30,7 @@ Route::get('/login', 'AdminController@index');
 Route::get('/logout', 'AdminController@logout');
 Route::get('/team', 'HomeController@team');
 Route::get('/datenschutz', 'HomeController@datenschutz');
+Route::get('/news/archive', 'PostController@archive');
 Route::get('/impressum', 'HomeController@impressum');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 Route::post('/feedback', array('uses' => 'HomeController@feedback'));
