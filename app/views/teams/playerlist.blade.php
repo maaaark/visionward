@@ -1,4 +1,4 @@
-@if($team->id == 57)
+@if($team->id == 57 || $team->id == 59)
 <table class="table table-striped">
 	@foreach($team->players as $member)
 	<tr>
