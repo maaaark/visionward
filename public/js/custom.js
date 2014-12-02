@@ -37,7 +37,7 @@ $( document ).ready(function() {
 			var link = $(this);			
 			$.getJSON('/skill_tooltip/'+id, function (data) {
 				var skill_icon = data.skill.icon; 
-				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> '+data.skill.name);
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> '+data.skill.name);
 			});
 			
 		}
@@ -48,7 +48,7 @@ $( document ).ready(function() {
 			var link = $(this);
 						
 			$.getJSON('/item_tooltip/'+id, function (data) {
-				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
 			});
 			
 		}
@@ -70,7 +70,7 @@ $( document ).ready(function() {
 		content: function ($el, $tip) {
 			var active_tooltip = $el.attr('rel');
 			$.getJSON('/skill_tooltip/'+active_tooltip, function (data) {
-				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="90" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 75px;"></td><td valign="top"><table class="table table-striped"><tr><td>'+data.skill.name+'</td></tr><tr><td>'+data.skill.description+'</td></tr></table></td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="90" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 75px;"></td><td valign="top"><table class="table table-striped"><tr><td>'+data.skill.name+'</td></tr><tr><td>'+data.skill.description+'</td></tr></table></td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
 	
 	})
 	
