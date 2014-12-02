@@ -24,7 +24,7 @@
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
-			<img src="<?=Croppa::url('/img/worlds.jpg', 360, null)?>" />
+			<a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungle_news.jpg" /></a>
 		</div>
 	</div>
 	
