@@ -6,4 +6,4 @@ composer.lock
 Thumbs.db
 /app/config/database.php
 /public/uploads
-public/uploads/*
+/public/uploads/*

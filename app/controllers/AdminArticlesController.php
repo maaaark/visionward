@@ -35,6 +35,24 @@ class AdminArticlesController extends \BaseController {
 		$data = Input::all();
 		$data["slug"] = Str::slug(Input::get('title'));
 		$data["user_id"] = Auth::user()->id;
+		
+		if(Input::file('image')) {
+			$file = Input::file('image');
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/uploads/articles/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$data["image"] = $filename;
+		} else {
+			$data["image"] = $article->image;
+		}
+		
+		if(!Input::get('show_autorbox')) {
+			$data["show_autorbox"] = 0;
+		}
+		
 		Article::create($data);
 
 		return Redirect::route('admin.articles.index')->with("success", "Erolgreich gespeichert");
@@ -63,7 +81,8 @@ class AdminArticlesController extends \BaseController {
 		$categories = Category::all();
 		$article = Article::find($id);
         $galleries = Gallery::all();
-		return View::make('admin.articles.edit', compact('article', 'galleries', 'categories'));
+		$users = User::all();
+		return View::make('admin.articles.edit', compact('article', 'galleries', 'categories', 'users'));
 	}
 
 	/**
@@ -77,8 +96,33 @@ class AdminArticlesController extends \BaseController {
 		$article = Article::findOrFail($id);
         $data = Input::all();
 		$data["slug"] = Str::slug(Input::get('title'));
+		
+		
+		if(Input::file('image')) {
+			$file = Input::file('image');
+			$filename = $file->getClientOriginalName();
+			$destinationPath = public_path()."/uploads/articles/";
+	
+			$mime_type = $file->getMimeType();
+			$extension = $file->getClientOriginalExtension();
+			$upload_success = $file->move($destinationPath, $filename);
+			$data["image"] = $filename;
+		} else {
+			$data["image"] = $article->image;
+		}
+		
+		if(!Input::get('corrected')) {
+			$data["corrected"] = 0;
+		}
+		if(!Input::get('published')) {
+			$data["published"] = 0;
+		}
+		if(!Input::get('show_autorbox')) {
+			$data["show_autorbox"] = 0;
+		}
+			
 		$article->update($data);
-		return Redirect::route('admin.articles.index')->with("success", "Erolgreich gespeichert");
+		return Redirect::route('admin.articles.index')->with("success", "Artikel erolgreich gespeichert");
 	}
 
 	/**

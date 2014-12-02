@@ -3,12 +3,12 @@
 			<td width="200"><strong>Titel</strong></td>
 			<td>{{ Form::text('title', Input::old('title'),  array('class' => 'form-control')) }}</td>
 		</tr>
-		@if(isset($post))
+		@if(isset($article))
 		<tr>
 			<td width="200"><strong>Autor</strong></td>
 			<td>
 				<select name="user_id">
-						<option value="{{ $post->user_id }}">{{ $post->user->username }}</option>
+						<option value="{{ $article->user_id }}">{{ $article->user->username }}</option>
 				@foreach($users as $user)
 						<option value="{{ $user->id }}">{{ $user->username }}</option>
 				@endforeach
@@ -24,7 +24,7 @@
 			<td width="200"><strong>Content</strong></td>
 			<td>{{ Form::textarea('content', Input::old('content'),  array('class' => 'edit_content ckeditor')) }}</td>
 		</tr>
-		@if(isset($post))
+		@if(isset($article))
 		<tr>
 			<td width="200"><strong>Korrektur gelesen?</strong></td>
 			<td>{{ Form::checkbox('corrected', 1, Input::old('corrected')) }}</td>
@@ -38,11 +38,11 @@
 			<td><strong>Artikel Image</strong></td>
 			<td>
 				{{ Form::file('image') }}
-				@if(isset($post))
-					@if($post->image != "")
+				@if(isset($article))
+					@if($article->image != "")
 					<br/>
 					<strong>Aktuelles Bild:</strong><br/>
-					<img src="/uploads/news/{{ $post->image }}" width="200">
+					<img src="/uploads/articles/{{ $article->image }}" width="200">
 					@endif
 				@endif
 			</td>
@@ -51,9 +51,9 @@
 			<td><strong>Galerie</strong></td>
 			<td>
 				<select name="gallery_id">
-				@if(isset($post))
-					@if($post->gallery_id != 0)
-						<option value="{{ $post->gallery_id }}">{{ $post->gallery->title }}</option>
+				@if(isset($article))
+					@if($article->gallery_id != 0)
+						<option value="{{ $article->gallery_id }}">{{ $article->gallery->title }}</option>
 					@endif
 				@endif
 					<option value="0">- Galerie auswählen -</option>
@@ -64,16 +64,18 @@
 				</select>
 			</td>
 		</tr>
+		@if(isset($article))
 		<tr>
 			<td><strong>Erstellungsdatum</strong></td>
 			<td>
 				{{ Form::text('created_at', Input::old('created_at'),  array('class' => 'form-control')) }}
 			</td>
 		</tr>
+		@endif
 		<tr>
 			<td><strong>Autorenbox anzeigen?</strong></td>
 			<td>
-				{{ Form::checkbox('show_autorbox', Input::old('show_autorbox'), Input::old('show_autorbox')) }}
+				{{ Form::checkbox('show_autorbox', 1, Input::old('show_autorbox')) }}
 			</td>
 		</tr>
 	</table>
