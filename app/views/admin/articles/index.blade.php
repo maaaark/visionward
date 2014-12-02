@@ -37,7 +37,12 @@
 				</td>
 				<td>{{ $article->corrected }}</td>
 				<td>{{ $article->published }}</td>
-				<td><a href="/admin/articles/{{ $article->id }}/delete" class="delete">Löschen</a></td>
+				<td>
+					{{ Form::open(array('url' => 'admin/articles/' . $article->id, 'class' => 'delete')) }}
+						{{ Form::hidden('_method', 'DELETE') }}
+						{{ Form::submit('löschen', array('class' => 'delete')) }}
+					{{ Form::close() }}
+				</td>
 			</tr>
 		@endforeach
 	</table>

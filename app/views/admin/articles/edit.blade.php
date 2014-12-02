@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', "Artikel - ".$article->title)
 @section('content')
-	{{ Form::model($article, array('action' => array('AdminArticlesController@update', $article->id), 'method' => 'PUT')) }}
+	{{ Form::model($article, array('action' => array('AdminArticlesController@update', $article->id), 'method' => 'PUT', 'files' => 'true')) }}
 	@include('admin.articles.form')
 	<br/>
 	{{ Form::submit("Speichern", array('class' => 'btn btn-primary')) }}

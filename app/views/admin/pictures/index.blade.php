@@ -1,7 +1,8 @@
 @extends('layouts.admin')
 @section('title', "Pictures")
 @section('content')
-	
+	<a href="/admin/pictures/create" class="btn btn-primary">Neues Bild hochladen</a><br/>
+	<br/>
 	<table class="table table-striped">
 			<tr>
 				<th>ID</th>
