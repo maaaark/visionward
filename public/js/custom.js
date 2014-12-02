@@ -28,19 +28,60 @@ $( document ).ready(function() {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var champion_image = $(this).attr('rel');
 			var old_text = $(this).text();
-			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.18.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
+			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
+		}
+		if(test[3]=="skills") {
+			var value = link.substring(link.lastIndexOf('/')+1);
+			var id = $(this).attr('rel');
+			var old_text = $(this).text();
+			var link = $(this);			
+			$.getJSON('/skill_tooltip/'+id, function (data) {
+				var skill_icon = data.skill.icon; 
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> '+data.skill.name);
+			});
+			
+		}
+		if(test[3]=="items") {
+			var value = link.substring(link.lastIndexOf('/')+1);
+			var id = $(this).attr('rel');
+			var old_text = $(this).text();
+			var link = $(this);
+						
+			$.getJSON('/item_tooltip/'+id, function (data) {
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
+			});
+			
 		}
 	});
 
-
+	$('.item_tooltip').tooltipsy({
+		alignTo: 'cursor',
+		offset: [15, -60],
+		content: function ($el, $tip) {
+			var active_tooltip = $el.attr('rel');
+			$.getJSON('/item_tooltip/'+active_tooltip, function (data) {
+				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="90" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/item/'+data.item.id+'.png" class="img-circle" style="margin-bottom: 0px;" width="75" /></td><td valign="top"><table class="table table-striped"><tr><td>'+data.item.name+'</td></tr><tr><td>'+data.item.description+'</td></tr></table></td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+	
+	})
+	
+	$('.skill_tooltip').tooltipsy({
+		alignTo: 'cursor',
+		offset: [15, -60],
+		content: function ($el, $tip) {
+			var active_tooltip = $el.attr('rel');
+			$.getJSON('/skill_tooltip/'+active_tooltip, function (data) {
+				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="90" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 75px;"></td><td valign="top"><table class="table table-striped"><tr><td>'+data.skill.name+'</td></tr><tr><td>'+data.skill.description+'</td></tr></table></td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+	
+	})
+	
 	$('.player_tooltip').tooltipsy({
 		alignTo: 'cursor',
 		offset: [15, -60],
 		content: function ($el, $tip) {
 			var active_tooltip = $el.attr('rel');
-
 			$.getJSON('/players_tooltip/'+active_tooltip, function (data) {
 				$tip.html(function() { var content = '<div class="info_hover"><table><tr><td valign="top"><img src="/img/players/'+data.player.picture+'" style="margin-bottom: 0px;" width="110" /></td><td valign="top"><table class="table table-striped"><tr><td>Spieler:</td><td><img src="/img/flags/'+data.player.country+'.png" />&nbsp;&nbsp;'+data.player.first_name+' \''+ data.player.nickname + '\' ' + data.player.last_name + '</td></tr><tr><td>Rolle:</td><td>'+data.player.role+'</td></tr><tr><td>Team:</td><td><img src="/img/flags/'+data.team.country+'.png" />&nbsp;&nbsp;'+data.team.name+'</td></tr></table></td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+	
 	})
 	
 	$('.caster_tooltip').tooltipsy({

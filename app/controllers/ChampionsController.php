@@ -67,6 +67,12 @@ class ChampionsController extends \BaseController {
 		return View::make('skills.show', compact('skill'));
 	}
 	
+	public function skill_tooltip($id)
+	{
+		$skill = Skill::find($id);
+		return Response::json(array('skill' => $skill, 'champion' => $skill->champion));
+	}
+	
 	/**
 	 * Show the form for editing the specified champion.
 	 *
