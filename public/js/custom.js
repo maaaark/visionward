@@ -24,13 +24,13 @@ $( document ).ready(function() {
 	$( ".article a" ).each(function( index ) {
 		var link = $(this).attr('href');
 		var test = link.split('/');
-		if(test[3]=="champions") {
+		if(jQuery.inArray( "champions", test ) > -1) {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var champion_image = $(this).attr('rel');
 			var old_text = $(this).text();
 			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
 		}
-		if(test[3]=="skills") {
+		if(jQuery.inArray( "skills", test ) > -1) {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var id = $(this).attr('rel');
 			var old_text = $(this).text();
@@ -41,7 +41,7 @@ $( document ).ready(function() {
 			});
 			
 		}
-		if(test[3]=="items") {
+		if(jQuery.inArray( "items", test ) > -1) {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var id = $(this).attr('rel');
 			var old_text = $(this).text();
