@@ -597,8 +597,16 @@ h2.mobile_page_title {
 .info_hover {
 	background: #fff;
 	padding: 10px;
-	padding-bottom: 0px;
+	font-size: 12px;
+	padding-bottom: 10px;
 	border: 1px solid #929292;
+}
+.info_hover h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	margin-bottom: 5px;
+	font-weight: bold;
 }
 .nav-tabs>li.active>a:hover {
 	color: #fff;
