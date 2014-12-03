@@ -31,13 +31,28 @@ a.button:hover {
 	padding: 10px;
 }
 .zitat_rechts {
-	font-size: 16px;
-	color: red;
-	margin: 10px;
-	border-bottom: 1px solid #000;
-	border-top: 1px solid #000;
-	width: 200px;
-	position: relative;
+	margin: 5px 0 20px 20px;
+	font-size: 20px;
+	line-height: 24px;
+	color: #f25825;
+	border-top: 1px solid #aeaeae;
+	border-bottom: 1px solid #aeaeae;
+	border-left: 0;
+	float: right;
+	width: 20%;
+	padding: .2em 0;
+}
+.zitat_links {
+	margin: 5px 0 20px 20px;
+	font-size: 20px;
+	line-height: 24px;
+	color: #f25825;
+	border-top: 1px solid #aeaeae;
+	border-bottom: 1px solid #aeaeae;
+	border-left: 0;
+	float: left;
+	width: 20%;
+	padding: .2em 0;
 }
 .votes_overlay {
 	position: absolute;
