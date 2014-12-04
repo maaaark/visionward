@@ -39,7 +39,7 @@ class RefreshItems extends Command {
 	{
 		$api_key = Config::get('api.key');
 		
-		$item_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/item?locale=de_DE&itemListData=stats&api_key=".$api_key;
+		$item_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/item?locale=de_DE&itemListData=all&api_key=".$api_key;
 		$json = @file_get_contents($item_data);
 		
 		if($json === FALSE) {
@@ -48,6 +48,7 @@ class RefreshItems extends Command {
 			$obj = json_decode($json, true);
 			
 			foreach($obj["data"] as $key => $item) {
+				$tags = "";
 				$recent_item = Item::where('item_id', '=', $item["id"])->first();
 				
 				if(!isset($recent_item)) {
@@ -68,6 +69,16 @@ class RefreshItems extends Command {
 				$new_item->description = $item["description"];
 				$new_item->plaintext = $plaintext;
 				$new_item->name = $item["name"];
+				
+				if(isset($item["tags"])) {
+					foreach($item["tags"] as $tag) {
+						$tags = $tags." ".$tag;
+					}
+				}
+				
+				
+				
+				$new_item->tags = $tags;
 				
 				$new_item->save();
 					
