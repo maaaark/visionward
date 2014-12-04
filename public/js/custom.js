@@ -1,7 +1,5 @@
 $( document ).ready(function() {
 
-	
-		
 	var stickyOffset = $('.sticky').offset().top;
 	var sticky = $('.sticky'),
 		  scroll = $(window).scrollTop();
@@ -140,7 +138,6 @@ $( document ).ready(function() {
 			$checkboxes.filter(':checked').each(function() { // checked 
 				selector += '.' + this.id.replace('type-', '') + ', ';
 				selector = selector.toLowerCase();
-				alert(selector);
 				// builds a selector like '.A, .B, .C, ' 
 			});
 			selector = selector.substring(0, selector.length - 2); // remove trailing ', '
