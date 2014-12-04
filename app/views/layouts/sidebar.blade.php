@@ -70,6 +70,7 @@
 						@endforeach
 						</table>
 					</td>
+					<td width="15"></td>
 					<td valign="top">
 						<table class="table table-striped visionward_font">
 							<tr>
