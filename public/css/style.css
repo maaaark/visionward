@@ -54,6 +54,26 @@ a.button:hover {
 	width: 20%;
 	padding: .2em 0;
 }
+#filterlist {
+	margin: 0;
+	padding: 0;
+}
+.filter_value {
+	float: left;
+	list-style: none;
+	width: 150px;
+}
+.filter_role {
+	float: left;
+	list-style: none;
+	width: 110px;
+}
+#filterlist li {
+	float: left;
+	list-style: none;
+	width: 250px;
+	margin-right: 10px;
+}
 .votes_overlay {
 	position: absolute;
 	top: 0;
@@ -382,6 +402,7 @@ a.red {
 .champion_avatar {
 	position: relative;
 }
+
 .free_week, .on_sale {
 	position: absolute;
 	left: 10px;

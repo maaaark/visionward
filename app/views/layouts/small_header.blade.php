@@ -49,7 +49,7 @@
 	<br/>
 	<div class="container main_content">
 		<div class="row">
-		  <div class="col-xs-12 col-md-8 article">
+		  <div class="col-xs-12 col-md-8">
 			@include('layouts.errors')
 			<div class="visible-xs-* visible-sm-* hidden-md hidden-lg header_margin">
 				<br/>

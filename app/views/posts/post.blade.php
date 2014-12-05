@@ -7,7 +7,9 @@
 	@endforeach
 </div>
 -->
+<div class="article">
 {{ $post->content }}<br/>
+</div>
 @if($post->show_autorbox == 1)
 <div class="autor_box">
 	<table>

@@ -13,14 +13,14 @@
 			@foreach($posts as $post)
 				<li>
 					@if($i<=3)
-						<div class="news">
+						<div class="news article">
 							  <div class="row">
 							  <div class="col-sm-3 col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 165, null)?>" /></a></div>
 							  <div class="col-sm-9 col-md-9 text">
 								<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 								{{ $post->excerpt }}
 								<div class="meta">
-									<span class="comments_count"><a href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread">0 Kommentare</a></span> {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
+									<span class="comments_count"><a href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread">0 Kommentare</a></span> - <a href="/users/{{ $post->user->id }}">{{ $post->user->username }}</a> - {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
 								</div>
 							  </div>
 							  <div class="clear"></div>

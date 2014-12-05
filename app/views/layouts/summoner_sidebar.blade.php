@@ -66,7 +66,7 @@ letztes update: {{$summoner->updated_at}}
 			</td>
 	</tr>
 	<tr>
-		<td valign="top" width="150px"><strong>Versallen</strong></td>
+		<td valign="top" width="150px"><strong>Vasallen</strong></td>
 		<td valign="top">{{number_format($rankedstats->creeps , 0 , '.' , '.' )}}</td>
 	</tr>
 	<tr>
@@ -74,11 +74,11 @@ letztes update: {{$summoner->updated_at}}
 		<td valign="top">{{number_format($rankedstats->gold , 0 , '.' , '.' )}}</td>
 	</tr>
 	<tr>
-		<td valign="top" width="150px"><strong>Schaden gemacht</strong></td>
+		<td valign="top" width="150px"><strong>Schaden verursacht</strong></td>
 		<td valign="top">{{number_format($rankedstats->damage , 0 , '.' , '.' )}}</td>
 	</tr>
 	<tr>
-		<td valign="top" width="150px"><strong>Schaden eingesteckt</strong></td>
+		<td valign="top" width="150px"><strong>Schaden bekommen</strong></td>
 		<td valign="top">{{number_format($rankedstats->damagetaken , 0 , '.' , '.' )}}</td>
 	</tr>
 	<tr>

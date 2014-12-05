@@ -18,6 +18,17 @@ class HomeController extends BaseController {
 	{
 		return View::make('pages.legal');
 	}
+	public function spells()
+	{
+		$api_key = Config::get('api.key');
+		$spells = include("spells.json");
+		$obj = json_decode($spells, true);
+		foreach($obj["data"] as $champion) {
+			echo $champion["name"]."<br/>";
+		}
+		//return View::make('pages.spells', compact('champions'));
+	}
+	
 	public function datenschutz()
 	{
 		return View::make('pages.datenschutz');

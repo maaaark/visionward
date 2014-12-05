@@ -47,6 +47,7 @@ class RefreshChampions extends Command {
 			$version = Setting::where('key', '=', 'patch_number')->first();
 			if($version){ $version->value = $obj['version']; $version->save();}
 			foreach($obj["data"] as $champion) {
+				$tags = "";
 				$recent_champion = Champion::where('champion_id', '=', $champion["id"])->first();
 				if(!isset($recent_champion)) {
 					$new_champion = new Champion;
@@ -75,6 +76,14 @@ class RefreshChampions extends Command {
 					$new_champion->hpregenperlevel = $champion["stats"]["hpregenperlevel"];
 					$new_champion->armorperlevel = $champion["stats"]["armorperlevel"];
 					$new_champion->lore = $champion["lore"];
+					
+					if(isset($champion["tags"])) {
+						foreach($champion["tags"] as $tag) {
+							$tags = $tags." ".$tag;
+						}
+					}
+					$new_champion->tags = $tags;
+				
 					$i = 0;
 					foreach($champion["enemytips"] as $tip){
 						$i = $i+1;
@@ -140,6 +149,12 @@ class RefreshChampions extends Command {
 					$recent_champion->hpregenperlevel = $champion["stats"]["hpregenperlevel"];
 					$recent_champion->armorperlevel = $champion["stats"]["armorperlevel"];
 					$recent_champion->lore = $champion["lore"];
+					if(isset($champion["tags"])) {
+						foreach($champion["tags"] as $tag) {
+							$tags = $tags." ".$tag;
+						}
+					}
+					$recent_champion->tags = $tags;
 					$i = 0;
 					foreach($champion["enemytips"] as $tip){
 						$i = $i+1;

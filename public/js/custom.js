@@ -1,7 +1,5 @@
 $( document ).ready(function() {
 
-	
-		
 	var stickyOffset = $('.sticky').offset().top;
 	var sticky = $('.sticky'),
 		  scroll = $(window).scrollTop();
@@ -46,11 +44,11 @@ $( document ).ready(function() {
 			var id = $(this).attr('rel');
 			var old_text = $(this).text();
 			var link = $(this);
-						
-			$.getJSON('/item_tooltip/'+id, function (data) {
-				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
-			});
-			
+			if(id != null) {			
+				$.getJSON('/item_tooltip/'+id, function (data) {
+					link.html('<img src="http://ddragon.leagueoflegends.com/cdn/4.20.1/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
+				});
+			};
 		}
 	});
 
@@ -132,6 +130,21 @@ $( document ).ready(function() {
 	});
 
 
+	
+	$(function() {
+		var $checkboxes = $("input[id^='type-']");
+		$checkboxes.change(function() {
+			var selector = '';
+			$checkboxes.filter(':checked').each(function() { // checked 
+				selector += '.' + this.id.replace('type-', '') + ', ';
+				selector = selector.toLowerCase();
+				// builds a selector like '.A, .B, .C, ' 
+			});
+			selector = selector.substring(0, selector.length - 2); // remove trailing ', '
+			$('#list li').hide() // hide all rows
+			.filter(selector).show(); // reduce set to matched and show
+		});
+	});
 
 
 });
