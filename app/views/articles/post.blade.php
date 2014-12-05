@@ -1,4 +1,6 @@
+<div class="article">
 {{ $article->content }}<br/>
+</div>
 @if($article->show_autorbox == 1)
 <div class="autor_box">
 	<table>
