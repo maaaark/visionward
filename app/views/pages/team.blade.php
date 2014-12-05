@@ -17,7 +17,7 @@
 			<br/>
 			<br/>
 			<div class="center">
-				<a href="mailto: {{ $user->email }}" target="blank"><img src="/img/twitter.png" alt="{{ $user->email }}" width="35" /></a>
+				<a href="mailto: {{ $user->email }}" target="blank"><img src="/img/email.png" alt="{{ $user->email }}" width="35" /></a>
 				@if($user->twitter != "")
 				<a href="http://twitter.com/{{ $user->twitter }}" target="blank"><img src="/img/twitter.png" alt="{{ $user->email }}" width="35" /></a>
 				@endif

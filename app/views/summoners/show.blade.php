@@ -94,6 +94,8 @@
 							Solo Ranked
 						@elseif($game->subType == "RANKED_TEAM_3x3")
 							Ranked 3er Team
+						@else
+							Freies Spiel
 						@endif
 						
 						 - {{ date("d.m.Y H:i", $game->createDate/1000) }} Uhr</td>
@@ -176,15 +178,15 @@
 							<tr>
 								<td><strong>Lane</strong></td>
 								<td>{{ $game->lane }}</td>
-								<td><strong>Doublekills</strong></td>
+								<td><strong>Zweifachtötung</strong></td>
 								<td>{{ $game->doubleKills }}</td>
-								<td><strong>Tripplekills</strong></td>
+								<td><strong>Dreifachtötung</strong></td>
 								<td>{{ $game->tripleKills }}</td>
 							</tr>
 							<tr>
-								<td><strong>Quadrakills</strong></td>
+								<td><strong>Vierfachtötung</strong></td>
 								<td>{{ $game->quadraKills }}</td>
-								<td><strong>Pentakills</strong></td>
+								<td><strong>Fünffachtötung</strong></td>
 								<td>{{ $game->pentaKills }}</td>
 								<td><strong>Erstes Blut</strong></td>
 								<td>{{ $game->firstBloodKill }}</td>
