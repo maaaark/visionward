@@ -92,7 +92,7 @@
 	
 	
 	<div class="block">
-		<h2 class="headline_no_border">Ausstehende Spiele</h2>
+		<h2 class="headline_no_border">Pro Spiele</h2>
 		<div class="content">
 			<table class="table table-striped visionward_font">
 			@foreach($global_matches as $match)
