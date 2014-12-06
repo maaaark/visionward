@@ -181,48 +181,48 @@ class RefreshChampions extends Command {
 							$recent_champion->allytips3= $tip2;
 						}
 					}
-					$recent_champion->save();
-					
+					$recent_champion->save();			
 				}
 				unset($recent_champion);
 				
 				foreach($champion["skins"] as $skin){
-						$recent_skin = Skin::where('champion_id', '=', $champion["id"])->where('skin_id', '=', $skin['num'])->first();
-						
-						if(!isset($recent_skin)) {
-							$new_skin = new Skin;
-							$new_skin->name = $skin['name'];
-							$new_skin->champion_id = $champion["id"];
-							$new_skin->skin_id = $skin['num'];
-							$new_skin->save();
-						}else{
-							$recent_skin->name = $skin['name'];
-							$recent_skin->champion_id = $champion["id"];
-							$recent_skin->skin_id = $skin['num'];
-							$recent_skin->save();	
-						}
+					$recent_skin = Skin::where('champion_id', '=', $champion["id"])->where('skin_id', '=', $skin['num'])->first();
+					
+					if(!isset($recent_skin)) {
+						$recent_skin = new Skin;
+					}
+					$recent_skin->name = $skin['name'];
+					$recent_skin->champion_id = $champion["id"];
+					$recent_skin->skin_id = $skin['num'];
+					$recent_skin->save();
 					unset($recent_skin);
 				}
 				
 				foreach($champion["spells"] as $skill){
-						$recent_skill = Skill::where('champion_id', '=', $champion["id"])->where('name', '=', $skill['name'])->first();
-						
-						if(!isset($recent_skill)) {
-							$new_skill = new Skill;
-							$new_skill->name = $skill['name'];
-							$new_skill->champion_id = $champion["id"];
-							$new_skill->description = $skill['description'];
-							$new_skill->icon = $skill['image']['full'];
-							$new_skill->save();
-						}else{
-							$recent_skill->name = $skill['name'];
-							$recent_skill->champion_id = $champion["id"];
-							$recent_skill->description = $skill['description'];
-							$recent_skill->icon = $skill['image']['full'];
-							$recent_skill->save();
-						}
+					$recent_skill = Skill::where('champion_id', '=', $champion["id"])->where('name', '=', $skill['name'])->first();
+					
+					if(!isset($recent_skill)) {
+						$recent_skill = new Skill;
+					}
+					$recent_skill->name = $skill['name'];
+					$recent_skill->champion_id = $champion["id"];
+					$recent_skill->description = $skill['description'];
+					$recent_skill->icon = $skill['image']['full'];
+					$recent_skill->save();
 					unset($recent_skill);
 				}
+				
+				$recent_passive = Skill::where('champion_id', '=', $champion["id"])->where('name', '=', $champion["passive"]["name"])->first();
+				if(!isset($recent_passive)) {
+					$recent_passive = new Skill;
+				}
+				$recent_passive->name = $champion["passive"]["name"];
+				$recent_passive->champion_id = $champion["id"];
+				$recent_passive->description = $champion["passive"]["description"];
+				$recent_passive->icon = $champion["passive"]['image']['full'];
+				$recent_passive->passive = 1;
+				$recent_passive->save();
+				
 			}
 		}
 		

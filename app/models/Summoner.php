@@ -287,7 +287,7 @@ class Summoner extends \Eloquent {
 			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 			$json = @file_get_contents($summoner_data);
 			if($json === FALSE) {
-				return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 003");
+				//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 003");
 			} else {
 				$obj = json_decode($json, true);
 				$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",$region)->first();
@@ -307,17 +307,19 @@ class Summoner extends \Eloquent {
 					//return Redirect::to('/')->withInput()->with('error', "API Fehler");
 				} else {
 					$obj2 = json_decode($json2, true);
-					foreach($obj2["playerStatSummaries"] as $gamemode){
-						if($gamemode["playerStatSummaryType"] == 'RankedSolo5x5'){
-							$summoner->ranked_wins = $gamemode['wins'];
-							$summoner->ranked_losses = $gamemode['losses'];
-						}
-						if($gamemode["playerStatSummaryType"] == 'Unranked'){
-							$summoner->unranked_wins = $gamemode['wins'];
-						}
-						if($gamemode["playerStatSummaryType"] == 'RankedTeam5x5'){
-							$summoner->teamranked_wins = $gamemode['wins'];
-							$summoner->teamranked_losses = $gamemode['losses'];
+					if(isset($obj2["playerStatSummaries"])){
+						foreach($obj2["playerStatSummaries"] as $gamemode){
+							if($gamemode["playerStatSummaryType"] == 'RankedSolo5x5'){
+								$summoner->ranked_wins = $gamemode['wins'];
+								$summoner->ranked_losses = $gamemode['losses'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'Unranked'){
+								$summoner->unranked_wins = $gamemode['wins'];
+							}
+							if($gamemode["playerStatSummaryType"] == 'RankedTeam5x5'){
+								$summoner->teamranked_wins = $gamemode['wins'];
+								$summoner->teamranked_losses = $gamemode['losses'];
+							}
 						}
 					}
 				$summoner->save();
@@ -329,7 +331,7 @@ class Summoner extends \Eloquent {
 					$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
 					$json3 = @file_get_contents($summoner_rankedstats);
 					if($json3 === FALSE) {
-						return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 002");
+						//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 002");
 					} else {
 						$obj3 = json_decode($json3, true);
 						foreach($obj3[$summoner->summoner_id] as $ranked){
@@ -376,7 +378,7 @@ class Summoner extends \Eloquent {
 			$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner_id."/ranked?season=SEASON4&api_key=".$api_key;
 			$json = @file_get_contents($summoner_stats);
 			if($json === FALSE) {
-				return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 001");
+				//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 001");
 			} else {
 				$obj = json_decode($json, true);
 				foreach($obj['champions'] as $champstats){

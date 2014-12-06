@@ -16,10 +16,11 @@ class Helpers {
 		if($timediff < $minutes) {
 			$html = "vor " . $timediff . " sekunden";
 		} else if ($timediff >= $minutes && $timediff < $hours) {
-			$outputTime = round($timediff / $hours);
+			//var_dump($timediff,round($timediff / $minutes));
+			$outputTime = round($timediff / $minutes);
 			$html = "vor " . $outputTime . " minuten";
 		} else if ($timediff >= $hours && $timediff < $days) {
-			$outputTime = round($timediff / $days);
+			$outputTime = round($timediff / $hours);
 			$html = "vor " . $outputTime . " Stunden";
 		} else if ($timediff >= $days && $timediff < $twoWeek) {
 			$outputTime = round($timediff / $days);

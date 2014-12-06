@@ -23,7 +23,7 @@
 		<tr>
 			<td valign="top" width="130" style="text-align: center; padding-right: 15px;">
 				<br/>
-				@if($summoner->summonerLevel ==30 and $summoner->solo_division != "none")<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />@endif
+				<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" width="100" class="img-circle" />
 			</td>
 			<td valign="top" width="150">
 				<div class="profile_season_stats">
