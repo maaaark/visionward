@@ -67,8 +67,13 @@
 		<table class="table table-striped">
 			@foreach($skills as $skill)
 			<tr>
-				<td vlaign="top"><a href="/skills/{{ $skill->id }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/{{ $skill->icon}}" class="img-circle" /></a></td>
-				<td vlaign="top"><strong><a href="/skills/{{ $skill->id }}">{{ $skill->name }}</a></strong></br>{{ $skill->description }}</td>
+				<td vlaign="top">
+				@if($skill->passive == 1)
+					<a href="/skills/{{ $skill->id }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/passive/{{ $skill->icon}}" class="img-circle" /></a>
+				@else
+					<a href="/skills/{{ $skill->id }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{$patchversion}}/img/spell/{{ $skill->icon}}" class="img-circle" /></a>
+				@endif</td>
+				<td vlaign="top"><strong><a href="/skills/{{ $skill->id }}">{{ $skill->name }}@if($skill->passive == 1) (Passiv)@endif</a></strong></br>{{ $skill->description }}</td>
 			</tr>
 			@endforeach
 		</table>
