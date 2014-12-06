@@ -37,18 +37,12 @@ class Run extends Command {
 	 */
 	public function fire()
 	{
-		$champions = Champion::all();
-		foreach($champions as $champion) {
-			$votes = 0;
-			
-			$counterpicks = Counterpick::where("champion_id", "=", $champion->champion_id)->get();
-			foreach($counterpicks as $pick) {
-				$votes = $votes + $pick->upvotes + $pick->downvotes;
-			}
-			
-			$champion->votes = $votes;
-			$champion->save();
-			echo $votes." Votes für ".$champion->name." gespeichert\n";
+		$leagues = League::all();
+		foreach($leagues as $league) {
+
+			$league->slug = Str::slug($league->title);
+			$league->save();
 		}
+		echo "Team Slugs gespeichert\n";
 	}
 }
