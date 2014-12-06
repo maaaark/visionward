@@ -40,7 +40,7 @@ class Run extends Command {
 		$leagues = League::all();
 		foreach($leagues as $league) {
 
-			$league->slug = Str::slug($league->title);
+			$league->slug = Str::slug($league->name);
 			$league->save();
 		}
 		echo "Team Slugs gespeichert\n";
