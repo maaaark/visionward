@@ -282,6 +282,10 @@
 		</td>
 	</tr>
 	<tr>
+		<td width="200"><strong>Best of</strong></td>
+		<td>{{ Form::text('bestof', Input::old('bestof'),  array('class' => 'form-control')) }}</td>
+	</tr>
+	<tr>
 		<td width="200"><strong>Liga / Turnier</strong></td>
 		<td>
 			<select name="league_id">
