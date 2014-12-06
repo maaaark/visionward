@@ -67,7 +67,12 @@ letztes update: {{$summoner->updated_at}}
 	</tr>
 	<tr>
 		<td valign="top" width="150px"><strong>Vasallen</strong></td>
-		<td valign="top">{{number_format($rankedstats->creeps , 0 , '.' , '.' )}}</td>
+		<td valign="top">
+		@if($summoner->ranked_wins+$summoner->ranked_losses !=0)
+			{{number_format($rankedstats->creeps/($summoner->ranked_wins+$summoner->ranked_losses), 0 , '.' , '.' )}} / Spiel</td>
+		@else
+			{{number_format($rankedstats->creeps, 0 , '.' , '.' )}} / Spiel</td>
+		@endif
 	</tr>
 	<tr>
 		<td valign="top" width="150px"><strong>Gold</strong></td>

@@ -18,9 +18,9 @@
 	  </div>
 	  <div class="col-xs-12 col-md-2 center">
 		<h3>vs.</h3>
-		<div class="upvote">{{ $counterpick->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></div> 
+		<a href="/championupvotes/{{ $counterpick->id}}"><div class="upvote">{{ $counterpick->upvotes }} <span class="glyphicon glyphicon-thumbs-up"></span></div> </a>
 		<br/>
-		<div class="downvote">{{ $counterpick->downvotes }} <span class="glyphicon glyphicon-thumbs-down"></span></div>
+		<a href="/championdownvotes/{{ $counterpick->id}}"><div class="downvote">{{ $counterpick->downvotes }}<span class="glyphicon glyphicon-thumbs-down"></span></div></a>
 		<br/>
 		<div style="width: 100px;" class="vote_lane">{{ Helpers::niceRole($counterpick->lane) }}</div>
 	  </div>
