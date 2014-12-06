@@ -9,12 +9,12 @@
 			<td width="220" valign="top">
 				<img src="/img/teams/{{ $league->logo }}" width="200" />
 			</td>
-			<td>
+			<td valign="top">
 				<br/>
 				<table class="table table-striped">
-					@foreach($league->teams as $team)
+					@foreach($league->placements as $place)
 					<tr>
-						<td><img src="/img/flags/{{ $team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $team->id }}/{{ $team->name }}">{{ $team->name }}</a></td>
+						<td><img src="/img/flags/{{ $place->team->country }}.png" />&nbsp;&nbsp;<a href="/teams/{{ $place->team->id }}/{{ $place->team->name }}">{{ $place->team->name }}</a></td>
 					</tr>
 					@endforeach
 				</table>
