@@ -10,21 +10,37 @@
 				<table class="table table-striped">
 					<tr>
 						<td><strong>Schaden</strong></td>
-						<td>{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</td>
+						<td>{{ round($champion->attackdamage) }} (+ {{ round($champion->attackdamageperlevel) }} / Level)</td>
 						<td><strong>Leben</strong></td>
-						<td>{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</td>
+						<td>{{ round($champion->hp) }} (+ {{ round($champion->hpperlevel) }} / Level)</td>
 					</tr>
 					<tr>
 						<td><strong>Reichweite</strong></td>
-						<td>{{ $champion->attackrange }}</td>
+						<td>{{ round($champion->attackrange) }}</td>
 						<td><strong>Mana</strong></td>
-						<td>{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</td>
+						<td>{{ round($champion->mp) }} (+ {{ round($champion->mpperlevel) }} / Level)</td>
 					</tr>
 					<tr>
 						<td><strong>Rüstung</strong></td>
-						<td>{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</td>
+						<td>{{ round($champion->armor) }} (+ {{ round($champion->armorperlevel) }} / Level)</td>
 						<td><strong>Geschwindigkeit</strong></td>
-						<td>{{ $champion->movespeed }}</td>
+						<td>{{ round($champion->movespeed) }}</td>
+					</tr>
+					<tr>
+						<td><strong>Magic Res</strong></td>
+						<td>{{ round($champion->spellblock) }} (+ {{ round($champion->spellblockperlevel) }} / Level)</td>
+						<td><strong>Attackspeed</strong></td>
+						<?php 
+							$attackspeed = round(1 / (1.6 * (1 + $champion->attackspeedoffset )),3);
+							$attackspeedPerLevel = round($champion->attackspeedperlevel);
+						?>
+						<td>{{ $attackspeed }} (+ {{ $attackspeedPerLevel }} %)</td>
+					</tr>
+					<tr>
+						<td><strong>Lifereg</strong></td>
+						<td>{{ round($champion->hpregen,1) }} (+ {{ round($champion->armorperlevel,1) }} / Level)</td>
+						<td><strong>Manareg</strong></td>
+						<td>{{ round($champion->mpregen,1) }} (+ {{ round($champion->hpregenperlevel,1) }} / Level)</td>
 					</tr>
 				</table>
 			</td>
