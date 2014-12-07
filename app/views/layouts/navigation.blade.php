@@ -7,7 +7,7 @@
 				<li><a href="/">NEWS</a></li>
 				<li><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
-						<li><a href="/article/1/jungle">SEASON 5 JUNGLE</a></li>
+						<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
 						<li><a href="/teams">CHAMPIONS</a></li>
 						<li><a href="/matches">VIDEOS</a></li>
 					</ul>
@@ -34,7 +34,7 @@
 		<li {{ Request::is('/') ? ' class="active"' : '' }}{{ Request::is('news/*') ? ' class="active"' : '' }}><a href="/">NEWS</a></li>
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
-				<li><a href="/article/1/jungle">SEASON 5 JUNGLE</a></li>
+				<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
 				<li><a class="inactive" href="#">CHAMPIONS</a></li>
 				<li><a href="/categories/videos">VIDEOS</a></li>
 			</ul>
