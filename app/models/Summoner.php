@@ -328,8 +328,7 @@ class Summoner extends \Eloquent {
 				}
 				
 				$stattest = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
-				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
-				if($stats or $update == 1 or !$stattest ){
+				if( $update == 1 or !$stattest ){
 					$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
 					$json3 = @file_get_contents($summoner_rankedstats);
 					if($json3 === FALSE) {
