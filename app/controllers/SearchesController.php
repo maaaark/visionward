@@ -155,6 +155,7 @@ class SearchesController extends \BaseController {
 							}
 						}
 					$summoner->save();
+					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
 					}
 				}
 		}
