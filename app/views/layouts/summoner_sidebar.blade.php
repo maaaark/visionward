@@ -26,7 +26,7 @@
 				@endif
 			@endif)
 			</span><br/>
-			<span class="kda">{{ $stat->creeps }} CS - {{ $stat->kills }} / {{ $stat->deaths }} / {{ $stat->assists }} 
+			<span class="kda">@if($stat->wins+$stat->losses != 0){{ number_format($stat->creeps/($stat->wins+$stat->losses), 0 , '.' , '.' ) }}@else {{$stat->creeps}}@endif CS / Spiel - {{ $stat->kills }} / {{ $stat->deaths }} / {{ $stat->assists }} 
 			(@if($stat->deaths != 0)
 				{{ round(($stat->kills+$stat->assists)/$stat->deaths, 2) }} 
 			@else
@@ -41,7 +41,7 @@
 	</tr>
 </table>
 <br/>
-@if($rankedstats->kills != 0)
+@if(isset($rankedstats))
 <h2 class="headline_no_border">Saison 4 Statistik</h2>
 <table class="table table-striped">
 	<tr>
