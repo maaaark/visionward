@@ -14,6 +14,11 @@ class HomeController extends BaseController {
 		return View::make('pages.team', compact('users'));
 	}
 	
+	public function stream()
+	{
+		return View::make('pages.stream');
+	}
+	
 	public function impressum()
 	{
 		return View::make('pages.legal');
