@@ -285,7 +285,7 @@ class Summoner extends \Eloquent {
 	public function refresh_summoner($region, $clean_summoner_name, $summoner_id, $update){
 		$summoner = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->first();
 		$summonertimecheck = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
-		if($summonertimecheck){
+		if($summonertimecheck or $update == 1){
 			$api_key = Config::get('api.key');
 			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 			$json = @file_get_contents($summoner_data);
@@ -364,9 +364,9 @@ class Summoner extends \Eloquent {
 								}
 							}
 						}
+						$summoner->touch();
+						$summoner->save();
 					}
-					$summoner->touch();
-					$summoner->save();
 				}
 			}
 		}
