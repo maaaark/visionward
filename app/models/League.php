@@ -21,7 +21,7 @@ class League extends \Eloquent {
 	
 	public function matches()
     {
-        return $this->hasMany('Match');
+        return $this->hasMany('Match')	;
     }
 	
 	public function placements()
