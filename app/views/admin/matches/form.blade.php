@@ -36,6 +36,7 @@
 				<option value="{{ $match->team1_top_champion }}">{{ $match->team1topchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -61,6 +62,7 @@
 				<option value="{{ $match->team1_jungle_champion }}">{{ $match->team1junglechampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -86,6 +88,7 @@
 				<option value="{{ $match->team1_mid_champion }}">{{ $match->team1midchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -111,6 +114,7 @@
 				<option value="{{ $match->team1_adc_champion }}">{{ $match->team1adcchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -136,6 +140,7 @@
 				<option value="{{ $match->team1_support_champion }}">{{ $match->team1supportchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -175,6 +180,7 @@
 				<option value="{{ $match->team2_top_champion }}">{{ $match->team2topchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -200,6 +206,7 @@
 				<option value="{{ $match->team2_jungle_champion }}">{{ $match->team2junglechampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -225,6 +232,7 @@
 				<option value="{{ $match->team2_mid_champion }}">{{ $match->team2midchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -250,6 +258,7 @@
 				<option value="{{ $match->team2_adc_champion }}">{{ $match->team2adcchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
@@ -275,6 +284,7 @@
 				<option value="{{ $match->team2_support_champion }}">{{ $match->team2supportchampion->name }}</option>	
 				@endif
 				@endif
+				<option value="0">?</option>
 				@foreach($champions as $champion)
 				<option value="{{ $champion->champion_id }}">{{ $champion->name }}</option>
 				@endforeach
