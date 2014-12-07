@@ -295,17 +295,9 @@
 <br/>
 		<h2 class="headline_no_border">Mehr Informationen</h2>
 		<table class="table table-striped">
-			@if($match->title != "")
-			<tr>
-				<td width="120"><strong>Titel</strong></td>
-				<td>
-					{{ $match->title }}
-				</td>
-			</tr>
-			@endif
 			<tr>
 				<td width="120"><strong>Liga / Turnier</strong></td>
-				<td><a href="/leagues/{{ $match->league->id }}/{{ $match->league->slug }}"><img src="/img/leagues/{{ $match->league->logo }}" height="20" />&nbsp;&nbsp;{{ $match->league->name }} - {{ date("d.m.Y - H:i",strtotime($match->game_date)) }} Uhr</a></td>
+				<td><a href="/leagues/{{ $match->league->id }}/{{ $match->league->slug }}"><img src="/img/teams/{{ $match->league->logo }}" height="20" />&nbsp;&nbsp;{{ $match->league->name }} - {{ date("d.m.Y - H:i",strtotime($match->game_date)) }} Uhr</a></td>
 			</tr>
 			<tr>
 				<td width="120"><strong>Modus</strong></td>

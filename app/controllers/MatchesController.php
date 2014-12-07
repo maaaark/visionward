@@ -9,7 +9,7 @@ class MatchesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$matches = Match::orderBy("game_date", "DESC")->get();
+		$matches = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->get();
 		$date_now = new DateTime('today');
 		return View::make('matches.index', compact('matches', 'date_now'));
 	}
