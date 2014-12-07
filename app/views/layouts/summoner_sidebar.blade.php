@@ -1,5 +1,6 @@
-letztes update: {{$summoner->updated_at}}
+
 <a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh"><div class="updater_summoner">Update Summoner</div></a>
+<div class="last_update">Letztes Update: {{ Helpers::diffForHumans($summoner->updated_at) }}</div>
 @if($summoner->summonerLevel == 30)
 <h2 class="headline_no_border">Saison 4 Champions</h2>
 <table class="table table-striped">
