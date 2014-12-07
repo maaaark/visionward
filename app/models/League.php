@@ -19,6 +19,11 @@ class League extends \Eloquent {
         return $this->belongsToMany('Team');
     }
 	
+	public function matches()
+    {
+        return $this->hasMany('Match')->orderBy("game_date", "DESC")->where("parent_game", ">", "0");
+    }
+	
 	public function placements()
     {
         return $this->hasMany('Placement');
