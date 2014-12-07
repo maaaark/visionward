@@ -24,7 +24,9 @@
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
-			<a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungle_news.jpg" /></a>
+			<a href="/news/53/flashignite-launch-gewinnspiel"><img src="/img/sidebar/launch2.jpg" /></a>
+			<a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungleguide.jpg" /></a>
+			<a href="/news/38/patchnotes-420-die-vorsaison-ist-hier"><img src="/img/sidebar/pacthnotes.jpg" /></a>
 		</div>
 	</div>
 	
