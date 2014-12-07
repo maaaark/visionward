@@ -26,7 +26,7 @@
 	<br/><br/>
 	<h2 class="headline_no_border">{{ $league->name }} Spiele</h2>
 	<table class="table table-striped">
-	@foreach($league->matches as $match)
+	@foreach($matches as $match)
 		<tr>
 		<td width="180">
 			<a href="/teams/{{ $match->team->id }}/{{ $match->team->slug }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team->name }}</span></a>
