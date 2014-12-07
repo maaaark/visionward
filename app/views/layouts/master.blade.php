@@ -37,7 +37,7 @@
 	<div class="container-fluid">
 	<div class="header_margin hidden-xs hidden-sm">
 		<div class="row">
-		<div id="" class="carousel slide" data-ride="carousel">
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 		  <div class="carousel-inner" role="listbox">
   
 		  <?php 
@@ -49,7 +49,7 @@
 			@else
 				<div class="item">
 			@endif
-				  <div class="col-md-12 header  active container" style="background: url('/uploads/sliders/{{ $sliderSingle->destination }}/{{ $sliderSingle->filename }}');">
+				  <div class="col-md-12 header container" style="background: url('/uploads/sliders/{{ $sliderSingle->destination }}/{{ $sliderSingle->filename }}');">
 					<div class="container slider">
 						<span class="headline_background">
 						@if($sliderSingle->url)
