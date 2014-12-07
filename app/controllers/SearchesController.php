@@ -125,7 +125,7 @@ class SearchesController extends \BaseController {
 				$obj = json_decode($json, true);
 				$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->first();
 				$summonertimecheck = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$input['server_region'])->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
-				if($summonertimecheck){
+				if(!$summoner or $summonertimecheck){
 					if(!$summoner) {
 						$summoner = new Summoner;
 					}
