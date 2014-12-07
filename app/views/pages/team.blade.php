@@ -22,7 +22,7 @@
 				<a href="http://twitter.com/{{ $user->twitter }}" target="blank"><img src="/img/twitter.png" alt="{{ $user->email }}" width="35" /></a>
 				@endif
 				@if($user->twitch != "")
-				<a href="http://twitch.tv/{{ $user->twitch }}" target="blank"><img src="/img/twitter.png" alt="{{ $user->email }}" width="35" /></a>
+				<a href="http://twitch.tv/{{ $user->twitch }}" target="blank"><img src="/img/twitch.png" alt="{{ $user->email }}" width="35" /></a>
 				@endif
 			</div>
 		</div>
