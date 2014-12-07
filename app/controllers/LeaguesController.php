@@ -52,8 +52,9 @@ class LeaguesController extends \BaseController {
 	public function show($id, $slug)
 	{
 		$league = League::findOrFail($id);
+		$matches = Match::where("league_id", "=", $league->id)->where("parent_game", "=", 0)->orderBy("game_date", "DESC")->get();
 
-		return View::make('leagues.show', compact('league'));
+		return View::make('leagues.show', compact('league', 'matches'));
 	}
 
 	/**
