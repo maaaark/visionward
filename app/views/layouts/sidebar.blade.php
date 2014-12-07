@@ -24,12 +24,14 @@
 	</div>
 	@endif
 	-->
+	@if($settingsArray['stream_isactive'] === "1")
 	<div class="block">
 		<h2 class="headline">Livestream</h2>
 		<div class="content">
 		<a href="/stream"><img src="/img/sidebar/stream.png"></a>
 		</div>
 	</div>
+	@endif
 	
 	
 	<div class="block">
