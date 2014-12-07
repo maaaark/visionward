@@ -133,7 +133,7 @@
 									
 									@if($match->team1_support_champion != 0)
 									<a href="/champions/{{ $match->team1supportchampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team1supportplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team1supportchampion->key }}.png" class="img-circle" width="20" />
 									</a>
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
@@ -165,7 +165,7 @@
 									
 									@if($match->team2_top_champion != 0)
 									<a href="/champions/{{ $match->team2topchampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2topplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2topchampion->key }}.png" class="img-circle" width="20" />
 									</a>
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
@@ -184,7 +184,7 @@
 									
 									@if($match->team2_jungle_champion != 0)
 									<a href="/champions/{{ $match->team2junglechampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2jungleplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2junglechampion->key }}.png" class="img-circle" width="20" />
 									</a>
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
@@ -203,7 +203,7 @@
 									
 									@if($match->team2_mid_champion != 0)
 									<a href="/champions/{{ $match->team2midchampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2midplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2midchampion->key }}.png" class="img-circle" width="20" />
 									</a>
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
@@ -222,7 +222,7 @@
 									
 									@if($match->team2_adc_champion != 0)
 									<a href="/champions/{{ $match->team2adcchampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2adcplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2adcchampion->key }}.png" class="img-circle" width="20" />
 									</a>
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
@@ -241,7 +241,7 @@
 									
 									@if($match->team2_support_champion != 0)
 									<a href="/champions/{{ $match->team2supportchampion->key }}">
-									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2supportplayer->key }}.png" class="img-circle" width="20" />
+									<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $match->team2supportchampion->key }}.png" class="img-circle" width="20" />
 									</a>	
 									@else
 									<img src="/img/none.jpg" class="img-circle" width="20" />
