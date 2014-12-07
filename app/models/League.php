@@ -19,6 +19,11 @@ class League extends \Eloquent {
         return $this->belongsToMany('Team');
     }
 	
+	public function matches()
+    {
+        return $this->hasMany('Match');
+    }
+	
 	public function placements()
     {
         return $this->hasMany('Placement');

@@ -31,7 +31,6 @@
 					<a href="/matches/{{ $match->id }}">Matchdetails ansehen</a>
 				@endif
 			@endif
-			
 		</td>
 	</tr>
 	@endforeach
