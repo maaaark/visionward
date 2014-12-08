@@ -2,7 +2,9 @@
 @section('title', "Matches")
 @section('content')
 	
-	<table class="table table-striped">
+	
+	<a href="/admin/matches/create" class="btn btn-primary">Neues Match erstellen</a>
+	<table class="table table-striped" style="margin-top: 20px;">
 			<tr>
 				<th>Titel</th>
 				<th>Spiel</th>
