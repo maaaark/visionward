@@ -3,6 +3,11 @@
 @section('subtitle', $champion->title)
 @section('content')
 	
+	<?php 
+							$attackspeed = round(1 / (1.6 * (1 + $champion->attackspeedoffset )),3);
+							$attackspeedPerLevel = round($champion->attackspeedperlevel);
+						?>
+	
 	<table width="100%">
 		<tr>
 			<td width="120" valign="top"><a href="/counterpicks/{{ $champion->champion_id }}/{{ $champion->key }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion->key }}.png" class="img-circle" width="100" /></a></td>
@@ -10,21 +15,33 @@
 				<table class="table table-striped">
 					<tr>
 						<td><strong>Schaden</strong></td>
-						<td>{{ $champion->attackdamage }} (+ {{ $champion->attackdamageperlevel }} / Level)</td>
+						<td>{{ round($champion->attackdamage) }} (+ {{ round($champion->attackdamageperlevel) }} / Level)</td>
 						<td><strong>Leben</strong></td>
-						<td>{{ $champion->hp }} (+ {{ $champion->hpperlevel }} / Level)</td>
+						<td>{{ round($champion->hp) }} (+ {{ round($champion->hpperlevel) }} / Level)</td>
 					</tr>
 					<tr>
 						<td><strong>Reichweite</strong></td>
-						<td>{{ $champion->attackrange }}</td>
-						<td><strong>Mana</strong></td>
-						<td>{{ $champion->mp }} (+ {{ $champion->mpperlevel }} / Level)</td>
+						<td>{{ round($champion->attackrange) }}</td>
+						<td><strong>Lebensregeneration</strong></td>
+						<td>{{ round($champion->hpregen,1) }} (+ {{ round($champion->armorperlevel,1) }} / Level)</td>
 					</tr>
 					<tr>
 						<td><strong>Rüstung</strong></td>
-						<td>{{ $champion->armor }} (+ {{ $champion->armorperlevel }} / Level)</td>
+						<td>{{ round($champion->armor) }} (+ {{ round($champion->armorperlevel) }} / Level)</td>
+						<td><strong>Mana</strong></td>
+						<td>{{ round($champion->mp) }} (+ {{ round($champion->mpperlevel) }} / Level)</td>
+					</tr>
+					<tr>
+						<td><strong>Magieresistenz</strong></td>
+						<td>{{ round($champion->spellblock) }} (+ {{ round($champion->spellblockperlevel) }} / Level)</td>
+						<td><strong>Manaregeneration</strong></td>
+						<td>{{ round($champion->mpregen,1) }} (+ {{ round($champion->hpregenperlevel,1) }} / Level)</td>
+					</tr>
+					<tr>
 						<td><strong>Geschwindigkeit</strong></td>
-						<td>{{ $champion->movespeed }}</td>
+						<td>{{ round($champion->movespeed) }}</td>
+						<td><strong>Angriffsgeschwindigkeit</strong></td>
+						<td>{{ $attackspeed }} (+ {{ $attackspeedPerLevel }} %)</td>
 					</tr>
 				</table>
 			</td>
