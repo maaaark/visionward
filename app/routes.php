@@ -63,6 +63,7 @@ Route::get('/item_tooltip/{id}', 'ItemsController@item_tooltip');
 Route::get('/counterpicks/create/{id}', 'CounterpicksController@create');
 
 
+Route::get('/stream', 'HomeController@stream');
 Route::get('/spells', 'HomeController@spells');
 Route::get('/teams/{id}/{slug}', 'TeamsController@show');
 Route::get('/leagues/{id}/{slug}', 'LeaguesController@show');

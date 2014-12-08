@@ -8,23 +8,38 @@
 		?>
 	@endforeach
 			
+			
+			
+	<!--
 	@if($settingsArray['stream_isactive'] === "1")
 	<div class="block">
 		<h2 class="headline">Livestream</h2>
 		<div class="content">
 		@if($settingsArray['stream_platform'] === "twitch")
-			<iframe src="http://www.twitch.tv/{{$settingsArray['stream_name']}}/embed" frameborder="0" scrolling="no" width="360" height="220"></iframe>
+			<iframe src="http://www.twitch.tv/{{$settingsArray['stream_name']}}/embed?auto_play=false&start_volume=2" frameborder="0" scrolling="no" width="360" height="220"></iframe>
 		@elseif($settingsArray['stream_platform'] === "hitbox")
 			<iframe width="360" height="203" src="http://hitbox.tv/#!/embed/{{$settingsArray['stream_name']}}" frameborder="0" allowfullscreen></iframe>
 		@endif
 		</div>
 	</div>
 	@endif
+	-->
+	@if($settingsArray['stream_isactive'] === "1")
+	<div class="block">
+		<h2 class="headline">Livestream</h2>
+		<div class="content">
+		<a href="/stream"><img src="/img/sidebar/stream.png"></a>
+		</div>
+	</div>
+	@endif
+	
 	
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
-			<a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungle_news.jpg" /></a>
+			<p><a href="/news/53/flashignite-launch-gewinnspiel"><img src="/img/sidebar/launch2.jpg" /></a></p>
+			<p><a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungleguide.jpg" /></a></p>
+			<p><a href="/news/38/patchnotes-420-die-vorsaison-ist-hier"><img src="/img/sidebar/pacthnotes.jpg" /></a></p>
 		</div>
 	</div>
 	

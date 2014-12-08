@@ -283,6 +283,9 @@ class Summoner extends \Eloquent {
 	}
 	
 	public function refresh_summoner($region, $clean_summoner_name, $summoner_id, $update){
+		$summoner = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->first();
+		$summonertimecheck = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
+		if($summonertimecheck or $update == 1 or $summoner->solo_division == 'none'){
 			$api_key = Config::get('api.key');
 			$summoner_data = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 			$json = @file_get_contents($summoner_data);
@@ -290,7 +293,6 @@ class Summoner extends \Eloquent {
 				//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 003");
 			} else {
 				$obj = json_decode($json, true);
-				$summoner = Summoner::where("summoner_id","=",$obj[$clean_summoner_name]["id"])->where("region","=",$region)->first();
 				$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
 				$summoner->name = $obj[$clean_summoner_name]["name"];
 				$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
@@ -326,8 +328,7 @@ class Summoner extends \Eloquent {
 				}
 				
 				$stattest = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
-				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
-				if($stats or $update == 1 or !$stattest ){
+				if( $update == 1 or !$stattest ){
 					$summoner_rankedstats = "https://".$region.".api.pvp.net/api/lol/".$region."/v2.5/league/by-summoner/".$summoner->summoner_id."?api_key=".$api_key;
 					$json3 = @file_get_contents($summoner_rankedstats);
 					if($json3 === FALSE) {
@@ -363,17 +364,19 @@ class Summoner extends \Eloquent {
 								}
 							}
 						}
+						$summoner->touch();
+						$summoner->save();
 					}
-					$summoner->save();
 				}
 			}
+		}
 	}
 	
 	public function refresh_seasonchampstats($region, $summoner_id, $update){
 		$api_key = Config::get('api.key');
 		$summoner = Summoner::where("summoner_id","=",$summoner_id)->first();
-		$stattest = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
-		$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(172800))->first();
+		$stattest = Seasonrankedstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
+		$stats = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
 		if($stats or $update == 1 or !$stattest ){
 			$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner_id."/ranked?season=SEASON4&api_key=".$api_key;
 			$json = @file_get_contents($summoner_stats);
@@ -429,9 +432,11 @@ class Summoner extends \Eloquent {
 					}
 				unset($stats);
 				}
-				$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->orderBy('games', 'desc')->get();
-				return $stats;
 			}
+			$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->orderBy('games', 'desc')->get();
+			$summoner->touch();
+			$summoner->save();
+			return $stats;
 		}
 	}
 
