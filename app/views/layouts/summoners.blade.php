@@ -12,17 +12,18 @@
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/feedback.min.css" />
 	<link rel="shortcut icon" href="/favicon.png" type="image/png">
-	<link rel="icon" href="/favicon.png" type="image/png">+<meta property="og:title" content="@yield('title')" />
-	<meta property="og:type" content="website" />
-	<meta property="og:site_name" content="Flashignite" />
-	<meta property="og:url" content="{{ Request::url() }}" />
-	@if(isset($post))
-	<meta property="og:image" content="http:<?=Croppa::url('uploads/news/'.$post->image, 165, null)?>" />
-	@endif
+	<link rel="icon" href="/favicon.png" type="image/png">
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+	<meta property="og:title" content="@yield('title')" />
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content="Flashignite" />
+	<meta property="og:url" content="{{ Request::url() }}" />
+	@if(isset($post))
+	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
+	@endif
   </head>
   <body>
 	
@@ -82,15 +83,7 @@
 	</div>
 
 	
-	<script type="text/javascript">
-    var disqus_shortname = 'flashignite'; // required: replace example with your forum shortname
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-    </script>
+	@include('layouts.disqus');
     
     <script src="/js/jquery.min.js"></script>
 	<script src="/js/tooltipsy.min.js"></script>
