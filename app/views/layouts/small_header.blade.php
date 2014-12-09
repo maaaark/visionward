@@ -22,7 +22,7 @@
 	<meta property="og:site_name" content="Flashignite" />
 	<meta property="og:url" content="{{ Request::url() }}" />
 	@if(isset($post))
-	<meta property="og:image" content="http:<?=Croppa::url('uploads/news/'.$post->image, 165, null)?>" />
+	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
 	@endif
   </head>
   <body>
