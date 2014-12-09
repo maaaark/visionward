@@ -3,6 +3,7 @@
 <script type="text/javascript">
 	var disqus_shortname = 'flashignite';
 	var disqus_identifier = '/{{ Request::path() }}';
+	var disqus_url = '/{{ Request::path() }}';
 	(function() {
 		var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
 		dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
