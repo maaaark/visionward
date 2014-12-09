@@ -39,7 +39,7 @@
 									<td width="40"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 50, null)?>"  style="margin-left: 10px;margin-right: 10px;" /></a></td>
 									<td width="90"><span class="meta">{{ Helpers::diffForHumans($post->created_at) }}&nbsp;&nbsp;</span></td>
 									<td width="80"><span class="comments_count"><a class="disqus-comment-count" href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread" data-disqus-identifier="/news/{{ $post->id }}/{{ $post->slug }}">0 Kommentare</a></span></td>
-									<td><a class="small_headline" href="http://flashigite.com/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></td>
+									<td><a class="small_headline" href="/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></td>
 								</tr>
 							</table>
 							</div>
