@@ -86,12 +86,14 @@
 				</select>
 			</td>
 		</tr>
+		@if(isset($post))
 		<tr>
 			<td><strong>Erstellungsdatum</strong></td>
 			<td>
 				{{ Form::text('created_at', Input::old('created_at'),  array('class' => 'form-control')) }}
 			</td>
 		</tr>
+		@endif
 		<tr>
 			<td><strong>Geplant</strong></td>
 			<td>
