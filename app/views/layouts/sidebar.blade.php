@@ -38,8 +38,8 @@
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
 			<p><a href="/news/53/flashignite-launch-gewinnspiel"><img src="/img/sidebar/launch2.jpg" /></a></p>
-			<p><a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungleguide.jpg" /></a></p>
-			<p><a href="/news/38/patchnotes-420-die-vorsaison-ist-hier"><img src="/img/sidebar/pacthnotes.jpg" /></a></p>
+			<p><a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungle2015.jpg" /></a></p>
+			<p><a href="/news/62/patchnotes-421-reksai-neuer-spezialmodus-und-vieles-mehr"><img src="/img/sidebar/patch421.jpg" /></a></p>
 		</div>
 	</div>
 	
