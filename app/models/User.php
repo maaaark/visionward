@@ -70,6 +70,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return 'remember_token';
 	}
 
+	public function posts() {
+		return $this->hasMany('Post');
+	}
+
 	public function roles()
     {
         return $this->belongsToMany('Role');
