@@ -5,7 +5,8 @@ class AdminController extends \BaseController {
 	public function index()
 	{
 		if(Auth::check()) {
-			return View::make("admin.index");
+			$users = User::orderBy("newscount", "DESC")->get();
+			return View::make("admin.index", compact('users'));
 		} else {
 			return View::make("admin.login");
 		}
