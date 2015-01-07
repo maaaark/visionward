@@ -20,7 +20,11 @@
 				<span id="show_result">Ergebnis zeigen</span>
 				<span class="hidden_result">
 					<h2>{{ $match->result_team_1 }}:{{ $match->result_team_2 }}</h2>
-					{{ $match->winner->name }} gewinnt
+					@if($match->result_team_1 > $match->result_team_2)
+					{{ $match->team->name }} gewinnt
+					@else
+					{{ $match->team2->name }} gewinnt
+					@endif
 				</span>
 			@endif
 		</td>
