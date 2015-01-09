@@ -54,6 +54,11 @@
 				<textarea name="description" style="width: 100%; height: 150px; padding: 10px;" placeholder="So spielt ihr gegen diesen Champion"></textarea>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="5">
+			{{ Form::captcha() }}
+			</td>
+		</tr>
 	</table>
 	{{ Form::submit('Speichern', array('class' => 'btn btn-primary')) }}
 	{{ Form::close() }}
