@@ -168,6 +168,16 @@ class CounterpicksController extends \BaseController {
 
 	public function create_counter()
     {
+
+
+		$validator = Validator::make($data = Input::all(), Counterpick::$rules);
+
+                if ($validator->fails())
+                {
+                        return Redirect::back()->withErrors($validator)->withInput();
+                }
+
+
 		$champ = Champion::where('champion_id', '=', Input::get('champ'))->first();
 		$counter = Champion::where('champion_id', '=', Input::get('choose_counter'))->first();
 		$type = Input::get('choose_type');
