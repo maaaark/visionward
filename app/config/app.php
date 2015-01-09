@@ -108,7 +108,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
 		'Bkwld\Croppa\ServiceProvider',
-
+		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
 	),
 
 	/*
