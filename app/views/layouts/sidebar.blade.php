@@ -37,6 +37,7 @@
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
+			<p><a href="/news/112/alles-uber-lol-esports-im-uberblick"><img src="/img/sidebar/leagues2015.jpg" /></a></p>
 			<p><a href="/articles/1/jungle-guide-420"><img src="/img/sidebar/jungle2015.jpg" /></a></p>
 			<p><a href="/news/62/patchnotes-421-reksai-neuer-spezialmodus-und-vieles-mehr"><img src="/img/sidebar/patch421.jpg" /></a></p>
 		</div>
