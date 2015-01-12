@@ -15,7 +15,7 @@ class TeamsController extends \BaseController {
 		$ogn = League::find(3);
 		$gpl = League::find(4);
 		$lpl = League::find(5);
-		$lms = League::find(36);
+		$lms = League::find(38);
 		$challenger = League::find(6);
 		return View::make('teams.index', compact('eulcs', 'nalcs', 'ogn', 'gpl', 'lpl', 'challenger', 'lms'));
 	}
