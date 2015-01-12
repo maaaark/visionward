@@ -60,7 +60,7 @@
 			<tr>
 				<td width="250" class="old_team"><a href="/teams/{{ $history->oldteam->id }}/{{ $history->oldteam->slug }}"><img src="/img/teams/logos/{{ $history->oldteam->logo }}" height="20" />&nbsp;&nbsp;{{ $history->oldteam->name }}</a></td>
 				<td width="250" class="new_team"><a href="/teams/{{ $history->team->id }}/{{ $history->team->slug }}"><img src="/img/teams/logos/{{ $history->team->logo }}" height="20" />&nbsp;&nbsp;{{ $history->team->name }}</a></td>
-				<td>{{ $history->join_date }}</td>
+				<td>{{ date("d.m.Y",strtotime($history->join_date)) }}</td>
 			</tr>
 			@endforeach
 		</table>

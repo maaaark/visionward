@@ -27,7 +27,7 @@
 			</table>
 		</td>
 		<td valign="top">
-			<h2><img src="<?=Croppa::url('/img/teams/ogn.png', 40, null)?>" height="40" /> <span class="hidden-xs hidden-sm">OGN</span></h2>
+			<h2><img src="<?=Croppa::url('/img/teams/ogn.png', 40, null)?>" height="40" /> <span class="hidden-xs hidden-sm">LCK</span></h2>
 			<table class="table table-striped">
 				@foreach($ogn->teams as $team)
 				<tr>
@@ -37,7 +37,7 @@
 			</table>
 		</td>
 		<td valign="top">
-			<h2><img src="<?=Croppa::url('/img/teams/gpl.png', 40, null)?>" height="40" /> <span class="hidden-xs hidden-sm">GPL</span></h2>
+			<h2><img src="<?=Croppa::url('/img/teams/lms.png', 40, null)?>" height="40" /> <span class="hidden-xs hidden-sm">LMS</span></h2>
 			<table class="table table-striped">
 				@foreach($gpl->teams as $team)
 				<tr>
