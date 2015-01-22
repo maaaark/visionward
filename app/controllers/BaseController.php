@@ -15,6 +15,8 @@ class BaseController extends Controller {
 		$patchversion = Setting::where('key', '=', 'patch_number')->first();
 		$settings = Setting::all();
 		
+		$featuredContents = FeaturedContent::orderBy("order", "ASC")->get();
+		
 		View::share('global_champion_sales', $champion_sales);
 		View::share('global_skin_sales', $skin_sales);
 		View::share('global_matches', $matches);
@@ -22,6 +24,7 @@ class BaseController extends Controller {
 		View::share('global_transfers', $transfers);
 		View::share('patchversion', $patchversion['attributes']['value']);
 		View::share('global_settings', $settings);
+		View::share('global_featuredContents',$featuredContents);
 	}
 
 	   

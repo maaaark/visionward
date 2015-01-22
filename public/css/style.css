@@ -735,3 +735,24 @@ img.grayscale:hover {
 	background-color: #f4f8fa;
 	border-color: #5bc0de;
 }
+
+
+.featuredContentOuter {
+	display: block;
+	position: relative;
+	margin-bottom: 10px;
+}
+
+.featuredContentInner {
+	position: absolute;
+	bottom: 10px;
+	right: 0px;
+	color: #fff;
+	background-color: #F25824;
+	font-size: 29px;
+	text-transform: uppercase;
+	line-height: 38px;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-family: 'Fjalla One', sans-serif;
+}

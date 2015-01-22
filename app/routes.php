@@ -141,6 +141,14 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::post('/sliders/update', 'AdminSlidersController@update');
 	Route::post('/sliders/save', 'AdminSlidersController@save');
 	
+	// FeaturedContents
+	Route::get('/featuredContents', 'AdminFeaturedContentsController@index');
+	Route::get('/featuredContents/create', 'AdminFeaturedContentsController@create');
+	Route::get('/featuredContents/delete/{id}', 'AdminFeaturedContentsController@destroy');
+	Route::get('/featuredContents/edit/{id}', 'AdminFeaturedContentsController@edit');
+	Route::post('/featuredContents/update', 'AdminFeaturedContentsController@update');
+	Route::post('/featuredContents/save', 'AdminFeaturedContentsController@save');
+	
 	
     Route::get('/', 'AdminController@index');
 	Route::get('/logout', 'AdminController@logout');

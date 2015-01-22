@@ -34,6 +34,18 @@
 	@endif
 	
 	
+	
+	<div class="block">
+		<h2 class="headline">Featured Content</h2>
+		<div class="content">
+			@foreach($global_featuredContents as $featuredContent)
+			<a href="{{ $featuredContent->url }}">
+				<div class="featuredContentOuter"><div class="featuredContentInner">{{ $featuredContent->headline }}</div><img src="uploads/featuredcontent/{{ $featuredContent->destination }}/{{ $featuredContent->filename }}" title="{{ $featuredContent->headline }}" /></div>
+</a>
+			@endforeach
+		</div>
+	</div>
+	
 	<div class="block">
 		<h2 class="headline">Featured Content</h2>
 		<div class="content">
