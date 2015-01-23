@@ -302,7 +302,7 @@ class Summoner extends \Eloquent {
 				if($summoner->created_at == $summoner->updated_at){
 					$update = 1;
 				}
-				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
+				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
 				$json2 = @file_get_contents($summoner_stats);
 				if($json2 === FALSE) {
 					return $json2;
@@ -375,10 +375,10 @@ class Summoner extends \Eloquent {
 	public function refresh_seasonchampstats($region, $summoner_id, $update){
 		$api_key = Config::get('api.key');
 		$summoner = Summoner::where("summoner_id","=",$summoner_id)->first();
-		$stattest = Seasonrankedstat::where("summoner_id","=",$summoner_id)->where("season","=", 4)->first();
+		$stattest = Seasonrankedstat::where("summoner_id","=",$summoner_id)->where("season","=", 2015)->first();
 		$stats = Summoner::where("summoner_id","=",$summoner_id)->where("region","=",$region)->where('updated_at', '<', \Carbon\Carbon::now()->subSeconds(300))->first();
 		if($stats or $update == 1 or !$stattest ){
-			$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner_id."/ranked?season=SEASON4&api_key=".$api_key;
+			$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner_id."/ranked?season=SEASON2015&api_key=".$api_key;
 			$json = @file_get_contents($summoner_stats);
 			if($json === FALSE) {
 				//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 001");
@@ -386,7 +386,7 @@ class Summoner extends \Eloquent {
 				$obj = json_decode($json, true);
 				foreach($obj['champions'] as $champstats){
 					if($champstats['id'] != 0){
-						$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("champion_id","=", $champstats['id'])->where("season","=", 4)->first();
+						$stats = Seasonchampstat::where("summoner_id","=",$summoner_id)->where("champion_id","=", $champstats['id'])->where("season","=", 2015)->first();
 						if(!$stats) {
 							$stats = new Seasonchampstat;
 						}
@@ -399,7 +399,7 @@ class Summoner extends \Eloquent {
 						$stats->assists = $champstats['stats']['totalAssists'];
 						$stats->creeps = $champstats['stats']['totalMinionKills'];
 						$stats->games = $champstats['stats']['totalSessionsPlayed'];
-						$stats->season = 4;
+						$stats->season = 2015;
 						$stats->touch();
 						$stats->save();
 						
@@ -427,7 +427,7 @@ class Summoner extends \Eloquent {
 						$rankedstats->damagetaken = $champstats['stats']['totalDamageTaken'];
 						$rankedstats->damage = $champstats['stats']['totalDamageDealt'];
 						$rankedstats->touch();
-						$rankedstats->season = 4;
+						$rankedstats->season = 2015;
 						$rankedstats->save();
 					}
 				unset($stats);

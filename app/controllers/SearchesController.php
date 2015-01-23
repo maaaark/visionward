@@ -135,7 +135,7 @@ class SearchesController extends \BaseController {
 					$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $input['server_region'];
-					$summoner_stats = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
+					$summoner_stats = "https://".$input['server_region'].".api.pvp.net/api/lol/".$input['server_region']."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
 					$json2 = @file_get_contents($summoner_stats);
 					if($json2 === FALSE) {
 						//return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 010");

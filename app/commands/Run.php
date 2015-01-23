@@ -37,12 +37,11 @@ class Run extends Command {
 	 */
 	public function fire()
 	{
-		$leagues = League::all();
-		foreach($leagues as $league) {
+		$summoners = Summoner::all();
+		foreach($summoners as $summoner) {
 
-			$league->slug = Str::slug($league->name);
-			$league->save();
+			$summoner->solo_tier = "none";
+			$summoner->save();
 		}
-		echo "Team Slugs gespeichert\n";
 	}
 }

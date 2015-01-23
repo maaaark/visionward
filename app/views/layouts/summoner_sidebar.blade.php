@@ -2,7 +2,7 @@
 <a href="/summoner/{{$summoner->region}}/{{$summoner->name}}/refresh"><div class="updater_summoner">Update Summoner</div></a>
 <div class="last_update">Letztes Update: {{ Helpers::diffForHumans($summoner->updated_at) }}</div>
 @if($summoner->summonerLevel == 30)
-<h2 class="headline_no_border">Saison 4 Champions</h2>
+<h2 class="headline_no_border">Saison 2015 Champions</h2>
 <table class="table table-striped">
 	<?php $i = 1; ?>
 	@foreach($stats as $stat)
@@ -42,7 +42,7 @@
 </table>
 <br/>
 @if(isset($rankedstats))
-<h2 class="headline_no_border">Saison 4 Statistik</h2>
+<h2 class="headline_no_border">Saison 2015 Statistik</h2>
 <table class="table table-striped">
 	<tr>
 		<td valign="top" width="150px"><strong>Kills</strong></td>
