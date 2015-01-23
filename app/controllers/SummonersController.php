@@ -61,8 +61,8 @@ class SummonersController extends \BaseController {
 			$summoner->refresh_games();
 			$summoner->refresh_summoner($region, $clean_summoner_name, $summoner->summoner_id, 0);
 			$summoner->refresh_seasonchampstats($region, $summoner->summoner_id, 0);
-			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->orderBy('games', 'desc')->get();
-			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 4)->first();
+			$stats = Seasonchampstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 2015)->orderBy('games', 'desc')->get();
+			$rankedstats = Seasonrankedstat::where("summoner_id", "=", $summoner->summoner_id)->where("season", "=", 2015)->first();
 			$games = Game::where("summoner_id", "=", $summoner->summoner_id)->orderBy('createDate', 'desc')->take(10)->get();
 			$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
 			return View::make('summoners.show', compact('summoner', 'games', 'stats', 'rankedstats'));	
@@ -91,7 +91,7 @@ class SummonersController extends \BaseController {
 				$summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
 				$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 				$summoner->region = $region;					
-				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON4&api_key=".$api_key;
+				$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
 				$json2 = @file_get_contents($summoner_stats);
 				if($json2 === FALSE) {
 					return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));

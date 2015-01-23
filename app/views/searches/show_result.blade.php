@@ -15,11 +15,17 @@
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
 						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
 					</td>
-					@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
 					<td width="50px"></td>
+					@if($summoner->solo_tier == 'none')
+						<td><img src="/img/ranked/unknown.png" width="50" class="img-circle" /></td>
+					@else
 					<td>
-						@if($summoner->solo_division != 'none')<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}@endif
+						@if($summoner->solo_tier != 'none')<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="50" class="img-circle" />  {{$summoner->solo_tier}} {{$summoner->solo_division}}@endif
 					</td>
+					@endif
+					@if($summoner->ranked_wins != 0 && $summoner->ranked_losses != 0 && $summoner->ranked_losses != 0)
+					
+					
 						<td width="50px"></td>
 					<td>
 						Gewertete Spiele: </br>{{ $summoner->ranked_wins+$summoner->ranked_losses}}

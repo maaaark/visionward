@@ -29,7 +29,11 @@
 				<div class="profile_season_stats">
 					<table style="margin-bottom: 0;text-align: center;" width="150">
 						<tr>
+						@if($summoner->solo_tier == "none")
+							<td colspan="3"><img src="/img/ranked/unknown.png" width="130" class="img-circle" /></br><strong>Nicht eingestuft</strong></td>
+						@else
 							<td colspan="3">@if($summoner->summonerLevel ==30 and $summoner->solo_division != "none")<img src="/img/ranked/{{$summoner->solo_tier}}_{{$summoner->solo_division}}.png" width="130" class="img-circle" /></br><strong>{{$summoner->solo_tier}} {{$summoner->solo_division}}</strong>@endif</td>
+						@endif
 						</tr>
 					</table>
 				</div>
