@@ -24,6 +24,10 @@
 				@else
 					{{round($stat->wins/($stat->wins+$stat->losses)*100,2)}}%
 				@endif
+			@elseif($stat->wins == 0)
+				0%
+			@elseif($stat->losses == 0)
+				100%
 			@endif)
 			</span><br/>
 			<span class="kda">@if($stat->wins+$stat->losses != 0){{ number_format($stat->creeps/($stat->wins+$stat->losses), 0 , '.' , '.' ) }}@else {{$stat->creeps}}@endif CS / Spiel - {{ $stat->kills }} / {{ $stat->deaths }} / {{ $stat->assists }} 
