@@ -40,7 +40,7 @@
 		<div class="content">
 			@foreach($global_featuredContents as $featuredContent)
 			<a href="{{ $featuredContent->url }}">
-				<div class="featuredContentOuter"><div class="featuredContentInner">{{ $featuredContent->headline }}</div><img src="/uploads/featuredcontent/{{ $featuredContent->destination }}/{{ $featuredContent->filename }}" title="{{ $featuredContent->headline }}" /></div>
+				<div class="featuredContentOuter"><div class="featuredContentInner">{{ $featuredContent->headline }}</div><img src="/uploads/featuredcontent/{{ $featuredContent->destination }}/{{ $featuredContent->filename }}" title="{{ $featuredContent->headline }}" width="100%" /></div>
 </a>
 			@endforeach
 		</div>
