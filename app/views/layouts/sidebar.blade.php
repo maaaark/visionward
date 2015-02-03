@@ -43,9 +43,9 @@
 	
 	<div class="block">
 		<h2 class="headline">Social Media</h2>
-		<div class="content">
+		<div class="content" style="text-align: center;">
 			<div class="fb-like" data-href="https://www.facebook.com/Flashignitecom" data-width="360" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
-			<br/>
+			<br/><br/>
 			<a href="https://twitter.com/flashignitecom" class="twitter-follow-button" data-show-count="false" data-lang="de" data-size="large">@flashignitecom folgen</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		</div>
