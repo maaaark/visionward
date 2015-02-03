@@ -1,6 +1,14 @@
 <?php
 	$settingsArray = array(); 
 ?>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/de_DE/sdk.js#xfbml=1&appId=517279855070979&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 <div class="sidebar">
 	@foreach($global_settings as $setting)
 		<?php
@@ -33,6 +41,15 @@
 	</div>
 	@endif
 	
+	<div class="block">
+		<h2 class="headline">Social Media</h2>
+		<div class="content">
+			<div class="fb-like" data-href="https://www.facebook.com/Flashignitecom" data-width="360" data-layout="standard" data-action="like" data-show-faces="true" data-share="true"></div>
+			<br/>
+			<a href="https://twitter.com/flashignitecom" class="twitter-follow-button" data-show-count="false" data-lang="de" data-size="large">@flashignitecom folgen</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		</div>
+	</div>
 	
 	
 	<div class="block">
