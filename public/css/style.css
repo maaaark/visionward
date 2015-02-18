@@ -140,6 +140,19 @@ a.button:hover {
 	width: 360px !important;
 	padding: 10px;
 }
+.blue_indicator {
+	padding-bottom: 8px;
+	border-bottom: 3px solid blue;
+}
+.live_table .summoner_line {
+	border-bottom: 1px solid #f0f0f0;
+	height: 50px;
+	padding-bottom: 5px;
+}
+.red_indicator {
+	padding-bottom: 8px;
+	border-bottom: 3px solid red;
+}
 .loss_header {
 	background: #ED8888;
 }

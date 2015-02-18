@@ -23,7 +23,26 @@ class SummonersController extends \BaseController {
 	{
 		return View::make('summoners.create');
 	}
+	
+	
+	public function live($region, $summoner_name)
+	{
+		$clean_summoner_name = str_replace(" ", "", $summoner_name);
+		$clean_summoner_name = strtolower($clean_summoner_name);
+		$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
+		
+		$summoner = Summoner::where("region", "=", $region)->where("name", "=", $summoner_name)->first();
+		if(!$summoner) {
+			return Redirect::back();
+		} else {
+			return View::make('summoners.live', compact('summoner', 'region'));
+		}
+		
 
+		
+	}
+	
+	
 	/**
 	 * Store a newly created summoner in storage.
 	 *
