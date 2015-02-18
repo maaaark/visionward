@@ -50,7 +50,7 @@ class PlayersController extends \BaseController {
 	
 	public function transferlist()
 	{
-		$transfers = PlayerHistory::orderBy("created_at", "DESC")->get();
+		$transfers = PlayerHistory::orderBy("created_at", "DESC")->paginate(25);
 		return View::make('players.transferlist', compact('transfers'));
 	}
 
