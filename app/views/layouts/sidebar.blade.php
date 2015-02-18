@@ -162,7 +162,7 @@
 			<table class="table table-striped visionward_font">
 			@foreach($global_transfers as $transfer)
 				<tr>
-					<td width="120"><a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a></td>
+					<td width="120">@if($transfer->player)<a href="/players/{{ $transfer->player->id }}/{{ $transfer->player->nickname }}">{{ $transfer->player->nickname }}</a>@else # @endif</td>
 					<td width="120" class="old_team"><a href="/teams/{{ $transfer->oldteam->id }}/{{ $transfer->oldteam->slug }}"><img src="<?=Croppa::url('/img/teams/logos/'.$transfer->oldteam->logo, 20, null)?>" height="20" /><span class="hidden-xs">&nbsp;&nbsp;{{ str_limit($transfer->oldteam->shorthandle, $limit = 10, $end = '...') }}</span></td>
 					<td class="new_team" width="120"><a href="/teams/{{ $transfer->team->id }}/{{ $transfer->team->slug }}"><img src="<?=Croppa::url('/img/teams/logos/'.$transfer->team->logo, 20, null)?>" height="20" /><span class="hidden-xs">&nbsp;&nbsp;{{ str_limit($transfer->team->shorthandle, $limit = 10, $end = '...') }}</span></a></td>
 				</tr>
