@@ -26,7 +26,7 @@ $( document ).ready(function() {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var champion_image = $(this).attr('rel');
 			var old_text = $(this).text();
-			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/5.1.2/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
+			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/5.4.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
 		}
 		if(jQuery.inArray( "skills", test ) > -1) {
 			var value = link.substring(link.lastIndexOf('/')+1);
@@ -35,7 +35,7 @@ $( document ).ready(function() {
 			var link = $(this);			
 			$.getJSON('/skill_tooltip/'+id, function (data) {
 				var skill_icon = data.skill.icon; 
-				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.1.2/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> '+data.skill.name);
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.4.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
 			});
 			
 		}
@@ -46,7 +46,7 @@ $( document ).ready(function() {
 			var link = $(this);
 			if(id != null) {			
 				$.getJSON('/item_tooltip/'+id, function (data) {
-					link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.1.2/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
+					link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.4.1/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
 				});
 			};
 		}
