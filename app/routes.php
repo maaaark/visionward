@@ -183,11 +183,13 @@ Route::get('sitemap', function(){
             $sitemap->add($post->slug, $post->created_at, 1, 'daily');
          }
 		 
+		 /*
 		 $matches = DB::table('matches')->orderBy('created_at', 'desc')->get();
          foreach ($matches as $match)
          {
             $sitemap->add($match->team->name.' vs. '.$match->team2->name.' - '.$match->league->name, $match->created_at, 1, 'daily');
          }
+		 */
 		 
 		 $players = DB::table('players')->orderBy('id', 'asc')->get();
          foreach ($players as $player)
