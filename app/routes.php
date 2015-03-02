@@ -180,27 +180,27 @@ Route::get('sitemap', function(){
          $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
          foreach ($posts as $post)
          {
-            $sitemap->add("http://flashignite.com/news/".$post->id."/".$post->slug, $post->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/news/".$post->id."/".$post->slug, $post->updated_at, 1, 'daily');
          }
 		 
 		 
 		 $matches = Match::orderBy('created_at', 'desc')->get();
          foreach ($matches as $match)
          {
-            $sitemap->add($match->team->name.' vs. '.$match->team2->name.' - '.$match->league->name, $match->created_at, 1, 'daily');
+            $sitemap->add"http://flashignite.com/matches/".$match->id, $match->updated_at, 1, 'daily');
          }
 
 		 
 		 $players = DB::table('players')->orderBy('id', 'asc')->get();
          foreach ($players as $player)
          {
-            $sitemap->add("http://flashignite.com/players/".$player->id."/".$player->nickname, $player->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/players/".$player->id."/".$player->nickname, $player->updated_at, 1, 'daily');
          }
 		 
 		 $champions = DB::table('champions')->orderBy('id', 'asc')->get();
          foreach ($champions as $champion)
          {
-            $sitemap->add("http://flashignite.com/champions/".$champion->key, $champion->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/champions/".$champion->key, $champion->updated_at, 1, 'daily');
          }
 		 
     }
