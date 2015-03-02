@@ -200,7 +200,7 @@ Route::get('sitemap', function(){
 		 $champions = DB::table('champions')->orderBy('id', 'asc')->get();
          foreach ($champions as $champion)
          {
-            $sitemap->add("http://flashignite.com/champions/".$champion->slug, $champion->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/champions/".$champion->key, $champion->created_at, 1, 'daily');
          }
 		 
     }
