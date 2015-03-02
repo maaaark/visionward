@@ -44,6 +44,8 @@ class Helpers {
 			$nice_lane = "Mid-Lane";
 		} elseif($lane == "support") {
 			$nice_lane = "Supporter";
+		} else {
+			$nice_lane = "-";
 		}
         return $nice_lane;
     }
@@ -64,7 +66,9 @@ class Helpers {
 			$nice_role = "Jungle";
 		} elseif($role == "sub") {
 			$nice_role = "Ersatzspieler";
-		} 
+		} else {
+			$nice_role = "-";
+		}
         return $nice_role;
     }
 }

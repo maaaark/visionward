@@ -73,12 +73,12 @@
 								@else
 									<a href="{{ $sliderSingle->url }}" title="{{ $sliderSingle->headline }}">
 								@endif
-								<h2 class="page_title">{{ $sliderSingle->headline }}</h2>
+								<h1 class="page_title">{{ $sliderSingle->headline }}</h1>
 								<div class="header_subline">{{ $sliderSingle->subheadline }}</div>
 							</a>
 							
 						@else
-							<h2 class="page_title">{{ $sliderSingle->headline }}</h2>
+							<h1 class="page_title">{{ $sliderSingle->headline }}</h1>
 							<div class="header_subline">{{ $sliderSingle->subheadline }}</div>
 						@endif
 						
