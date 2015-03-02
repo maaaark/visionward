@@ -157,3 +157,53 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::post('/admin/news/save', array('uses' => 'AdminController@save_news'));
 	
 });
+
+
+// Sitemap
+Route::get('sitemap', function(){
+
+    // create new sitemap object
+    $sitemap = App::make("sitemap");
+
+    // set cache (key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean))
+    // by default cache is disabled
+    $sitemap->setCache('laravel.sitemap', 3600);
+
+    // check if there is cached sitemap and build new only if is not
+    if (!$sitemap->isCached())
+    {
+         // add item to the sitemap (url, date, priority, freq)
+         $sitemap->add(URL::to('/'), '2015-03-02T12:03:00+02:00', '1.0', 'daily');
+
+
+         // get all posts from db
+         $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
+         foreach ($posts as $post)
+         {
+            $sitemap->add($post->slug, $post->created_at, 1, 'daily');
+         }
+		 
+		 $matches = DB::table('matches')->orderBy('created_at', 'desc')->get();
+         foreach ($matches as $match)
+         {
+            $sitemap->add($match->team->name.' vs. '.$match->team2->name.' - '.$match->league->name, $match->created_at, 1, 'daily');
+         }
+		 
+		 $players = DB::table('players')->orderBy('id', 'asc')->get();
+         foreach ($players as $player)
+         {
+            $sitemap->add($player->nickname, $player->created_at, 1, 'daily');
+         }
+		 
+		 $champions = DB::table('champions')->orderBy('id', 'asc')->get();
+         foreach ($champions as $champion)
+         {
+            $sitemap->add($champion->name, $champion->created_at, 1, 'daily');
+         }
+		 
+    }
+
+    // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
+    return $sitemap->render('xml');
+
+});

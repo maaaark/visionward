@@ -4,10 +4,11 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*",
+		"laravel/framework": "4.2.17",
 		"way/generators": "~2.0",
 		"bkwld/croppa": "~3.0",
-		"greggilbert/recaptcha": "dev-master"
+		"greggilbert/recaptcha": "1.*",
+		"roumen/sitemap": "2.4.15"
 	},
 	"autoload": {
 		"classmap": [
