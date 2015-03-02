@@ -187,7 +187,7 @@ Route::get('sitemap', function(){
 		 $matches = Match::orderBy('created_at', 'desc')->get();
          foreach ($matches as $match)
          {
-            $sitemap->add"http://flashignite.com/matches/".$match->id, $match->updated_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/matches/".$match->id, $match->updated_at, 1, 'daily');
          }
 
 		 
