@@ -109,6 +109,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Bkwld\Croppa\ServiceProvider',
 		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
+		'Roumen\Sitemap\SitemapServiceProvider',
 	),
 
 	/*
