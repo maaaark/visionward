@@ -180,27 +180,27 @@ Route::get('sitemap', function(){
          $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
          foreach ($posts as $post)
          {
-            $sitemap->add($post->slug, $post->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/news/".$post->id."/".$post->slug, $post->created_at, 1, 'daily');
          }
 		 
-		 /*
-		 $matches = DB::table('matches')->orderBy('created_at', 'desc')->get();
+		 
+		 $matches = Match::orderBy('created_at', 'desc')->get();
          foreach ($matches as $match)
          {
             $sitemap->add($match->team->name.' vs. '.$match->team2->name.' - '.$match->league->name, $match->created_at, 1, 'daily');
          }
-		 */
+
 		 
 		 $players = DB::table('players')->orderBy('id', 'asc')->get();
          foreach ($players as $player)
          {
-            $sitemap->add($player->nickname, $player->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/players/".$player->id."/".$player->nickname, $player->created_at, 1, 'daily');
          }
 		 
 		 $champions = DB::table('champions')->orderBy('id', 'asc')->get();
          foreach ($champions as $champion)
          {
-            $sitemap->add($champion->name, $champion->created_at, 1, 'daily');
+            $sitemap->add("http://flashignite.com/champions/".$champion->slug, $champion->created_at, 1, 'daily');
          }
 		 
     }
