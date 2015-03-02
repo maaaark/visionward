@@ -9,7 +9,7 @@ class AdminMatchesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$matches = Match::orderBy("game_date", "ASC")->get();
+		$matches = Match::orderBy("id", "DESC")->get();
 		$date_now = new DateTime('today');
 		return View::make('admin.matches.index', compact('matches', 'date_now'));
 	}
