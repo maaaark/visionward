@@ -5,6 +5,7 @@
 @section('content')
 
 		@foreach($users as $user)
+		@if($user->visible == true)
 		<div class="col-md-3 team_member">
 			<h2 class="headline">{{ $user->first_name }} {{ $user->last_name }}</h2>
 			<div style="text-align: center;">
@@ -26,6 +27,7 @@
 				@endif
 			</div>
 		</div>
+		@endif
 		@endforeach
 
 @stop
