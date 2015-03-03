@@ -49,7 +49,14 @@ class AdminLeaguesController extends \BaseController {
 
 		return View::make('admin.leagues.show', compact('league'));
 	}
-
+	
+	
+	public function new_standing()
+	{
+		return View::make('admin.leagues.new_standing');
+	}
+	
+	
 	/**
 	 * Show the form for editing the specified match.
 	 *
@@ -62,7 +69,27 @@ class AdminLeaguesController extends \BaseController {
         
 		return View::make('admin.leagues.edit', compact('league'));
 	}
-
+	
+	public function edit_standing($id)
+	{
+		$standing = LeagueStanding::findOrFail($id);
+        
+		return View::make('admin.leagues.edit_standings', compact('standing'));
+	}
+	
+	public function create_standing()
+	{
+		$standing = new LeagueStanding;
+        $data = Input::all();
+		$standing->fill($data);
+		$standing->save();
+		
+        $leagues = League::all();
+		
+		return View::make('admin.leagues.index', compact('leagues'))->with("success", "Erolgreich gespeichert");
+	}
+	
+	
 	/**
 	 * Update the specified match in storage.
 	 *
@@ -77,7 +104,17 @@ class AdminLeaguesController extends \BaseController {
 
 		return Redirect::route('admin.leagues.index')->with("success", "Erolgreich gespeichert");
 	}
+		
+	public function update_standing($id)
+	{
+		$standing = LeagueStanding::findOrFail($id);
+        $data = Input::all();
+		$standing->update($data);
 
+		return Redirect::route('admin.leagues.index')->with("success", "Erolgreich gespeichert");
+	}	
+	
+	
 	/**
 	 * Remove the specified match from storage.
 	 *

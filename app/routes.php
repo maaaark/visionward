@@ -89,6 +89,12 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	Route::resource('counterpicks', 'AdminCounterpicksController');
 	Route::resource('articles', 'AdminArticlesController');
 	
+	// League
+	Route::get('/standings/{id}/edit', 'AdminLeaguesController@edit_standing');
+	Route::get('/leaguestandings/new', 'AdminLeaguesController@new_standing');
+	Route::post('/leaguestandings/save', 'AdminLeaguesController@create_standing');
+	Route::post('/leaguestandings/{id}/update', 'AdminLeaguesController@update_standing');
+	
 	// Categories
 	Route::get('/categories', 'AdminCategoriesController@index');
 	Route::get('/categories/new', 'AdminCategoriesController@create');
@@ -172,10 +178,11 @@ Route::get('sitemap', function(){
     // check if there is cached sitemap and build new only if is not
     if (!$sitemap->isCached())
     {
-         // add item to the sitemap (url, date, priority, freq)
-         $sitemap->add(URL::to('/'), '2015-03-02T12:03:00+02:00', '1.0', 'daily');
-
-
+        // add item to the sitemap (url, date, priority, freq)
+        $sitemap->add(URL::to('/'), '2015-03-02T12:03:00+02:00', '1.0', 'daily');
+		$sitemap->add(URL::to('/teams'), '2015-03-03T12:03:00+02:00', '1.0', 'daily');
+		$sitemap->add(URL::to('/team'), '2015-03-03T12:03:00+02:00', '0.5', 'weekly');
+		
          // get all posts from db
          $posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
          foreach ($posts as $post)
@@ -190,7 +197,6 @@ Route::get('sitemap', function(){
             $sitemap->add("http://flashignite.com/matches/".$match->id, $match->updated_at, 1, 'daily');
          }
 
-		 
 		 $players = DB::table('players')->orderBy('id', 'asc')->get();
          foreach ($players as $player)
          {
@@ -201,6 +207,12 @@ Route::get('sitemap', function(){
          foreach ($champions as $champion)
          {
             $sitemap->add("http://flashignite.com/champions/".$champion->key, $champion->updated_at, 1, 'daily');
+         }
+		 
+		 $teams = DB::table('teams')->orderBy('id', 'asc')->get();
+         foreach ($teams as $team)
+         {
+            $sitemap->add("http://flashignite.com/teams/".$team->id."/".$team->slug, $team->updated_at, 1, 'daily');
          }
 		 
     }
