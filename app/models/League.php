@@ -21,12 +21,17 @@ class League extends \Eloquent {
 	
 	public function matches()
     {
-        return $this->hasMany('Match')	;
+        return $this->hasMany('Match');
     }
 	
 	public function placements()
     {
         return $this->hasMany('Placement');
+    }
+	
+	public function standings()
+    {
+        return $this->hasMany('LeagueStanding');
     }
 
 }

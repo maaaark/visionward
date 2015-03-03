@@ -495,9 +495,17 @@ a.red {
 h1.page_title {
 	font-family: 'Fjalla One', sans-serif;
 	color: #fff;
-	margin-top: 30px;
+	margin-top: 5px;
 	font-size: 32px;
 	text-shadow: 1px 2px #000;
+}
+.rang_up {
+	color: green;
+	font-size: 10px;
+}
+.rang_down {
+	color: red;
+	font-size: 10px;
 }
 .header_subline {
 	color: #f25825;

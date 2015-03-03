@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="League of Legends, News, eSport, PBE, testserver, Coverage, lcs, world finals, skins, champions">
     <meta name="description" content="Flashignite ist eine deutsche League of Legends Community mit den neusten Informationen vom PBE, der LCS und der eSports Szene">
-	<meta name="author" content="Mark Tomicki">
+	<meta name="author" content="Flashignite.com">
     <title>Flashignite.com - @yield('title')</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">

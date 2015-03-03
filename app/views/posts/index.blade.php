@@ -5,17 +5,15 @@
 	<h2 class="headline">Aktuelle League of Legends News</h2>
 	<ul class="news_list">
 		<?php 
-		
 			$i=1;
 			$x=1;
-		
 		?>
 			@foreach($posts as $post)
 				<li>
 					@if($i<=3)
 						<div class="news article">
 							  <div class="row">
-							  <div class="col-sm-3 col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 165, null)?>" /></a></div>
+							  <div class="col-sm-3 col-md-3 hidden-xs"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, null, 100)?>" /></a></div>
 							  <div class="col-sm-9 col-md-9 text">
 								<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 								{{ $post->excerpt }}

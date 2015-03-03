@@ -10,14 +10,18 @@ class TeamsController extends \BaseController {
 	 */
 	public function index()
 	{
-		$eulcs = League::find(1);
-		$nalcs = League::find(2);
+		$eu_standings = LeagueStanding::where("league_id", "=", 11)->orderBy("rank", "ASC")->get();
+		$na_standings = LeagueStanding::where("league_id", "=", 19)->orderBy("rank", "ASC")->get();
+		
+		$cs_eu_standings = LeagueStanding::where("league_id", "=", 40)->orderBy("rank", "ASC")->get();
+		$cs_na_standings = LeagueStanding::where("league_id", "=", 41)->orderBy("rank", "ASC")->get();
+		
 		$ogn = League::find(3);
 		$gpl = League::find(4);
 		$lpl = League::find(5);
 		$lms = League::find(38);
-		$challenger = League::find(6);
-		return View::make('teams.index', compact('eulcs', 'nalcs', 'ogn', 'gpl', 'lpl', 'challenger', 'lms'));
+
+		return View::make('teams.index', compact('na_standings', 'ogn', 'gpl', 'lpl','lms', 'eu_standings', 'cs_eu_standings', 'cs_na_standings'));
 	}
 
 	/**
