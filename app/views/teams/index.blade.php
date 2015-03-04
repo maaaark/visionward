@@ -96,7 +96,7 @@
 					@else
 						&nbsp;&nbsp;-
 					@endif
-					<td width="200"><a href="/teams/{{ $standing->team->id }}/{{ $standing->team->slug }}"><img class="" src="<?=Croppa::url('/img/teams/logos/'.$standing->team->logo, 18, null)?>" width="18" />&nbsp;&nbsp;<img class="hidden-xs hidden-sm" src="/img/flags/{{ $standing->team->country }}.png" />&nbsp;&nbsp;<span class="hidden-xs hidden-sm">{{ $standing->team->name }}</span></a></td>
+					<td width="200"><a href="/teams/{{ $standing->team->id }}/{{ $standing->team->slug }}"><img class="" src="/img/teams/logos/{{$standing->team->logo}}" width="18" />&nbsp;&nbsp;<img class="hidden-xs hidden-sm" src="/img/flags/{{ $standing->team->country }}.png" />&nbsp;&nbsp;<span class="hidden-xs hidden-sm">{{ $standing->team->name }}</span></a></td>
 					<td>{{ $standing->wins }}</td>
 					<td>{{ $standing->loss }}</td>
 				</tr>
