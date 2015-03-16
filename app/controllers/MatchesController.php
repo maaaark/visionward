@@ -9,9 +9,17 @@ class MatchesController extends \BaseController {
 	 */
 	public function index()
 	{
-		$matches = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->get();
+        
+        $eulcs = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",11)->paginate(12);
+        $others = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")
+            ->where("league_id", "=",40)
+            ->orWhere('league_id', 41)
+            ->orWhere('league_id', 42)
+            ->paginate(12);
+        $nalcs = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",19)->paginate(12);
+        
 		$date_now = new DateTime('today');
-		return View::make('matches.index', compact('matches', 'date_now'));
+		return View::make('matches.index', compact('date_now', 'eulcs', 'nalcs', 'others'));
 	}
 
 	/**
