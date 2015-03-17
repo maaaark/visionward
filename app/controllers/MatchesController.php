@@ -11,11 +11,7 @@ class MatchesController extends \BaseController {
 	{
         
         $eulcs = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",11)->paginate(12);
-        $others = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")
-            ->where("league_id", "=",40)
-            ->orWhere('league_id', 41)
-            ->orWhere('league_id', 43)
-            ->paginate(12);
+        $others = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",40)->orWhere('league_id', 41)->orWhere('league_id', 43)->paginate(12);
         $nalcs = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",19)->paginate(12);
         
 		$date_now = new DateTime('today');
