@@ -14,7 +14,7 @@ class MatchesController extends \BaseController {
         $others = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")
             ->where("league_id", "=",40)
             ->orWhere('league_id', 41)
-            ->orWhere('league_id', 42)
+            ->orWhere('league_id', 43)
             ->paginate(12);
         $nalcs = Match::orderBy("game_date", "DESC")->where("parent_game", "=", "0")->where("league_id", "=",19)->paginate(12);
         
