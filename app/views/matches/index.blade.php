@@ -78,6 +78,7 @@
     <h2 class="headline_no_border">Challenger + diverse</h2>
   <table width="100%" class="table table-striped">
 	@foreach($others as $match)
+	@if($match->parent_game == 0)
 	<tr>
 		<td width="85">
 			<a href="/matches/{{ $match->id }}"><img src="/img/teams/logos/{{ $match->team->logo }}" height="20" /><span class="hidden-xs hidden-sm"> {{ $match->team->shorthandle }}</span></a>
@@ -103,6 +104,7 @@
 			@endif
 		</td>
 	</tr>
+	@endif
 	@endforeach
 </table>
     
