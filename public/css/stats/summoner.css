@@ -1,0 +1,239 @@
+.summoner_bg {
+	height: 250px;
+	position: relative;
+	overflow: hidden;
+	background-image:url(../../img/stats/summoner_header.jpg);
+}
+
+.summoner_bg .summoner_name {
+	font-size: 36px;
+	text-shadow: 0 0 12px rgba(0,0,0,1), 0 0 12px rgba(0,0,0,1);
+	color: #fff;
+	font-weight: 300;
+	padding-top: 25px;
+	padding-left: 25px;
+}
+
+.summoner_bg .summoner_name .info {
+	font-size: 16px;
+	text-shadow: 0 0 8px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1):
+}
+
+/* Summoner-Tabs */
+.summoner_bg .summoner_navi {
+	position: absolute;
+	bottom: 0px;
+}
+
+.summoner_bg .summoner_navi .element {
+	float: left;
+	padding: 10px;
+	padding-left: 18px;
+	padding-right: 18px;
+	background: rgba(255,255,255,0.8);
+	margin-left: 15px;
+	box-shadow: 0 0 3px 1px rgba(0,0,0,1);
+	color: rgba(0,0,0,0.8);
+	cursor: pointer;
+	transition: all 200ms;
+}
+
+@media (max-width: 650px){
+	.summoner_bg .summoner_navi .element {
+		margin-left: 5px;
+	}
+}
+
+@media (max-width: 550px){
+	.summoner_bg .summoner_navi .element {
+		padding: 8px;
+		padding-left: 12px;
+		padding-right: 12px;
+	}
+}
+
+.summoner_bg .summoner_navi .element:hover {
+	background: rgba(255,255,255,0.6);
+}
+
+.summoner_bg .summoner_navi .element.active {
+	background: rgba(255,255,255,1);
+	cursor: default;
+}
+
+.summoner_tabs_content .element {
+	display: none;
+}
+
+.summoner_tabs_content .element.active {
+	display: block;
+}
+
+/* Summoner Ranked Summary  */
+.ranked_summary .ranked_element .tier_logo {
+	height: 150px;
+	background-size: auto 150px;
+	background-position: center center;
+	background-repeat: no-repeat;
+}
+
+.ranked_summary .ranked_element .league {
+	text-transform: uppercase;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+}
+
+.ranked_summary .ranked_element .points {
+	color: rgba(0,0,0,0.8);
+	margin-top: 5px;
+	margin-bottom: 5px;
+	text-align: center;
+}
+
+.ranked_summary .ranked_element .win_loss {
+	color: rgba(0,0,0,0.7);
+	text-align: center;
+}
+
+.ranked_summary .ranked_element .win_loss .val {
+	font-weight: bold;
+}
+
+.ranked_summary .ranked_element .win_loss.wins .val {
+	color: green;
+}
+
+.ranked_summary .ranked_element .win_loss.losses .val {
+	color: red;
+}
+
+.summoner_overview_line1 {
+	height: 320px;
+	border: 1px solid rgba(0,0,0,0.5);
+}
+
+.summoner_title {
+	padding: 6px;
+	font-size: 18px;
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.ranked_summary .col-md-4.ranked_element {
+	padding: 0px;
+}
+
+.ranked_summary .ranked_element .holder {
+	padding: 15px;
+}
+
+.ranked_summary .ranked_element .holder .not_played {
+	text-align: center;
+	color: rgba(0,0,0,0.6);
+}
+
+@media (max-width: 990px){
+	.summoner_overview_line1 {
+		height: auto;
+		margin-bottom: 15px;
+	}
+	
+	.ranked_summary .ranked_element {
+		margin-bottom: 15px;
+	}
+	
+	.summoner_title {
+		border-top: 1px solid rgba(0,0,0,0.2);
+	}
+}	
+
+
+.summoner_overview_line1 .table .title {
+	background: rgba(0,0,0,0.1);
+	font-weight: bold;
+}
+
+.summoner_overview_line1 .table .val {
+	color: rgba(0,0,0,0.7);
+	font-weight: bold;
+}
+
+/* RUNEN ANSICHT */
+
+.runes_holder {
+	border: 1px solid rgba(0,0,0,0.5);
+}
+
+.runes_holder .runes_navi {
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.runes_holder .runes_navi .rune_element {
+	padding: 5px;
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+.runes_holder .runes_navi .rune_element.open {
+	background: #fff;
+}
+
+.runes_holder .runes_content {
+	padding: 15px;
+}
+
+.runes_holder .rune_page_info {
+	padding: 25px;
+	padding-top: 5px;
+}
+
+.runes_holder .rune_page_info .rune_info_element {
+	padding: 15px;
+	margin-bottom: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+}
+
+.runes_holder .rune_page_info .rune_info_element img {
+	height: 40px;
+	margin-right: 5px;
+	float: left;
+}
+
+.runes_holder .rune_page_info .rune_info_element .rune_desc {
+	font-size: 12px;
+	color: rgba(0,0,0,0.6);
+}
+
+.no_runes {
+	color: rgba(0,0,0,0.6);
+	text-align: center;
+	padding: 40px;
+	background: rgba(0,0,0,0.1);
+	box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+}
+
+.rune_info_holder {
+	width: 450px;
+	float: right;
+}
+
+@media(max-width: 1200px){
+	.rune_info_holder {
+		width: auto;	
+	}
+}
+
+@media(max-width: 1130px){
+	.rune_info_holder {
+		width: 100%;
+		float: left;
+	}
+	
+	.runes_book_holder {
+		display: none;
+	}
+}
