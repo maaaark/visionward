@@ -5,12 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="keywords" content="League of Legends, News, eSport, PBE, testserver, Coverage, lcs, world finals, skins, champions">
-    <meta name="description" content="@yield('excerpt', 'Flashignite ist eine deutsche League of Legends Community mit den neusten Informationen vom PBE, der LCS und der eSports Szene')">
+    <meta name="description" content="Flashignite ist eine deutsche League of Legends Community mit den neusten Informationen vom PBE, der LCS und der eSports Szene">
 	<meta name="author" content="Flashignite.com">
     <title>Flashignite.com - @yield('title')</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/style.css">
+
+	<link rel="stylesheet" href="/css/stats/page_index.css">
+	<link rel="stylesheet" href="/css/stats/summoner.css">
+	<link rel="stylesheet" href="/css/stats/summoner_current_game.css">
+	<link rel="stylesheet" href="/css/stats/summoner_matchhistory.css">
+
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/feedback.min.css" />
@@ -27,9 +33,10 @@
 	@if(isset($post))
 	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
 	@endif
+
+	<script src="/js/jquery.min.js"></script>
   </head>
   <body>
-	
 	<div class="container-fluid">
 		<div class="sticky">
 			<div class="row">
@@ -42,35 +49,15 @@
 		</div>
 	</div>
 
-	<div class="container-fluid">
-	<div class="header_margin hidden-xs hidden-sm">
-		<div class="row">
-		  <div class="col-md-12 item small_header" style="background: url(/img/header/@yield('header_image', 'small_header.jpg'));">
-			<div class="container">
-				<span class="headline_background">
-					<h2 class="page_title">@yield('title')</h2>
-					<div class="header_subline">@yield('subtitle')</div>
-				</span>
-			</div>
-		  </div>
-		</div>
+	<div style="padding-top: 50px;">
+		@yield('opener')
 	</div>
-	</div>
-	<br/>
+
 	<div class="container main_content">
 		<div class="row">
-		  <div class="col-xs-12 col-md-8">
+		  <div class="col-xs-12 col-md-12 main_holder">
 			@include('layouts.errors')
-			<div class="visible-xs-* visible-sm-* hidden-md hidden-lg header_margin">
-				<br/>
-				<h2 class="mobile_page_title">@yield('title')</h2>
-				<div class="mobile_header_subline">@yield('subtitle')</div>
-				<br/>
-			</div>
 			@yield('content')
-		  </div>
-		  <div class="col-xs-12 col-md-4">
-			@include('layouts.sidebar')
 		  </div>
 		</div>
 	</div>
@@ -96,7 +83,6 @@
     }());
     </script>
     
-    <script src="/js/jquery.min.js"></script>
 	<script src="/js/tooltipsy.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>

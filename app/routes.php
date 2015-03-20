@@ -25,6 +25,11 @@ Route::resource('users', 'UsersController');
 Route::resource('vips', 'VipsController');
 Route::resource('articles', 'ArticlesController');
 
+Route::group(array('domain' => 'stats.flashignite.localhost'), function(){
+	include 'routes_stats.php';
+});
+
+
 Route::get('/', 'PostController@index');
 Route::get('/login', 'AdminController@index');
 Route::get('/logout', 'AdminController@logout');
@@ -189,7 +194,6 @@ Route::get('sitemap', function(){
          {
             $sitemap->add("http://flashignite.com/news/".$post->id."/".$post->slug, $post->updated_at, 1, 'daily');
          }
-		 
 		 
 		 $matches = Match::orderBy('created_at', 'desc')->get();
          foreach ($matches as $match)
