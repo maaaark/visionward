@@ -1,7 +1,18 @@
 @extends('layouts.master')
 @section('title', "League of Legends News und eSport Coverage")
 @section('content')
-	
+    @foreach($global_settings as $setting)
+		<?php
+			$settingsArray[$setting->key] = $setting->value;  
+		?>
+	@endforeach
+	@if($settingsArray['eil_switch'] === "1")
+        <h2 class="headline">EILMELDUNG</h2>
+        <div class="eilmeldung">
+            <marquee>{{ $settingsArray['eilmeldung'] }}</marquee>
+        </div>
+    @endif
+
 	<h2 class="headline">Aktuelle League of Legends News</h2>
 	<ul class="news_list">
 		<?php 
