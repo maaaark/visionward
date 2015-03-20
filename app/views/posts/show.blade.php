@@ -1,5 +1,7 @@
 @extends('layouts.small_header')
 @section('title', $post->title)
+@section('excerpt', strip_tags($post->excerpt))
+
 @section('subtitle', "<a href='/users/".$post->user->id."'>".Helpers::diffForHumans($post->created_at)." - gepostet von ".$post->user->username."</a>")
 @section('content')
 	
