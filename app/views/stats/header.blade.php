@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 
+	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="/css/stats/page_index.css">
 	<link rel="stylesheet" href="/css/stats/summoner.css">
 	<link rel="stylesheet" href="/css/stats/summoner_current_game.css">
@@ -35,6 +36,18 @@
 	@endif
 
 	<script src="/js/jquery.min.js"></script>
+	<script src="/js/jquery.mousewheel.min.js"></script>
+	<script src="/js/jquery.mCustomScrollbar.js"></script>
+	<script>
+		function loadScrollBars(){
+		   $(".scroll_bar").mCustomScrollbar({
+		      theme:"minimal-dark",
+		      scrollInertia:600,
+		      autoDraggerLength:false,
+		      mouseWheel:{ scrollAmount: 140 }
+		   });
+		}
+	</script>
   </head>
   <body>
 	<div class="container-fluid">

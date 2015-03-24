@@ -1,24 +1,55 @@
 <div class="summoner_overview_line1" style="overflow:hidden;">
 	<div class="summoner_title">Zusammenfassung</div>
 	<div class="scroll_bar" style="height: 280px;">
-		<table class="table" style="margin: 0px;">
-			<!-- Normal 5 gegen 5 -->
-			<tr><td colspan="2" class="title">Normal 5 gegen 5</td></tr>
-			<tr><td>Gewonnen</td><td class="val">{UNRANKED_WINS}</td></tr>
-			<tr><td>Kills</td><td class="val">{UNRANKED_TOTALCHAMPIONKILLS}</td></tr>
-			<tr><td>Assists</td><td class="val">{UNRANKED_TOTALASSISTS}</td></tr>
-			<tr><td>Lasthits</td><td class="val">{UNRANKED_TOTALMINIONKILLS}</td></tr>
-			<tr><td>Lasthits Jungle</td><td class="val">{UNRANKED_TOTALNEUTRALMINIONSKILLED}</td></tr>
-			<tr><td>T&uuml;me zerst&ouml;rt</td><td class="val">{UNRANKED_TOTALTURRETSKILLED}</td></tr>
-	
-			<!-- Teambuilder -->
-			<tr><td colspan="2" class="title">Teambuilder 5 gegen 5</td></tr>
-			<tr><td>Gewonnen</td><td class="val">{CAP5X5_WINS}</td></tr>
-			<tr><td>Kills</td><td class="val">{CAP5X5_TOTALCHAMPIONKILLS}</td></tr>
-			<tr><td>Assists</td><td class="val">{CAP5X5_TOTALASSISTS}</td></tr>
-			<tr><td>Lasthits</td><td class="val">{CAP5X5_TOTALMINIONKILLS}</td></tr>
-			<tr><td>Lasthits Jungle</td><td class="val">{CAP5X5_TOTALNEUTRALMINIONSKILLED}</td></tr>
-			<tr><td>T&uuml;me zerst&ouml;rt</td><td class="val">{CAP5X5_TOTALTURRETSKILLED}</td></tr>
-		</table>
+		<!-- Tabelle wird per JSON gefüllt -->
+		<table class="table" style="margin: 0px;" id="summoner_summary_table"></table>
 	</div>
 </div>
+
+<script>
+$(document).ready(function(){
+	function addSummary(title, data){
+		$("#summoner_summary_table").append('<tr><td colspan="2" class="title">'+title+'</td></tr>');
+		if(typeof unranked_data["aggregatedStats"]["totalChampionKills"] != "undefined"){
+			$("#summoner_summary_table").append("<tr><td>Kills</td><td class='val'>"+unranked_data["aggregatedStats"]["totalChampionKills"]+"</td></tr>");
+		}
+		if(typeof unranked_data["aggregatedStats"]["totalAssists"] != "undefined"){
+			$("#summoner_summary_table").append("<tr><td>Assists</td><td class='val'>"+unranked_data["aggregatedStats"]["totalAssists"]+"</td></tr>");
+		}
+		if(typeof unranked_data["aggregatedStats"]["totalMinionKills"] != "undefined"){
+			$("#summoner_summary_table").append("<tr><td>Lasthits</td><td class='val'>"+unranked_data["aggregatedStats"]["totalMinionKills"]+"</td></tr>");
+		}
+		if(typeof unranked_data["aggregatedStats"]["totalNeutralMinionsKilled"] != "undefined"){
+			$("#summoner_summary_table").append("<tr><td>Jungle Lasthits</td><td class='val'>"+unranked_data["aggregatedStats"]["totalNeutralMinionsKilled"]+"</td></tr>");
+		}
+		if(typeof unranked_data["aggregatedStats"]["totalTurretsKilled"] != "undefined"){
+			$("#summoner_summary_table").append("<tr><td>Türme zerstört</td><td class='val'>"+unranked_data["aggregatedStats"]["totalTurretsKilled"]+"</td></tr>");
+		}
+	}
+
+	unranked_json = '{{ $data->unranked_data }}';
+	if(unranked_json.trim() != ""){
+		unranked_data = JSON.parse(unranked_json);
+		if(typeof unranked_data["aggregatedStats"] != "undefined"){
+			addSummary("Normal 5 gegen 5", unranked_data);
+		}
+	}
+
+	ranked_json = '{{ $data->ranked_data }}';
+	if(ranked_json.trim() != ""){
+		ranked_data = JSON.parse(ranked_json);
+		if(typeof ranked_data["aggregatedStats"] != "undefined"){
+			addSummary("Ranked Solo Queue", ranked_data);
+		}
+	}
+
+	teamranked_json = '{{ $data->teamranked_data }}';
+	if(teamranked_json.trim() != ""){
+		teamranked_data = JSON.parse(teamranked_json);
+		if(typeof teamranked_data["aggregatedStats"] != "undefined"){
+			addSummary("5er Ranked Team", teamranked_data);
+		}	
+	}
+	loadScrollBars();
+});
+</script>
