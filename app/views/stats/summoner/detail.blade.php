@@ -88,6 +88,20 @@
 					$("#summoner_tabs_content .element[data-tab='"+tab_id+"']").addClass("active");
 				}
 			}
+
+			$.get("/summoner/{{ $region }}/{{ $data->name }}/ajax", {"matchhistory": "true", sID: "{{ $data->summoner_id }}"}).done(function(data){
+				$("#matchhistory_loader").html(data);
+			    $(".matchhistory_element .more_details").click(function(){
+			       element = $("#more_details_"+$(this).attr("data-id"));
+			       if(element.hasClass("active")){
+			          element.removeClass("active");
+			          $(this).html("Mehr Details anzeigen");
+			       } else {
+			          element.addClass("active");
+			          $(this).html("Details ausblenden");
+			       }
+			    });
+			});
 		});
 	</script>
 @stop

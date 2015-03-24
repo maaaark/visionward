@@ -70,13 +70,13 @@
 		   });
 		   
 		   $(".search_box_form").submit(function(event){
-				event.preventDefault();
+			  event.preventDefault();
 		      main   = $(this).parent();
 		      input  = main.find(".search_input");
 		      region = main.find(".search_dropdown_current");
 				
 				if(input.val().trim() != ""){
-					self.location.href = domain+'/summoner/'+region.html().trim().toLowerCase()+"/"+input.val().trim();
+					self.location.href = '/summoner/'+region.html().trim().toLowerCase()+"/"+input.val().trim();
 				}
 		   });
 	   });

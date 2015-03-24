@@ -53,7 +53,7 @@ class StatsController extends BaseController {
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $region;
 					$summoner->last_update_maindata = date('Y-m-d H:i:s');
-					$summoner_stats = "https://".$region.".api.pvp.net/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
+					$summoner_stats = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
 					$json2 = @file_get_contents($summoner_stats);
 					if($json2 === FALSE) {
 						return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
@@ -62,18 +62,22 @@ class StatsController extends BaseController {
 						if(isset($obj2["playerStatSummaries"])){
 							foreach($obj2["playerStatSummaries"] as $gamemode){
 								if($gamemode["playerStatSummaryType"] == 'RankedSolo5x5'){
-									$summoner->ranked_wins = $gamemode['wins'];
+									$summoner->ranked_wins   = $gamemode['wins'];
 									$summoner->ranked_losses = $gamemode['losses'];
+									$summoner->ranked_data   = json_encode($gamemode);
 								}
 								if($gamemode["playerStatSummaryType"] == 'Unranked'){
 									$summoner->unranked_wins = $gamemode['wins'];
+									$summoner->unranked_data = json_encode($gamemode);
 								}
 								if($gamemode["playerStatSummaryType"] == 'RankedTeam5x5'){
-									$summoner->teamranked_wins = $gamemode['wins'];
+									$summoner->teamranked_wins   = $gamemode['wins'];
 									$summoner->teamranked_losses = $gamemode['losses'];
+									$summoner->teamranked_data   = json_encode($gamemode);
 								}
 							}
 						}
+						$summoner = $this->updateRankedData($summoner, $summoner->summoner_id, $region);
 						$summoner->save();
 					}
 					$data = Summoner::where('name', 'LIKE', trim($summoner_name))->first();
@@ -92,7 +96,43 @@ class StatsController extends BaseController {
 			echo "gesperrte region";
 		}
 	}
+
+	private function updateRankedData($summoner, $summonerId, $region){
+		$api_key = Config::get('api.key');
+		$content = @file_get_contents($this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v2.5/league/by-summoner/".$summonerId."/entry?api_key=".$api_key);
+		if($content === FALSE) {
+			return $summoner;
+		} else {
+			$json = json_decode($content, true);
+			if(isset($json[$summonerId])){
+				$ranked_data = array();
+				foreach($json[$summonerId] as $entry){
+					$array = array();
+					$array["name"] 			= str_replace("'", "&lsquo;", $entry["name"]);
+					$array["tier"] 			= $entry["tier"];
+					$array["division"] 		= $entry["entries"][0]["division"];
+					$array["league_points"] = $entry["entries"][0]["leaguePoints"];
+					$array["wins"] 			= $entry["entries"][0]["wins"];
+					$array["losses"] 		= $entry["entries"][0]["losses"];
+					$array["isHotStreak"]   = $entry["entries"][0]["isHotStreak"];
+					$array["isVeteran"] 	= $entry["entries"][0]["isVeteran"];
+					$array["isFreshBlood"]  = $entry["entries"][0]["isFreshBlood"];
+					$array["isInactive"]    = $entry["entries"][0]["isInactive"];
+					$array["queue"] 		= $entry["queue"];
+					$ranked_data[$array["queue"]] = $array;
+				}
+				$json_encode = json_encode($ranked_data);
+				$summoner->ranked_summary = $json_encode;
+			}
+		}
+		return $summoner;
+	}
 	
-	
+	public function ajax($region, $summoner_name){
+		$api_key = Config::get('api.key');
+		include 'summoner/ajax.init.php';
+		$matchhistory = new MatchhistoryView($this->allowed_regions, $region, $this->summoner_update_interval);
+		$matchhistory->show();
+	}
 
 }
