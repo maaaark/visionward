@@ -47,11 +47,24 @@ class RefreshRunes extends Command {
 		} else {
 			$json = json_decode($json, true);
 
+			$count = 0;
 			if(isset($json["data"]) && is_array($json["data"])){
 				foreach($json["data"] as $rune){
-					print_r($rune);
+					if(isset($rune["id"])){
+						$rune_object = Rune::where("rune_id", "=", $rune["id"])->first();
+						if(!$rune_object){
+							$rune_object = new Rune;
+						}
+						$rune_object->rune_id	   = $rune["id"];
+						$rune_object->name    	   = $rune["name"];
+						$rune_object->mastery_tree = $rune["masteryTree"];
+						$rune_object->description  = $rune["description"][0];
+						$rune_object->save();
+						$count++;
+					}
 				}
 			}
+			echo "Es wurden ".$count." Runen gespeichert".PHP_EOL;
 		}
 	}
 
