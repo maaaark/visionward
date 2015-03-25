@@ -18,3 +18,4 @@ Artisan::add(new Run);
 Artisan::add(new RefreshChampionVotes);
 Artisan::add(new CountPosts);
 Artisan::add(new RefreshRunes);
+Artisan::add(new RefreshMasteries);

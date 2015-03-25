@@ -4,21 +4,21 @@ use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 
-class RefreshRunes extends Command {
+class RefreshMasteries extends Command {
 
 	/**
 	 * The console command name.
 	 *
 	 * @var string
 	 */
-	protected $name = 'refresh:runes';
+	protected $name = 'refresh:masteries';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Refreshing Runes from Riot-API.';
+	protected $description = 'Refreshing Masteries from Riot-API.';
 
 	/**
 	 * Create a new command instance.
@@ -39,7 +39,7 @@ class RefreshRunes extends Command {
 	{
 		$api_key = Config::get('api.key');
 		
-		$runes_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/rune?locale=de_DE&masteryListData=all&api_key=".$api_key;
+		$runes_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/mastery?locale=de_DE&masteryListData=all&api_key=".$api_key;
 		$json = @file_get_contents($runes_data);
 		
 		if($json === FALSE) {
@@ -51,20 +51,20 @@ class RefreshRunes extends Command {
 			if(isset($json["data"]) && is_array($json["data"])){
 				foreach($json["data"] as $rune){
 					if(isset($rune["id"])){
-						$rune_object = Rune::where("rune_id", "=", $rune["id"])->first();
+						$rune_object = Mastery::where("rune_id", "=", $rune["id"])->first();
 						if(!$rune_object){
-							$rune_object = new Rune;
+							$rune_object = new Mastery;
 						}
-						$rune_object->rune_id	   = $rune["id"];
+						$rune_object->mastery_id   = $rune["id"];
 						$rune_object->name    	   = $rune["name"];
-						//$rune_object->mastery_tree = $rune["masteryTree"];
+						$rune_object->mastery_tree = $rune["masteryTree"];
 						$rune_object->description  = $rune["description"];
 						$rune_object->save();
 						$count++;
 					}
 				}
 			}
-			echo "Es wurden ".$count." Runen gespeichert".PHP_EOL;
+			echo "Es wurden ".$count." Meisterschaften gespeichert".PHP_EOL;
 		}
 	}
 

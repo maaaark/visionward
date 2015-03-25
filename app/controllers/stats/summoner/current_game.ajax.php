@@ -71,9 +71,10 @@ class CurrentGameView {
 		$team2 	 = "";
 
 		foreach($data as $player){
-			echo "<pre>", print_r($player), "</pre>";
+			//echo "<pre>", print_r($player), "</pre>";
 			$champion = Champion::where("champion_id", "=", $player["championId"])->first();
 
+			// Liga-Infos laden
 			$league_data = array("name" => false, "tier" => false, "tier_transform" => false, "queue" => false);
 			if(isset($summoners_data[$player["summonerId"]])){
 				$league_data_backup = $summoners_data[$player["summonerId"]];
@@ -90,6 +91,7 @@ class CurrentGameView {
 				}
 			}
 
+			// Normal-Wins laden
 			$normal_wins = false;
 			$wins_data   = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/euw/v1.3/stats/by-summoner/".$player["summonerId"]."/summary?season=".$this->current_season."&api_key=".$api_key);
 			if($wins_data !== FALSE && trim($wins_data) != ""){
@@ -103,19 +105,40 @@ class CurrentGameView {
 				}
 			}
 
+			// Summoner-Highlighten
 			$highlight = false;
 			if(trim(strtolower($player["summonerName"])) == trim(strtolower($summoner["name"]))){
 				$highlight = true;
 			}
 
+			// Runen laden
+			$runes = array("offense" => 0, "defense" => 0, "utility" => 0);
+			if(isset($player["runes"]) && is_array($player["runes"])){
+				foreach($player["runes"] as $rune){
+					if(isset($rune["runeId"])){
+						$count = 1;
+						if(isset($rune["count"]) && $rune["count"] > 1){
+							$count = $rune["count"];
+						}
+						$rune_object = Rune::where("rune_id", "=", $rune["runeId"])->first();
+						echo $rune["runeId"].PHP_EOL;
+						var_dump($rune_object);
+					}
+				}
+			}
+
+			// Template-Anzeigen
 			$template = View::make('stats.summoner.current_game.player', [
 							'player'   	  => $player,
 							'champion' 	  => $champion,
 							'league_data' => $league_data,
 							'normal_wins' => $normal_wins,
 							'region'	  => $this->region,
-							'highlight'	  => $highlight
+							'highlight'	  => $highlight,
+							'runes'		  => $runes
 						])->render();
+
+			// Template-richtigem Team zuordnen
 			if($player["teamId"] == 100){
 				$team1 .= $template;
 			} else {
