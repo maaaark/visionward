@@ -76,6 +76,7 @@
 
 .current_game_table .champion {
 	vertical-align: middle;
+	font-size: 12px;
 }
 
 .current_game_table .champion .normal_wins {

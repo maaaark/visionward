@@ -1,4 +1,4 @@
-<tr class="current_game_player"><!-- hier noch highlight setzen -->
+<tr class="current_game_player @if(isset($highlight) AND $highlight) highlight @endif"><!-- hier noch highlight setzen -->
 	<td class="champ_icon"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png"></td>
 	<td class="spells">
 		<div><img src="/img/spells/{{ $player["spell1Id"] }}.png"></div>
