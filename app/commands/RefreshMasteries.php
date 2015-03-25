@@ -51,14 +51,14 @@ class RefreshMasteries extends Command {
 			if(isset($json["data"]) && is_array($json["data"])){
 				foreach($json["data"] as $mastery){
 					if(isset($mastery["id"])){
-						$mastery_object = Mastery::where("rune_id", "=", $rune["id"])->first();
+						$mastery_object = Mastery::where("mastery_id", "=", $mastery["id"])->first();
 						if(!$mastery_object){
 							$mastery_object = new Mastery;
 						}
-						$mastery_object->mastery_id   = $rune["id"];
-						$mastery_object->name    	   = $rune["name"];
-						$mastery_object->mastery_tree = $rune["masteryTree"];
-						$mastery_object->description  = $rune["description"];
+						$mastery_object->mastery_id   = $mastery["id"];
+						$mastery_object->name    	  = $mastery["name"];
+						$mastery_object->mastery_tree = $mastery["masteryTree"];
+						$mastery_object->description  = $mastery["description"][0];
 						$mastery_object->save();
 						$count++;
 					}

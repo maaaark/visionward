@@ -6,8 +6,7 @@
 	</td>
 	<td class="champion">
 		<a href="/summoner/{{ $region }}/{{ $player["summonerName"] }}">{{ $player["summonerName"] }}</a>
-		<div class="normal_wins no_small">@if(isset($normal_wins) AND $normal_wins) <span>{{ $normal_wins }}</span> Normal-Wins @endif</div>
-		<div class="normal_wins just_small">@if(isset($normal_wins) AND $normal_wins) <span>{{ $normal_wins }}</span> Wins @endif</div>
+		<div class="normal_wins">@if(isset($normal_wins) AND $normal_wins) <span>{{ $normal_wins }}</span> Wins @endif</div>
 	</td>
 	<td class="league no_mini">
 		@if(isset($league_data["tier"]) AND $league_data["tier"] AND isset($league_data["division"]))
@@ -18,14 +17,19 @@
 			<span style="color:rgba(0,0,0,0.6);">Noch nicht eingestuft</span>
 		@endif
 	</td>
-	@if(isset($league_data["wins"]) AND isset($league_data["lossees"]))
 	<td class="ranked_wins no_small">
-		<div>Ranked Wins:</div>
-		<span style="color:green;">{{ $league_data["wins"] }}</span> / <span style="color:red;">{{ $league_data["losses"] }}</span>
+		@if(isset($league_data["wins"]) AND isset($league_data["losses"]))
+			<span style="color:green;">{{ $league_data["wins"] }}</span> / <span style="color:red;">{{ $league_data["losses"] }}</span>
+		@endif
 	</td>
-	@endif
 	<td class="summoner_datarunes">
-		<div>Runen</div>
-		<div>0 / 9 / 21</div>
+		<a href="javascript:void(0)" onclick="alert('Funktion noch in Entwicklung');">ansehen</a>
+	</td>
+	<td class="summoner_datamasteries">
+		@if(isset($masteries) AND isset($masteries["offense"]))
+		<button class="mastery_button" onclick="alert('Funktion noch in Entwicklung');">{{ $masteries["offense"] }} / {{ $masteries["defense"] }} / {{ $masteries["utility"] }}</button>
+		@else
+		<button class="mastery_button" onclick="alert('Funktion noch in Entwicklung');">0 / 0 / 0</button>
+		@endif
 	</td>
 </tr>

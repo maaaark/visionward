@@ -111,22 +111,30 @@ class CurrentGameView {
 				$highlight = true;
 			}
 
-			// Runen laden
-			$runes = array("offense" => 0, "defense" => 0, "utility" => 0);
-			if(isset($player["runes"]) && is_array($player["runes"])){
-				foreach($player["runes"] as $rune){
-					if(isset($rune["runeId"])){
-						$count = 1;
-						if(isset($rune["count"]) && $rune["count"] > 1){
-							$count = $rune["count"];
+			// Meisterschaften laden
+			$masteries = array("offense" => 0, "defense" => 0, "utility" => 0);
+			if(isset($player["masteries"]) && is_array($player["masteries"])){
+				foreach($player["masteries"] as $mastery){
+					if(isset($mastery["masteryId"])){
+						$mastery_object = Mastery::where("mastery_id", "=", $mastery["masteryId"])->first();
+						if(isset($mastery_object["mastery_tree"]) && trim($mastery_object["mastery_tree"]) != ""){
+							$type = trim(strtolower($mastery_object["mastery_tree"]));
+
+							if($type == "utility"){
+								$masteries["utility"] = $masteries["utility"] + $mastery["rank"];
+							}
+							elseif($type == "offense"){
+								$masteries["offense"] = $masteries["offense"] + $mastery["rank"];
+							}
+							elseif($type == "defense"){
+								$masteries["defense"] = $masteries["defense"] + $mastery["rank"];
+							}
 						}
-						$rune_object = Rune::where("rune_id", "=", $rune["runeId"])->first();
-						echo $rune["runeId"].PHP_EOL;
-						var_dump($rune_object);
 					}
 				}
 			}
 
+			//echo "<pre>", print_r($player), "</pre>";
 			// Template-Anzeigen
 			$template = View::make('stats.summoner.current_game.player', [
 							'player'   	  => $player,
@@ -135,7 +143,7 @@ class CurrentGameView {
 							'normal_wins' => $normal_wins,
 							'region'	  => $this->region,
 							'highlight'	  => $highlight,
-							'runes'		  => $runes
+							'masteries'   => $masteries
 						])->render();
 
 			// Template-richtigem Team zuordnen
