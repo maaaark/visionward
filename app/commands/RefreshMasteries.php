@@ -39,8 +39,8 @@ class RefreshMasteries extends Command {
 	{
 		$api_key = Config::get('api.key');
 		
-		$runes_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/mastery?locale=de_DE&masteryListData=all&api_key=".$api_key;
-		$json = @file_get_contents($runes_data);
+		$mastery_data = "https://global.api.pvp.net/api/lol/static-data/euw/v1.2/mastery?locale=de_DE&masteryListData=all&api_key=".$api_key;
+		$json = @file_get_contents($mastery_data);
 		
 		if($json === FALSE) {
 			return Redirect::to('404');
@@ -49,17 +49,17 @@ class RefreshMasteries extends Command {
 
 			$count = 0;
 			if(isset($json["data"]) && is_array($json["data"])){
-				foreach($json["data"] as $rune){
-					if(isset($rune["id"])){
-						$rune_object = Mastery::where("rune_id", "=", $rune["id"])->first();
-						if(!$rune_object){
-							$rune_object = new Mastery;
+				foreach($json["data"] as $mastery){
+					if(isset($mastery["id"])){
+						$mastery_object = Mastery::where("rune_id", "=", $rune["id"])->first();
+						if(!$mastery_object){
+							$mastery_object = new Mastery;
 						}
-						$rune_object->mastery_id   = $rune["id"];
-						$rune_object->name    	   = $rune["name"];
-						$rune_object->mastery_tree = $rune["masteryTree"];
-						$rune_object->description  = $rune["description"];
-						$rune_object->save();
+						$mastery_object->mastery_id   = $rune["id"];
+						$mastery_object->name    	   = $rune["name"];
+						$mastery_object->mastery_tree = $rune["masteryTree"];
+						$mastery_object->description  = $rune["description"];
+						$mastery_object->save();
 						$count++;
 					}
 				}
