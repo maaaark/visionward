@@ -18,7 +18,7 @@ class CreateMasteriesTable extends Migration {
 			$table->integer("mastery_id");
 			$table->string("name");
 			$table->string("mastery_tree");
-			$table->description("description");
+			$table->string("description");
 			$table->timestamps();
 		});
 	}
