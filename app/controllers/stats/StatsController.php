@@ -131,8 +131,6 @@ class StatsController extends BaseController {
 	public function ajax($region, $summoner_name){
 		$api_key = Config::get('api.key');
 		include 'summoner/ajax.init.php';
-		$matchhistory = new MatchhistoryView($this->allowed_regions, $region, $this->summoner_update_interval);
-		$matchhistory->show();
 	}
 
 }

@@ -89,18 +89,26 @@
 				}
 			}
 
-			$.get("/summoner/{{ $region }}/{{ $data->name }}/ajax", {"matchhistory": "true", sID: "{{ $data->summoner_id }}"}).done(function(data){
-				$("#matchhistory_loader").html(data);
-			    $(".matchhistory_element .more_details").click(function(){
-			       element = $("#more_details_"+$(this).attr("data-id"));
-			       if(element.hasClass("active")){
-			          element.removeClass("active");
-			          $(this).html("Mehr Details anzeigen");
-			       } else {
-			          element.addClass("active");
-			          $(this).html("Details ausblenden");
-			       }
-			    });
+			$.get("/summoner/{{ $region }}/{{ $data->name }}/ajax", {"current_game": "true", sID: "{{ $data->summoner_id }}"}).done(function(data){
+				if(data.trim() == "not_in_game"){
+					$("#current_game_content").html("<div style='padding:35px;text-align:center;color:rgba(0,0,0,0.6);'>{{ $data->name }} spielt gerade nicht</div>");
+				} else {
+					$("#current_game_content").html(data);
+				}
+
+				$.get("/summoner/{{ $region }}/{{ $data->name }}/ajax", {"matchhistory": "true", sID: "{{ $data->summoner_id }}"}).done(function(data){
+					$("#matchhistory_loader").html(data);
+				    $(".matchhistory_element .more_details").click(function(){
+				       element = $("#more_details_"+$(this).attr("data-id"));
+				       if(element.hasClass("active")){
+				          element.removeClass("active");
+				          $(this).html("Mehr Details anzeigen");
+				       } else {
+				          element.addClass("active");
+				          $(this).html("Details ausblenden");
+				       }
+				    });
+				});
 			});
 		});
 	</script>

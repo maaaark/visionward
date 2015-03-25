@@ -17,3 +17,4 @@ Artisan::add(new RefreshItems);
 Artisan::add(new Run);
 Artisan::add(new RefreshChampionVotes);
 Artisan::add(new CountPosts);
+Artisan::add(new RefreshRunes);
