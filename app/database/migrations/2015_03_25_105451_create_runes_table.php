@@ -15,7 +15,6 @@ class CreateRunesTable extends Migration {
 		Schema::create('runes', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->integer('id');
 			$table->string('name');
 			$table->text('description');
 			$table->string('mastery_tree');
