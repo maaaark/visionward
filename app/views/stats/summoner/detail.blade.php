@@ -123,7 +123,7 @@
 				    	ranked_stats = JSON.parse(json["ranked_stats"]);
 				    	html  = '<table class="table table-bordered ranked_data_table sortable" id="ranked_stats_data_table">';
 				    	html += '<thead>'
-				    	html += '<th>Champion</th><th>Spiele (Gewonnen / Verloren)</th><th>Winrate</th><th>Kills &#216; </th><th>Tode &#216; </th><th>Assists&#216; </th><th>Lasthits &#216;</th>';
+				    	html += '<th>Champion</th><th>Spiele (Gewonnen / Verloren)</th><th>Winrate</th><th>Kills &#216; </th><th>Tode &#216;</th><th>Assists &#216;</th><th>Lasthits &#216;</th>';
 				    	html += '</thead><tbody>';
 				    	for(key in ranked_stats){
 				    		element = ranked_stats[key];

@@ -22,12 +22,6 @@ class RankedStatsView {
 
 					if(isset($json["champions"]) && is_array($json["champions"])){
 						$out 	   = array();
-						$sortArray = array(); 
-					    foreach($json["champions"] as $key => $array) {
-				        	$sortArray[$key] = $array["stats"]["totalSessionsPlayed"];
-					    } 
-
-					    array_multisort($sortArray, SORT_DESC, SORT_NUMERIC, $json["champions"]);
 					    foreach($json["champions"] as $champion){
 							if(isset($champion["stats"]["totalSessionsPlayed"]) && isset($champion["id"]) && $champion["id"] > 0){
 								$champ = Champion::where("champion_id", "=", $champion["id"])->first();

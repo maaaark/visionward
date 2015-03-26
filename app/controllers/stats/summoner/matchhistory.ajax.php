@@ -77,12 +77,42 @@ class MatchhistoryView {
 		$team2 = array();
 		if(isset($game["fellowPlayers"])){
 			$summoner_ids = "";
+			$summoner_data = array();
 			foreach($game["fellowPlayers"] as $player){
-				$summoner_ids .= $player["summonerId"].",";
+				$check = Summoner::where("summoner_id", "=", $player["summonerId"])->first();
+
+				if(isset($check["id"]) && $check["id"] > 0){
+					$temp = array();
+					$temp["id"] 		   = $check["summonerId"];
+					$temp["name"] 		   = $check["name"];
+					$temp["profileIconId"] = $check["profileIconId"];
+					$temp["summonerLevel"] = $check["summonerLevel"];
+					$temp["revisionDate"]  = $check["revisionDate"];
+					$summoner_data[$player["summonerId"]] = $temp;
+				} else {
+					$summoner_ids .= $player["summonerId"].",";
+				}
 			}
-			$summoner_data = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/euw/v1.4/summoner/".trim($summoner_ids)."?api_key=".$api_key);
-			$summoner_data = json_decode($summoner_data, true);
-			
+
+			if(trim(str_replace(",", "", $summoner_ids)) != ""){
+				$summoner_data_api = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/euw/v1.4/summoner/".trim($summoner_ids)."?api_key=".$api_key);
+				$summoner_data_api = json_decode($summoner_data_api, true);
+				foreach($summoner_data_api as $summoner_id => $summoner_player){
+					//print_r($summoner_player);
+					$temp = $summoner_player;
+					$summoner_data[$summoner_player["id"]] = $temp;
+
+					$new_summoner 					= new Summoner;
+					$new_summoner->region 			= $this->region;
+					$new_summoner->summoner_id 		= $summoner_player["id"];
+					$new_summoner->name 			= $summoner_player["name"];
+					$new_summoner->profileIconId 	= $summoner_player["profileIconId"];
+					$new_summoner->summonerLevel 	= $summoner_player["summonerLevel"];
+					$new_summoner->revisionDate 	= $summoner_player["revisionDate"];
+					$new_summoner->save();
+				}
+			}
+
 			foreach($game["fellowPlayers"] as $player){
 				if(isset($summoner_data[$player["summonerId"]])){
 					$element = $summoner_data[$player["summonerId"]];
@@ -99,7 +129,6 @@ class MatchhistoryView {
 			}
 		}
 
-		//echo "<pre>", print_r($game), "</pre>";
 		return View::make('stats.summoner.matchhistory', [
 					'game' 	   => $game,
 					'champion' => $champion,
