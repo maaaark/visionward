@@ -16,7 +16,25 @@ class RankedStatsView {
 			$summoner = Summoner::where('summoner_id', '=', trim($sID))->first();
 
 			if(isset($summoner["id"]) && $summoner["id"] > 0){
-				$content = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/".$this->region."/v1.3/stats/by-summoner/".trim($summoner["summoner_id"])."/ranked?season=".$this->current_season."&api_key=".$api_key);
+				$need_api_request = true;
+				$date1   = date('Y-m-d H:i:s');
+				$date2   = $summoner["last_update_ranked_stats"];
+				$diff    = abs(strtotime($date2) - strtotime($date1));
+				$mins    = floor($diff / 60);
+
+				if($mins < $this->summoner_update_interval){
+					$need_api_request = false;
+				}
+
+				if($need_api_request){
+					$content = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/".$this->region."/v1.3/stats/by-summoner/".trim($summoner["summoner_id"])."/ranked?season=".$this->current_season."&api_key=".$api_key);
+					$summoner->ranked_stats = $content;
+					$summoner->last_update_ranked_stats = date("Y-m-d H:i:s");
+					$summoner->save();
+				} else {
+					$content = $summoner["ranked_stats"];
+				}
+
 				if($content !== FALSE){
 					$json = json_decode($content, true);
 
