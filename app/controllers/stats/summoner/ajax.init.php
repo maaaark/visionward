@@ -13,8 +13,9 @@ function checkIfAllDataIsUpdated($updated){
 if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 	$sID     = $_GET["sID"];
 	$array   = array();
-	$updated = array("matchhistory" => false);
+	$updated = array("matchhistory" => false, "ranked_stats" => false, "league" => false);
 
+	// Matchhistory
 	require_once 'matchhistory.class.php';
 	$matchhistory 		   = new MatchhistoryView($this->allowed_regions, $region, $this->summoner_update_interval);
 	$matchhistory_data 	   = $matchhistory->show($sID);
@@ -23,11 +24,25 @@ if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 		$updated["matchhistory"] = true;
 	}
 
-
+	// Ranked-Stats
 	require_once 'ranked_stats.class.php';
-	$ranked_stats = new RankedStatsView($this->allowed_regions, $region, $this->summoner_update_interval);
-	$array["ranked_stats"] = $ranked_stats->show($sID);
+	$ranked_stats 	       = new RankedStatsView($this->allowed_regions, $region, $this->summoner_update_interval);
+	$ranked_stats_data     = $ranked_stats->show($sID);
+	$array["ranked_stats"] = $ranked_stats_data["template"];
+	if(isset($ranked_stats_data["updated"]) && $ranked_stats_data["updated"] == true){
+		$updated["ranked_stats"] = true;
+	}
 
+	// Liga
+	require_once 'league.class.php';
+	$league      	       = new LeagueView($this->allowed_regions, $region, $this->summoner_update_interval);
+	$league_data 	       = $league->show($sID);
+	$array["league"] 	   = $league_data["template"];
+	if(isset($league_data["updated"]) && $league_data["updated"] == true){
+		$updated["league"] = true;
+	}
+
+	// Daten ausgeben
 	echo json_encode($array);
 
 	// Update-Status aktualisieren

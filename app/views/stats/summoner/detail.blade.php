@@ -49,8 +49,8 @@
 					</div>
 				</div>
 				<div class="element" data-tab="2"><h1>Spielverlauf</h1><div id="matchhistory_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
-				<div class="element" data-tab="3"><h1>Liga</h1>Coming soon ...</div>
-				<div class="element" data-tab="4"><h1>Ranglisten Stats</h1><div id="ranked_stats_loader">Coming soon ...</div></div>
+				<div class="element" data-tab="3"><h1>Liga</h1><div id="league_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
+				<div class="element" data-tab="4"><h1>Ranglisten Stats</h1><div id="ranked_stats_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
 				
 				<div class="element" data-tab="5">
 					{ include summoner/runes}
@@ -111,6 +111,7 @@
 
 					json = JSON.parse(data);
 
+					// Matchhistory
 					if(typeof json["matchhistory"] != "undefined"){
 						$("#matchhistory_loader").html(json["matchhistory"]);
 					    $(".matchhistory_element .more_details").click(function(){
@@ -127,6 +128,7 @@
 				    	$("#matchhistory_loader").html("Aufgrund eines unbekannten Fehlers konnte der Spielverlauf leider nicht geladen werden.");
 				    }
 
+				    // Ranked-Stats
 				    if(typeof json["ranked_stats"] != "undefined"){
 				    	ranked_stats = JSON.parse(json["ranked_stats"]);
 				    	html  = '<table class="table table-bordered ranked_data_table sortable" id="ranked_stats_data_table">';
@@ -152,6 +154,83 @@
 				    	$("#ranked_stats_data_table").tablesorter({sortList:[[1,1]]});
 				    } else {
 				    	$("#ranked_stats_loader").html("Aufgrund eines unbekannten Fehlers konnten die Ranked-Stats leider nicht geladen werden.");
+				    }
+
+				    // Liga
+				    if(typeof json["league"] != "undefined"){
+						league = JSON.parse(json["league"]);
+
+						if(typeof league["info"] != "undefined" && typeof league["division"] != "undefined"){
+							$("#league_loader").html('<div id="league_navi" class="league_navi"><div class="tier">'+league["info"]["tier"]+'</div></div><div id="league_holder"></div>');
+							$("#league_loader").addClass("summoner_league");
+							for(division in league["division"]){
+								element = league["division"][division];
+								
+								class_addition = "";
+								if(division == league["info"]["summoner_division"]){
+									class_addition = " current";
+								}
+
+								$("#league_loader #league_navi").append('<div class="league_btn'+class_addition+'" data-d="'+division+'">'+division+'</div>');
+
+								table_html  = '<table class="league_table table table-bordered">';
+								table_html += '<thead>';
+								table_html += '<th>Rang</th>';
+								table_html += '<th>Spieler</th>';
+								table_html += '<th>Siege</th>';
+								table_html += '<th>Punkte</th>';
+								table_html += '</thead><tbody>';
+
+								rank = 0;
+								for(player_count in league["division"][division]){
+									player = league["division"][division][player_count];
+									tr_highlight = "";
+									if(typeof player["highlight"] != "undefined" && player["highlight"] == "highlight"){
+										tr_highlight = "highlight";
+									}
+
+									table_html += '<tr class="'+tr_highlight+'">';
+
+									rank++;
+									table_html += '<td class="rank">'+rank+'</td>';
+									table_html += '<td class="summoner"><img class="summ_icon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/'+player["summonerIcon"]+'.png">';
+									table_html += '<span>'+player["playerOrTeamName"]+'</span></td>';
+									table_html += '<td>'+player["wins"]+'</td>';
+
+									if(typeof player["miniSeries"] != "undefined" && typeof player["miniSeries"]["progress"] != "undefined"){
+										// Miniserie anzeigen
+										serie = player["miniSeries"];
+										progress = serie["progress"].toUpperCase();
+										for(i = 0; i < 5; i++){
+											progress = progress.replace("N", '<div class="icon notplayed"></div>');
+											progress = progress.replace("L", '<div class="icon loss"></div>');
+											progress = progress.replace("W", '<div class="icon win"></div>');
+										}
+
+										table_html += '<td class="points serie">'+progress+'</td>';
+									} else {
+										// Liga-Punkte anzeigen
+										table_html += '<td class="points">'+player["leaguePoints"]+'</td>';
+									}
+									table_html += '</tr>';
+								}
+								table_html += '</tbody></table>';
+								$("#league_loader #league_holder").append('<div id="league_'+division+'" class="league_element'+class_addition+'"></div>');
+								$("#league_loader #league_holder #league_"+division).html(table_html);
+							}
+
+							$("#league_loader #league_navi .league_btn").click(function(){
+								division = $(this).attr("data-d");
+								$("#league_loader #league_navi .current").removeClass("current");
+								$("#league_loader #league_holder .current").removeClass("current");
+								$(this).addClass("current");
+								$("#league_loader #league_holder #league_"+division).addClass("current");
+							});
+						} else {
+							$("#league_loader").html("Aufgrund eines unbekannten Fehlers konnte die Liga leider nicht geladen werden.");
+						}
+				    } else {
+				    	$("#league_loader").html("Aufgrund eines unbekannten Fehlers konnte die Liga leider nicht geladen werden.");
 				    }
 				});
 			});

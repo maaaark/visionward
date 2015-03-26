@@ -12,7 +12,8 @@ class RankedStatsView {
 
 	public function show($sID = false){
 		if($sID){
-			$api_key = Config::get('api.key');
+			$updated  = false;
+			$api_key  = Config::get('api.key');
 			$summoner = Summoner::where('summoner_id', '=', trim($sID))->first();
 
 			if(isset($summoner["id"]) && $summoner["id"] > 0){
@@ -31,6 +32,7 @@ class RankedStatsView {
 					$summoner->ranked_stats = $content;
 					$summoner->last_update_ranked_stats = date("Y-m-d H:i:s");
 					$summoner->save();
+					$updated = true;
 				} else {
 					$content = $summoner["ranked_stats"];
 				}
@@ -63,16 +65,16 @@ class RankedStatsView {
 							}
 						}
 
-						return json_encode($out);
+						return array("updated" => $updated, "template" => json_encode($out));
 					} else {
-						return "Es liegen noch keine genaueren Informationen über die Ranked-Stats von ".$summoner["name"]." vor.";
+						return array("updated" => $updated, "template" => "Es liegen noch keine genaueren Informationen über die Ranked-Stats von ".$summoner["name"]." vor.");
 					}
 				} else {
-					return "Es liegen noch keine genaueren Informationen über die Ranked-Stats von ".$summoner["name"]." vor.";
+					return array("updated" => $updated, "template" => "Es liegen noch keine genaueren Informationen über die Ranked-Stats von ".$summoner["name"]." vor.");
 				}
 			}
 		}
-		return "Die Ranked-Stats konnten aufgrund eines unbekannten Fehlers nicht geladen werden.";
+		return array("updated" => $updated, "template" => "Die Ranked-Stats konnten aufgrund eines unbekannten Fehlers nicht geladen werden.");
 	}
 }
 ?>
