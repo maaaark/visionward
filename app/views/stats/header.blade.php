@@ -17,6 +17,7 @@
 	<link rel="stylesheet" href="/css/stats/summoner.css">
 	<link rel="stylesheet" href="/css/stats/summoner_current_game.css">
 	<link rel="stylesheet" href="/css/stats/summoner_matchhistory.css">
+	<link rel="stylesheet" href="/css/stats/summoner_league.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
