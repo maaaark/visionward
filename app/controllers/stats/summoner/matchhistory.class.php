@@ -9,10 +9,11 @@ class MatchhistoryView {
 		$this->summoner_update_interval = $summoner_update_interval;
 	}
 
-	public function show(){
-		if(isset($_GET["sID"])){
-			$api_key = Config::get('api.key');
-			$summoner = Summoner::where('summoner_id', '=', trim($_GET["sID"]))->first();
+	public function show($sID = false){
+		if($sID){
+			$updated  = false;
+			$api_key  = Config::get('api.key');
+			$summoner = Summoner::where('summoner_id', '=', trim($sID))->first();
 
 			if(isset($summoner["id"]) && $summoner["id"] > 0){
 				$need_api_request = true;
@@ -34,6 +35,7 @@ class MatchhistoryView {
 							$summoner->matchhistory = $games;
 							$summoner->last_update_matchhistory = date('Y-m-d H:i:s');
 							$summoner->save();
+							$updated = true;
 						}
 					}
 				}
@@ -45,15 +47,15 @@ class MatchhistoryView {
 					foreach($matchhistory_orig as $game){
 						$template .= $this->handleMatch($game, $summoner);
 					}
-					return $template;
+					return array("updated" => $updated, "template" => $template);
 				} else {
-					return "Matchhistory konnte nicht geladen werden.";
+					return array("updated" => $updated, "template" => "Matchhistory konnte nicht geladen werden.");
 				}
 			} else {
-				return "Summoner not found";
+				return array("updated" => $updated, "template" => "Summoner not found");
 			}
 		} else {
-			return "Summoner not found";
+			return array("updated" => $updated, "template" => "Summoner not found");
 		}
 	}
 

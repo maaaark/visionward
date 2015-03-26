@@ -2,6 +2,12 @@
 @section('opener')
 	<div class="summoner_bg" style="background-image:url({{ asset('img/stats/fizz_summoner_bg.jpg') }});">
 		<div class="mid_pos">
+			<div class="summoner_update_loader" @if(isset($updates_this_time) && $updates_this_time) style="display:block;" @endif>
+				<img src="{{ URL::asset('img/stats/ajax-loader.gif') }}" class="loader_img">
+				<div class="first">Die Daten des Beschw&ouml;rers werden gerade aktualisiert ...</div>
+				<div class="second">Dies kann wenige Minuten dauern</div>
+			</div>
+
 			<div class="summoner_name">
 				{{ $data->name }}
 				<div class="info">Level: {{ $data->summonerLevel }} | {{ $region_name }}</div>
@@ -101,6 +107,8 @@
 				}
 
 				$.get("/summoner/{{ $region }}/{{ $data->name }}/ajax", {"data": "true", sID: "{{ $data->summoner_id }}"}).done(function(data){
+					$(".summoner_update_loader").animate({"opacity":"0"},500, "linear", function(){$(this).hide();});
+
 					json = JSON.parse(data);
 
 					if(typeof json["matchhistory"] != "undefined"){

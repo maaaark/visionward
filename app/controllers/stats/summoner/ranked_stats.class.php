@@ -10,10 +10,10 @@ class RankedStatsView {
 		$this->summoner_update_interval = $summoner_update_interval;
 	}
 
-	public function show(){
-		if(isset($_GET["sID"])){
+	public function show($sID = false){
+		if($sID){
 			$api_key = Config::get('api.key');
-			$summoner = Summoner::where('summoner_id', '=', trim($_GET["sID"]))->first();
+			$summoner = Summoner::where('summoner_id', '=', trim($sID))->first();
 
 			if(isset($summoner["id"]) && $summoner["id"] > 0){
 				$content = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/api/lol/".$this->region."/v1.3/stats/by-summoner/".trim($summoner["summoner_id"])."/ranked?season=".$this->current_season."&api_key=".$api_key);

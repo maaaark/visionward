@@ -88,7 +88,7 @@ class StatsController extends BaseController {
 			if(isset($data["id"]) && $data["id"] > 0){
 				include 'summoner/detail.init.php';
 				$init = new SummonerInit;
-				return $init->init($data, $region, $this->allowed_regions[$region]["name"]);
+				return $init->init($data, $region, $this->allowed_regions[$region]["name"], $this->summoner_update_interval);
 			} else {
 				echo "Summoner nicht gefunden";
 			}
