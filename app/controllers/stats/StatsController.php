@@ -15,7 +15,7 @@ class StatsController extends BaseController {
 	public function summoner($region, $summoner_name){
 		$region = trim(strtolower($region));
 		if(isset($this->allowed_regions[$region]) && isset($this->allowed_regions[$region]["status"]) && $this->allowed_regions[$region]["status"] == true){
-			$data = Summoner::where('name', 'LIKE', trim($summoner_name))->first();
+			$data = Summoner::where('name', 'LIKE', trim($summoner_name))->where("region","=",$region)->first();
 			
 			$need_api_request = true;
 			if(isset($data["id"]) && $data["id"] > 0){
@@ -28,7 +28,7 @@ class StatsController extends BaseController {
 					$need_api_request = false;
 				}
 			}
-
+			
 			if($need_api_request){
 				$clean_summoner_name = str_replace(" ", "", $summoner_name);
 				$clean_summoner_name = strtolower($clean_summoner_name);
