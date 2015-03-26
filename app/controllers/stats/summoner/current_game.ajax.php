@@ -19,7 +19,7 @@ class CurrentGameView {
 				$content = @file_get_contents($this->allowed_regions[$this->region]["api_endpoint"]."/observer-mode/rest/consumer/getSpectatorGameInfo/".$this->allowed_regions[$this->region]["platform_id"]."/".$summoner["summoner_id"]."?api_key=".$api_key);
 
 				if($content === FALSE){
-					echo "not_in_game";
+					return "not_in_game";
 				} else {
 					$json = json_decode($content, true);
 					
@@ -52,16 +52,16 @@ class CurrentGameView {
 							'team1' => $team1,
 							'team2' => $team2
 						])->render();
-						echo $template;
+						return $template;
 					} else {
-						echo "not_in_game";
+						return "not_in_game";
 					}
 				}
 			} else {
-				echo "not_in_game";
+				return "not_in_game";
 			}
 		} else {
-			echo "not_in_game";
+			return "not_in_game";
 		}
 	}
 

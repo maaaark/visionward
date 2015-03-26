@@ -45,15 +45,15 @@ class MatchhistoryView {
 					foreach($matchhistory_orig as $game){
 						$template .= $this->handleMatch($game, $summoner);
 					}
-					echo $template;
+					return $template;
 				} else {
-					echo "Matchhistory konnte nicht geladen werden.";
+					return "Matchhistory konnte nicht geladen werden.";
 				}
 			} else {
-				echo "Summoner not found";
+				return "Summoner not found";
 			}
 		} else {
-			echo "Summoner not found";
+			return "Summoner not found";
 		}
 	}
 
