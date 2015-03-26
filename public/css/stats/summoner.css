@@ -1,8 +1,21 @@
 .summoner_bg {
-	height: 250px;
+	height: 200px;
 	position: relative;
 	overflow: hidden;
 	background-image:url(../../img/stats/summoner_header.jpg);
+	background-position: right center;
+}
+
+@media(max-width: 1700px){
+	.summoner_bg {
+		background-position: right top;
+	}
+}
+
+.summoner_bg .mid_pos {
+	margin: auto;
+	width: 100%;
+	max-width: 1110px;
 }
 
 .summoner_bg .summoner_name {
@@ -23,6 +36,11 @@
 .summoner_bg .summoner_navi {
 	position: absolute;
 	bottom: 0px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+
+	user-select: none;
 }
 
 .summoner_bg .summoner_navi .element {
@@ -32,7 +50,7 @@
 	padding-right: 18px;
 	background: rgba(255,255,255,0.8);
 	margin-left: 15px;
-	box-shadow: 0 0 3px 1px rgba(0,0,0,1);
+	box-shadow: 0 0 3px 1px rgba(0,0,0,0.1);
 	color: rgba(0,0,0,0.8);
 	cursor: pointer;
 	transition: all 200ms;
@@ -58,6 +76,7 @@
 
 .summoner_bg .summoner_navi .element.active {
 	background: rgba(255,255,255,1);
+	box-shadow: 0 0 3px 1px rgba(0,0,0,0.3);
 	cursor: default;
 }
 
@@ -236,4 +255,50 @@
 	.runes_book_holder {
 		display: none;
 	}
+}
+
+/* Ranked-Data Table */
+.ranked_data_table.table thead th {
+	height: 20px;
+}
+
+.ranked_data_table.table thead th.headerSortUp, .ranked_data_table.table thead th.headerSortDown {
+	background-color: rgba(0,0,0,0.2);
+	background-position: right 8px center;
+	background-repeat: no-repeat;
+}
+
+.ranked_data_table.table thead th.headerSortUp {
+	background-image: url(../../img/table_sort/table_sort_asc.gif);
+}
+
+.ranked_data_table.table thead th.headerSortDown {
+	background-image: url(../../img/table_sort/table_sort_desc.gif);
+}
+
+.ranked_data_table.table.sortable thead th {
+	cursor: pointer;
+}
+
+.ranked_data_table.table.sortable thead th:hover {
+	background-color: rgba(0,0,0,0.1);
+}
+
+.ranked_data_table.table tbody td {
+	text-align: center;
+	vertical-align: middle;
+}
+
+.ranked_data_table.table tbody td.champ_info {
+	text-align: left;
+}
+
+.ranked_data_table.table tbody td.champ_info span {
+	padding-left: 5px;
+	padding-top: 1px;
+}
+
+.ranked_data_table.table tbody td .champ_icon {
+	height: 30px;
+	border-radius: 50%;
 }

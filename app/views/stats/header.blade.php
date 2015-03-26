@@ -38,6 +38,7 @@
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery.mousewheel.min.js"></script>
 	<script src="/js/jquery.mCustomScrollbar.js"></script>
+	<script src="/js/jquery.tablesorter.js"></script>
 	<script>
 		function loadScrollBars(){
 		   $(".scroll_bar").mCustomScrollbar({
