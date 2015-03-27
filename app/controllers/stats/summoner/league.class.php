@@ -113,7 +113,20 @@ class LeagueView {
 							$array["division"][$division_key] = $division;
 						}
 
-						$template = json_encode($array);
+						// Spieler mit aufstiegsserie nach oben:
+						$output = array("info" => $array["info"], "division" => array());
+						foreach($array["division"] as $division_key => $division){
+							$output["division"][$division_key] = array();
+
+							foreach($division as $key => $player){
+								if(isset($player["miniSeries"])){
+									array_unshift($output["division"][$division_key], $player);
+								} else {
+									$output["division"][$division_key][] = $player;
+								}
+							}
+						}
+						$template = json_encode($output);
 					} else {
 						$template = "Die Liga konnte nicht geladen werden";
 					}

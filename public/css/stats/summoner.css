@@ -261,13 +261,18 @@
 }
 
 .rune_info_holder {
-	width: 450px;
+	width: 400px;
 	float: right;
 }
 
 @media(max-width: 1200px){
 	.rune_info_holder {
-		width: auto;	
+		width: 100%;
+		float: left;
+	}
+
+	.runes_book_holder {
+		display: none;
 	}
 }
 
@@ -275,10 +280,6 @@
 	.rune_info_holder {
 		width: 100%;
 		float: left;
-	}
-	
-	.runes_book_holder {
-		display: none;
 	}
 }
 

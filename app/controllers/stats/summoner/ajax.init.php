@@ -13,7 +13,7 @@ function checkIfAllDataIsUpdated($updated){
 if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 	$sID     = $_GET["sID"];
 	$array   = array();
-	$updated = array("matchhistory" => false, "ranked_stats" => false, "league" => false);
+	$updated = array("matchhistory" => false, "ranked_stats" => false, "league" => false, "runes" => false);
 
 	// Matchhistory
 	require_once 'matchhistory.class.php';
@@ -40,6 +40,15 @@ if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 	$array["league"] 	   = $league_data["template"];
 	if(isset($league_data["updated"]) && $league_data["updated"] == true){
 		$updated["league"] = true;
+	}
+
+	// Runen
+	require_once 'runes.class.php';
+	$runes      	       = new RunesView($this->allowed_regions, $region, $this->summoner_update_interval);
+	$runes_data 	       = $runes->show($sID);
+	$array["runes"] 	   = $runes_data["template"];
+	if(isset($runes_data["updated"]) && $runes_data["updated"] == true){
+		$updated["runes"] = true;
 	}
 
 	// Daten ausgeben
