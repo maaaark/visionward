@@ -53,7 +53,7 @@
 				<div class="element" data-tab="4"><h1>Ranglisten Stats</h1><div id="ranked_stats_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
 				
 				<div class="element" data-tab="5">
-					{ include summoner/runes}
+					@include('stats.summoner.runes')
 				</div>
 			</div>
 		</div>
@@ -231,6 +231,11 @@
 						}
 				    } else {
 				    	$("#league_loader").html("Aufgrund eines unbekannten Fehlers konnte die Liga leider nicht geladen werden.");
+				    }
+
+				    // Runen
+				    if(typeof json["runes"] != "undefined"){
+				    	loadRunes(JSON.parse(json["runes"]));
 				    }
 				});
 			});

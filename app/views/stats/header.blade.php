@@ -18,6 +18,7 @@
 	<link rel="stylesheet" href="/css/stats/summoner_current_game.css">
 	<link rel="stylesheet" href="/css/stats/summoner_matchhistory.css">
 	<link rel="stylesheet" href="/css/stats/summoner_league.css">
+	<link rel="stylesheet" href="/css/jquery.runepageBuilder.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
@@ -39,6 +40,7 @@
 	<script src="/js/jquery.min.js"></script>
 	<script src="/js/jquery.mousewheel.min.js"></script>
 	<script src="/js/jquery.mCustomScrollbar.js"></script>
+	<script src="/js/jquery.runepageBuilder.js"></script>
 	<script src="/js/jquery.tablesorter.js"></script>
 	<script>
 		function loadScrollBars(){
