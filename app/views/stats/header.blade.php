@@ -66,7 +66,7 @@
 		</div>
 	</div>
 
-	<div style="padding-top: 50px;">
+	<div>
 		@yield('opener')
 	</div>
 
