@@ -12,7 +12,7 @@ class CreateMasteriesTree extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('masteries_trees', function(Blueprint $table)
+		Schema::create('mastery_trees', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('mastery_id');
