@@ -328,3 +328,27 @@
 	height: 30px;
 	border-radius: 50%;
 }
+
+
+/* Mastery Page */
+.masteries_overlay {
+	border: 1px solid rgba(0,0,0,0.5);
+}
+
+.masteries_overlay .masteries_navi {
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+	margin-bottom: 10px;
+}
+
+.masteries_overlay .masteries_navi .mastery_element {
+	padding: 5px;
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	cursor: pointer;
+}
+
+.masteries_overlay .masteries_navi .mastery_element.open {
+	background: #fff;
+}
