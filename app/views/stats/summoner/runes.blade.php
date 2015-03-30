@@ -44,7 +44,6 @@
 						runes_temp[element["runeId"]]["element"] = element;
 						runes_temp[element["runeId"]]["count"]++;
 					}
-					console.log(element);
 				}
 			
 				$("#rune_page_content").html("");

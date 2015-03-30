@@ -49,6 +49,7 @@ class RefreshMasteries extends Command {
 
 			$count = 0;
 			if(isset($json["data"]) && is_array($json["data"])){
+				$array = array();
 				foreach($json["data"] as $mastery){
 					if(isset($mastery["id"])){
 						$mastery_object = Mastery::where("mastery_id", "=", $mastery["id"])->first();
@@ -59,10 +60,23 @@ class RefreshMasteries extends Command {
 						$mastery_object->name    	  = $mastery["name"];
 						$mastery_object->mastery_tree = $mastery["masteryTree"];
 						$mastery_object->description  = $mastery["description"][0];
+						$mastery_object->ranks        = $mastery["ranks"];
+						$mastery_object->prereq       = $mastery["prereq"];
 						$mastery_object->save();
 						$count++;
+
+						$temp = array();
+						$temp["mastery_id"]   = $mastery["id"];
+						$temp["name"]		  = $mastery["name"];
+						$temp["mastery_tree"] = $mastery["masteryTree"];
+						$temp["description"]  = $mastery["description"][0];
+						$temp["ranks"]		  = $mastery["ranks"];
+						$temp["prereq"]		  = $mastery["prereq"];
+						$array[$mastery["id"]] = $temp;
 					}
 				}
+
+				File::put("public/masteries.json", json_encode($array));
 			}
 			echo "Es wurden ".$count." Meisterschaften gespeichert".PHP_EOL;
 		}

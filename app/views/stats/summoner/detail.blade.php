@@ -19,6 +19,7 @@
 				<div class="element" data-tab="3" data-hash="league">Liga</div>
 				<div class="element" data-tab="4" data-hash="ranked_stats">Ranglisten Stats</div>
 				<div class="element" data-tab="5" data-hash="runes">Runen</div>
+				<div class="element" data-tab="6" data-hash="masteries">Meisterschaften</div>
 			</div>
 		</div>
 	</div>
@@ -54,6 +55,10 @@
 				
 				<div class="element" data-tab="5">
 					@include('stats.summoner.runes')
+				</div>
+
+				<div class="element" data-tab="6">
+					@include('stats.summoner.masteries')
 				</div>
 			</div>
 		</div>
@@ -236,6 +241,12 @@
 				    // Runen
 				    if(typeof json["runes"] != "undefined"){
 				    	loadRunes(JSON.parse(json["runes"]));
+				    }
+
+				    // Meisterschaften
+				    if(typeof json["masteries"] != "undefined"){
+				    	//console.log(json["masteries"]);
+				    	loadMasteries(JSON.parse(json["masteries"]));
 				    }
 				});
 			});
