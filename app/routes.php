@@ -174,6 +174,14 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	
 });
 
+// Route group for API versioning
+Route::group(array('prefix' => 'api'), function()
+{
+    Route::get('news', 'ApiController@news');
+    Route::get('champions', 'ApiController@champions');
+   
+});
+
 
 // Sitemap
 Route::get('sitemap', function(){
