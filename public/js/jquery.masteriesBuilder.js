@@ -18,6 +18,10 @@ $.fn.mastery = function(masteries, icon_url){
 
 	checkIfSet = function(mastery_id){
 		out = false;
+
+		if(typeof masteries == "undefined" || typeof masteries.length == "undefined" || masteries.length <= 0){
+			return false;
+		}
 		for(temp_i = 0; temp_i < masteries.length; temp_i++){
 			if(mastery_id == masteries[temp_i]["id"]){
 				if(typeof masteries[temp_i]["rank"] != "undefined" && masteries[temp_i]["rank"] > 0){
