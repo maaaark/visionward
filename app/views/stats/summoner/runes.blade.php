@@ -17,9 +17,19 @@
 </div>
 
 <script>
+	function checkRunes(runes){
+		check_status = false;
+		for(i = 0; i < runes.length; i++){
+			if(typeof runes[i]["slots"] != "undefined" && runes[i]["slots"].length > 0){
+				check_status = true;
+			}
+		}
+		return check_status;
+	}
+
 	function loadRunes(runes){
-		if(typeof runes[0]["slots"] == "undefined"){
-			$("#runes_msg").html('<div class="no_runes">{NAME} hat noch keine Runenseiten erstellt.</div>');
+		if(checkRunes(runes) == false){
+			$("#runes_msg").html('<div class="no_runes">{{ $data->name }} hat noch keine Runenseiten erstellt.</div>');
 			$("#runes_holder").remove();
 		} else {
 			// Runenseiten laden
@@ -44,7 +54,6 @@
 						runes_temp[element["runeId"]]["element"] = element;
 						runes_temp[element["runeId"]]["count"]++;
 					}
-					console.log(element);
 				}
 			
 				$("#rune_page_content").html("");

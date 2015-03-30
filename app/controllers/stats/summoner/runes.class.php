@@ -47,17 +47,19 @@ class RunesView {
 				$json   = json_decode($summoner["runes"], true);
 				foreach($json as $key => $rune_page){
 					$temp = array("id" => $rune_page["id"], "current" => $rune_page["current"], "name" => $rune_page["name"], "slots" => array());
-					foreach($rune_page["slots"] as $column => $value){
-						$value["name"] = "Unbekannt";
-						$value["description"] = "Nicht bekannt";
+					if(isset($rune_page["slots"]) && is_array($rune_page["slots"])){
+						foreach($rune_page["slots"] as $column => $value){
+							$value["name"] = "Unbekannt";
+							$value["description"] = "Nicht bekannt";
 
-						$rune_object = Rune::where("rune_id", "=", $value["runeId"])->first();
-						if(isset($rune_object["id"]) && $rune_object["id"] > 0){
-							$value["name"] = $rune_object["name"];
-							$value["description"] = $rune_object["description"];
+							$rune_object = Rune::where("rune_id", "=", $value["runeId"])->first();
+							if(isset($rune_object["id"]) && $rune_object["id"] > 0){
+								$value["name"] = $rune_object["name"];
+								$value["description"] = $rune_object["description"];
+							}
+
+							$temp["slots"][$column] = $value;
 						}
-
-						$temp["slots"][$column] = $value;
 					}
 					$output[$key] = $temp;
 				}
