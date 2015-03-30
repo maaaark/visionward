@@ -34,7 +34,7 @@ $( document ).ready(function() {
 			var old_text = $(this).text();
 			var link = $(this);			
 			$.getJSON('/skill_tooltip/'+id, function (data) {
-				var skill_icon = data.skill.icon; 
+				var skill_icon = data.skill.icon;
 				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
 			});
 			
