@@ -26,7 +26,7 @@ $( document ).ready(function() {
 			var value = link.substring(link.lastIndexOf('/')+1);
 			var champion_image = $(this).attr('rel');
 			var old_text = $(this).text();
-			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/5.5.2/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
+			$( this ).html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/champion/'+value+'.png" class="img-circle" style="height: 1em;"> '+old_text);
 		}
 		if(jQuery.inArray( "skills", test ) > -1) {
 			var value = link.substring(link.lastIndexOf('/')+1);
@@ -34,8 +34,8 @@ $( document ).ready(function() {
 			var old_text = $(this).text();
 			var link = $(this);			
 			$.getJSON('/skill_tooltip/'+id, function (data) {
-				var skill_icon = data.skill.icon; 
-				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.5.2/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
+				var skill_icon = data.skill.icon;
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
 			});
 			
 		}
@@ -46,7 +46,7 @@ $( document ).ready(function() {
 			var link = $(this);
 			if(id != null) {			
 				$.getJSON('/item_tooltip/'+id, function (data) {
-					link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.5.2/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
+					link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/item/'+data.item.id+'.png" class="img-circle" style="height: 1em;"> '+data.item.name);
 				});
 			};
 		}
@@ -58,7 +58,7 @@ $( document ).ready(function() {
 		content: function ($el, $tip) {
 			var active_tooltip = $el.attr('rel');
 			$.getJSON('/item_tooltip/'+active_tooltip, function (data) {
-				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.1.2/img/item/'+data.item.id+'.png" class="img-circle" style="margin-bottom: 0px;" width="50" /></td><td valign="top"><h3>'+data.item.name+'</h3>'+data.item.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/item/'+data.item.id+'.png" class="img-circle" style="margin-bottom: 0px;" width="50" /></td><td valign="top"><h3>'+data.item.name+'</h3>'+data.item.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
 	
 	})
 	
@@ -68,7 +68,13 @@ $( document ).ready(function() {
 		content: function ($el, $tip) {
 			var active_tooltip = $el.attr('rel');
 			$.getJSON('/skill_tooltip/'+active_tooltip, function (data) {
-				$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.1.2/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 50px;"></td><td valign="top"><h3>'+data.skill.name+'</h3>'+data.skill.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+if(data.skill.passive == 1) {
+	$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/passive/'+data.skill.icon+'" class="img-circle" style="width: 50px;"></td><td valign="top"><h3>'+data.skill.name+'</h3>'+data.skill.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+} else {
+	$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 50px;"></td><td valign="top"><h3>'+data.skill.name+'</h3>'+data.skill.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
+	}
+				
+				
 	
 	})
 	
