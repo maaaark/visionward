@@ -35,12 +35,7 @@ $( document ).ready(function() {
 			var link = $(this);			
 			$.getJSON('/skill_tooltip/'+id, function (data) {
 				var skill_icon = data.skill.icon; 
-if(data.skill.passive == 1) {
-	link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/passive/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
-} else {
-	link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
-}
-				
+				link.html('<img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="height: 1em;"> ('+data.skill.hotkey+') '+data.skill.name);
 			});
 			
 		}
