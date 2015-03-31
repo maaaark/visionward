@@ -1,4 +1,4 @@
-<h1>Runen</h1>
+<h2 class="headline_no_border">Runen</h2>
 <div id="runes_msg"></div>
 <div class="runes_holder" id="runes_holder">
 	<div id="runes_navi" class="runes_navi"></div>
@@ -8,7 +8,7 @@
 		</div>
 		<div class="rune_info_holder">
 			<div id="rune_page_info" class="rune_page_info">
-				<div class="rune_page_name"><h2 style="margin-top:0px;">Runenseite: <span id="rune_page_name"></span></h2></div>
+				<div class="rune_page_name"><h2 class="headline_no_border" style="margin-top:0px;">Runenseite: <span id="rune_page_name"></span></h2></div>
 				<div id="rune_page_content"></div>
 			</div>
 		</div>

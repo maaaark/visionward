@@ -49,9 +49,10 @@
 						{{ $summary_ranked }}
 					</div>
 				</div>
-				<div class="element" data-tab="2"><h1>Spielverlauf</h1><div id="matchhistory_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
-				<div class="element" data-tab="3"><h1>Liga</h1><div id="league_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
-				<div class="element" data-tab="4"><h1>Ranglisten Stats</h1><div id="ranked_stats_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
+                <br/>
+				<div class="element" data-tab="2"><h2 class="headline_no_border">Spielverlauf</h2><div id="matchhistory_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
+				<div class="element" data-tab="3"><h2 class="headline_no_border">Liga</h2><div id="league_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
+				<div class="element" data-tab="4"><h2 class="headline_no_border">Ranglisten Stats</h2><div id="ranked_stats_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
 				
 				<div class="element" data-tab="5">
 					@include('stats.summoner.runes')
