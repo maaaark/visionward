@@ -22,7 +22,9 @@
 							@if($i == 3) <div class="item_breaker show_mobile_mini"></div> @endif
 
 							@if(isset($item["name"]) AND isset($item["item_id"]) AND $item["item_id"] > 0)
-							<div class="item" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/{{ $item->item_id }}.png);"></div>
+							<a class="item_tooltip" href="/items/3285" rel="3285" title="">
+							 	<div class="item" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/{{ $item->item_id }}.png);"></div>
+						 	</a>
 							@else
 							<div class="no_item"></div>
 							@endif
