@@ -1,0 +1,72 @@
+.summoner_league .league_btn {
+	padding: 5px;
+	border: 1px solid rgba(0,0,0,0.2);
+	display: inline-block;
+	margin-right: 5px;
+	cursor: pointer;
+}
+
+.summoner_league .league_btn:hover {
+	background: rgba(0,0,0,0.1);
+}
+
+.summoner_league .tier {
+	display: inline-block;
+	padding: 5px;
+	margin-right: 10px;
+	font-weight: bold;
+}
+
+.summoner_league .league_btn.current {
+	background: rgba(0,0,0,0.2);
+}
+
+.summoner_league .league_element {
+	display: none;
+}
+
+.summoner_league .league_element.current {
+	display: block;
+}
+
+.summoner_league .league_element .league_table .points.serie div.icon {
+	height: 24px;
+	width: 24px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	display: inline-block;
+}
+
+.summoner_league .league_element .league_table .points.serie div.icon.win {
+	background-image: url(../../img/stats/leagues/league_series_win.png);
+}
+
+.summoner_league .league_element .league_table .points.serie div.icon.loss {
+	background-image: url(../../img/stats/leagues/league_series_loss.png);
+}
+
+.summoner_league .league_element .league_table .points.serie div.icon.notplayed {
+	background-image: url(../../img/stats/leagues/league_series_notplayed.png);
+}
+
+.summoner_league .league_navi {
+	margin-bottom: 25px;
+}
+
+.summoner_league .league_element .league_table tr.highlight {
+	background: rgb(253, 240, 188);
+}
+
+.summoner_league .league_element .league_table td.summoner img.summ_icon {
+	height: 40px;
+	border-radius: 50%;
+}
+
+.summoner_league .league_element .league_table td.summoner span {
+	padding-left: 10px;
+	padding-top: 1px;
+}
+
+.summoner_league .league_element .league_table td.rank {
+	text-align: center;
+}

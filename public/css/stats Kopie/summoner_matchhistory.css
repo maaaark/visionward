@@ -9,12 +9,11 @@
 }
 
 .matchhistory_element .match_title {
-	background: #202528;
-        color: #fff;
-        font-family: 'Fjalla One', sans-serif;
-		font-size: 14px;
-		font-weight: 300;
-		padding: 5px;
+	background: rgba(0,0,0,0.75);
+	font-size: 18px;
+	font-weight: 300;
+	padding: 5px;
+	color: #fff;
 }
 
 .matchhistory_element .more_details {
@@ -173,12 +172,11 @@
 	}
 	
 	.matchhistory_element .match_title {
-		background: #202528;
-        color: #fff;
-        font-family: 'Fjalla One', sans-serif;
+		background: rgba(0,0,0,0.75);
 		font-size: 14px;
 		font-weight: 300;
 		padding: 5px;
+		color: #fff;
 	}
 }
 

@@ -1,4 +1,4 @@
-<h1>Meisterschaften</h1>
+<h2 class="headline_no_border">Meisterschaften</h2>
 
 <div class="masteries_overlay" id="masteries_overlay">
 	<div id="masteries_navi" class="masteries_navi"></div>

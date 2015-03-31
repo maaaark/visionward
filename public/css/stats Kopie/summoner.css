@@ -159,10 +159,9 @@
 
 .summoner_title {
 	padding: 6px;
-	font-size: 14px;
-    font-family: 'Fjalla One', sans-serif;
-    color: #fff;
-	background: #202528;
+	font-size: 18px;
+	background: rgba(0,0,0,0.1);
+	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .ranked_summary .col-md-4.ranked_element {
@@ -211,7 +210,7 @@
 }
 
 .runes_holder .runes_navi {
-	background: #202528;
+	background: rgba(0,0,0,0.1);
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
@@ -219,15 +218,12 @@
 	padding: 5px;
 	display: inline-block;
 	margin: 5px;
-	border: 1px solid #333a3e;
+	border: 1px solid rgba(0,0,0,0.2);
 	cursor: pointer;
-    background: #202528;
-    color: #fff;
 }
 
 .runes_holder .runes_navi .rune_element.open {
-	background: #333a3e;
-    color: #fff;
+	background: #fff;
 }
 
 .runes_holder .runes_content {
@@ -340,7 +336,7 @@
 }
 
 .masteries_overlay .masteries_navi {
-	background: #202528;
+	background: rgba(0,0,0,0.1);
 	border-bottom: 1px solid rgba(0,0,0,0.2);
 	margin-bottom: 10px;
 }
@@ -349,13 +345,10 @@
 	padding: 5px;
 	display: inline-block;
 	margin: 5px;
-	border: 1px solid #333a3e;
+	border: 1px solid rgba(0,0,0,0.2);
 	cursor: pointer;
-    color: #fff;
-    background: #202528;
 }
 
 .masteries_overlay .masteries_navi .mastery_element.open {
-    background: #333a3e;
-    color: #fff;
+	background: #fff;
 }
