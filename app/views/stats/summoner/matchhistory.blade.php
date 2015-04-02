@@ -1,4 +1,4 @@
-<div class="matchhistory_element">
+<div class="matchhistory_element" data-gameid="{{ $game["gameId"] }}">
 	<div class="match_title" style="@if($game['stats']['win'] == true) background-color:rgba(16, 81, 20, 0.8) @else background-color:rgba(81, 16, 16, 0.8)  @endif">
 		{{ Helpers::niceGameMode($game["gameMode"]) }} - {{ Helpers::niceMatchMode($game["gameType"]) }} - {{ Helpers::niceSubType($game["subType"]) }}
 	</div>
