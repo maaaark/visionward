@@ -113,7 +113,7 @@ class Helpers {
 			$nice_queueMode = "Team Ranglisten Spiel 3on3";
         } elseif($queueMode == "RANKED_TEAM_5x5") {
 			$nice_queueMode = "Team Ranglisten Spiel 5on5";
-        } elseif($queueMode == "URF ") {
+        } elseif($queueMode == "URF") {
 			$nice_queueMode = "Ultra Rapid Fire";
 		} else {
 			$nice_queueMode = "Anderer Spielmodus";

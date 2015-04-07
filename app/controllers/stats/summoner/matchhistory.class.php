@@ -44,8 +44,16 @@ class MatchhistoryView {
 					$matchhistory_orig = json_decode($summoner->matchhistory, true);
 					$region_name 	   = $this->allowed_regions[$this->region]["name"];
 					$template          = "";
+
+					$count = 0;
 					foreach($matchhistory_orig as $game){
-						$template .= $this->handleMatch($game, $summoner);
+						if($count == 0){
+							$last_champ = Champion::where('champion_id', '=', trim($game["championId"]))->first();
+							$summoner->lastchamp = $last_champ["key"];
+							$summoner->save();
+						}
+						$template .= $this->handleMatch($game, $summoner, $count);
+						$count++;
 					}
 					return array("updated" => $updated, "template" => $template);
 				} else {
@@ -59,7 +67,7 @@ class MatchhistoryView {
 		}
 	}
 
-	private function handleMatch($game, $summoner){
+	private function handleMatch($game, $summoner, $count){
 		$api_key = Config::get('api.key');
 
 		$champion = Champion::where('champion_id', '=', trim($game["championId"]))->first();
@@ -136,7 +144,8 @@ class MatchhistoryView {
 					'champion' => $champion,
 					'team1'	   => $team1,
 					'team2'	   => $team2,
-					'summoner' => $summoner
+					'summoner' => $summoner,
+					'count'	   => $count
 				])->render(); 
 	}
 }
