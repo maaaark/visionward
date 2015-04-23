@@ -3,7 +3,6 @@ $.fn.mastery = function(masteries, icon_url){
 		masteries = JSON.parse(masteries);
 	}
 	
-	console.log(masteries);
 	object_id = Math.random().toString(36).substring(5, 12);
 	object 	  = $(this);
 	object.addClass("mastery_tree_holder");
