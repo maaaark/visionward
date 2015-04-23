@@ -53,11 +53,11 @@
 
 .current_game_table .champ_icon {
 	padding: 0px;
-	width: 60px;
+	width: 70px;
 }
 
 .current_game_table .champ_icon img {
-	width: 60px;
+	width: 70px;
 }
 
 .current_game_table .spells {
@@ -77,6 +77,7 @@
 .current_game_table .champion {
 	vertical-align: middle;
 	font-size: 12px;
+	max-width: 123px;
 }
 
 .current_game_table .champion .normal_wins {
@@ -90,6 +91,7 @@
 
 .current_game_table .league {
 	vertical-align: middle;
+	font-size: 10px;
 }
 
 .current_game_table .league img {

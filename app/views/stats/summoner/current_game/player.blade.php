@@ -23,13 +23,23 @@
 		@endif
 	</td>
 	<td class="summoner_datarunes">
-		<a href="javascript:void(0)" onclick="alert('Funktion noch in Entwicklung');">ansehen</a>
+		<a href="javascript:void(0)" class="summoner_runes_link_currentgame"
+									 data-summonerid="{{ $player["summonerId"] }}"
+									 data-summonername="{{ $player["summonerName"] }}">ansehen</a>
 	</td>
 	<td class="summoner_datamasteries">
 		@if(isset($masteries) AND isset($masteries["offense"]))
-		<button class="mastery_button" onclick="alert('Funktion noch in Entwicklung');">{{ $masteries["offense"] }} / {{ $masteries["defense"] }} / {{ $masteries["utility"] }}</button>
+		<button class="mastery_button summoner_masteries_btn_currentgame"
+				data-summonerid="{{ $player["summonerId"] }}"
+				data-summonername="{{ $player["summonerName"] }}">{{ $masteries["offense"] }} / {{ $masteries["defense"] }} / {{ $masteries["utility"] }}</button>
 		@else
-		<button class="mastery_button" onclick="alert('Funktion noch in Entwicklung');">0 / 0 / 0</button>
+		<button class="mastery_button" disabled>0 / 0 / 0</button>
 		@endif
 	</td>
 </tr>
+
+<script>
+	current_game_players[{{ $player["summonerId"] }}] 		       = [];
+	current_game_players[{{ $player["summonerId"] }}]["runes"] 	   = '{{ json_encode($player["runes"]) }}';
+	current_game_players[{{ $player["summonerId"] }}]["masteries"] = '{{ json_encode($player["masteries"]) }}';
+</script>
