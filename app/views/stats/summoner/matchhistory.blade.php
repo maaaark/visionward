@@ -42,11 +42,11 @@
 					</td>
 					<td class="farm no_mobile">
 						<div>
-							<span class="val">@if($game["stats"]["minionsKilled"]){{ $game["stats"]["minionsKilled"] }} @else 0 @endif</span>
+							<span class="val">@if($game["stats"]["minionsKilled"]){{ number_format($game["stats"]["minionsKilled"], 0, ",", ".") }} @else 0 @endif</span>
 							<img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/ui/minion.png" alt="Lasthits" title="Lasthits">
 						</div>
 						<div>
-							<span class="val">@if($game["stats"]["goldEarned"]){{ $game["stats"]["goldEarned"] }} @else 0 @endif</span>
+							<span class="val">@if($game["stats"]["goldEarned"]){{ number_format($game["stats"]["goldEarned"], 0, ",", ".") }} @else 0 @endif</span>
 							<img src="http://ddragon.leagueoflegends.com/cdn/5.2.1/img/ui/gold.png" alt="Gold" name="Gold">
 						</div>
 					</td>
@@ -91,31 +91,31 @@
       <table class="table matchhistory_table_detail">
          <tr>
          	<td>Jungle Monster get&ouml;tet</td>
-         	<td class="val">@if(isset($game["stats"]["neutralMinionsKilledYourJungle"])) {{ $game["stats"]["neutralMinionsKilledYourJungle"] }}@else 0 @endif</td>
+         	<td class="val">@if(isset($game["stats"]["neutralMinionsKilledYourJungle"])) {{ number_format($game["stats"]["neutralMinionsKilledYourJungle"], 0, ",", ".") }}@else 0 @endif</td>
      	</tr>
          <tr>
          	<td>Gegnerische Jungle Monster get&ouml;tet</td>
-         	<td class="val">@if(isset($game["stats"]["neutralMinionsKilledEnemyJungle"])) {{ $game["stats"]["neutralMinionsKilledEnemyJungle"] }}@else 0 @endif</td>
+         	<td class="val">@if(isset($game["stats"]["neutralMinionsKilledEnemyJungle"])) {{ number_format($game["stats"]["neutralMinionsKilledEnemyJungle"], 0, ",", ".") }}@else 0 @endif</td>
      	</tr>
          <tr>
          	<td>Gesamtschaden verursacht</td>
-     		<td class="val">@if(isset($game["stats"]["totalDamageDealt"])) {{ $game["stats"]["totalDamageDealt"] }}@else 0 @endif</td>
+     		<td class="val">@if(isset($game["stats"]["totalDamageDealt"])) {{ number_format($game["stats"]["totalDamageDealt"], 0, ",", ".") }}@else 0 @endif</td>
  		</tr>
          <tr>
          	<td>Gesamtschaden verursacht an Champions</td>
-         	<td class="val">@if(isset($game["stats"]["totalDamageDealtToChampions"])) {{ $game["stats"]["totalDamageDealtToChampions"] }}@else 0 @endif</td>
+         	<td class="val">@if(isset($game["stats"]["totalDamageDealtToChampions"])) {{ number_format($game["stats"]["totalDamageDealtToChampions"], 0, ",", ".") }}@else 0 @endif</td>
      	</tr>
          <tr>
          	<td>Gesamtschaden genommen</td>
-         	<td class="val">@if(isset($game["stats"]["totalDamageTaken"])) {{ $game["stats"]["totalDamageTaken"] }}@else 0 @endif</td>
+         	<td class="val">@if(isset($game["stats"]["totalDamageTaken"])) {{ number_format($game["stats"]["totalDamageTaken"], 0, ",", ".") }}@else 0 @endif</td>
      	</tr>
          <tr>
          	<td>Zerst&ouml;rte T&uuml;rme</td>
-     		<td class="val">@if(isset($game["stats"]["turretsKilled"])) {{ $game["stats"]["turretsKilled"] }}@else 0 @endif</td>
+     		<td class="val">@if(isset($game["stats"]["turretsKilled"])) {{ number_format($game["stats"]["turretsKilled"], 0, ",", ".") }}@else 0 @endif</td>
 		</tr>
          <tr>
          	<td>Zerst&ouml;rte Inhibitore</td>
-         	<td class="val">@if(isset($game["stats"]["barracksKilled"])) {{ $game["stats"]["barracksKilled"] }}@else 0 @endif</td>
+         	<td class="val">@if(isset($game["stats"]["barracksKilled"])) {{ number_format($game["stats"]["barracksKilled"]) }}@else 0 @endif</td>
      	</tr>
       </table>
    </div>
