@@ -20,6 +20,7 @@
 	<link rel="stylesheet" href="/css/stats/summoner_league.css">
 	<link rel="stylesheet" href="/css/jquery.runepageBuilder.css">
 	<link rel="stylesheet" href="/css/jquery.masteriesBuilder.css">
+	<link rel="stylesheet" href="/css/flashignite_lightbox.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
@@ -44,6 +45,7 @@
 	<script src="/js/jquery.runepageBuilder.js"></script>
 	<script src="/js/jquery.masteriesBuilder.js"></script>
 	<script src="/js/jquery.tablesorter.js"></script>
+	<script src="/js/flashignite_lightbox.js"></script>
 	<script>
 		function loadScrollBars(){
 		   $(".scroll_bar").mCustomScrollbar({

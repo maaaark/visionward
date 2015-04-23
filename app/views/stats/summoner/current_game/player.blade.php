@@ -23,7 +23,7 @@
 		@endif
 	</td>
 	<td class="summoner_datarunes">
-		<a href="javascript:void(0)" onclick="alert('Funktion noch in Entwicklung');">ansehen</a>
+		<a href="javascript:void(0)" class="summoner_runes_link_currentgame" data-summonerid="{{ $player["summonerId"] }}">ansehen</a>
 	</td>
 	<td class="summoner_datamasteries">
 		@if(isset($masteries) AND isset($masteries["offense"]))
@@ -33,3 +33,8 @@
 		@endif
 	</td>
 </tr>
+
+<script>
+	current_game_players[{{ $player["summonerId"] }}] 		   = [];
+	current_game_players[{{ $player["summonerId"] }}]["runes"] = '{{ json_encode($player["runes"]) }}';
+</script>

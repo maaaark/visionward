@@ -1,3 +1,7 @@
+<script>
+var current_game_players = [];
+</script>
+
 <div class="col-md-6 current_game_holder left">
 	<table class="table current_game_table">
 		<tbody>
@@ -31,3 +35,16 @@
 		</tbody>
 	</table>
 </div>
+
+<script>
+$(document).ready(function(){
+	$(".summoner_runes_link_currentgame").click(function(){
+		summoner_id   = $(this).attr("data-summonerid");
+		summoner_data = current_game_players[summoner_id];
+		
+		if(typeof summoner_data != "undefined" && typeof summoner_data["runes"] != "undefined"){
+			showLightbox();
+		}
+	});
+});
+</script>
