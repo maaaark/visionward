@@ -1,7 +1,7 @@
 @extends('stats.header')
 @section('opener')
 	@if(isset($data->lastchamp) AND trim($data->lastchamp) != "")
-		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champions/'.$data->lastchamp.'_summoner_bg.jpg') }});">
+		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champion_header/'.$data->lastchamp.'_summoner_bg.jpg') }});">
 	@else
 		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champion_header/Fizz_summoner_bg.jpg') }});">
 	@endif
