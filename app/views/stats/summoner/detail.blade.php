@@ -3,7 +3,7 @@
 	@if(isset($data->lastchamp) AND trim($data->lastchamp) != "")
 		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champions/'.$data->lastchamp.'_summoner_bg.jpg') }});">
 	@else
-		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champions/Fizz_summoner_bg.jpg') }});">
+		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champion_header/Fizz_summoner_bg.jpg') }});">
 	@endif
 		<div class="mid_pos">
 			<div class="summoner_update_loader" @if(isset($updates_this_time) && $updates_this_time) style="display:block;" @endif>
