@@ -1,6 +1,6 @@
 @if(isset($count) AND $count == 0)
 	<script>
-	$("#summoner_header_bg").attr("style", "background-image:url({{ asset('img/stats/champions/'.$champion["key"].'_summoner_bg.jpg') }});");
+	$("#summoner_header_bg").attr("style", "background-image:url({{ asset('img/stats/champion_header/'.$champion["key"].'_summoner_bg.jpg') }});");
 	</script>
 @endif
 
