@@ -30,7 +30,6 @@
 @stop
 
 @section('content')
-	<button onclick="showLightbox()">Lightbox</button>
 	<div class="base">
 		<div class="col-md-12">
 			<div id="summoner_tabs_content" class="summoner_tabs_content">

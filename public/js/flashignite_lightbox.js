@@ -12,7 +12,7 @@ function init__FI_Lightbox(){
 	already_set_lightbox_content = true;
 }
 
-function showLightbox(content){
+function showLightbox(content, callback){
 	if(already_set_lightbox_content == false){
 		init__FI_Lightbox();
 	}
@@ -24,7 +24,11 @@ function showLightbox(content){
 	$("#fi_lightbox_bg").show();
 	$("#fi_lightbox").show();
 	$("#fi_lightbox_bg").animate({"opacity" : "1"}, animation_speed_lightbox, "linear");
-	$("#fi_lightbox").animate({"opacity" : "1"}, animation_speed_lightbox, "linear");
+	$("#fi_lightbox").animate({"opacity" : "1"}, animation_speed_lightbox, "linear", function(){
+		if(typeof callback != "undefined"){
+			callback($("#fi_lightbox .content"));
+		}
+	});
 
 	$("#fi_lightbox_bg").click(function(){
 		hideLightbox();
@@ -42,6 +46,6 @@ function hideLightbox(){
 
 	$("#fi_lightbox").animate({"opacity" : "0"}, (animation_speed_lightbox * 0.6), "linear", function(){
 		$("#fi_lightbox").hide();
+		$("#fi_lightbox .content").html("");
 	});
-	$("#fi_lightbox .content").html("");
 }

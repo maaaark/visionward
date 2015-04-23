@@ -3,6 +3,7 @@ $.fn.mastery = function(masteries, icon_url){
 		masteries = JSON.parse(masteries);
 	}
 	
+	console.log(masteries);
 	object_id = Math.random().toString(36).substring(5, 12);
 	object 	  = $(this);
 	object.addClass("mastery_tree_holder");
@@ -23,6 +24,13 @@ $.fn.mastery = function(masteries, icon_url){
 		}
 		for(temp_i = 0; temp_i < masteries.length; temp_i++){
 			if(mastery_id == masteries[temp_i]["id"]){
+				if(typeof masteries[temp_i]["rank"] != "undefined" && masteries[temp_i]["rank"] > 0){
+					out = masteries[temp_i]["rank"];
+				} else {
+					out = 1;
+				}
+			}
+			else if(mastery_id == masteries[temp_i]["masteryId"]){
 				if(typeof masteries[temp_i]["rank"] != "undefined" && masteries[temp_i]["rank"] > 0){
 					out = masteries[temp_i]["rank"];
 				} else {
