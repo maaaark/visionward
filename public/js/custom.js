@@ -68,11 +68,7 @@ $( document ).ready(function() {
 		content: function ($el, $tip) {
 			var active_tooltip = $el.attr('rel');
 			$.getJSON('/skill_tooltip/'+active_tooltip, function (data) {
-if(data.skill.passive == 1) {
-	$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/passive/'+data.skill.icon+'" class="img-circle" style="width: 50px;"></td><td valign="top"><h3>'+data.skill.name+'</h3>'+data.skill.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
-} else {
 	$tip.html(function() { var content = '<div class="info_hover"><table width="500"><tr><td width="65" valign="top"><img src="http://ddragon.leagueoflegends.com/cdn/5.6.1/img/spell/'+data.skill.icon+'" class="img-circle" style="width: 50px;"></td><td valign="top"><h3>'+data.skill.name+'</h3>'+data.skill.description+'</td></tr></table></div>'; return content; }); }); return 'Fallback content'; },
-	}
 				
 				
 	
