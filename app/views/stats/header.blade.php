@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="/css/stats/summoner_matchhistory.css">
 	<link rel="stylesheet" href="/css/stats/summoner_league.css">
 	<link rel="stylesheet" href="/css/jquery.runepageBuilder.css">
+	<link rel="stylesheet" href="/css/jquery.masteriesBuilder.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
@@ -41,6 +42,7 @@
 	<script src="/js/jquery.mousewheel.min.js"></script>
 	<script src="/js/jquery.mCustomScrollbar.js"></script>
 	<script src="/js/jquery.runepageBuilder.js"></script>
+	<script src="/js/jquery.masteriesBuilder.js"></script>
 	<script src="/js/jquery.tablesorter.js"></script>
 	<script>
 		function loadScrollBars(){
@@ -51,6 +53,11 @@
 		      mouseWheel:{ scrollAmount: 140 }
 		   });
 		}
+
+		var masteries_json = [];
+        $.get("/masteries.json", function(data){
+			masteries_json = Object.keys(data).map(function(k){ return data[k] });
+		});
 	</script>
   </head>
   <body>
@@ -66,7 +73,7 @@
 		</div>
 	</div>
 
-	<div style="padding-top: 50px;">
+	<div>
 		@yield('opener')
 	</div>
 

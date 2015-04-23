@@ -1,13 +1,19 @@
-<div class="matchhistory_element">
-	<div class="match_title" style="{if WIN==TRUE}background-color:rgba(16, 81, 20, 0.8);{else}background-color:rgba(208, 21, 21, 0.85);{/if}">
-		{{ $game["gameMode"] }} - {{ $game["gameType"] }} - {{ $game["subType"] }}
+@if(isset($count) AND $count == 0)
+	<script>
+	$("#summoner_header_bg").attr("style", "background-image:url({{ asset('img/stats/champions/'.$champion["key"].'_summoner_bg.jpg') }});");
+	</script>
+@endif
+
+<div class="matchhistory_element" data-gameid="{{ $game["gameId"] }}">
+	<div class="match_title" style="@if($game['stats']['win'] == true) background-color:rgba(16, 81, 20, 0.8) @else background-color:rgba(81, 16, 16, 0.8)  @endif">
+		{{ Helpers::niceGameMode($game["gameMode"]) }} - {{ Helpers::niceMatchMode($game["gameType"]) }} - {{ Helpers::niceSubType($game["subType"]) }}
 	</div>
 	<div class="background_image" style="background-image:url(http://counterpick.de/uploads/champions_skins/{CHAMPION_KEY_RIOT_LOW}_0_thumb.jpg);background-size:100%;">
 		<div class="bg">
 			<table class="matchhistory_table table">
 				<tr>
 					<td class="champion">
-						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png">
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png" class="img-circle">
 						<div style="text-align:center;">{{ $champion["name"] }}</div>
 					</td>
 					<td class="stats">
@@ -22,7 +28,9 @@
 							@if($i == 3) <div class="item_breaker show_mobile_mini"></div> @endif
 
 							@if(isset($item["name"]) AND isset($item["item_id"]) AND $item["item_id"] > 0)
-							<div class="item" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/{{ $item->item_id }}.png);"></div>
+							<a class="item_tooltip" href="/items/3285" rel="3285" title="">
+							 	<div class="item" style="background-image:url(http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/item/{{ $item->item_id }}.png);"></div>
+						 	</a>
 							@else
 							<div class="no_item"></div>
 							@endif
@@ -46,13 +54,13 @@
 						<div class="title">Team 1</div>
 						@if($game["teamId"]==100)
 						<div class="player">
-							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png">
+							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png" class="img-circle">
 							<span><b>{{ $summoner->name }}</b></span>
 						</div>
 						@endif
 						@foreach($team1 as $player)
 						<div class="player">
-							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $player["champion"]["key"] }}.png">
+							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $player["champion"]["key"] }}.png" class="img-circle">
 							<span>{{ $player["name"] }}</span>
 						</div>
 						@endforeach
@@ -61,13 +69,13 @@
 						<div class="title">Team 2</div>
 						@if($game["teamId"]==200)
 						<div class="player">
-							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png">
+							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $champion["key"] }}.png" class="img-circle">
 							<span><b>{{ $summoner->name }}</b></span>
 						</div>
 						@endif
 						@foreach($team2 as $player)
 						<div class="player">
-							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $player["champion"]["key"] }}.png">
+							<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $player["champion"]["key"] }}.png" class="img-circle">
 							<span>{{ $player["name"] }}</span>
 						</div>
 						@endforeach

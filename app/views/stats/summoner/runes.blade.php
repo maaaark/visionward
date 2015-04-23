@@ -1,4 +1,4 @@
-<h1>Runen</h1>
+<h2 class="headline_no_border">Runen</h2>
 <div id="runes_msg"></div>
 <div class="runes_holder" id="runes_holder">
 	<div id="runes_navi" class="runes_navi"></div>
@@ -8,7 +8,7 @@
 		</div>
 		<div class="rune_info_holder">
 			<div id="rune_page_info" class="rune_page_info">
-				<div class="rune_page_name"><h2 style="margin-top:0px;">Runenseite: <span id="rune_page_name"></span></h2></div>
+				<div class="rune_page_name"><h2 class="headline_no_border" style="margin-top:0px;">Runenseite: <span id="rune_page_name"></span></h2></div>
 				<div id="rune_page_content"></div>
 			</div>
 		</div>
@@ -17,9 +17,19 @@
 </div>
 
 <script>
+	function checkRunes(runes){
+		check_status = false;
+		for(i = 0; i < runes.length; i++){
+			if(typeof runes[i]["slots"] != "undefined" && runes[i]["slots"].length > 0){
+				check_status = true;
+			}
+		}
+		return check_status;
+	}
+
 	function loadRunes(runes){
-		if(typeof runes[0]["slots"] == "undefined"){
-			$("#runes_msg").html('<div class="no_runes">{NAME} hat noch keine Runenseiten erstellt.</div>');
+		if(checkRunes(runes) == false){
+			$("#runes_msg").html('<div class="no_runes">{{ $data->name }} hat noch keine Runenseiten erstellt.</div>');
 			$("#runes_holder").remove();
 		} else {
 			// Runenseiten laden
@@ -44,7 +54,6 @@
 						runes_temp[element["runeId"]]["element"] = element;
 						runes_temp[element["runeId"]]["count"]++;
 					}
-					console.log(element);
 				}
 			
 				$("#rune_page_content").html("");

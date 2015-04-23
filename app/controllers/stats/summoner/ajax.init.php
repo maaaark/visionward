@@ -13,7 +13,7 @@ function checkIfAllDataIsUpdated($updated){
 if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 	$sID     = $_GET["sID"];
 	$array   = array();
-	$updated = array("matchhistory" => false, "ranked_stats" => false, "league" => false, "runes" => false);
+	$updated = array("matchhistory" => false, "ranked_stats" => false, "league" => false, "runes" => false, "masteries");
 
 	// Matchhistory
 	require_once 'matchhistory.class.php';
@@ -50,6 +50,16 @@ if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 	if(isset($runes_data["updated"]) && $runes_data["updated"] == true){
 		$updated["runes"] = true;
 	}
+
+	// Meisterschaften
+	require_once 'masteries.class.php';
+	$masteries     	       = new MasteriesView($this->allowed_regions, $region, $this->summoner_update_interval);
+	$masteries_data	       = $masteries->show($sID);
+	$array["masteries"]    = $masteries_data["template"];
+	if(isset($masteries_data["updated"]) && $masteries_data["updated"] == true){
+		$updated["masteries"] = true;
+	}
+
 
 	// Daten ausgeben
 	echo json_encode($array);
