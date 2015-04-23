@@ -154,4 +154,3 @@ if(data.skill.passive == 1) {
 
 
 });
-
