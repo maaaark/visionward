@@ -4,6 +4,7 @@
 	overflow: hidden;
 	background-image:url(../../img/stats/summoner_header.jpg);
 	background-position: right center;
+    margin-top: 50px;
 }
 
 @media(max-width: 1700px){
