@@ -28,6 +28,7 @@
             <div class="news_pic"><a href="/news/{{ $news->id }}/{{ $news->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></a></div>
             <div class="news_con">
                <div class="title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></div>
+               <div class="descr">{{ $news->excerpt }}</div>
             </div>
             <div style="clear: left;"></div>
          </div>
