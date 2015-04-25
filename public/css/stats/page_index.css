@@ -146,3 +146,21 @@
 		float: left;
 	}
 }
+
+/* News Liste */
+.summoner_stat_news_list {
+   width: 100%;
+}
+
+.summoner_stat_news_list td {
+   vertical-align: middle;
+}
+
+.summoner_stat_news_list .news_title {
+   padding-left: 5px;
+}
+
+.summoner_stat_news_list .news_pic {
+   width: 60px;
+   text-align: left;
+}
