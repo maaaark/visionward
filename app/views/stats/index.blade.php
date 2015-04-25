@@ -22,14 +22,17 @@
 @section('content')
 	<div class="col-md-6">
 		<h1>League of Legends News</h1>
-		<table class="summoner_stat_news_list">
+		<div class="summoner_stat_news_list">
 		@foreach($news_list as $news)
-         <tr>
-            <td class="news_pic"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></td>
-            <td class="news_title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></td>
-         </tr>
+         <div class="news_list_el">
+            <div class="news_pic"><a href="/news/{{ $news->id }}/{{ $news->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></a></div>
+            <div class="news_con">
+               <div class="title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></div>
+            </div>
+            <div style="clear: left;"></div>
+         </div>
 		@endforeach
-		</table>
+		</div>
 	</div>
 	<div class="col-md-6">
 		<h1>League of Legends News</h1>

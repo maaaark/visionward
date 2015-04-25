@@ -152,15 +152,21 @@
    width: 100%;
 }
 
-.summoner_stat_news_list td {
-   vertical-align: middle;
+.summoner_stat_news_list .news_list_el {
+   background: #555;
+   margin-bottom: 10px;
+   width: 100%;
+   padding: 5px;
+   background: #fff;
+   box-shadow: 0 1px 2px rgba(0,0,0,0.3);
 }
 
-.summoner_stat_news_list .news_title {
-   padding-left: 5px;
-}
-
-.summoner_stat_news_list .news_pic {
+.summoner_stat_news_list .news_list_el .news_pic {
+   float: left;
    width: 60px;
-   text-align: left;
+}
+
+.summoner_stat_news_list .news_list_el .news_con {
+   float: left;
+   padding-left: 5px;
 }
