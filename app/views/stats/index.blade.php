@@ -20,7 +20,24 @@
 @stop
 
 @section('content')
-	<div class="col-md-6">
+   <div class="row">
+      <div class="col-md-4">
+         <h1>Live-Game Infos</h1>
+         Hier muss noch ein Text hin
+      </div>
+      
+      <div class="col-md-4">
+         <h1>Spielverlauf</h1>
+         Hier muss auch noch ein text hin
+      </div>
+      
+      <div class="col-md-4">
+         <h1>Ranked Statistiken</h1>
+         Hier kommmt auch noch ein Text hin
+      </div>
+   </div>
+   
+	<!--<div class="col-md-6">
 		<h1>League of Legends News</h1>
 		<div class="summoner_stat_news_list">
 		@foreach($news_list as $news)
@@ -41,7 +58,7 @@
 	<div class="col-md-6">
 		<h1>League of Legends News</h1>
 		Hier erscheinen ein paar Links zu News
-	</div>
+	</div>-->
 	<script>
 		$(document).ready(function(){
 		   $(".search_dropdown").hover(
