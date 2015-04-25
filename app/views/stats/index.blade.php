@@ -21,31 +21,20 @@
 
 @section('content')
 	<div class="col-md-6">
-		<h1>Champions</h1>
-		{CHAMPIONS_LIST(44,true,index_list)}
-		<div style="padding:8px;text-align:center;"><a href="/champions">Alle Champions anzeigen</a></div>
+		<h1>League of Legends News</h1>
+		<table class="summoner_stat_news_list">
+		@foreach($news_list as $news)
+         <tr>
+            <td class="news_pic"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></td>
+            <td class="news_title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></td>
+         </tr>
+		@endforeach
+		</table>
 	</div>
 	<div class="col-md-6">
 		<h1>League of Legends News</h1>
 		Hier erscheinen ein paar Links zu News
 	</div>
-	<div style="margin-top:35px;clear:both;"></div>
-	
-	<div class="col-md-4">
-		<h2>Champions und Skins im Angebot</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-	
-	<div class="col-md-4">
-		<h2>&Uuml;ber LoL-Stats</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-	
-	<div class="col-md-4">
-		<h2>Wie funkioniert das alles?</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-
 	<script>
 		$(document).ready(function(){
 		   $(".search_dropdown").hover(
