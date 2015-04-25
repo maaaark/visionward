@@ -162,13 +162,13 @@
 }
 
 .summoner_stat_news_list .news_list_el .news_pic {
-   float: left;
    width: 90px;
+   vertical-align: top;
 }
 
 .summoner_stat_news_list .news_list_el .news_con {
-   float: left;
    padding-left: 5px;
+   vertical-align: top;
 }
 
 .summoner_stat_news_list .news_list_el .news_con .descr {
