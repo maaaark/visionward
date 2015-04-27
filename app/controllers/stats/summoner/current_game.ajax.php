@@ -48,9 +48,37 @@ class CurrentGameView {
 						$team1 = $team_data["team1"];
 						$team2 = $team_data["team2"];
 
+						// Gebannte Champs
+						$bans_team1 = false;
+						$bans_team2 = false;
+						if(isset($json["bannedChampions"]) && is_array($json["bannedChampions"])){
+							$bans_team1 = array();
+							$bans_team2 = array();
+							foreach($json["bannedChampions"] as $banned_champ){
+								if(isset($banned_champ["championId"]) && isset($banned_champ["teamId"])){
+									$champ_temp = Champion::where("champion_id", "=", $banned_champ["championId"])->first();
+
+									if(isset($champ_temp["id"]) && $champ_temp["id"] > 0){
+										$temp = array();
+										$temp["champion_id"] = $banned_champ["championId"];
+										$temp["pick_turn"]   = $banned_champ["pickTurn"];
+										$temp["champion"]	 = $champ_temp;
+										if($banned_champ["teamId"] == 100){
+											$bans_team1[] = $temp;
+										} else {
+											$bans_team2[] = $temp;
+										}
+									}
+								}
+							}
+						}
+
 						$template = View::make('stats.summoner.current_game.detail', [
+							'game'  => $json,
 							'team1' => $team1,
-							'team2' => $team2
+							'team2' => $team2,
+							'bans_team1' => $bans_team1,
+							'bans_team2' => $bans_team2
 						])->render();
 						return $template;
 					} else {
@@ -102,6 +130,15 @@ class CurrentGameView {
 							$normal_wins = $win_data["wins"];
 						}
 					}
+				}
+			}
+
+			// Runen laden
+			if(isset($player["runes"]) && is_array($player["runes"])){
+				for($i = 0; $i<count($player["runes"]); $i++){
+					$rune = Rune::where("rune_id", "=", $player["runes"][$i]["runeId"])->first();
+					$player["runes"][$i]["name"] 		= $rune["name"];
+					$player["runes"][$i]["description"] = $rune["description"];
 				}
 			}
 

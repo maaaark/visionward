@@ -36,7 +36,10 @@
 				<div class="element" data-tab="1">
 					<div class="col-md-12" style="margin-bottom: 15px;margin-top: 15px;">
 						<div class="summoner_overview_line1 current_game_main_holder">
-							<div class="summoner_title">Live-Game</div>
+							<div class="summoner_title">
+								<div id="currentGameInfoHeader" style="float: right;"></div>
+								Live-Game
+							</div>
 							<div id="current_game_content">
 								<div style="padding:35px;color:rgba(0,0,0,0.6);text-align:center;">
 									<div style="margin-bottom: 8px;"><img src="{{ URL::asset('img/stats/ajax-loader.gif') }}" style="height: 45px;"></div>
