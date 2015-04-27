@@ -120,4 +120,35 @@ class Helpers {
 		}
         return $nice_queueMode;
     }
+
+    public static function niceGameConfigID($gameConfigId){
+    	if($gameConfigId == 0){
+    		return "Freies Spiel";
+    	} elseif($gameConfigId == 2){
+    		return "Normal 5 gegen 5 Blind Pick";
+    	} elseif($gameConfigId == 7 || $gameConfigId == 31 || $gameConfigId == 32 || $gameConfigId == 33 || $gameConfigId == 25 || $gameConfigId == 52){
+    		return "Bot Game";
+    	} elseif($gameConfigId == 8){
+    		return "Normal 3 gegen 3";
+    	} elseif($gameConfigId == 14){
+    		return "Normal 5 gegen 5 Draft Pick";
+    	} elseif($gameConfigId == 16 || $gameConfigId == 17){
+    		return "Dominion";
+    	} elseif($gameConfigId == 4){
+    		return "Solo Ranglisten Spiel";
+    	} elseif($gameConfigId == 9){
+    		return "Ranked Premade Spiel 3on3";
+    	} elseif($gameConfigId == 6){
+    		return "Ranked Premade Spiel 5on5";
+    	} elseif($gameConfigId == 41){
+    		return "Team Ranglisten Spiel 3on3";
+    	} elseif($gameConfigId == 42){
+    		return "Team Ranglisten Spiel 5on5";
+    	} elseif($gameConfigId == 61){
+    		return "Team Builder Spiel";
+    	} elseif($gameConfigId == 65){
+    		return "ARAM Spiel";
+    	}
+    	return "Unbekannte Warteschlange";
+    }
 }

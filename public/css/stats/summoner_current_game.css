@@ -32,7 +32,7 @@
 	border-left: none;
 }
 
-@media(max-width: 990px){
+@media(max-width: 995px){
 	.col-md-6.current_game_holder.left {
 		border-right: 1px solid rgba(0,0,0,0.5);
 	}
@@ -199,4 +199,36 @@
 
 .current_game_table .current_game_header td.first {
 	height: auto;
+}
+
+/* Banned Champions */
+.current_game_table .bans_tr {
+	background-color: rgba(199, 199, 199, 1);
+}
+
+.current_game_table .bans_tr .bans_holder {
+	padding: 3px;
+	padding-top: 5px;
+	border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.current_game_table .bans_tr .bans_holder img {
+	height: 30px;
+}
+
+.current_game_table .bans_tr .bans_holder span {
+	color: #2C2C2C;
+	font-weight: bold;
+	padding-right: 8px;
+	padding-left: 3px;
+}
+
+.current_game_table .bans_tr .bans_holder.team2 {
+	border-left: 1px solid rgba(0,0,0,0.3);
+}
+
+@media(max-width: 995px){
+	.current_game_table .bans_tr .bans_holder.team2 {
+		border-left: none;
+	}
 }
