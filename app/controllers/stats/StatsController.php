@@ -7,9 +7,11 @@ class StatsController extends BaseController {
 									);
 	private $summoner_update_interval = 60;
 
-	public function index()
-	{
-		return View::make('stats.index');
+	public function index(){
+      $news_list = Post::orderBy('created_at', 'DESC')->where("published", "=", 1)->paginate(5);
+		return View::make('stats.index', array(
+         "news_list" => $news_list
+      ));
 	}
 
 	public function summoner($region, $summoner_name){
