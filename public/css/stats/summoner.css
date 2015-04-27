@@ -28,6 +28,14 @@
 	padding-left: 25px;
 }
 
+.summoner_bg .summoner_name .summonerIcon {
+	height: 78px;
+	float: left;
+	margin-right: 15px;
+	border-radius: 10px;
+	box-shadow: 0 0 9px 1px rgba(0,0,0,0.8);
+}
+
 .summoner_bg .summoner_name .info {
 	font-size: 16px;
 	text-shadow: 0 0 8px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1):
