@@ -38,7 +38,7 @@
 		<div class="col-md-12">
 			<div id="summoner_tabs_content" class="summoner_tabs_content">
 				<div class="element" data-tab="1">
-					<div class="col-md-12">
+					<div class="col-md-12" style="margin-bottom: 15px;">
 						<div class="summoner_overview_line1 current_game_main_holder">
 							<div class="summoner_title">
 								<div id="currentGameInfoHeader" style="float: right;"></div>
