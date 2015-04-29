@@ -174,6 +174,11 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 	
 });
 
+// Route group for Esports
+Route::group(array('prefix' => 'esports'), function() {
+   include 'routes_esports.php';
+});
+
 // Route group for API versioning
 Route::group(array('prefix' => 'api'), function()
 {
