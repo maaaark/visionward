@@ -43,6 +43,28 @@ class CurrentGameView {
 								}
 							}
 						}
+						
+						// Team Elos ermitteln
+						$team1_count = 0;
+						$team1_elo   = 0;
+						$team2_count = 0;
+						$team2_elo   = 0;
+						foreach($json["participants"] as $player){
+              //echo "<pre>", print_r($player), "</pre>";
+              if(isset($summoners_data[$player["summonerId"]]) && is_array($summoners_data[$player["summonerId"]]) && isset($summoners_data[$player["summonerId"]]["entries"])){
+                 $temp_arr = $summoners_data[$player["summonerId"]];
+                 $elo_temp = Helpers::summonerElo($temp_arr["tier"], $temp_arr["entries"][0]["division"], $temp_arr["entries"][0]["leaguePoints"]);
+                 if($player["teamId"] == 100){
+                    $team1_count++;
+                    $team1_elo = $team1_elo + $elo_temp;
+                 } else {
+                    $team2_count++;
+                    $team2_elo = $team2_elo + $elo_temp;
+                 }
+              }
+						}
+						$team1_elo = round($team1_elo / $team1_count);
+						$team2_elo = round($team2_elo / $team2_count);
 
 						$team_data = $this->handlePlayer($json["participants"], $summoners_data, $summoner);
 						$team1 = $team_data["team1"];
@@ -78,7 +100,9 @@ class CurrentGameView {
 							'team1' => $team1,
 							'team2' => $team2,
 							'bans_team1' => $bans_team1,
-							'bans_team2' => $bans_team2
+							'bans_team2' => $bans_team2,
+							'team1_elo'  => $team1_elo,
+							'team2_elo'  => $team2_elo
 						])->render();
 						return $template;
 					} else {
