@@ -203,7 +203,7 @@
 
 /* Banned Champions */
 .current_game_table .bans_tr {
-	background-color: rgba(199, 199, 199, 1);
+	background-color: rgba(236, 236, 236, 1);
 }
 
 .current_game_table .bans_tr .bans_holder {
@@ -214,6 +214,8 @@
 
 .current_game_table .bans_tr .bans_holder img {
 	height: 30px;
+	border-radius: 50%;
+	margin-right: 2px;
 }
 
 .current_game_table .bans_tr .bans_holder span {
@@ -231,4 +233,15 @@
 	.current_game_table .bans_tr .bans_holder.team2 {
 		border-left: none;
 	}
+}
+
+/* Team Elo */
+.current_game_table .bans_tr .bans_holder .team_elo {
+  float: right;
+  font-weight: bold;
+  padding-top: 4px;
+}
+
+.current_game_table .bans_tr .bans_holder .team_elo span {
+  font-weight: 200;
 }

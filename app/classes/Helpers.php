@@ -151,4 +151,43 @@ class Helpers {
     	}
     	return "Unbekannte Warteschlange";
     }
+    
+    public static function summonerElo($league, $division, $lp = 0){
+      // 800+"Liga"*350+"Division"*70+LP*0,7
+      $league         = trim(strtolower($league));
+      $division       = trim(strtoupper($division));
+      $league_value   = intval($league);
+      $division_value = intval($division);
+      
+      if($league == "bronze"){
+        $league_value = 0;
+      } elseif($league == "silver"){
+        $league_value = 1;
+      } elseif($league == "gold"){
+        $league_value = 2;
+      } elseif($league == "platinum"){
+        $league_value = 3;
+      } elseif($league == "diamond"){
+        $league_value = 4;
+      } elseif($league == "master"){
+        $league_value = 5;
+      } elseif($league == "challenger"){
+        $league_value = 6;
+      }
+      
+      if($division == "V"){
+        $division_value = 0;
+      } elseif($division == "IV"){
+        $division_value = 1;
+      } elseif($division == "III"){
+        $division_value = 2;
+      } elseif($division == "II"){
+        $division_value = 3;
+      } elseif($division == "I"){
+        $division_value = 4;
+      }
+      
+      $elo = 800 + ($league_value) *350 + ($division_value) * 70 + ($lp) * 0.7;
+      return round($elo);
+    }
 }

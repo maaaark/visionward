@@ -23,6 +23,14 @@ var current_game_players = [];
 					@foreach($bans_team1 as $ban)
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $ban["champion"]->key }}.png">
 					@endforeach
+					
+					@if(isset($team1_elo) AND $team1_elo > 0)
+            @if($game["gameQueueConfigId"] == 4 || $game["gameQueueConfigId"] == 9 || $game["gameQueueConfigId"] == 6 || $game["gameQueueConfigId"] == 41 || $game["gameQueueConfigId"] == 42)
+              <div class="team_elo">
+                Team-Elo: <span>{{ $team1_elo }}</span>
+              </div>
+            @endif
+					@endif
 					</td>
 				</tr>
 			@endif
@@ -51,6 +59,14 @@ var current_game_players = [];
 					@foreach($bans_team2 as $ban)
 						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $ban["champion"]->key }}.png">
 					@endforeach
+					
+					@if(isset($team2_elo) AND $team2_elo > 0)
+            @if($game["gameQueueConfigId"] == 4 || $game["gameQueueConfigId"] == 9 || $game["gameQueueConfigId"] == 6 || $game["gameQueueConfigId"] == 41 || $game["gameQueueConfigId"] == 42)
+              <div class="team_elo">
+                Team-Elo: <span>{{ $team2_elo }}</span>
+              </div>
+            @endif
+					@endif
 					</td>
 				</tr>
 			@endif

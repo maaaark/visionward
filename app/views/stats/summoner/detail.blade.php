@@ -16,7 +16,13 @@
 			<div class="summoner_name">
 				<img class="summonerIcon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $data->profileIconId }}.png">
 				{{ $data->name }}
-				<div class="info">Level: {{ $data->summonerLevel }} | {{ $region_name }}</div>
+				<div class="info">
+          Level: {{ $data->summonerLevel }} | {{ $region_name }}
+          
+          @if(isset($solo_q_data) AND is_array($solo_q_data))
+            | Aktuelle Elo: {{ Helpers::summonerElo($solo_q_data["tier"], $solo_q_data["division"], $solo_q_data["league_points"]) }}
+          @endif
+				</div>
 			</div>
 			
 			<div class="summoner_navi" id="summoner_navi">
