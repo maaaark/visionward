@@ -6,6 +6,7 @@ class StatsController extends BaseController {
 									"na"  => array("status" => true, "api_endpoint" => "https://euw.api.pvp.net", "name" => "Nordamerika", "platform_id" => "NA1")
 									);
 	private $summoner_update_interval = 60;
+	private $current_season = "SEASON2015";
 
 	public function index(){
       $news_list = Post::orderBy('created_at', 'DESC')->where("published", "=", 1)->paginate(5);
@@ -55,7 +56,7 @@ class StatsController extends BaseController {
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $region;
 					$summoner->last_update_maindata = date('Y-m-d H:i:s');
-					$summoner_stats = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=SEASON2015&api_key=".$api_key;
+					$summoner_stats = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=".$this->current_season."&api_key=".$api_key;
 					$json2 = @file_get_contents($summoner_stats);
 					if($json2 === FALSE) {
 						return View::make('searches.show_result', compact('searchString', 'news', 'champs', 'players', 'teams', 'summoner'));
@@ -122,6 +123,10 @@ class StatsController extends BaseController {
 					$array["isInactive"]    = $entry["entries"][0]["isInactive"];
 					$array["queue"] 		= $entry["queue"];
 					$ranked_data[$array["queue"]] = $array;
+
+					$summoner->solo_division = $entry["entries"][0]["division"];
+					$summoner->solo_tier	 = $entry["tier"];
+					$summoner->solo_name	 = str_replace("'", "&lsquo;", $entry["name"]);
 				}
 				$json_encode = json_encode($ranked_data);
 				$summoner->ranked_summary = $json_encode;
