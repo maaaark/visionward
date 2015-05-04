@@ -20,32 +20,45 @@
 @stop
 
 @section('content')
-	<div class="col-md-6">
-		<h1>Champions</h1>
-		{CHAMPIONS_LIST(44,true,index_list)}
-		<div style="padding:8px;text-align:center;"><a href="/champions">Alle Champions anzeigen</a></div>
+   <div class="row">
+      <div class="col-md-4">
+         <h1>Live-Game Infos</h1>
+         Hier muss noch ein Text hin
+      </div>
+      
+      <div class="col-md-4">
+         <h1>Spielverlauf</h1>
+         Hier muss auch noch ein text hin
+      </div>
+      
+      <div class="col-md-4">
+         <h1>Ranked Statistiken</h1>
+         Hier kommmt auch noch ein Text hin
+      </div>
+   </div>
+   
+	<!--<div class="col-md-6">
+		<h1>League of Legends News</h1>
+		<div class="summoner_stat_news_list">
+		@foreach($news_list as $news)
+         <div class="news_list_el">
+            <table style="width: 100%;">
+               <tr>
+                  <td class="news_pic"><a href="/news/{{ $news->id }}/{{ $news->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></a></div>
+                  <td class="news_con">
+                     <div class="title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></div>
+                     <div class="descr">{{ $news->excerpt }}</div>
+                  </td>
+               </tr>
+            </table>
+         </div>
+		@endforeach
+		</div>
 	</div>
 	<div class="col-md-6">
 		<h1>League of Legends News</h1>
 		Hier erscheinen ein paar Links zu News
-	</div>
-	<div style="margin-top:35px;clear:both;"></div>
-	
-	<div class="col-md-4">
-		<h2>Champions und Skins im Angebot</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-	
-	<div class="col-md-4">
-		<h2>&Uuml;ber LoL-Stats</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-	
-	<div class="col-md-4">
-		<h2>Wie funkioniert das alles?</h2>
-		Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-	</div>
-
+	</div>-->
 	<script>
 		$(document).ready(function(){
 		   $(".search_dropdown").hover(
@@ -76,7 +89,7 @@
 		      region = main.find(".search_dropdown_current");
 				
 				if(input.val().trim() != ""){
-					self.location.href = '/summoner/'+region.html().trim().toLowerCase()+"/"+input.val().trim();
+					self.location.href = '/'+region.html().trim().toLowerCase()+"/"+input.val().trim();
 				}
 		   });
 	   });

@@ -15,6 +15,25 @@ var current_game_players = [];
 				<td class="summoner_datamasteries">Masteries</td>
 			</tr>
 			{{ $team1 }}
+
+			@if(isset($bans_team1) AND $bans_team1 AND is_array($bans_team1))
+				<tr class="bans_tr">
+					<td colspan="7" class="bans_holder team1">
+					<span>Bans: </span>
+					@foreach($bans_team1 as $ban)
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $ban["champion"]->key }}.png">
+					@endforeach
+					
+					@if(isset($team1_elo) AND $team1_elo > 0)
+            @if($game["gameQueueConfigId"] == 4 || $game["gameQueueConfigId"] == 9 || $game["gameQueueConfigId"] == 6 || $game["gameQueueConfigId"] == 41 || $game["gameQueueConfigId"] == 42)
+              <div class="team_elo">
+                Team-Elo: <span>{{ $team1_elo }}</span>
+              </div>
+            @endif
+					@endif
+					</td>
+				</tr>
+			@endif
 		</tbody>
 	</table>
 </div>
@@ -32,6 +51,25 @@ var current_game_players = [];
 				<td class="summoner_datamasteries">Masteries</td>
 			</tr>
 			{{ $team2 }}
+
+			@if(isset($bans_team2) AND $bans_team2 AND is_array($bans_team2))
+				<tr class="bans_tr">
+					<td colspan="7" class="bans_holder team2">
+					<span>Bans: </span>
+					@foreach($bans_team2 as $ban)
+						<img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/{{ $ban["champion"]->key }}.png">
+					@endforeach
+					
+					@if(isset($team2_elo) AND $team2_elo > 0)
+            @if($game["gameQueueConfigId"] == 4 || $game["gameQueueConfigId"] == 9 || $game["gameQueueConfigId"] == 6 || $game["gameQueueConfigId"] == 41 || $game["gameQueueConfigId"] == 42)
+              <div class="team_elo">
+                Team-Elo: <span>{{ $team2_elo }}</span>
+              </div>
+            @endif
+					@endif
+					</td>
+				</tr>
+			@endif
 		</tbody>
 	</table>
 </div>
@@ -42,16 +80,16 @@ $(document).ready(function(){
 		summoner_id   = $(this).attr("data-summonerid");
 		summoner_name = $(this).attr("data-summonername");
 		summoner_data = current_game_players[summoner_id];
-		
 		if(typeof summoner_data != "undefined" && typeof summoner_data["runes"] != "undefined"){
 			html  = '<h3 style="margin-top: 0px;">Runen von '+summoner_name.trim()+'</h3>';
 			html += '<div class="runes_holder" style="border: none;"><div id="runepage_holder_current_game" class="rune_page_info"></div></div>';
 			showLightbox(html, function(lightbox){
-				for(var key in runes_temp) {
-					html  = "<div class='rune_info_element' style='background: #fff;'>";
-					html += "<img src='http://counterpick.de/uploads/runes/"+key+"_icon.png'>"+runes_temp[key]["count"]+"x "+runes_temp[key]["element"]["name"]+'<br>';
-					html += "<span class='rune_desc'>"+runes_temp[key]["element"]["description"]+"</span>";
-					html += "</div>";
+				runes_temp = JSON.parse(summoner_data["runes"]);
+				for(i = 0; i < runes_temp.length; i++){
+					html  = '<div class="rune_info_element" style="background: #fff;"">';
+					html += '<img src="http://counterpick.de/uploads/runes/'+runes_temp[i]["runeId"]+'_icon.png">'+runes_temp[i]["count"]+"x "+runes_temp[i]["name"]+'<br>';
+					html += "<span class='rune_desc'>"+runes_temp[i]["description"]+"</span>";
+					html += '</div>';
 					lightbox.find("#runepage_holder_current_game").append(html);
 				}
 			});
@@ -71,5 +109,8 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	// Current Game Info Header setzen
+	$("#currentGameInfoHeader").html('{{ Helpers::niceGameMode($game["gameMode"]) }} - {{ Helpers::niceGameConfigID($game["gameQueueConfigId"]) }}');
 });
 </script>

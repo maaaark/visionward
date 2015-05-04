@@ -14,8 +14,16 @@ class SummonerInit {
 		if($mins < $summoner_update_interval){
 			$updates_this_time = false;
 		}
-
-		return View::make('stats.summoner.detail', compact("data", "region", "region_name", "summary", "summary_ranked", "updates_this_time"));
+		
+		$solo_q_data = false;
+		if(isset($data["ranked_summary"])){
+      $solo_q_data_temp = json_decode($data["ranked_summary"], true);
+      if(isset($solo_q_data_temp["RANKED_SOLO_5x5"]) && isset($solo_q_data_temp["RANKED_SOLO_5x5"]["tier"]) && trim($solo_q_data_temp["RANKED_SOLO_5x5"]["tier"]) != ""){
+        $solo_q_data = $solo_q_data_temp["RANKED_SOLO_5x5"];
+      }
+		}
+		
+		return View::make('stats.summoner.detail', compact("data", "region", "region_name", "summary", "summary_ranked", "updates_this_time", "solo_q_data"));
 	}
 
 	private function summary($data){

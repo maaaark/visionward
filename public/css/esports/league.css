@@ -1,0 +1,17 @@
+.league_tournaments .tournament_tabs .tab {
+	float: left;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.league_tournaments .tournament_tabs .tab.active {
+	font-weight: bold;
+}
+
+.league_tournaments .tournament_contents .tab_content {
+	display: none;
+}
+
+.league_tournaments .tournament_contents .tab_content.active {
+	display: block;
+}

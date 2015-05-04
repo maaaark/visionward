@@ -120,4 +120,74 @@ class Helpers {
 		}
         return $nice_queueMode;
     }
+
+    public static function niceGameConfigID($gameConfigId){
+    	if($gameConfigId == 0){
+    		return "Freies Spiel";
+    	} elseif($gameConfigId == 2){
+    		return "Normal 5 gegen 5 Blind Pick";
+    	} elseif($gameConfigId == 7 || $gameConfigId == 31 || $gameConfigId == 32 || $gameConfigId == 33 || $gameConfigId == 25 || $gameConfigId == 52){
+    		return "Bot Game";
+    	} elseif($gameConfigId == 8){
+    		return "Normal 3 gegen 3";
+    	} elseif($gameConfigId == 14){
+    		return "Normal 5 gegen 5 Draft Pick";
+    	} elseif($gameConfigId == 16 || $gameConfigId == 17){
+    		return "Dominion";
+    	} elseif($gameConfigId == 4){
+    		return "Solo Ranglisten Spiel";
+    	} elseif($gameConfigId == 9){
+    		return "Ranked Premade Spiel 3on3";
+    	} elseif($gameConfigId == 6){
+    		return "Ranked Premade Spiel 5on5";
+    	} elseif($gameConfigId == 41){
+    		return "Team Ranglisten Spiel 3on3";
+    	} elseif($gameConfigId == 42){
+    		return "Team Ranglisten Spiel 5on5";
+    	} elseif($gameConfigId == 61){
+    		return "Team Builder Spiel";
+    	} elseif($gameConfigId == 65){
+    		return "ARAM Spiel";
+    	}
+    	return "Unbekannte Warteschlange";
+    }
+    
+    public static function summonerElo($league, $division, $lp = 0){
+      // 800+"Liga"*350+"Division"*70+LP*0,7
+      $league         = trim(strtolower($league));
+      $division       = trim(strtoupper($division));
+      $league_value   = intval($league);
+      $division_value = intval($division);
+      
+      if($league == "bronze"){
+        $league_value = 0;
+      } elseif($league == "silver"){
+        $league_value = 1;
+      } elseif($league == "gold"){
+        $league_value = 2;
+      } elseif($league == "platinum"){
+        $league_value = 3;
+      } elseif($league == "diamond"){
+        $league_value = 4;
+      } elseif($league == "master"){
+        $league_value = 5;
+      } elseif($league == "challenger"){
+        $league_value = 6;
+      }
+      
+      if($division == "V"){
+        $division_value = 0;
+      } elseif($division == "IV"){
+        $division_value = 1;
+      } elseif($division == "III"){
+        $division_value = 2;
+      } elseif($division == "II"){
+        $division_value = 3;
+      } elseif($division == "I"){
+        $division_value = 4;
+      }
+      
+      $elo = 800 + ($league_value) *350 + ($division_value) * 70 + ($lp) * 0.7;
+      return round($elo);
+    }
 }

@@ -1,4 +1,5 @@
 @extends('stats.header')
+@section('title', $data->name." - ".$region_name)
 @section('opener')
 	@if(isset($data->lastchamp) AND trim($data->lastchamp) != "")
 		<div class="summoner_bg" id="summoner_header_bg" style="background-image:url({{ asset('img/stats/champion_header/'.$data->lastchamp.'_summoner_bg.jpg') }});">
@@ -13,8 +14,15 @@
 			</div>
 
 			<div class="summoner_name">
+				<img class="summonerIcon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $data->profileIconId }}.png">
 				{{ $data->name }}
-				<div class="info">Level: {{ $data->summonerLevel }} | {{ $region_name }}</div>
+				<div class="info">
+          Level: {{ $data->summonerLevel }} | {{ $region_name }}
+          
+          @if(isset($solo_q_data) AND is_array($solo_q_data))
+            | Aktuelle Elo: {{ Helpers::summonerElo($solo_q_data["tier"], $solo_q_data["division"], $solo_q_data["league_points"]) }}
+          @endif
+				</div>
 			</div>
 			
 			<div class="summoner_navi" id="summoner_navi">
@@ -24,19 +32,24 @@
 				<div class="element need30" data-tab="4" data-hash="ranked_stats">Ranglisten Stats</div>
 				<div class="element" data-tab="5" data-hash="runes">Runen</div>
 				<div class="element" data-tab="6" data-hash="masteries">Meisterschaften</div>
+				<div class="element mobile_el"><span class="glyphicon glyphicon-align-justify"></span></div>
 			</div>
 		</div>
 	</div>
 @stop
 
 @section('content')
-	<div class="base">
+	<div class="summoner_mobile_navi" id="summoner_mobile_navi"></div>
+	<div class="base" id="summoner_base_holder">
 		<div class="col-md-12">
 			<div id="summoner_tabs_content" class="summoner_tabs_content">
 				<div class="element" data-tab="1">
-					<div class="col-md-12" style="margin-bottom: 15px;margin-top: 15px;">
+					<div class="col-md-12" style="margin-bottom: 15px;">
 						<div class="summoner_overview_line1 current_game_main_holder">
-							<div class="summoner_title">Live-Game</div>
+							<div class="summoner_title">
+								<div id="currentGameInfoHeader" style="float: right;"></div>
+								Live-Game
+							</div>
 							<div id="current_game_content">
 								<div style="padding:35px;color:rgba(0,0,0,0.6);text-align:center;">
 									<div style="margin-bottom: 8px;"><img src="{{ URL::asset('img/stats/ajax-loader.gif') }}" style="height: 45px;"></div>
@@ -53,7 +66,6 @@
 						{{ $summary_ranked }}
 					</div>
 				</div>
-                <br/>
 				<div class="element" data-tab="2"><h2 class="headline_no_border">Spielverlauf</h2><div id="matchhistory_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
 				<div class="element" data-tab="3"><h2 class="headline_no_border">Liga</h2><div id="league_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
 				<div class="element" data-tab="4"><h2 class="headline_no_border">Ranglisten Stats</h2><div id="ranked_stats_loader"><div class="loader">Die Daten k&ouml;nnen nicht geladen werden ...</div></div></div>
@@ -79,20 +91,75 @@
 
 			var tabs_element_count = 0;
 			$("#summoner_tabs_content .element").each(function(){
-				if(tabs_element_count == 0){
-					$("#summoner_navi .element[data-tab='1']").addClass("active");
-					$(this).addClass("active");
+				if($(this).hasClass("mobile_el")){
+
+				} else {
+					tab_el = $("#summoner_navi .element[data-tab="+$(this).attr("data-tab")+"]");
+					$("#summoner_mobile_navi").append('<div class="element" data-tab="'+$(this).attr("data-tab")+'" data-hash="'+tab_el.attr("data-hash")+'">'+tab_el.html()+'</div>');
+
+					if(tabs_element_count == 0){
+						$("#summoner_navi .element[data-tab='1']").addClass("active");
+						$("#summoner_mobile_navi .element[data-tab='1']").addClass("active");
+						$(this).addClass("active");
+					}
+					tabs_element_count++;
 				}
-				tabs_element_count++;
 			});
 			
 			$("#summoner_navi .element").click(function(){
-				tab_id = $(this).attr("data-tab");
-				$("#summoner_navi .active").removeClass("active");
-				$(this).addClass("active");
-				$("#summoner_tabs_content .active").removeClass("active");
-				$("#summoner_tabs_content .element[data-tab='"+tab_id+"']").addClass("active");
-				location.hash = '#'+$(this).attr("data-hash");
+				if($(this).hasClass("mobile_el")){
+
+				} else {
+					tab_id = $(this).attr("data-tab");
+					$("#summoner_navi .active").removeClass("active");
+					$(this).addClass("active");
+					$("#summoner_tabs_content .active").removeClass("active");
+					$("#summoner_tabs_content .element[data-tab='"+tab_id+"']").addClass("active");
+
+					$("#summoner_mobile_navi .active").removeClass("active");
+					$("#summoner_mobile_navi .element[data-tab='"+tab_id+"']").addClass("active");
+					location.hash = '#'+$(this).attr("data-hash");
+
+					navi_el.removeClass("open");
+					$("#summoner_navi .element.mobile_el").removeClass("active");
+				}
+			});
+
+			$("#summoner_mobile_navi .element").click(function(){
+				if($(this).hasClass("mobile_el")){
+
+				} else {
+					tab_id = $(this).attr("data-tab");
+					$("#summoner_mobile_navi .active").removeClass("active");
+					$(this).addClass("active");
+					$("#summoner_tabs_content .active").removeClass("active");
+					$("#summoner_tabs_content .element[data-tab='"+tab_id+"']").addClass("active");
+
+					$("#summoner_navi .active").removeClass("active");
+					$("#summoner_navi .element[data-tab='"+tab_id+"']").addClass("active");
+					location.hash = '#'+$(this).attr("data-hash");
+
+					$("#summoner_mobile_navi").removeClass("open");
+				}
+			});
+
+			$("#summoner_navi .element.mobile_el").click(function(){
+				navi_el = $("#summoner_mobile_navi");
+				if(navi_el.hasClass("open")){
+					navi_el.removeClass("open");
+					$(this).removeClass("active");
+				} else {
+					navi_el.addClass("open");
+					$(this).addClass("active");
+				}
+			});
+
+			$("#summoner_base_holder").click(function(){
+				navi_el = $("#summoner_mobile_navi");
+				if(navi_el.hasClass("open")){
+					navi_el.removeClass("open");
+					$("#summoner_navi .element.mobile_el").removeClass("active");
+				}
 			});
 			
 			$("#summoner_tabs_content .loader").each(function(){
@@ -105,11 +172,14 @@
 			
 			start_hash = location.hash+" ";
 			if(start_hash.trim() != ""){
-				element = $("#summoner_navi .element[data-hash='"+start_hash.trim().replace("#", "")+"'");
+				element 	   = $("#summoner_navi .element[data-hash='"+start_hash.trim().replace("#", "")+"'");
+				element_mobile = $("#summoner_mobile_navi .element[data-hash='"+start_hash.trim().replace("#", "")+"'");
 				if(typeof element.html() != "undefined"){
 					if(element.hasClass("need30") == false || summoner_level >= 30){
 						$("#summoner_navi .active").removeClass("active");
+						$("#summoner_mobile_navi .active").removeClass("active");
 						element.addClass("active");
+						element_mobile.addClass("active");
 						tab_id = element.attr("data-tab");
 						$("#summoner_tabs_content .active").removeClass("active");
 						$("#summoner_tabs_content .element[data-tab='"+tab_id+"']").addClass("active");
