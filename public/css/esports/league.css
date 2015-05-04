@@ -1,0 +1,134 @@
+.league_tournaments .tournament_tabs .tab {
+	float: left;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.league_tournaments .tournament_tabs .tab.active {
+	font-weight: bold;
+}
+
+.league_tournaments .tournament_contents .tab_content {
+	display: none;
+}
+
+.league_tournaments .tournament_contents .tab_content.active {
+	display: block;
+}
+
+/* Turnier Matches */
+.match_box_holder {
+	width: 50%;
+	box-sizing: border-box;
+	padding: 15px;
+	float: left;
+	background: #fff;
+}
+
+.match_box_holder .bg {
+	background: #f3f3f3;
+	box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+	padding: 20px;
+}
+
+.match_box_holder .date_title {
+	font-size: 26px;
+	margin-bottom: 15px;
+	color: rgba(0,0,0,0.6);
+}
+
+.match_box_holder .date_title span {
+	color: rgba(0,0,0,0.45);
+	font-size: 16px;
+}
+
+.match_box {
+	margin-bottom: 20px;
+	border: 1px solid rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.1);
+	position: relative;
+}
+
+.match_box .top_bar {
+	background: #616161;
+	padding: 5px;
+	padding-left: 8px;
+	padding-right: 8px;
+	color: #fff;
+}
+
+.match_box .top_bar .date {
+	float: right;
+	color: rgba(255,255,255,0.6);
+}
+
+.match_box .match_content {
+	padding: 10px;
+}
+
+.match_box .match_content .team_logo {
+	height: 80px;
+	width: 60px;
+	background-size: 60px;
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+.match_box .match_content .team2 {
+	float: right;
+}
+
+.match_box .match_content .team1_info {
+	position: absolute;
+	left: 90px;
+	margin-top: 5px;
+	text-align: left;
+}
+
+.match_box .match_content .team2_info {
+	position: absolute;
+	right: 90px;
+	margin-top: 5px;
+	text-align: right;
+}
+
+.match_box .match_content .team_info .win_infos {
+	color: rgba(0,0,0,0.4);
+	font-size: 12px;
+	line-height: 14px;
+}
+
+.match_box .match_content .team_info.team2_info .win_infos {
+	padding-right: 10px;
+}
+
+.match_box .match_content .team_info.team1_info .win_infos {
+	padding-left: 10px;
+}
+
+@media(max-width: 1000px){
+	.match_box_holder {
+		width: 100%;
+	}
+}
+
+.matches_holder {
+	display: none;
+}
+
+.matches_holder.active {
+	display: block;
+}
+
+.matches_main_holder h1 {
+	font-size: 26px;
+	color: rgba(0,0,0,0.7);
+	margin: 0px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.matches_main_holder h1 span {
+	color: rgba(0,0,0,0.5);
+	font-size: 18px;
+}
