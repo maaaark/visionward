@@ -2,7 +2,7 @@
 @section('title', "Admin Login")
 @section('content')
 
-{{ Form::open(array('url' => '/login')) }}
+{{ Form::open(array('url' => '/admin/login')) }}
 	<p>
 		{{ $errors->first('email') }}
 		{{ $errors->first('password') }}

@@ -1,6 +1,8 @@
 <?php
 	$settingsArray = array(); 
 ?>
+
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -32,6 +34,8 @@
 	</div>
 	@endif
 	-->
+
+
 	@if($settingsArray['stream_isactive'] === "1")
 	<div class="block">
 		<h2 class="headline">Livestream</h2>
@@ -40,7 +44,43 @@
 		</div>
 	</div>
 	@endif
-	
+
+    @if(Auth::check())
+                <div class="block">
+                    <h2 class="headline">Mein Account</h2>
+                        {{ Auth::user()->username }} (<a href="/user/edit">Profil bearbeiten</a>)<br/>
+                    @if(Auth::user()->hasRole("admin"))
+                        <a href="/admin">Admin Panel</a><br/>
+                    @endif
+                        <a href="/logout" class="logout">Ausloggen</a>
+                </div>
+        @else
+                <div class="block">
+                    <h2 class="headline">Login</h2>
+                {{ Form::open(array('url' => '/dologin')) }}
+                <p>
+                    {{ $errors->first('email') }}
+                    {{ $errors->first('password') }}
+                </p>
+
+
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
+                    {{ Form::text('email', Input::old('email'), array('placeholder' => 'example@lolquest.net', 'class' => 'form-control')) }}
+                </div>
+                <br/>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-key"></i></span>
+                    {{ Form::password('password', array('class' => 'form-control')) }}
+                </div>
+                <br/>
+                <p>{{ Form::submit('Submit!', array('class' => 'btn btn-primary btn-block')) }}</p>
+                {{ Form::close() }}
+                    <p><a href="/users/create">Noch keinen Account?<br/>
+                            Jetzt kostenlos registrieren!</a></p>
+                    </div>
+    @endif
+<!--
 	<div class="block">
 		<h2 class="headline">Social Media</h2>
 		<div class="content" style="text-align: center;">
@@ -49,7 +89,7 @@
 			<a href="https://twitter.com/flashignitecom" class="twitter-follow-button" data-show-count="false" data-lang="de" data-size="large">@flashignitecom folgen</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 		</div>
-	</div>
+	</div>-->
 	
 	
 	<div class="block">

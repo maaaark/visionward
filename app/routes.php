@@ -36,7 +36,7 @@ Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), func
 
 
 Route::get('/', 'PostController@index');
-Route::get('/login', 'AdminController@index');
+Route::get('/admin/login', 'AdminController@index');
 Route::get('/logout', 'AdminController@logout');
 Route::get('/team', 'HomeController@team');
 Route::get('/datenschutz', 'HomeController@datenschutz');
@@ -49,6 +49,15 @@ Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
 Route::get('/summoner/{region}/{summoner_name}/refresh', 'SummonersController@refresh_button');
 Route::get('/summoner/{region}/{summoner_name}/live', 'SummonersController@live');
+
+// User
+Route::post('/dologin', 'UsersController@doLogin');
+Route::get('/user', 'UsersController@index');
+Route::get('/login', 'UsersController@login');
+Route::get('/register', 'UsersController@create');
+Route::post('/register/save', 'UsersController@save');
+Route::get('/user/edit', 'UsersController@edit');
+
 
 // Skill
 Route::get('/skills/{id}', 'ChampionsController@skill');
