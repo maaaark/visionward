@@ -2,5 +2,8 @@
 @section('title', "Esports")
 @section('content')
 <h1>Esports</h1>
-Kommt noch
+	@foreach($leagues as $league)
+		<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}">{{ $league["label"] }}</a>
+		<br/>
+	@endforeach
 @stop
