@@ -28,11 +28,16 @@ class EsportsController extends BaseController {
 
 		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
+
+		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->orderBy("date", "ASC")->get();
+		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d h:i:s"))->orderBy("date", "DESC")->get();
 		return View::make('esports.tournament_detail', array(
 			"league" 	  		 => $league,
 			"league_tournaments" => $league_tournaments,
 			"tournament" 		 => $tournament,
-			"league_url" 		 => $league_url
+			"league_url" 		 => $league_url,
+			"matches_upcoming" 	 => $matches_upcoming,
+			"matches_past"		 => $matches_past
 		));
 	}
 }
