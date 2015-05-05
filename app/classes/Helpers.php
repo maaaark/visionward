@@ -190,4 +190,13 @@ class Helpers {
       $elo = 800 + ($league_value) *350 + ($division_value) * 70 + ($lp) * 0.7;
       return round($elo);
     }
+
+    /* Esports Bereich: */
+    public static function getTeamData($team_id){
+    	$team = EsportsTeam::where("team_id", "=", $team_id)->first();
+    	if($team){
+    		return $team;
+    	}
+    	return false;
+    }
 }
