@@ -1,7 +1,7 @@
 @extends('layouts.small_header')
-@section('title', "User - ".$user->first_name)
+@section('title', "User bearbeiten - ".$user->username)
 @section('content')
-    {{ Form::model($user, ['action' => ['UsersController@update'], 'method' => 'post']) }}
+    {{ Form::model($user, ['action' => ['UsersController@updateAccount'], 'method' => 'post']) }}
     @include('users.form')
     <br/>
     {{ Form::submit("Speichern", array('class' => 'btn btn-primary')) }}

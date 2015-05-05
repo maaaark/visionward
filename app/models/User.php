@@ -75,6 +75,10 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->hasMany('Post');
 	}
 
+    public function comments() {
+        return $this->hasMany('Comment');
+    }
+
 	public function roles()
     {
         return $this->belongsToMany('Role');
@@ -91,4 +95,15 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return false;
     }
 
+    public function summoner() {
+        return $this->hasOne("Summoner", "summoner_id", "summoner_id");
+    }
+
+    public function addExp($exp) {
+        if(Auth::check()){
+            $user = Auth::user();
+            $user->exp = $user->exp + $exp;
+            $user->save();
+        }
+    }
 }

@@ -8,9 +8,9 @@ class UsersController extends \BaseController {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($nickname)
     {
-        $user = User::find($id);
+        $user = User::where("username", "=", $nickname)->first();
         return View::make('users.show', compact('user'));
     }
 
@@ -54,21 +54,21 @@ class UsersController extends \BaseController {
 
     }
 
-    public function update() {
+    public function updateAccount() {
         $input = Input::all();
         $validation = Validator::make($input, User::$rules);
         if ($validation->passes())
         {
-            $user = User::find(Input::get('id'));
+            $user = Auth::user();
             $user->update($input);
             if(Input::get('password') != "") {
                 $user->password = Hash::make(Input::get('password'));
             }
             $user->save();
-            return Redirect::to('/users/edit/')->with("success", "Eingaben gespeichert!");
+            return Redirect::to('/account/edit/')->with("success", "Eingaben gespeichert!");
         } else {
             $messages = $validation->messages();
-            return Redirect::to("/users/edit/")
+            return Redirect::to("/account/edit/")
                 ->withInput()
                 ->withErrors($validation)
                 ->with('error', 'Es sind Fehler aufgetreten!.')->with('input', Input::all());
@@ -88,7 +88,7 @@ class UsersController extends \BaseController {
     public function logout()
     {
         Auth::logout();
-        return Redirect::to("/login")->with("success", "Du wurdest ausgeloggt");
+        return Redirect::to("/")->with("success", "Du wurdest ausgeloggt");
     }
 
     public function doLogin()

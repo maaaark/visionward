@@ -1,4 +1,3 @@
-{{ Form::hidden('id', Input::old('id')) }}
 <h2 class="headline_no_border">Account angaben</h2>
 <table class="table table-striped">
     <tr>
@@ -7,7 +6,13 @@
     </tr>
     <tr>
         <td width="200"><strong>Username</strong></td>
-        <td>{{ Form::text('username', Input::old('username'),  array('class' => 'form-control')) }}</td>
+        <td>
+            @if(isset($user))
+                {{ Form::text('username', Input::old('username'),  array('class' => 'form-control', 'disabled' => 'disabled')) }}
+            @else
+                {{ Form::text('username', Input::old('username'),  array('class' => 'form-control')) }}
+            @endif
+        </td>
     </tr>
     <tr>
         <td width="200"><strong>Password</strong></td>
@@ -19,7 +24,11 @@
 <table class="table table-striped">
     <tr>
         <td width="200"><strong>Summoner Name</strong></td>
-        <td>{{ Form::text('username', Input::old('summoner_name'),  array('class' => 'form-control')) }}</td>
+        @if(Auth::check() && Auth::user()->summoner)
+            <td>{{ Form::text('summoner_name', Auth::user()->summoner->name,  array('class' => 'form-control')) }}</td>
+        @else
+            <td>{{ Form::text('summoner_name', Input::old('summoner_name'),  array('class' => 'form-control')) }}</td>
+        @endif
     </tr>
     <tr>
         <td width="200"><strong>Server Region</strong></td>
@@ -28,7 +37,6 @@
                 <option value="euw">EU-West</option>
                 <option value="na">Nordamerika</option>
             </select>
-
     </tr>
     <tr>
         <td width="200"><strong>Bild</strong></td>

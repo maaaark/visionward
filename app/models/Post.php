@@ -30,6 +30,11 @@ class Post extends \Eloquent {
     {
         return $this->belongsTo('Gallery');
     }
+
+    public function comments()
+    {
+        return $this->hasMany('Comment');
+    }
 	
 	public function hasCategory($key)
     {

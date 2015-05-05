@@ -335,11 +335,23 @@ a.red {
 	margin-top: 50px;
 	height: 120px;
 }
+.small {
+    font-size: 10px;
+    color: #9a9a9a;
+}
+.comment_bottom {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7e7e7;
+}
 .fixed {
     position: fixed;
     top:0; left:0;
     width: 100%; 
 	z-index: 100;
+}
+.badge a {
+    color: #fff;
 }
 .news_list {
 	list-style: none;

@@ -26,6 +26,11 @@ class Summoner extends \Eloquent {
     {
         return $this->belongsTo('Seasonrankedstat');
     }
+
+    public function user()
+    {
+        return $this->belongsTo('User', "summoner_id", "summoner_id");
+    }
 	
 	public function refresh_games()
 	{
