@@ -199,4 +199,22 @@ class Helpers {
     	}
     	return false;
     }
+
+    /* Esports Current Season */
+    public static function getCurrentSeason(){
+      $setting = Setting::where("key", "=", "current_season")->first();
+      if(isset($setting) && isset($setting->value) && trim($setting->value) != ""){
+        return trim($setting->value);
+      }
+      return "2015";
+    }
+
+    /* Champion-Info */
+    public static function getChampionById($champion_id){
+      $champ = Champion::where("champion_id", "=", $champion_id)->first();
+      if(isset($champ) && isset($champ->id) && $champ->id > 0){
+        return $champ;
+      }
+      return null;
+    }
 }
