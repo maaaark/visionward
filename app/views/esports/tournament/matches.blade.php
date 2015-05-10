@@ -1,6 +1,13 @@
 @extends('layouts.header_esports')
 @section('title', "Esports")
+@section('esports_navi_elements')
+		@include('esports.tournament.navi')
+@stop
+@section('opener')
+	@include('esports.tournament_header')
+@stop
 @section('content')
+	<script>$(".esports_opener_navi .esports_header_navi .element.matches").addClass("active");</script>
 	<?php 
 		$wrote_something_past 	  = false;
 		$wrote_something_upcoming = false;
@@ -47,28 +54,32 @@
 					@endif
 				</div>
 				<div class="match_content">
-					<?php
-						$team1 = Helpers::getTeamData($match->team1_id);
-						$team2 = Helpers::getTeamData($match->team2_id);
-					?>
-					<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
-					<div class="team2_info team_info">
-						<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
-						<div class="win_infos">
-							<div>3 gewonnen</div>
-							<div>2 verloren</div>
-							<div>9 Punkte</div>
+					@if($match->team1_id == 0 AND $match->team2_id == 0)
+						<div class="no_teams">Die Teams sind bis jetzt noch nicht bekannt.</div>
+					@else
+						<?php
+							$team1 = Helpers::getTeamData($match->team1_id);
+							$team2 = Helpers::getTeamData($match->team2_id);
+						?>
+						<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+						<div class="team2_info team_info">
+							<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
+							<div class="win_infos">
+								<div>3 gewonnen</div>
+								<div>2 verloren</div>
+								<div>9 Punkte</div>
+							</div>
 						</div>
-					</div>
-					<div class="team1_info team_info">
-						<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
-						<div class="win_infos">
-							<div>3 gewonnen</div>
-							<div>2 verloren</div>
-							<div>9 Punkte</div>
+						<div class="team1_info team_info">
+							<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
+							<div class="win_infos">
+								<div>3 gewonnen</div>
+								<div>2 verloren</div>
+								<div>9 Punkte</div>
+							</div>
 						</div>
-					</div>
-					<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+						<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+					@endif
 				</div>
 			</div>
 		@endforeach
@@ -106,8 +117,8 @@
 					<span>> {{ date("d.m.Y", strtotime($match->date)) }}</span>
 				</div>
 			@endif
-
-			<div class="match_box">
+			
+			<div class="match_box clickable" onclick="self.location.href='/esports/{{ str_replace(" ", "_", trim(strtolower($league->short_name))) }}/tournament/{{ $tournament->tournament_id }}/match/{{ $match->match_id }}'">
 				<div class="top_bar">
 					Best of {{ $match->max_games }}
 					@if($match->date)
@@ -115,30 +126,35 @@
 					@endif
 				</div>
 				<div class="match_content">
-					<?php
-						$team1 = Helpers::getTeamData($match->team1_id);
-						$team2 = Helpers::getTeamData($match->team2_id);
-					?>
-					<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
-					<div class="team2_info team_info">
-						<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
-						<div class="win_infos">
-							<div>3 gewonnen</div>
-							<div>2 verloren</div>
-							<div>9 Punkte</div>
+					@if($match->team1_id == 0 AND $match->team2_id == 0)
+						<div class="no_teams">Die Teams sind bis jetzt noch nicht bekannt.</div>
+					@else
+						<?php
+							$team1 = Helpers::getTeamData($match->team1_id);
+							$team2 = Helpers::getTeamData($match->team2_id);
+						?>
+						<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+						<div class="team2_info team_info">
+							<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
+							<div class="win_infos">
+								<div>3 gewonnen</div>
+								<div>2 verloren</div>
+								<div>9 Punkte</div>
+							</div>
 						</div>
-					</div>
-					<div class="team1_info team_info">
-						<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
-						<div class="win_infos">
-							<div>3 gewonnen</div>
-							<div>2 verloren</div>
-							<div>9 Punkte</div>
+						<div class="team1_info team_info">
+							<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
+							<div class="win_infos">
+								<div>3 gewonnen</div>
+								<div>2 verloren</div>
+								<div>9 Punkte</div>
+							</div>
 						</div>
-					</div>
-					<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+						<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+					@endif
 				</div>
 			</div>
+			</a>
 		@endforeach
 		</div>
 	@endif

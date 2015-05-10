@@ -16,6 +16,7 @@
 	<link rel="stylesheet" href="/css/jquery.runepageBuilder.css">
 	<link rel="stylesheet" href="/css/jquery.masteriesBuilder.css">
 	<link rel="stylesheet" href="/css/flashignite_lightbox.css">
+	<link rel="stylesheet" href="/css/esports/esports_main.css">
 	<link rel="stylesheet" href="/css/esports/league.css">
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>

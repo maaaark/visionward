@@ -1,8 +1,20 @@
 @extends('layouts.header_esports')
 @section('title', "Esports")
+@section('esports_navi_elements')
+		<div class="element active">Turnierliste</div>
+		@if(isset($league->default_tournament) AND $league->default_tournament > 0)
+			<a href="/esports/{{ trim($league_url) }}/tournament/{{ $league->default_tournament }}">
+				<div class="element">Zum aktuellen Turnier</div>
+			</a>
+		@endif
+@stop
+@section('opener')
+	<?php $dont_show_tournaments_dropdown = true; ?>
+	@include('esports.tournament_header')
+@stop
+
 @section('content')
-	<h1>{{ $league["label"] }}</h1>
-	<b>Turniere:</b>
+	<h1>Turnierliste - {{ $league->label }}</h1>
 	<div id="league_tournaments_holder" class="league_tournaments">
 		<div style="padding: 20px; text-align: center; color: rgba(0,0,0,0.5);">Es wurden noch keine Turniere zu dieser Liga bekanntgegeben</div>
 	</div>
@@ -39,7 +51,7 @@
 			league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']").addClass("active");
 		}
 
-		@foreach($tournaments as $tournament)
+		@foreach($league_tournaments as $tournament)
 			addTournament2DOM("{{ $tournament["season"] }}", {{ $tournament["tournament_id"] }}, "{{ $tournament["name"] }}");
 		@endforeach
 

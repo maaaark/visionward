@@ -47,6 +47,19 @@
 	border: 1px solid rgba(0,0,0,0.2);
 	background: rgba(0,0,0,0.1);
 	position: relative;
+	transition: all 200ms;
+}
+
+.match_box.clickable {
+	cursor: pointer;
+}
+
+.match_box.clickable:hover {
+	background: rgba(153, 153, 153, 0.1);
+}
+
+.match_box.clickable:hover .top_bar {
+	background: #777676;
 }
 
 .match_box .top_bar {
@@ -55,6 +68,7 @@
 	padding-left: 8px;
 	padding-right: 8px;
 	color: #fff;
+	transition: 200ms;
 }
 
 .match_box .top_bar .date {
@@ -64,6 +78,12 @@
 
 .match_box .match_content {
 	padding: 10px;
+}
+
+.match_box .match_content .no_teams {
+	color: rgba(0,0,0,0.5);
+	text-align: center;
+	padding: 30px;
 }
 
 .match_box .match_content .team_logo {
