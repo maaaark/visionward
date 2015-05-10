@@ -216,9 +216,14 @@
 	}
 }
 
+.matchhistory_table_detail.table tr {
+  position: relative;
+}
+
 .matchhistory_table_detail.table tr td {
    padding: 4px;
    font-size: 14px;
+   height: 25px;
 }
 
 .matchhistory_table_detail.table tr td.val {

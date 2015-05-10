@@ -8,7 +8,7 @@
 	<div class="match_title" style="@if($game['stats']['win'] == true) background-color:rgba(16, 81, 20, 0.8) @else background-color:rgba(81, 16, 16, 0.8)  @endif">
 		{{ Helpers::niceGameMode($game["gameMode"]) }} - {{ Helpers::niceMatchMode($game["gameType"]) }} - {{ Helpers::niceSubType($game["subType"]) }}
 	</div>
-	<div class="background_image" style="background-image:url(http://counterpick.de/uploads/champions_skins/{CHAMPION_KEY_RIOT_LOW}_0_thumb.jpg);background-size:100%;">
+	<div class="background_image">
 		<div class="bg">
 			<table class="matchhistory_table table">
 				<tr>
@@ -117,6 +117,18 @@
          	<td>Zerst&ouml;rte Inhibitore</td>
          	<td class="val">@if(isset($game["stats"]["barracksKilled"])) {{ number_format($game["stats"]["barracksKilled"]) }}@else 0 @endif</td>
      	</tr>
+        <tr>
+            <td>Gold eingenommen</td>
+            <td class="val">@if(isset($game["stats"]["goldEarned"])) {{ number_format($game["stats"]["goldEarned"], 0, ",", ".") }}@else 0 @endif</td>
+        </tr>
+        <tr>
+            <td>Gold ausgegeben</td>
+            <td class="val">@if(isset($game["stats"]["goldSpent"])) {{ number_format($game["stats"]["goldSpent"], 0, ",", ".") }}@else 0 @endif</td>
+        </tr>
+        <tr>
+            <td>Wards platziert</td>
+            <td class="val">@if(isset($game["stats"]["wardPlaced"])) {{ number_format($game["stats"]["wardPlaced"], 0, ",", ".") }}@else 0 @endif</td>
+        </tr>
       </table>
    </div>
 </div>
