@@ -74,6 +74,8 @@ class EsportsController extends BaseController {
 		$games_arr = json_decode($match->games, true);
 		$count     = 1;
 
+		$team1_points = 0;
+		$team2_points = 0;
 
 		foreach($games_arr as $game){
 			$esports_game = EsportsGame::where("game_id", "=", $game)->first();
@@ -89,6 +91,11 @@ class EsportsController extends BaseController {
 								"team1"				 => $team1,
 								"team2"				 => $team2
 							));
+			if($esports_game["winner"] == $team1["team_id"]){
+				$team1_points++;
+			} elseif($esports_game["winner"] == $team2["team_id"]){
+				$team2_points++;
+			}
 			$count++;
 		}
 
@@ -100,7 +107,9 @@ class EsportsController extends BaseController {
 			"match"				 => $match,
 			"games"				 => $games,
 			"team1"				 => $team1,
-			"team2"				 => $team2
+			"team2"				 => $team2,
+			"team1_points"		 => $team1_points,
+			"team2_points"		 => $team2_points
 		));
 	}
 }

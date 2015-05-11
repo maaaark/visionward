@@ -200,3 +200,78 @@
 .games_holder .games_navi .game_tab.open:hover {
 	background: #fff;
 }
+
+.game_element .youtube_video {
+	float: right;
+}
+
+button.esports_button {
+	background: #f25825;
+	border: none;
+	padding: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
+	color: #fff;
+	outline: none;
+	box-shadow: none;
+	font-size: 16px;
+	transition: all 200ms;
+	cursor: pointer;
+}
+
+button.esports_button:hover {
+	background: #FC8243;
+}
+
+.match_detail {
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+.match_detail .team_icon {
+	height: 150px;
+	width: 150px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 150px;
+}
+
+.match_detail .team_icon.team1_icon {
+	float: left;
+	margin-left: 80px;
+}
+
+.match_detail .team_icon.team2_icon {
+	float: right;
+	margin-right: 80px;
+}
+
+.match_detail .info_block {
+	width: 100%;
+	height: 150px;
+	max-width: 600px;
+	margin: auto;
+	text-align: center;
+}
+
+.match_detail .info_block .match_name {
+	font-size: 14px;
+	color: rgba(0,0,0,0.6);
+	padding-top: 20px;
+}
+
+.match_detail .info_block .match_points {
+	padding-top: 15px;
+	font-size: 30px;
+}
+
+.match_detail .info_block .match_winner_team {
+	font-size: 14px;
+	padding-top: 10px;
+	color: rgba(0,0,0,0.7);
+}
+
+/* Esports Spoiler: Diese Elemente sind am Anfang nicht sichtbar */
+.esports_spoiler {
+	display: none;
+}

@@ -2,15 +2,36 @@
 	<div class="game_element" data-gamecount="{{ $game_count }}" id="game_element_{{ $game_count }}">
 	@for($i = 100; $i <= 200; $i = $i + 100)
 			@if($i == 100)
+				@if(isset($game->youtube_video) AND trim($game->youtube_video) != "")
+					<div class="youtube_video">
+						<button class="esports_button" data-youtube="{{ $game->youtube_video }}" id="youtube_watch_btn">Spiel Aufnahme ansehen</button>
+						<script>
+							var youtube_key = "";
+							function get_youtube_key(url) {
+								var p = /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))((\w|-){11})(?:\S+)?$/;
+								return (url.match(p)) ? RegExp.$1 : false;
+							}
+							$("#youtube_watch_btn").click(function(){
+								youtube_url = $(this).attr("data-youtube");
+								if(youtube_key == ""){
+									youtube_key = get_youtube_key(youtube_url);
+								}
+								html  = '<h1 class="site_title">{{ $team1->name }} gegen {{ $team2->name }}</h1>';
+								html += '<iframe width="853" height="480" src="https://www.youtube.com/embed/'+youtube_key.trim()+'" frameborder="0" allowfullscreen></iframe>';
+								showLightbox(html, null, "885px");
+							});
+						</script>
+					</div>
+				@endif
 				<div class="team_name">
 					<img class="team_icon" src="{{ $team1->logo_riot }}">
 					<div class="info">
 						{{ $team1->name }}
 						@if($game->winner > 0)
 							@if($game->winner == $team1->team_id)
-								<div class="winner win">Gewinner dieses Spiels</div>
+								<div class="winner win esports_spoiler">Gewinner dieses Spiels</div>
 							@else
-								<div class="winner loss">Verlierer dieses Spiels</div>
+								<div class="winner loss esports_spoiler">Verlierer dieses Spiels</div>
 							@endif
 						@else
 							<div class="winner">Gewinner noch nicht bekannt</div>
@@ -25,9 +46,9 @@
 						{{ $team2->name }}
 						@if($game->winner > 0)
 							@if($game->winner == $team2->team_id)
-								<div class="winner win">Gewinner dieses Spiels</div>
+								<div class="winner win esports_spoiler">Gewinner dieses Spiels</div>
 							@else
-								<div class="winner loss">Verlierer dieses Spiels</div>
+								<div class="winner loss esports_spoiler">Verlierer dieses Spiels</div>
 							@endif
 						@else
 							<div class="winner">Gewinner noch nicht bekannt</div>
