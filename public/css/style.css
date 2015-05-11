@@ -214,6 +214,16 @@ a.button:hover {
 .navigation ul li:hover ul {
 	display: block;
 }
+.login_submenu li {
+    height: 300px;
+}
+.right_navigation li {
+    float: right !important;
+}
+.right_navigation li a {
+    display: inline-block !important;
+    padding: 0;
+}
 .navigation ul li:hover ul.submenu_mobile li {
 	clear: both;
 }
@@ -482,6 +492,11 @@ a.red {
 	border-radius: 5px;
 	margin-top: 0px;
 	position: relative;
+    padding: 5px;
+    padding-bottom: 5px !important;
+}
+.loginform {
+    padding: 5px;
 }
 .server_region {
 	position: absolute;

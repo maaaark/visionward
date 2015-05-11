@@ -45,73 +45,7 @@ $settingsArray = array();
             </div>
         @endif
 
-        @if(Auth::check())
-            <div class="block">
-                <h2 class="headline">Mein Account</h2>
-                <p><a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><strong>{{ Auth::user()->summoner->name }}</strong></a>&nbsp;&nbsp;&nbsp;<small><a href="/account/edit">(bearbeiten)</a></small></p>
-                <table style="width: 100%;">
-                    <tr>
-                        <td width="50" valign="top">
-                            <span class="badge" style="margin-right: 10px;">Level {{ Auth::user()->userlevel->level }}</span>
-                        </td>
-                        <td valign="top">
-                                <div class="progress">
-                                    <span style="width: 100%; text-align: center;">{{ round(((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100,2) }}% ({{ Auth::user()->exp - Auth::user()->userlevel->start_exp }}/{{ Auth::user()->userlevel->end_exp }} EXP)</span>
 
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}%;">
-                                    </div>
-                                </div>
-                        </td>
-                    </tr>
-                </table>
-
-
-                @if(Auth::user()->summoner)
-                    <table>
-                        <tr>
-                            <td width="65"><a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="50" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a></td>
-                            <td width="65"><a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img height="50" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a></td>
-                            <td>
-                                <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><strong>{{ Auth::user()->summoner->name }}</strong><br/>
-                                {{ Auth::user()->summoner->solo_tier }} {{ Auth::user()->summoner->solo_division }} ({{ Auth::user()->summoner->ranked_wins }}:{{ Auth::user()->summoner->ranked_losses }})</a>
-                            </td>
-                        </tr>
-                    </table>
-                    <br/>
-                @else
-                    <p><a href="/account/edit" class="badge" style="color: #fff;">+ Summoner eintragen</a></p>
-                @endif
-
-                @if(Auth::user()->hasRole("admin"))
-                    <p><a href="/admin">Admin Panel</a></p>
-                @endif
-                <p><a href="/logout" class="logout">Ausloggen</a></p>
-            </div>
-        @else
-            <div class="block">
-                <h2 class="headline">Login</h2>
-                {{ Form::open(array('url' => '/dologin')) }}
-                <p>
-                    {{ $errors->first('email') }}
-                    {{ $errors->first('password') }}
-                </p>
-
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></span>
-                    {{ Form::text('email', Input::old('email'), array('placeholder' => 'example@lolquest.net', 'class' => 'form-control')) }}
-                </div>
-                <br/>
-                <div class="input-group">
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-key"></span></span>
-                    {{ Form::password('password', array('class' => 'form-control')) }}
-                </div>
-                <br/>
-                <p>{{ Form::submit('Login', array('class' => 'btn btn-primary btn-block')) }}</p>
-                {{ Form::close() }}
-                <p><a href="/users/create">Noch keinen Account?<br/>
-                        Jetzt kostenlos registrieren!</a></p>
-            </div>
-            @endif
                     <!--
 	<div class="block">
 		<h2 class="headline">Social Media</h2>

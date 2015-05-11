@@ -2,6 +2,13 @@
 
 class Summoner extends \Eloquent {
 
+    private $allowed_regions = array(
+        "euw" => array("status" => true, "api_endpoint" => "https://euw.api.pvp.net", "name" => "Europe West", "platform_id" => "EUW1"), // PlatformId -> für Spectator Mode
+        "na"  => array("status" => true, "api_endpoint" => "https://euw.api.pvp.net", "name" => "Nordamerika", "platform_id" => "NA1")
+    );
+    private $summoner_update_interval = 60;
+    private $current_season = "SEASON2015";
+
     protected $connection = 'mysql2';
 
 	// Add your validation rules here
@@ -446,5 +453,7 @@ class Summoner extends \Eloquent {
 			return $stats;
 		}
 	}
+
+
 
 }

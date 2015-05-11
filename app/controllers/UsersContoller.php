@@ -42,6 +42,7 @@ class UsersController extends \BaseController {
             $user = User::create($input);
             $user->password = Hash::make(Input::get('password'));
             $user->save();
+            $user->addSummoner(Input::get('region'), Input::get('summoner_name'));
 
             return Redirect::to('/users')->with("success", "User erstellt");
         } else {
