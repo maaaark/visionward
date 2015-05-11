@@ -49,7 +49,7 @@ class UsersController extends \BaseController {
             return Redirect::to("/register")
                 ->withInput()
                 ->withErrors($validation)
-                ->with('error', 'There were validation errors.')->with('input', Input::all())->with('roles', $roles);
+                ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
         }
 
     }

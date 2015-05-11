@@ -48,18 +48,19 @@ $settingsArray = array();
         @if(Auth::check())
             <div class="block">
                 <h2 class="headline">Mein Account</h2>
-                <p><a href="/user/{{ Auth::user()->username }}"><strong>{{ Auth::user()->username }}</strong></a>&nbsp;&nbsp;&nbsp;<small><a href="/account/edit">(bearbeiten)</a></small></p>
+                <p><a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><strong>{{ Auth::user()->summoner->name }}</strong></a>&nbsp;&nbsp;&nbsp;<small><a href="/account/edit">(bearbeiten)</a></small></p>
                 <table style="width: 100%;">
                     <tr>
                         <td width="50" valign="top">
-                            <span class="badge" style="margin-right: 10px;">Level {{ Auth::user()->level }}</span>
+                            <span class="badge" style="margin-right: 10px;">Level {{ Auth::user()->userlevel->level }}</span>
                         </td>
                         <td valign="top">
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
-                                    60% ({{ Auth::user()->exp }}/350 EXP)
+                                <div class="progress">
+                                    <span style="width: 100%; text-align: center;">{{ round(((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100,2) }}% ({{ Auth::user()->exp - Auth::user()->userlevel->start_exp }}/{{ Auth::user()->userlevel->end_exp }} EXP)</span>
+
+                                    <div class="progress-bar" role="progressbar" aria-valuenow="{{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}%;">
+                                    </div>
                                 </div>
-                            </div>
                         </td>
                     </tr>
                 </table>

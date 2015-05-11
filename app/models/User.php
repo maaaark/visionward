@@ -12,11 +12,13 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
     protected $connection = 'mysql2';
 	protected $table = 'users';
-	protected $fillable = array('username', 'first_name', 'last_name', 'email', 'roles', 'description', 'image', 'task', 'autor_text', 'twitter', 'twitch', 'order');
+	protected $fillable = array('password', 'username', 'first_name', 'last_name', 'email', 'roles', 'description', 'image', 'task', 'autor_text', 'twitter', 'twitch', 'order', 'updated_at', 'created_at');
 	
 	public static $rules = array(
-		'email'=>'required|email',
-		'username'=>'required'
+		'email'=>'required|unique:users',
+		'summoner_name'=>'required',
+        'region'=>'required',
+        'password' => 'confirmed|min:5'
 	);
 	
 	/**
@@ -99,11 +101,20 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         return $this->hasOne("Summoner", "summoner_id", "summoner_id");
     }
 
+    public function userlevel() {
+        return $this->hasOne("Level", "level", "level");
+    }
+
     public function addExp($exp) {
         if(Auth::check()){
             $user = Auth::user();
             $user->exp = $user->exp + $exp;
             $user->save();
+
+            if($user->exp >= $user->userlevel->end_exp) {
+                $user->level = $user->level +1;
+                $user->save();
+            }
         }
     }
 }
