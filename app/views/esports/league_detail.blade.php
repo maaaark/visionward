@@ -21,6 +21,7 @@
 
 	<script>
 		var tournament_structure 	 = false;
+		var tournament_active		 = false;
 		var league_holder 			 = $("#league_tournaments_holder");
 		var league_tournament_count  = 0;
 		function addTournament2DOM(season, id, name){
@@ -35,7 +36,7 @@
 			if(typeof season_tab.html() == "undefined"){
 				league_tournament_count++;
 				html  = "<div class='tab' data-season='"+season.trim()+"'>"+season.trim()+"</div>";
-				league_holder.find("#tournament_tabs").html(html + league_holder.find("#tournament_tabs").html());
+				league_holder.find("#tournament_tabs").html(league_holder.find("#tournament_tabs").html() + html);
 
 				html  = "<div class='tab_content' data-season='"+season.trim()+"'></div>";
 				league_holder.find("#tournament_contents").append(html);
@@ -45,10 +46,13 @@
 			html = "<div data-season='"+season+"'><a href='/esports/{{ trim($league_url) }}/tournament/"+id+"'>"+name+"</a></div>";
 			league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").append(html);
 
-			league_holder.find("#tournament_contents .active").removeClass("active");
-			league_holder.find("#tournament_tabs .active").removeClass("active");
-			league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").addClass("active");
-			league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']").addClass("active");
+			if(tournament_active == false){
+				league_holder.find("#tournament_contents .active").removeClass("active");
+				league_holder.find("#tournament_tabs .active").removeClass("active");
+				league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").addClass("active");
+				league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']").addClass("active");
+				tournament_active = true;
+			}
 		}
 
 		@foreach($league_tournaments as $tournament)

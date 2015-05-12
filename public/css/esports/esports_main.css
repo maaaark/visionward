@@ -47,6 +47,7 @@
 	right: 20px;
 	margin-top: 70px;
 	z-index: 120;
+	box-shadow: 0 0 7px 1px rgba(0,0,0,0.5);
 }
 
 .esports_opener_navi .holder .tournaments_dropdown .current {

@@ -13,10 +13,10 @@ class EsportsController extends BaseController {
 		$league_key  = str_replace("_", " ", $league_key);
 		$league 	 = EsportsLeague::where("short_name", "=", trim($league_key))->first();
 
-		$tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("league_id", "DESC")->get();
+		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		return View::make('esports.league_detail', array(
 			"league" 	  => $league,
-			"league_tournaments" => $tournaments,
+			"league_tournaments" => $league_tournaments,
 			"league_url"  => $league_url
 		));
 	}
@@ -26,14 +26,17 @@ class EsportsController extends BaseController {
 		$league_key  = str_replace("_", " ", $league_key);
 		$league 	 = EsportsLeague::where("short_name", "=", trim($league_key))->first();
 
-		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("league_id", "DESC")->get();
+		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
+
+		$standings = EsportsStandings::where("tournament_id", "=", $tournament_id)->get();
 
 		return View::make('esports.tournament.detail', array(
 			"league" 	  		 => $league,
 			"league_tournaments" => $league_tournaments,
 			"tournament" 		 => $tournament,
-			"league_url" 		 => $league_url
+			"league_url" 		 => $league_url,
+			"standings"			 => $standings
 		));
 	}
 
@@ -42,7 +45,7 @@ class EsportsController extends BaseController {
 		$league_key  = str_replace("_", " ", $league_key);
 		$league 	 = EsportsLeague::where("short_name", "=", trim($league_key))->first();
 
-		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("league_id", "DESC")->get();
+		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
 
 		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->orderBy("date", "ASC")->get();
@@ -62,7 +65,7 @@ class EsportsController extends BaseController {
 		$league_key  = str_replace("_", " ", $league_key);
 		$league 	 = EsportsLeague::where("short_name", "=", trim($league_key))->first();
 
-		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("league_id", "DESC")->get();
+		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
 
 		$match = EsportsMatch::where("match_id", "=", $match_id)->first();

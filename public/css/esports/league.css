@@ -275,3 +275,84 @@ button.esports_button:hover {
 .esports_spoiler {
 	display: none;
 }
+
+/* Tabellen */
+.standings_box {
+	box-shadow: 0 0 4px 1px rgba(0,0,0,0.3);
+	padding-bottom: 10px;
+}
+
+.standings_box .title {
+	font-size: 30px;
+	color: rgba(0,0,0,0.7);
+	padding: 15px;
+	padding-bottom: 25px;
+}
+
+.standings_box .title .league_icon {
+	height: 40px;
+	margin-right: 15px;
+	margin-left: 6px;
+}
+
+.standings_box table.standings {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.standings_box table.standings td {
+	padding: 10px;
+}
+
+.standings_box table.standings tr {
+	background: rgba(0,0,0,0.1);
+}
+
+.standings_box table.standings tr:nth-child(even) {
+	background: rgba(142, 142, 142, 0.1);
+}
+
+.standings_box table.standings td.team_icon {
+	width: 35px;
+	text-align: center;
+}
+
+.standings_box table.standings td.team_icon img.team_icon_element {
+	height: 30px;
+	width: 30px;
+}
+
+.standings_box table.standings td.rank {
+	width: 30px;
+	text-align: center;
+	color: rgba(0,0,0,0.5);
+}
+
+.standings_box table.standings td.wins, .standings_box table.standings td.losses {
+	width: 40px;
+	text-align: left;
+}
+
+.standings_box table.standings td.wins {
+	color: green;
+}
+
+.standings_box table.standings td.losses {
+	color: red;
+}
+
+.standings_box table.standings td.points {
+	color: #000;
+	width: 70px;
+}
+
+.standings_box table.standings thead, .standings_box table.standings thead tr, .standings_box table.standings thead td, .standings_box table.standings thead th {
+	background: rgba(0,0,0,0);
+}
+
+.standings_box table.standings thead th {
+	font-size: 14px;
+	color: rgba(0,0,0,0.5);
+	font-weight: 200;
+	padding-left: 10px;
+}
