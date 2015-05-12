@@ -14,11 +14,16 @@ class EsportsController extends BaseController {
 			$standings[] = $temp;
 		}
 
+		$recent_matches   = EsportsMatch::where("winner", ">", "0")->orderBy("date", "DESC")->limit(5)->get();
+		$upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->limit(5)->get();
+
 		$category = Category::where('slug','=', 'esports')->first();
 		return View::make('esports.index', array(
-			"leagues"   => $leagues,
-			"standings" => $standings,
-			"category"	=> $category
+			"leagues"   	   => $leagues,
+			"standings" 	   => $standings,
+			"category"		   => $category,
+			"recent_matches"   => $recent_matches,
+			"upcoming_matches" => $upcoming_matches
 		));
 	}
 

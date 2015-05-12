@@ -59,9 +59,117 @@
 		</div>
 	</div>
 
+	<div class="row">
+		<div class="col-md-6">
+			<div class="standings_box">
+				<div class="title">
+					Die letzten Spiele
+				</div>
+				<div style="padding: 15px;">
+				@if(isset($recent_matches) AND $recent_matches AND count($recent_matches) > 0)
+					@foreach($recent_matches as $match)
+						<div class="match_box">
+							<div class="top_bar">
+								Best of {{ $match->max_games }}
+								@if($match->date)
+									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
+								@endif
+							</div>
+							<div class="match_content">
+								@if($match->team1_id == 0 AND $match->team2_id == 0)
+									<div class="no_teams">Die Teams sind bis jetzt noch nicht bekannt.</div>
+								@else
+									<?php
+										$team1 = Helpers::getTeamData($match->team1_id);
+										$team2 = Helpers::getTeamData($match->team2_id);
+									?>
+									<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+									<div class="team2_info team_info">
+										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
+										<div class="win_infos">
+											<div>3 gewonnen</div>
+											<div>2 verloren</div>
+											<div>9 Punkte</div>
+										</div>
+									</div>
+									<div class="team1_info team_info">
+										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
+										<div class="win_infos">
+											<div>3 gewonnen</div>
+											<div>2 verloren</div>
+											<div>9 Punkte</div>
+										</div>
+									</div>
+									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+								@endif
+							</div>
+						</div>
+					@endforeach
+				@else
+					<div style="text-align: center;color: rgba(0,0,0,0.6);padding: 20px;">Es sind leider momentan keine Spiele bekannt.</div>
+				@endif
+				</div>
+			</div>
+		</div>
+
+		<div class="col-md-6">
+			<div class="standings_box">
+				<div class="title">
+					Die n&auml;chsten Spiele
+				</div>
+				<div style="padding: 15px;">
+				@if(isset($upcoming_matches) AND $upcoming_matches AND count($upcoming_matches) > 0)
+					@foreach($upcoming_matches as $match)
+						<div class="match_box">
+							<div class="top_bar">
+								Best of {{ $match->max_games }}
+								@if($match->date)
+									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
+								@endif
+							</div>
+							<div class="match_content">
+								@if($match->team1_id == 0 AND $match->team2_id == 0)
+									<div class="no_teams">Die Teams sind bis jetzt noch nicht bekannt.</div>
+								@else
+									<?php
+										$team1 = Helpers::getTeamData($match->team1_id);
+										$team2 = Helpers::getTeamData($match->team2_id);
+									?>
+									<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+									<div class="team2_info team_info">
+										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
+										<div class="win_infos">
+											<div>3 gewonnen</div>
+											<div>2 verloren</div>
+											<div>9 Punkte</div>
+										</div>
+									</div>
+									<div class="team1_info team_info">
+										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
+										<div class="win_infos">
+											<div>3 gewonnen</div>
+											<div>2 verloren</div>
+											<div>9 Punkte</div>
+										</div>
+									</div>
+									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+								@endif
+							</div>
+						</div>
+					@endforeach
+				@else
+					<div style="text-align: center;color: rgba(0,0,0,0.6);padding: 20px;">Es sind leider momentan keine Spiele bekannt.</div>
+				@endif
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<h1>Esports-News</h1>
 	<ul class="news_list">
+	<?php $post_count = 1; ?>
 	@foreach($category->posts as $post)
-		@if($post->published == 1)
+		@if($post->published == 1 AND $post_count <= 5)
 			<li>
 				<div class="news">
 				  <div class="row">
@@ -76,6 +184,7 @@
 				  <div class="clear"></div>
 				</div>
 			</li>
+			<?php $post_count++; ?>
 		@endif
 	@endforeach
 	</ul>
