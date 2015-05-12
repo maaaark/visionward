@@ -13,9 +13,12 @@ class EsportsController extends BaseController {
 			$temp["standings"]	= EsportsStandings::where("tournament_id", "=", $tournament->tournament_id)->get();
 			$standings[] = $temp;
 		}
+
+		$category = Category::where('slug','=', 'esports')->first();
 		return View::make('esports.index', array(
 			"leagues"   => $leagues,
-			"standings" => $standings
+			"standings" => $standings,
+			"category"	=> $category
 		));
 	}
 

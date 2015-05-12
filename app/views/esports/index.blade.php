@@ -46,8 +46,37 @@
 		</div>
 	@endif
 
-	@foreach($leagues as $league)
-		<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}">{{ $league["label"] }}</a>
-		<br/>
+	<div class="league_images_holder">
+		<div class="name">
+			Ligen <span>> Anklicken f&uuml;r mehr Infos</span>
+		</div>
+		<div class="holder">
+		@foreach($leagues as $league)
+			<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}">
+				<img src="{{ $league["league_image"] }}">
+			</a>
+		@endforeach
+		</div>
+	</div>
+
+	<ul class="news_list">
+	@foreach($category->posts as $post)
+		@if($post->published == 1)
+			<li>
+				<div class="news">
+				  <div class="row">
+				  <div class="col-md-3 hidden-xs hidden-sm"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="/uploads/news/{{ $post->image }}" width="100%" /></a></div>
+				  <div class="col-md-9 text">
+					<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
+					{{ $post->excerpt }}
+					<div class="meta">
+						<span class="comments_count"><a href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread">0 Kommentare</a></span> {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
+					</div>
+				  </div>
+				  <div class="clear"></div>
+				</div>
+			</li>
+		@endif
 	@endforeach
+	</ul>
 @stop

@@ -84,6 +84,8 @@
 			</div>
 		@endforeach
 		</div>
+		</div>
+		</div>
 	@endif
 
 	@if($matches_past)
@@ -154,8 +156,9 @@
 					@endif
 				</div>
 			</div>
-			</a>
 		@endforeach
+		</div>
+		</div>
 		</div>
 	@endif
 

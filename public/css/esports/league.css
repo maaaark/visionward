@@ -280,6 +280,7 @@ button.esports_button:hover {
 .standings_box {
 	box-shadow: 0 0 4px 1px rgba(0,0,0,0.3);
 	padding-bottom: 10px;
+	margin-bottom: 15px;
 }
 
 .standings_box .title {
@@ -362,4 +363,47 @@ button.esports_button:hover {
 	color: rgba(0,0,0,0.5);
 	font-weight: 200;
 	padding-left: 10px;
+}
+
+/* Startseite */
+.league_images_holder {
+	text-align: center;
+	box-shadow: 0 0 6px 1px rgba(0,0,0,0.3);
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.league_images_holder .name {
+	text-align: left;
+	font-size: 30px;
+	color: rgba(0,0,0,0.7);
+	padding: 15px;
+	padding-bottom: 10px;
+}
+
+.league_images_holder .name span {
+    color: rgba(0,0,0,0.5);
+    font-size: 18px;
+}
+
+.league_images_holder .holder {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: rgba(0,0,0,0.1);
+	text-decoration: none !important;
+}
+
+
+.league_images_holder .holder a {
+	text-decoration: none !important;
+}
+
+.league_images_holder .holder img {
+	height: 108px;
+	transition: all 200ms;
+	position: relative;
+}
+
+.league_images_holder .holder img:hover {
+	margin-top: -10px;
 }
