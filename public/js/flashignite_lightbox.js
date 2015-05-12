@@ -13,7 +13,7 @@ function init__FI_Lightbox(){
 	already_set_lightbox_content = true;
 }
 
-function showLightbox(content, callback){
+function showLightbox(content, callback, width){
 	if(already_set_lightbox_content == false){
 		init__FI_Lightbox();
 	}
@@ -23,13 +23,17 @@ function showLightbox(content, callback){
 			$("#fi_lightbox .content").html(content);
 		}
 
+		$("#fi_lightbox").attr("style", "");
+		if(typeof width != "undefined" && width != false && width != null){
+			$("#fi_lightbox").attr("style", "max-width: "+width);
+		}
 		$("#fi_lightbox_bg").show();
 		$("#fi_lightbox").show();
 		lightbox_open = true;
 
 		$("#fi_lightbox_bg").animate({"opacity" : "1"}, animation_speed_lightbox, "linear");
 		$("#fi_lightbox").animate({"opacity" : "1"}, animation_speed_lightbox, "linear", function(){
-			if(typeof callback != "undefined"){
+			if(typeof callback != "undefined" && callback != false && callback != null){
 				callback($("#fi_lightbox .content"));
 			}
 		});
