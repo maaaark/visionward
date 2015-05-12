@@ -3,8 +3,19 @@
 class EsportsController extends BaseController {
 	public function index(){
 		$leagues = EsportsLeague::where("published_riot", "=", "1")->get();
+
+		$standings       = array();
+		$front_standings = EsportsTournament::where("show_standings_on_front", "=", 1)->get();
+		foreach($front_standings as $tournament){
+			$temp = array();
+			$temp["tournament"] = $tournament;
+			$temp["league"]		= EsportsLeague::where("league_id", "=", $tournament->league_id)->first();
+			$temp["standings"]	= EsportsStandings::where("tournament_id", "=", $tournament->tournament_id)->get();
+			$standings[] = $temp;
+		}
 		return View::make('esports.index', array(
-			"leagues" => $leagues
+			"leagues"   => $leagues,
+			"standings" => $standings
 		));
 	}
 

@@ -39,7 +39,7 @@
 						</tbody>
 					</table>
 				@else 
-					<div class="padding: 25px; color: rgba(0,0,0,0.6); text-align: center;">
+					<div style="padding: 25px; color: rgba(0,0,0,0.6); text-align: center;">
 						Es ist noch keine Tabelle vorhanden.
 					</div>
 				@endif

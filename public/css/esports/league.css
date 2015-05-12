@@ -286,7 +286,12 @@ button.esports_button:hover {
 	font-size: 30px;
 	color: rgba(0,0,0,0.7);
 	padding: 15px;
-	padding-bottom: 25px;
+	padding-bottom: 5px;
+}
+
+.standings_box .title span {
+	color: rgba(0,0,0,0.5);
+	font-size: 18px;
 }
 
 .standings_box .title .league_icon {
@@ -302,6 +307,8 @@ button.esports_button:hover {
 
 .standings_box table.standings td {
 	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 .standings_box table.standings tr {
