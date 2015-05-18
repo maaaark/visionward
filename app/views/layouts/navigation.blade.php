@@ -57,8 +57,13 @@
     <ul class="hidden-xs hidden-sm right_navigation">
         <li>
             @if(Auth::check())
-                <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="20" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
-                <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="20" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
+                <a style="padding: 3px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
+                <a style="padding: 3px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="40" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
+                <ul class="sub_submenu_mobile">
+                    <li><a href="/teams">Profil</a></li>
+                    <li><a href="/matches">Einstellungen</a></li>
+                    <li><a href="/logout">Ausloggen</a></li>
+                </ul>
             @else
                 <a href="/login">LOGIN</a>
             @endif

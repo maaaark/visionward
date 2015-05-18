@@ -33,7 +33,7 @@ class AdminController extends \BaseController {
 
 		// if the validator fails, redirect back to the form
 		if ($validator->fails()) {
-			return Redirect::to('/admin')
+			return Redirect::to('/login')
 				->withErrors($validator) // send back all errors to the login form
 				->withInput(Input::except('password')); // send back the input (not the password) so that we can repopulate the form
 		} else {
@@ -51,12 +51,12 @@ class AdminController extends \BaseController {
 				// redirect them to the secure section or whatever
 				// return Redirect::to('secure');
 				// for now we'll just echo success (even though echoing in a controller is bad)
-				return Redirect::to("/admin");
+				return Redirect::to("/");
 
 			} else {	 	
 
 				// validation not successful, send back to form	
-				return Redirect::to('/admin');
+				return Redirect::to('/login');
 
 			}
 

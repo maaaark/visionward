@@ -37,14 +37,23 @@ class UsersController extends \BaseController {
         $input = Input::all();
         $validation = Validator::make($input, User::$rules);
 
+
+
         if ($validation->passes())
         {
-            $user = User::create($input);
-            $user->password = Hash::make(Input::get('password'));
-            $user->save();
-            $user->addSummoner(Input::get('region'), Input::get('summoner_name'));
-
-            return Redirect::to('/users')->with("success", "User erstellt");
+                $user = User::create($input);
+                $summoner_found = $user->addSummoner(Input::get('region'), Input::get('summoner_name'), $user);
+                if($summoner_found) {
+                    $user->password = Hash::make(Input::get('password'));
+                    $user->save();
+                    return Redirect::to('/')->with("success", "User erstellt");
+                } else {
+                    $messages = $validation->messages();
+                    return Redirect::to("/register")
+                        ->withInput()
+                        ->withErrors($validation)
+                        ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
+                }
         } else {
             $messages = $validation->messages();
             return Redirect::to("/register")
@@ -95,8 +104,7 @@ class UsersController extends \BaseController {
     public function doLogin()
     {
         // validate the info, create rules for the inputs
-        $rules = array(
-        );
+        $rules = array();
 
         // run the validation rules on the inputs from the form
         $validator = Validator::make(Input::all(), $rules);
