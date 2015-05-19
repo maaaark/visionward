@@ -8,7 +8,8 @@
 		"way/generators": "~2.0",
 		"bkwld/croppa": "~3.0",
 		"greggilbert/recaptcha": "1.*",
-		"roumen/sitemap": "2.4.15"
+		"roumen/sitemap": "2.4.15",
+		"barryvdh/laravel-ide-helper": "~1.11"
 	},
 	"autoload": {
 		"classmap": [

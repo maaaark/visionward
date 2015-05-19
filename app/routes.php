@@ -57,6 +57,8 @@ Route::get('/user/{username}', 'UsersController@show');
 Route::get('/user', 'UsersController@index');
 Route::get('/login', 'UsersController@login');
 Route::get('/register', 'UsersController@create');
+Route::get('/einstellungen', 'UsersController@settings');
+Route::get('/einstellungen/save', 'UsersController@save_settings');
 Route::post('/register/save', 'UsersController@save');
 Route::post('/account/update', 'UsersController@updateAccount');
 

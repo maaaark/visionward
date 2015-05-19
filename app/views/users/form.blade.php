@@ -1,3 +1,4 @@
+@if(!$user)
 <h2 class="headline_no_border">Account angaben</h2>
 <table class="table table-striped">
     <tr>
@@ -14,8 +15,19 @@
     </tr>
 </table>
 <br/>
+@endif
 <h2 class="headline_no_border">Summoner Informationen</h2>
 <table class="table table-striped">
+    @if($user->summoner_veryfied == 1)
+        <tr>
+            <td width="200"><strong>Summoner Name</strong></td>
+                <td>{{ Auth::user()->summoner->name }}</td>
+        </tr>
+        <tr>
+            <td width="200"><strong>Server Region</strong></td>
+            <td>{{ Auth::user()->summoner->region }}</td>
+        </tr>
+    @else
     <tr>
         <td width="200"><strong>Summoner Name</strong></td>
         @if(Auth::check() && Auth::user()->summoner)
@@ -32,6 +44,27 @@
                 <option value="na">Nordamerika</option>
             </select>
     </tr>
+    @endif
+    @if($user)
+        @if($user->summoner_veryfied == 1)
+            <tr>
+                <td><strong>Summoner</strong></td>
+                <td>Verifiziert</td>
+            </tr>
+        @else
+            <tr>
+                <td><strong>Bestätigungs Code</strong></td>
+                <td>
+                    {{ $user->verify_string }}<br/>
+                    <br/>
+                    Benenne eine Runenseite in den oben stehenden Code um und speichere sie.<br/>
+                    <br/>
+                    Nach dem speichern, verifiziere deinen Summoner:<br/>
+                    <a href="/verify_summoner" class="btn btn-primary">Summoner verifizieren</a>
+                </td>
+            </tr>
+        @endif
+    @endif
     <tr>
         <td width="200"><strong>Beschreibung</strong></td>
         <td>{{ Form::textarea('description', Input::old('description'),  array('class' => 'form-control')) }}</td>

@@ -33,6 +33,19 @@ class UsersController extends \BaseController {
         return View::make("users.create");
     }
 
+    public function settings() {
+        if(Auth::check()) {
+            $user = Auth::user();
+            return View::make("users.settings", compact('user'));
+        } else {
+            return Redirect::to('/login')->with("error", "Bitte einloggen.");
+        }
+    }
+
+    public function save_settings() {
+
+    }
+
     public function save() {
         $input = Input::all();
         $validation = Validator::make($input, User::$rules);
@@ -45,8 +58,9 @@ class UsersController extends \BaseController {
                 $summoner_found = $user->addSummoner(Input::get('region'), Input::get('summoner_name'), $user);
                 if($summoner_found) {
                     $user->password = Hash::make(Input::get('password'));
+                    $user->verify_string = str_random(10);
                     $user->save();
-                    return Redirect::to('/')->with("success", "User erstellt");
+                    return Redirect::to('/login')->with("success", "User erstellt - Bitte einloggen");
                 } else {
                     $messages = $validation->messages();
                     return Redirect::to("/register")
