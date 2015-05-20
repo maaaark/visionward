@@ -43,7 +43,45 @@ class UsersController extends \BaseController {
     }
 
     public function save_settings() {
+        if(Auth::check()) {
+            $user = Auth::user();
+            return View::make("users.settings", compact('user'));
+        } else {
+            return Redirect::to('/login')->with("error", "Bitte einloggen.");
+        }
+    }
 
+    public function verify_summoner() {
+        if (Auth::check())
+        {
+            $user = User::find(Auth::user()->id);
+            if($user->summoner_veryfied == 0) {
+                $api_key = Config::get('api.key');
+                $summoner_data = "https://".$user->region.".api.pvp.net/api/lol/".$user->region."/v1.4/summoner/".$user->summoner->summonerid."/runes?api_key=".$api_key;
+                $json = @file_get_contents($summoner_data);
+                if($json === FALSE) {
+                    Session::flash('message', 'No Summoner found');
+                    return Redirect::to('/einstellungen');
+                } else {
+                    $obj = json_decode($json, true);
+                    $runes = $obj[$user->summoner->summonerid]["pages"];
+
+                    foreach($runes as $page) {
+                        if($page["name"] == $user->verify_string) {
+                            $user->summoner_veryfied = 1;
+                            $user->save();
+                            return Redirect::to('/einstellungen')->with("success", "Summoner wurde verifiziert!");
+                        }
+                    }
+                }
+            } else {
+                // No correct summoner status
+                return View::make('users.verify', compact('user', 'runes'));
+            }
+            return View::make('users.verify', compact('user', 'runes'));
+        } else {
+            return Redirect::to('/login')->with("error", "Bitte einloggen.");
+        }
     }
 
     public function save() {
