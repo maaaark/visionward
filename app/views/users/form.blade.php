@@ -1,4 +1,4 @@
-@if(!$user)
+@if(!Auth::check())
 <h2 class="headline_no_border">Account angaben</h2>
 <table class="table table-striped">
     <tr>
@@ -18,7 +18,7 @@
 @endif
 <h2 class="headline_no_border">Summoner Informationen</h2>
 <table class="table table-striped">
-    @if($user->summoner_veryfied == 1)
+    @if(Auth::check() && Auth::user()->summoner_veryfied == 1)
         <tr>
             <td width="200"><strong>Summoner Name</strong></td>
                 <td>{{ Auth::user()->summoner->name }}</td>
@@ -45,8 +45,8 @@
             </select>
     </tr>
     @endif
-    @if($user)
-        @if($user->summoner_veryfied == 1)
+    @if(Auth::user())
+        @if(Auth::user()->summoner_veryfied == 1)
             <tr>
                 <td><strong>Summoner</strong></td>
                 <td>Verifiziert</td>
@@ -55,7 +55,7 @@
             <tr>
                 <td><strong>Bestätigungs Code</strong></td>
                 <td>
-                    {{ $user->verify_string }}<br/>
+                    {{ Auth::user()->verify_string }}<br/>
                     <br/>
                     Benenne eine Runenseite in den oben stehenden Code um und speichere sie.<br/>
                     <br/>
