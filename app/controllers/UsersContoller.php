@@ -73,10 +73,12 @@ class UsersController extends \BaseController {
                         }
                     }
                 }
-                return Redirect::to('/register/step2', compact('runes'));
+                return Redirect::to('/register/step2')->with("error", "Keine Runenseite mit dem Namen gefunden.");
         } else {
             return Redirect::to('/register/step1')->with("error", "Session abgelaufen.");
         }
+
+        return Redirect::to('/register/step1')->with("error", "Session abgelaufen.");
     }
 
     public function step1() {
