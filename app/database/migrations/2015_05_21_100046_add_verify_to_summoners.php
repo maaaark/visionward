@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddLevelToUsers extends Migration {
+class AddVerifyToSummoners extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,9 @@ class AddLevelToUsers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::connection('mysql2')->table('users', function(Blueprint $table)
+		Schema::connection('mysql2')->table('summoners', function(Blueprint $table)
 		{
-			$table->integer("level")->default(1);
-
+			$table->integer("verify")->default(0);
 		});
 	}
 
@@ -27,7 +26,7 @@ class AddLevelToUsers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('users', function(Blueprint $table)
+		Schema::table('summoners', function(Blueprint $table)
 		{
 			
 		});

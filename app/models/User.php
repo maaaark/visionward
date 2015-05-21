@@ -25,6 +25,16 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
         'region'=>'required',
         'password' => 'confirmed|min:5'
 	);
+
+    public static $step3 = array(
+        'email'=>'required|unique:users',
+        'password' => 'confirmed|min:5'
+    );
+
+    public static $step1 = array(
+        'summoner_name'=>'required',
+        'region'=>'required'
+    );
 	
 	/**
 	 * The attributes excluded from the model's JSON form.
