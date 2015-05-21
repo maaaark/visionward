@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5b68f895-2fff-4951-aaaf-e12b147c898a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/users/form.blade.php" afterPath="$PROJECT_DIR$/app/views/users/form.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/UsersContoller.php" afterPath="$PROJECT_DIR$/app/controllers/UsersContoller.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/navigation.blade.php" afterPath="$PROJECT_DIR$/app/views/layouts/navigation.blade.php" />
     </list>
     <ignored path="visionward.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -53,6 +54,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="UsersContoller.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/UsersContoller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.08163265" vertical-offset="822" max-vertical-offset="3000">
+              <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="index.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/esports/index.blade.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -85,11 +96,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="form.blade.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/users/form.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.77040815" vertical-offset="582" max-vertical-offset="1170">
+            <state vertical-scroll-proportion="-18.875" vertical-offset="582" max-vertical-offset="1170">
               <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navigation.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/views/layouts/navigation.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.25" vertical-offset="810" max-vertical-offset="1755">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -136,13 +157,13 @@
         <option value="$PROJECT_DIR$/app/database/migrations/2015_05_19_170340_add_summoner_verify_to_users.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/views/users/verify_summoner.blade.php" />
-        <option value="$PROJECT_DIR$/app/controllers/UsersContoller.php" />
         <option value="$PROJECT_DIR$/app/views/users/edit.blade.php" />
         <option value="$PROJECT_DIR$/app/views/posts/comments.blade.php" />
-        <option value="$PROJECT_DIR$/app/views/layouts/navigation.blade.php" />
         <option value="$PROJECT_DIR$/public/css/style.css" />
         <option value="$PROJECT_DIR$/app/views/stats/header.blade.php" />
         <option value="$PROJECT_DIR$/app/views/users/form.blade.php" />
+        <option value="$PROJECT_DIR$/app/views/layouts/navigation.blade.php" />
+        <option value="$PROJECT_DIR$/app/controllers/UsersContoller.php" />
       </list>
     </option>
   </component>
@@ -303,7 +324,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="stats" />
+              <option name="myItemId" value="layouts" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -575,13 +596,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/admin/users/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7368421" vertical-offset="0" max-vertical-offset="589">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/admin/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0950764" vertical-offset="0" max-vertical-offset="589">
@@ -880,14 +894,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/UsersContoller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23469388" vertical-offset="747" max-vertical-offset="3000">
-          <caret line="59" column="18" selection-start-line="59" selection-start-column="18" selection-end-line="59" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/posts/comments.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.20918368" vertical-offset="132" max-vertical-offset="720">
@@ -908,14 +914,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="612">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/navigation.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.05102041" vertical-offset="0" max-vertical-offset="1755">
-          <caret line="2" column="117" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="117" />
           <folding />
         </state>
       </provider>
@@ -956,8 +954,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/users/form.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.77040815" vertical-offset="582" max-vertical-offset="1170">
+        <state vertical-scroll-proportion="-18.875" vertical-offset="582" max-vertical-offset="1170">
           <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/navigation.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-6.25" vertical-offset="810" max-vertical-offset="1755">
+          <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/SummonersController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68877554" vertical-offset="30" max-vertical-offset="3225">
+          <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="31" selection-end-column="76" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/UsersContoller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08163265" vertical-offset="822" max-vertical-offset="3000">
+          <caret line="58" column="50" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
           <folding />
         </state>
       </provider>

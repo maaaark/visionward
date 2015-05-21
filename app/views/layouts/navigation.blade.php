@@ -69,7 +69,7 @@
                 -->
                 <ul class="sub_submenu" style="">
                     <li>
-                        <a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="25" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
+                        <a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
                         <a style="padding: 0px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
                         <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}">Profil</a>
                     </li>

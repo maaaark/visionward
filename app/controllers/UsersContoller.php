@@ -57,14 +57,14 @@ class UsersController extends \BaseController {
             $user = User::find(Auth::user()->id);
             if($user->summoner_veryfied == 0) {
                 $api_key = Config::get('api.key');
-                $summoner_data = "https://".$user->region.".api.pvp.net/api/lol/".$user->region."/v1.4/summoner/".$user->summoner->summonerid."/runes?api_key=".$api_key;
+                $summoner_data = "https://".$user->summoner->region.".api.pvp.net/api/lol/".$user->summoner->region."/v1.4/summoner/".$user->summoner_id."/runes?api_key=".$api_key;
                 $json = @file_get_contents($summoner_data);
                 if($json === FALSE) {
                     Session::flash('message', 'No Summoner found');
                     return Redirect::to('/einstellungen');
                 } else {
                     $obj = json_decode($json, true);
-                    $runes = $obj[$user->summoner->summonerid]["pages"];
+                    $runes = $obj[$user->summoner_id]["pages"];
 
                     foreach($runes as $page) {
                         if($page["name"] == $user->verify_string) {
