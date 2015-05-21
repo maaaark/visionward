@@ -27,7 +27,7 @@
     <h2 class="headline">Bestätigungs Code</h2>
     <h3>{{Session::get('verify_code')}}</h3>
     Benenne eine Runenseite in den oben stehenden Code um und speichere sie.<br/>
-    Nach dem speichern, verifiziere deinen Summoner:<br/>
+    Nach dem speichern, verifiziere deinen Summoner mit einem klick auf den Button.<br/>
     <br/>
     <a href="/verify_summoner" class="btn btn-primary">Summoner verifizieren</a>
 @stop

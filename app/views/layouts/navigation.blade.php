@@ -8,7 +8,6 @@
 				<li><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
 						<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
-						<li><a href="/teams">CHAMPIONS</a></li>
 						<li><a href="/matches">VIDEOS</a></li>
 					</ul>
 				</li>
@@ -36,7 +35,6 @@
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
-				<li><a class="inactive" href="#">CHAMPIONS</a></li>
 				<li><a href="/categories/videos">VIDEOS</a></li>
 			</ul>
 		</li>
@@ -73,7 +71,7 @@
                         <a style="padding: 0px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
                         <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}">Profil</a>
                     </li>
-                    <li><a href="/einstellungen">Einstellungen</a></li>
+                    <!-- <li><a href="/einstellungen">Einstellungen</a></li> -->
                     @if(Auth::user()->hasRole("admin"))
                         <li><a href="/admin">Admin Panel</a></li>
                     @endif

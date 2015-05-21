@@ -5,9 +5,8 @@
 
 
     <h2 class="headline">Fortschritt</h2>
-
     <div class="progress">
-        <div class="progress-bar" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+        <div class="progress-bar" role="progressbar" aria-valuenow="33" aria-valuemin="0" aria-valuemax="100" style="width: 33%;">
             Schritt 1 von 3
         </div>
     </div>

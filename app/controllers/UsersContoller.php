@@ -109,18 +109,24 @@ class UsersController extends \BaseController {
 
         if ($validation->passes())
         {
-            $summoner = new Summoner();
-            $summoner_found = $summoner->addSummoner(Input::get('region'), Input::get('summoner_name'));
-            if($summoner_found) {
-                Session::put('verify_code', str_random(10));
-                return Redirect::to('/register/step2')->with("success", "Summoner bitte verifizieren");
+            $check_summoner = Summoner::where("name","=", Input::get('summoner_name'))->where("verify","=", 1)->first();
+            if(!$check_summoner) {
+                $summoner = new Summoner();
+                $summoner_found = $summoner->addSummoner(Input::get('region'), Input::get('summoner_name'));
+                if($summoner_found) {
+                    Session::put('verify_code', str_random(10));
+                    return Redirect::to('/register/step2')->with("success", "Summoner bitte verifizieren");
+                } else {
+                    $messages = $validation->messages();
+                    return Redirect::to("/register/step1")
+                        ->withInput()
+                        ->withErrors($validation)
+                        ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
+                }
             } else {
-                $messages = $validation->messages();
-                return Redirect::to("/register/step1")
-                    ->withInput()
-                    ->withErrors($validation)
-                    ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
+                return Redirect::to('/register/step1')->with("error", "Dieser Summoner gehört bereits zu einem Account");
             }
+
         } else {
             $messages = $validation->messages();
             return Redirect::to("/register/step1")
