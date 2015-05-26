@@ -134,4 +134,12 @@ class EsportsController extends BaseController {
 			"team2_points"		 => $team2_points
 		));
 	}
+
+    public function teamDetails($team_acronym)
+    {
+        $team = EsportsTeam::where("acronym", "=", strtoupper($team_acronym))->first();
+        return View::make('esports.team', array(
+            "team" 	  		 => $team,
+        ));
+    }
 }
