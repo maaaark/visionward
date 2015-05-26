@@ -14,59 +14,68 @@
 @stop
 
 @section('content')
-	<h1>Turnierliste - {{ $league->label }}</h1>
-	<div id="league_tournaments_holder" class="league_tournaments">
-		<div style="padding: 20px; text-align: center; color: rgba(0,0,0,0.5);">Es wurden noch keine Turniere zu dieser Liga bekanntgegeben</div>
-	</div>
+    <br/>
+    <div class="row">
+        <div class="col-md-3">
+            <h2 class="headline">Turnierliste - {{ $league->label }}</h2>
+            <div id="league_tournaments_holder" class="league_tournaments">
+                <div style="padding: 20px; text-align: center; color: rgba(0,0,0,0.5);">Es wurden noch keine Turniere zu dieser Liga bekanntgegeben</div>
+            </div>
 
-	<script>
-		var tournament_structure 	 = false;
-		var tournament_active		 = false;
-		var league_holder 			 = $("#league_tournaments_holder");
-		var league_tournament_count  = 0;
-		function addTournament2DOM(season, id, name){
-			if(tournament_structure == false){
-				html  = '<div id="tournament_tabs" class="tournament_tabs"></div>';
-				html += '<div id="tournament_contents" class="tournament_contents"><div style="clear:both;"></div></div>';
-				league_holder.html(html);
-				tournament_structure = true;
-			}
+            <script>
+                var tournament_structure 	 = false;
+                var tournament_active		 = false;
+                var league_holder 			 = $("#league_tournaments_holder");
+                var league_tournament_count  = 0;
+                function addTournament2DOM(season, id, name){
+                    if(tournament_structure == false){
+                        html  = '<div id="tournament_tabs" class="tournament_tabs"></div>';
+                        html += '<div id="tournament_contents" class="tournament_contents"><div style="clear:both;"></div></div>';
+                        league_holder.html(html);
+                        tournament_structure = true;
+                    }
 
-			season_tab     = league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']");
-			if(typeof season_tab.html() == "undefined"){
-				league_tournament_count++;
-				html  = "<div class='tab' data-season='"+season.trim()+"'>"+season.trim()+"</div>";
-				league_holder.find("#tournament_tabs").html(league_holder.find("#tournament_tabs").html() + html);
+                    season_tab     = league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']");
+                    if(typeof season_tab.html() == "undefined"){
+                        league_tournament_count++;
+                        html  = "<div class='tab' data-season='"+season.trim()+"'>"+season.trim()+"</div>";
+                        league_holder.find("#tournament_tabs").html(league_holder.find("#tournament_tabs").html() + html);
 
-				html  = "<div class='tab_content' data-season='"+season.trim()+"'></div>";
-				league_holder.find("#tournament_contents").append(html);
-			}
+                        html  = "<div class='tab_content' data-season='"+season.trim()+"'></div>";
+                        league_holder.find("#tournament_contents").append(html);
+                    }
 
-			// Link setzen
-			html = "<div data-season='"+season+"'><a href='/esports/{{ trim($league_url) }}/tournament/"+id+"'>"+name+"</a></div>";
-			league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").append(html);
+                    // Link setzen
+                    html = "<div data-season='"+season+"'><a href='/esports/{{ trim($league_url) }}/tournament/"+id+"'>"+name+"</a></div>";
+                    league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").append(html);
 
-			if(tournament_active == false){
-				league_holder.find("#tournament_contents .active").removeClass("active");
-				league_holder.find("#tournament_tabs .active").removeClass("active");
-				league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").addClass("active");
-				league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']").addClass("active");
-				tournament_active = true;
-			}
-		}
+                    if(tournament_active == false){
+                        league_holder.find("#tournament_contents .active").removeClass("active");
+                        league_holder.find("#tournament_tabs .active").removeClass("active");
+                        league_holder.find("#tournament_contents .tab_content[data-season='"+season.trim()+"']").addClass("active");
+                        league_holder.find("#tournament_tabs .tab[data-season='"+season.trim()+"']").addClass("active");
+                        tournament_active = true;
+                    }
+                }
 
-		@foreach($league_tournaments as $tournament)
-			addTournament2DOM("{{ $tournament["season"] }}", {{ $tournament["tournament_id"] }}, "{{ $tournament["name"] }}");
-		@endforeach
+                @foreach($league_tournaments as $tournament)
+                addTournament2DOM("{{ $tournament["season"] }}", {{ $tournament["tournament_id"] }}, "{{ $tournament["name"] }}");
+                @endforeach
 
-		$(document).ready(function(){
-			$("#league_tournaments_holder #tournament_tabs .tab").click(function(){
-				league_holder.find("#tournament_contents .active").removeClass("active");
-				league_holder.find("#tournament_tabs .active").removeClass("active");
+                $(document).ready(function(){
+                            $("#league_tournaments_holder #tournament_tabs .tab").click(function(){
+                                league_holder.find("#tournament_contents .active").removeClass("active");
+                                league_holder.find("#tournament_tabs .active").removeClass("active");
 
-				$(this).addClass("active");
-				league_holder.find("#tournament_contents .tab_content[data-season='"+$(this).attr("data-season").trim()+"']").addClass("active");
-			});
-		});
-	</script>
+                                $(this).addClass("active");
+                                league_holder.find("#tournament_contents .tab_content[data-season='"+$(this).attr("data-season").trim()+"']").addClass("active");
+                            });
+                        });
+            </script>
+        </div>
+        <div class="col-md-9">
+            <h2 class="headline">NA LCS Spring Split</h2>
+        </div>
+    </div>
+
 @stop

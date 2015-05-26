@@ -1,7 +1,19 @@
 @extends('layouts.header_esports')
 @section('title', "Esports")
+@section('opener')
+   <div class="esports_opener_navi">
+        <div class="holder">
+            <a href="/esports/{{ str_replace(" ", "_", trim("LCS")) }}">
+                <div class="league_icon" style="background-image: url('http://riot-web-cdn.s3-us-west-1.amazonaws.com/lolesports/s3fs-public/EU_LCS_Logo_RGB_72dpi.png');"></div>
+            </a>
+            <div class="league_name">
+                League of Legends eSports
+            </div>
+        </div>
+   </div>
+@stop
 @section('content')
-<h1>Esports</h1>
+
 	@if(isset($standings) AND $standings AND count($standings) > 0)
 		<?php
 			$col_size = floor(12 / count($standings));
@@ -19,7 +31,6 @@
 								<thead>
 									<th colspan="3"></th>
 									<th colspan="2">Spiele</th>
-									<th>Punkte</th>
 								</thead>
 								<tbody>
 								@foreach($standing["standings"] as $element)
@@ -27,10 +38,9 @@
 									<tr>
 										<td class="team_icon"><img src="{{ $team_data["logo_riot"] }}" class="team_icon_element"></td>
 										<td class="rank">{{ $element->rank }}.</td>
-										<td class="team_name"><a href="#">{{ $team_data["name"] }}</a></td>
+										<td class="team_name"><a href="/esports/team/{{ strtolower($team_data["acronym"]) }}">{{ $team_data["name"] }}</a></td>
 										<td class="wins">{{ $element->wins }}</td>
 										<td class="losses">{{ $element->losses }}</td>
-										<td class="points">{{ intval($element->wins * 3) }}</td>
 									</tr>
 								@endforeach
 								</tbody>
@@ -47,32 +57,32 @@
 	@endif
 
 	<div class="league_images_holder">
-		<div class="name">
-			Ligen <span>> Anklicken f&uuml;r mehr Infos</span>
-		</div>
-		<div class="holder">
+		<h2 class="headline">
+			Ligen
+		</h2>
+		<div style="text-align: center;">
 		@foreach($leagues as $league)
-			<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}">
-				<img src="{{ $league["league_image"] }}">
+			<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}" style="margin-right: 10px;">
+				<img src="{{ $league["league_image"] }}" width="85" height="85">
 			</a>
 		@endforeach
 		</div>
 	</div>
-
+    <br/>
 	<div class="row">
 		<div class="col-md-6">
 			<div class="standings_box">
-				<div class="title">
+				<h2 class="headline">
 					Die letzten Spiele
-				</div>
-				<div style="padding: 15px;">
+				</h2>
+				<div>
 				@if(isset($recent_matches) AND $recent_matches AND count($recent_matches) > 0)
 					@foreach($recent_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
 								Best of {{ $match->max_games }}
 								@if($match->date)
-									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
+									<div class="date">{{ date("d.m. - H:i", strtotime($match->date)) }} Uhr</div>
 								@endif
 							</div>
 							<div class="match_content">
@@ -87,17 +97,15 @@
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
-											<div>3 gewonnen</div>
-											<div>2 verloren</div>
-											<div>9 Punkte</div>
+											<div>{{ $team1->wins_riot }} gewonnen</div>
+											<div>{{ $team1->losses_riot }} verloren</div>
 										</div>
 									</div>
 									<div class="team1_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
 										<div class="win_infos">
-											<div>3 gewonnen</div>
-											<div>2 verloren</div>
-											<div>9 Punkte</div>
+											<div>{{ $team2->wins_riot }} gewonnen</div>
+											<div>{{ $team2->losses_riot }} verloren</div>
 										</div>
 									</div>
 									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
@@ -114,17 +122,17 @@
 
 		<div class="col-md-6">
 			<div class="standings_box">
-				<div class="title">
+                <h2 class="headline">
 					Die n&auml;chsten Spiele
-				</div>
-				<div style="padding: 15px;">
+				</h2>
+				<div>
 				@if(isset($upcoming_matches) AND $upcoming_matches AND count($upcoming_matches) > 0)
 					@foreach($upcoming_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
 								Best of {{ $match->max_games }}
 								@if($match->date)
-									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
+									<div class="date">{{ date("d.m. - H:i", strtotime($match->date)) }} Uhr</div>
 								@endif
 							</div>
 							<div class="match_content">
@@ -139,17 +147,15 @@
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
-											<div>3 gewonnen</div>
-											<div>2 verloren</div>
-											<div>9 Punkte</div>
+                                            <div>0 gewonnen</div>
+                                            <div>0 verloren</div>
 										</div>
 									</div>
 									<div class="team1_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
 										<div class="win_infos">
-											<div>3 gewonnen</div>
-											<div>2 verloren</div>
-											<div>9 Punkte</div>
+                                            <div>0 gewonnen</div>
+                                            <div>0 verloren</div>
 										</div>
 									</div>
 									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
@@ -165,7 +171,7 @@
 		</div>
 	</div>
 
-	<h1>Esports-News</h1>
+	<h2 class="headline">Esports-News</h2>
 	<ul class="news_list">
 	<?php $post_count = 1; ?>
 	@foreach($category->posts as $post)
