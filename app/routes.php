@@ -26,13 +26,13 @@ Route::resource('vips', 'VipsController');
 Route::resource('articles', 'ArticlesController');
 
 // Url-Analysieren und TLD+Domain-Namen rausfinden
-//$parsedUrl = parse_url(Request::root());
-//$host_data = explode('.', $parsedUrl['host']);
-//$main_url  = $host_data[count($host_data)-2];
-//$tld       = $host_data[count($host_data)-1];
-//Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), function(){
-//	include 'routes_stats.php';
-//});
+$parsedUrl = parse_url(Request::root());
+$host_data = explode('.', $parsedUrl['host']);
+$main_url  = $host_data[count($host_data)-2];
+$tld       = $host_data[count($host_data)-1];
+Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), function(){
+	include 'routes_stats.php';
+});
 
 
 Route::get('/', 'PostController@index');
@@ -44,6 +44,11 @@ Route::get('/news/archive', 'PostController@archive');
 Route::get('/impressum', 'HomeController@impressum');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 Route::post('/feedback', array('uses' => 'HomeController@feedback'));
+
+// Champion-New
+Route::get("/champion", "ChampionsNewController@index");
+Route::get("/champion/{champion_key}", "ChampionsNewController@detail");
+Route::get("/champion/{champion_key}/{region}", "ChampionsNewController@detail");
 
 // Summoner
 Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
