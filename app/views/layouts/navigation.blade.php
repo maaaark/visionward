@@ -8,7 +8,6 @@
 				<li><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
 						<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
-						<li><a href="/teams">CHAMPIONS</a></li>
 						<li><a href="/matches">VIDEOS</a></li>
 					</ul>
 				</li>
@@ -36,7 +35,6 @@
 		<li {{ Request::is('guides') ? ' class="active"' : '' }}><a href="#">GUIDES&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
 				<li><a href="/articles/1/jungle-guide-420">SEASON 5 JUNGLE</a></li>
-				<li><a class="inactive" href="#">CHAMPIONS</a></li>
 				<li><a href="/categories/videos">VIDEOS</a></li>
 			</ul>
 		</li>
@@ -57,19 +55,37 @@
     <ul class="hidden-xs hidden-sm right_navigation">
         <li>
             @if(Auth::check())
-                <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="20" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
-                <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="20" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
-            @else
-                <a href="/login">LOGIN</a>
-            @endif
-        </li>
-        <li>
-            @if(Auth::check())
                 <span class="badge" style="margin-right: 10px;">Level {{ Auth::user()->userlevel->level }}</span>
                 <span style="width: 100%; text-align: center;">{{ round(((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100,2) }}% ({{ Auth::user()->exp - Auth::user()->userlevel->start_exp }}/{{ Auth::user()->userlevel->end_exp }} EXP)</span>
                 <!--<div class="progress-bar" role="progressbar" aria-valuenow="{{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}" aria-valuemin="0" aria-valuemax="100" style="width: {{((Auth::user()->exp - Auth::user()->userlevel->start_exp)/Auth::user()->userlevel->end_exp)*100}}%;"></div>
             -->
             @endif
+
+            @if(Auth::check())
+                <!--<a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="25" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
+                <a style="padding: 0px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
+                -->
+                <ul class="sub_submenu" style="">
+                    <li>
+                        <a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
+                        <a style="padding: 0px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
+                        <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}">Profil</a>
+                    </li>
+                    <!-- <li><a href="/einstellungen">Einstellungen</a></li> -->
+                    @if(Auth::user()->hasRole("admin"))
+                        <li><a href="/admin">Admin Panel</a></li>
+                    @endif
+                    <li><a href="/logout">Ausloggen</a></li>
+                </ul>
+            @else
+                <a href="/login">LOGIN</a>
+            @endif
+        </li>
+        @if(!Auth::check())
+            <li><a href="/register">REGISTRIEREN</a></li>
+        @endif
+        <li>
+
         </li>
         <li>
             <a href="#">SUCHE</a>

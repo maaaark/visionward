@@ -1,5 +1,5 @@
 @extends('layouts.small_header')
-@section('title', "User bearbeiten - ".$user->username)
+@section('title', "User bearbeiten")
 @section('content')
     {{ Form::model($user, ['action' => ['UsersController@updateAccount'], 'method' => 'post']) }}
     @include('users.form')

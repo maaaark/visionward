@@ -227,6 +227,9 @@ a.button:hover {
 .navigation ul li:hover ul.submenu_mobile li {
 	clear: both;
 }
+.sub_submenu li a {
+    display: block;
+}
 .navigation ul li:hover ul.submenu_mobile ul.sub_submenu_mobile li {
 	margin-right: 0;
 	padding-right: 0;

@@ -19,6 +19,8 @@
 	<link rel="stylesheet" href="/css/esports/esports_main.css">
 	<link rel="stylesheet" href="/css/esports/league.css">
 
+	@yield('head_addition')
+
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="/css/feedback.min.css" />

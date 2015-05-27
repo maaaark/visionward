@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - visionward@localhost" uuid="cc7829dd-6dc5-4830-b5db-a1c145b6b8c9">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>visionward.*</schema-pattern>
+      <default-schemas>visionward.*</default-schemas>
+    </data-source>
+    <data-source name="MySQL - networkDatabase@localhost" uuid="29b5feea-576d-4f5a-81e8-9f11aebda3f8">
+      <secret-storage>memory</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>networkDatabase.*</schema-pattern>
+      <default-schemas>networkDatabase.*</default-schemas>
+    </data-source>
+  </component>
+</project>
