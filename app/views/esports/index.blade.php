@@ -70,7 +70,8 @@
 					@foreach($recent_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
-								Best of {{ $match->max_games }}
+								<?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
+								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
 								@if($match->date)
 									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
 								@endif
@@ -122,7 +123,8 @@
 					@foreach($upcoming_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
-								Best of {{ $match->max_games }}
+                        <?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
+								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
 								@if($match->date)
 									<div class="date">{{ date("H:i", strtotime($match->date)) }} Uhr</div>
 								@endif
