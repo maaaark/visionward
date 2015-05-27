@@ -27,7 +27,13 @@
 				</tr>
 				<tr>
 					<td>Winrate</td>
-					<td class="val">{{ str_replace(".", ",", round($stats["wins"] / $stats["matches_count"] * 100, 1)) }}</td>
+					<td class="val">
+                  @if(isset($stats["matches_count"]) AND $stats["matches_count"] > 0)
+                     {{ str_replace(".", ",", round($stats["wins"] / $stats["matches_count"] * 100, 1)) }}
+                  @else
+                     0
+                  @endif
+               </td>
 				</tr>
 				<tr>
 					<td>Kills</td>
