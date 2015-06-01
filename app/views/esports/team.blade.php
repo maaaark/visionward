@@ -13,7 +13,45 @@
     </div>
 @stop
 @section('content')
+    <h1>{{ $team->name }}</h1>
 
-    {{ $team->name }}
+    <h2 class="headline" style="margin-top: 25px;">Start Roster</h2>
+    @foreach($player as $pl)
+        @if($pl["is_starter"] == 1)
+        <div class="team_player_holder">
+            <div class="team_player">
+                @if(isset($pl["pic"]) AND trim($pl["pic"]) != "")
+                    <div class="pic" style="background-image: url({{ $pl["pic"] }});"></div>
+                @else
+                    <div class="pic" style="background-image: url(http://riot-web-cdn.s3-us-west-1.amazonaws.com/lolesports/s3fs-public/styles/grid_medium_wide/public/templateSilhoutte_4.jpg);"></div>
+                @endif
+                <div class="name">
+                    {{ $pl["name"] }}
+                    <div class="role">{{ $pl["role"] }}</div>
+                </div>
+            </div>
+        </div>
+        @endif
+    @endforeach
+    <div style="clear: both;"></div>
 
+    <h2 class="headline" style="margin-top: 25px;">Ersatzspieler</h2>
+    @foreach($player as $pl)
+        @if($pl["is_starter"] != 1)
+        <div class="team_player_holder">
+            <div class="team_player">
+                @if(isset($pl["pic"]) AND trim($pl["pic"]) != "")
+                    <div class="pic" style="background-image: url({{ $pl["pic"] }});"></div>
+                @else
+                    <div class="pic" style="background-image: url(http://riot-web-cdn.s3-us-west-1.amazonaws.com/lolesports/s3fs-public/styles/grid_medium_wide/public/templateSilhoutte_4.jpg);"></div>
+                @endif
+                <div class="name">
+                    {{ $pl["name"] }}
+                    <div class="role">{{ $pl["role"] }}</div>
+                </div>
+            </div>
+        </div>
+        @endif
+    @endforeach
+    <div style="clear: both;"></div>
 @stop
