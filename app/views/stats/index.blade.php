@@ -20,45 +20,42 @@
 @stop
 
 @section('content')
-   <div class="row">
-      <div class="col-md-4">
-         <h1>Live-Game Infos</h1>
-         Hier muss noch ein Text hin
-      </div>
-      
-      <div class="col-md-4">
-         <h1>Spielverlauf</h1>
-         Hier muss auch noch ein text hin
-      </div>
-      
-      <div class="col-md-4">
-         <h1>Ranked Statistiken</h1>
-         Hier kommmt auch noch ein Text hin
-      </div>
-   </div>
-   
-	<!--<div class="col-md-6">
-		<h1>League of Legends News</h1>
-		<div class="summoner_stat_news_list">
-		@foreach($news_list as $news)
-         <div class="news_list_el">
-            <table style="width: 100%;">
-               <tr>
-                  <td class="news_pic"><a href="/news/{{ $news->id }}/{{ $news->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$news->image, null, 50)?>"></a></div>
-                  <td class="news_con">
-                     <div class="title"><a href="/news/{{ $news->id }}/{{ $news->slug }}">{{ $news->title }}</a></div>
-                     <div class="descr">{{ $news->excerpt }}</div>
-                  </td>
-               </tr>
-            </table>
-         </div>
-		@endforeach
+	<div class="row" style="margin-top: 30px;">
+		<div class="col-md-6 no_mobile">
+			<img src="{{ url('img/stats/live_game_preview.jpg') }}" style="width: 100%;">
+		</div>
+		<div class="col-md-6">
+			<div style="height: 30px;" class="no_mobile"></div>
+			<h2 class="headlin">Live-Game Preview</h2>
+			Erhalte einen detaillierten Einblick in das gegnerische Team.<br/>
+			Gebe einfach einen Beschw&ouml;rernamen in die Suche ein und nach wenigen Sekunden
+			stehen dir genaue Informationen wie Runen, Meisterschaften, Liga-Daten uvm. &uuml;ber<br/>
+			Mitspieler und Gegner zur Verf&uuml;gung.<br/>
+			<br/>
+			<b>Die Elo:</b><br/>
+			Desweiteren wird f&uuml;r jeden Beschw&ouml;rer und jedes Team die aktuelle Elo errechnet.
+			Diese ergibt sich aus der aktuellen Liga-Position, der Anzahl der gespielten Spiele und noch
+			einigen anderen Faktoren.
 		</div>
 	</div>
-	<div class="col-md-6">
-		<h1>League of Legends News</h1>
-		Hier erscheinen ein paar Links zu News
-	</div>-->
+
+	<div class="row left_on_mobile" style="margin-top: 30px;">
+		<div class="col-md-6">
+			<div style="height: 30px;" class="no_mobile"></div>
+			<h2 class="headlin">Ranglisten-Stats</h2>
+			Erhalte live Statistiken wie Durchschnittswerte, Win-/Playrates uvm. direkt in deinem Summoner-Profil.
+			Bei jeder aktualisierung deines Summoners werden deine Statistiken neu ermittelt und berechnet.<br/>
+			Desweiteren hast du die Möglichkeit deine Runen- und Meisterschaftsseiten kinderleicht mit anderen
+			Summonern vergleichen.<br/>
+			<br/>
+			&Uuml;ber deinen Spielverlauf kommst du zu Team-Mitgliedern und Gegnern von deinen letzten Spielen,
+			um zum Beispiel genaueres &uuml;ber deren Builds, Runen, Meisterschaften o.&auml;. zu erfahren.
+		</div>
+		<div class="col-md-6 no_mobile">
+			<img src="{{ url('img/stats/ranked_data_preview.jpg') }}" style="width: 100%;">
+		</div>
+	</div>
+
 	<script>
 		$(document).ready(function(){
 		   $(".search_dropdown").hover(
