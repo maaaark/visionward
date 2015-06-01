@@ -8,3 +8,5 @@ Thumbs.db
 /public/uploads
 /public/img/players/*
 /public/uploads/*
+/public/.htaccess
+/public/.passwd

@@ -1,21 +1,22 @@
 <IfModule mod_rewrite.c>
-	<IfModule mod_negotiation.c>
-    	Options -MultiViews
+        <IfModule mod_negotiation.c>
+        Options -MultiViews
     </IfModule>
 
     RewriteEngine On
 
     # Redirect Trailing Slashes...
-	RewriteRule ^(.*)/$ /$1 [L,R=301]
+        RewriteRule ^(.*)/$ /$1 [L,R=301]
 
-	# Handle Front Controller...
+        # Handle Front Controller...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
-	
-	RewriteCond %{HTTP_HOST} ^www\.flashignite\.com$
-	RewriteRule ^/?$ "http\:\/\/flashignite\.com\/" [R=301,L]
-	
-	RewriteCond %{HTTP_HOST} ^www\.flashignite\.de$
-	RewriteRule ^/?$ "http\:\/\/flashignite\.de\/" [R=301,L]
+
+        RewriteCond %{HTTP_HOST} ^www\.flashignite\.com$
+        RewriteRule ^/?$ "http\:\/\/flashignite\.com\/" [R=301,L]
+
+        RewriteCond %{HTTP_HOST} ^www\.flashignite\.de$
+        RewriteRule ^/?$ "http\:\/\/flashignite\.de\/" [R=301,L]
 </IfModule>
+
