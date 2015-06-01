@@ -165,10 +165,18 @@
 	<script>
 		console.log("asd");
 		@if($wrote_something_past == false && $wrote_something_upcoming == false)
-			console.log("test");
 			$("#matches_main_holder").html('<div style="padding: 20px;color: rgba(0,0,0,0.5);text-align: center;">Es wurden noch keine Spiele angek&uuml;ndigt :(</div>');
 		@elseif($wrote_something_past && $wrote_something_upcoming)
+			html  = '<div style="float: right;">';
+			html += '<button class="esports_button" onclick="$(\'.matches_holder.matches_upcoming\').hide();$(\'.matches_holder.matches_past\').show();">Gespielte Spiele anzeigen</button>';
+			html += '</div><h1>Kommende Spiele</h1>';
+			$(".matches_holder.matches_upcoming").html(html + $(".matches_holder.matches_upcoming").html());
 			$(".matches_holder.matches_upcoming").addClass("active");
+
+			html  = '<div style="float: right;">';
+			html += '<button class="esports_button" onclick="$(\'.matches_holder.matches_past\').hide();$(\'.matches_holder.matches_upcoming\').show();">Kommende Spiele anzeigen</button>';
+			html += '</div><h1>Gespielte Spiele</h1>';
+			$(".matches_holder.matches_past").html(html + $(".matches_holder.matches_past").html());
 		@else
 			@if($wrote_something_upcoming)
 				$("#matches_main_holder").html("<h1>Spiele {{ $tournament["name"] }} <span>> Kommende Spiele</h1>");

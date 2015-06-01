@@ -46,16 +46,19 @@ class EsportsController extends BaseController {
 		$league 	 = EsportsLeague::where("short_name", "=", trim($league_key))->first();
 
 		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
-		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
+		$tournament  = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
 
-		$standings = EsportsStandings::where("tournament_id", "=", $tournament_id)->get();
+		$standings   = EsportsStandings::where("tournament_id", "=", $tournament_id)->get();
+
+		$matches     = EsportsMatch::where("tournament_id", "=", $tournament_id)->get();
 
 		return View::make('esports.tournament.detail', array(
 			"league" 	  		 => $league,
 			"league_tournaments" => $league_tournaments,
 			"tournament" 		 => $tournament,
 			"league_url" 		 => $league_url,
-			"standings"			 => $standings
+			"standings"			 => $standings,
+			"matches"			 => $matches
 		));
 	}
 
