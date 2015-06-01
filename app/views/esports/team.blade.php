@@ -13,8 +13,6 @@
     </div>
 @stop
 @section('content')
-    <h1>{{ $team->name }}</h1>
-
     <h2 class="headline" style="margin-top: 25px;">Start Roster</h2>
     @foreach($player as $pl)
         @if($pl["is_starter"] == 1)
