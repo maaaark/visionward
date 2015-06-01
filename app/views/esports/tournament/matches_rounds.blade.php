@@ -7,11 +7,12 @@
 	@include('esports.tournament_header')
 @stop
 @section('content')
+	<script>$(".esports_opener_navi .esports_header_navi .element.matches").addClass("active");</script>
+
 	<?php
 		$rounds_count = count($spieltage);
 		$tab_width	  = round(100 / intval($rounds_count), 5);
 	?>
-	
 	<div class="spieltag_tabs">
 		@foreach($spieltage as $spieltag)
 			<div class="spieltag_tab spieltag_val{{ $spieltag["tournament_round"] }}" data-spieltag="{{ $spieltag["tournament_round"] }}" style="width: {{ $tab_width }}%">{{ $spieltag["tournament_round"] }}</div>
