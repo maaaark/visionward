@@ -1,4 +1,6 @@
 <?php
+	
+	define("ESPORTS_SECTION", "TRUE");
 
 	Route::get('/', 'EsportsController@index');
 	Route::get('/{league_key}', 'EsportsController@leagueDetail');

@@ -1,4 +1,4 @@
-@extends('layouts.header_esports')
+@extends('layouts.design_main')
 @section('title', "Esports")
 @section('esports_navi_elements')
 		<div class="element active">Turnierliste</div>

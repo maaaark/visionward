@@ -27,12 +27,12 @@ Route::resource('articles', 'ArticlesController');
 
 // Url-Analysieren und TLD+Domain-Namen rausfinden
 $parsedUrl = parse_url(Request::root());
-//$host_data = explode('.', $parsedUrl['host']);
-//$main_url  = $host_data[count($host_data)-2];
-//$tld       = $host_data[count($host_data)-1];
-//Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), function(){
-//	include 'routes_stats.php';
-//});
+$host_data = explode('.', $parsedUrl['host']);
+$main_url  = $host_data[count($host_data)-2];
+$tld       = $host_data[count($host_data)-1];
+Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), function(){
+	include 'routes_stats.php';
+});
 
 
 Route::get('/', 'PostController@index');
