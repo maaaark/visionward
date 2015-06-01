@@ -19,7 +19,7 @@
 <div class="row comment_bottom">
     <div class="col-md-2 center">
         @if($comment->user)
-        <strong><a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}">{{ $comment->user->username }}</a></strong><br/>
+        <strong><a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}">{{ $comment->user->summoner->name }}</a></strong><br/>
         <a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}"><img width="50" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $comment->user->summoner->profileIconId }}.png" class="img-circle" alt="{{ $comment->user->summoner->name }}" /></a>
         <div class="badge"><a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}">Level {{ $comment->user->level }}</a></div><br/>
         @if($comment->user->summoner)
