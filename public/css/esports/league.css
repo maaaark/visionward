@@ -461,3 +461,29 @@ button.esports_button:hover {
 .spieltag_match.show {
 	display: block;
 }
+
+/* Team-Seite */
+.team_player_holder {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	float: left;
+}
+
+.team_player_holder .team_player .pic {
+	width: 100%;
+	height: 115px;
+	background-size: auto 115px;
+	background-position: center center;
+}
+
+.team_player_holder .team_player .name {
+	font-size: 16px;
+	text-align: center;
+	padding-top: 4px;
+}
+
+.team_player_holder .team_player .name .role {
+	font-size: 13px;
+	color: rgba(0,0,0,0.6);
+}

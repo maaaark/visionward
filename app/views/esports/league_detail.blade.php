@@ -76,7 +76,8 @@
         </div>
         <div class="col-md-7">
             @if(isset($league->default_tournament) AND $league->default_tournament > 0)
-                <h2 class="headline">NA LCS Spring Split</h2>
+                <?php $default_tournament = Helpers::getTournamentData($league->default_tournament); ?>
+                <h2 class="headline">{{ $default_tournament["name"] }}</h2>
                 <div class="standings_box">
                     <div class="title">
                         <img src="{{ $league->league_image }}" class="league_icon">
