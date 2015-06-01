@@ -120,6 +120,19 @@
 				$(".spieltag_tabs .spieltag_tab.spieltag_val"+$(this).attr("data-spieltag").trim()).addClass("not_played");
 			}
 		});
+
+		if(already_set_start == false){
+			console.log("asd");
+			temp = null;
+			$(".spieltag_tabs .spieltag_tab").each(function(){
+				temp = $(this);
+			});
+
+			$(".spieltag_tabs .show").removeClass("show");
+			temp.addClass("show");
+			$(".matches_container .show").removeClass("show");
+			$(".matches_container .match_box_holder.spieltag"+temp.attr("data-spieltag").trim()).addClass("show");
+		}
 	});
 	</script>
 @stop
