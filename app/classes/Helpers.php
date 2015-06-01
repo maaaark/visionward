@@ -238,4 +238,9 @@ class Helpers {
     public static function getTournamentStandings($id){
       return EsportsStandings::where("tournament_id", "=", $id)->get();
     }
+
+    /* Tournament Match */
+    public static function getGameById($id){
+      return EsportsGame::where("game_id", "=", $id)->first();
+    }
 }
