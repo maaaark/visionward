@@ -1,4 +1,4 @@
-@extends('stats.header')
+@extends('layouts.design_main')
 @section('title', $data->name." - ".$region_name)
 @section('opener')
 	@if(isset($data->lastchamp) AND trim($data->lastchamp) != "")
@@ -120,7 +120,6 @@
 					$("#summoner_mobile_navi .element[data-tab='"+tab_id+"']").addClass("active");
 					location.hash = '#'+$(this).attr("data-hash");
 
-					navi_el.removeClass("open");
 					$("#summoner_navi .element.mobile_el").removeClass("active");
 				}
 			});

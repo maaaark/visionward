@@ -5,11 +5,11 @@
 @section('content')
 
 		@foreach($users as $user)
-		@if($user->visible == true)
+		@if($user->hasRole("admin"))
 		<div class="col-md-3 team_member">
 			<h2 class="headline">{{ $user->first_name }} {{ $user->last_name }}</h2>
 			<div style="text-align: center;">
-				<a href="/users/{{ $user->id }}"><img src="/img/team/{{ $user->image }}" class="img-circle" width="150" height="150" /></a><br/><br/>
+				<a href="/users/{{ $user->username }}"><img src="/img/team/{{ $user->image }}" class="img-circle" width="150" height="150" /></a><br/><br/>
 			</div>
 			<strong>Summoner: </strong><a href="/summoner/euw/{{ $user->username }}">{{ $user->username }}</a><br/>
 			<strong>Aufgabe: </strong>{{ $user->task }}<br/>

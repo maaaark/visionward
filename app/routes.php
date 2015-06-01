@@ -37,7 +37,7 @@ Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), func
 
 
 Route::get('/', 'PostController@index');
-Route::get('/login', 'AdminController@index');
+Route::get('/admin/login', 'AdminController@index');
 Route::get('/logout', 'AdminController@logout');
 Route::get('/team', 'HomeController@team');
 Route::get('/datenschutz', 'HomeController@datenschutz');
@@ -46,10 +46,34 @@ Route::get('/impressum', 'HomeController@impressum');
 Route::post('login', array('uses' => 'AdminController@doLogin'));
 Route::post('/feedback', array('uses' => 'HomeController@feedback'));
 
+// Champion-New
+Route::get("/champion", "ChampionsNewController@index");
+Route::get("/champion/{champion_key}", "ChampionsNewController@detail");
+Route::get("/champion/{champion_key}/{region}", "ChampionsNewController@detail");
+
 // Summoner
 Route::get('/summoner/{region}/{summoner_name}', 'SummonersController@show');
 Route::get('/summoner/{region}/{summoner_name}/refresh', 'SummonersController@refresh_button');
 Route::get('/summoner/{region}/{summoner_name}/live', 'SummonersController@live');
+
+// User
+Route::post('/dologin', 'UsersController@doLogin');
+Route::get('/account/edit', 'UsersController@edit');
+Route::get('/user/{username}', 'UsersController@show');
+Route::get('/user', 'UsersController@index');
+Route::get('/login', 'UsersController@login');
+Route::get('/register', 'UsersController@create');
+Route::get('/register/step1', 'UsersController@step1');
+Route::get('/register/step2', 'UsersController@step2');
+Route::get('/register/step3', 'UsersController@step3');
+//Route::get('/einstellungen', 'UsersController@settings');
+//Route::get('/einstellungen/save', 'UsersController@save_settings');
+Route::get('/verify_summoner', 'UsersController@verify_summoner');
+Route::post('/register/save', 'UsersController@save');
+Route::post('/register/save1', 'UsersController@step1_save');
+Route::post('/register/save2', 'UsersController@step2_save');
+Route::post('/register/save3', 'UsersController@step3_save');
+Route::post('/account/update', 'UsersController@updateAccount');
 
 // Skill
 Route::get('/skills/{id}', 'ChampionsController@skill');
@@ -64,8 +88,11 @@ Route::get('/vips/{id}/{slug}', 'VipsController@show');
 Route::get('/articles/{id}/{slug}', 'ArticlesController@show');
 
 // News
+Route::post('/comment/saveComment', 'PostController@saveComment');
 Route::get('/news/{id}/{slug}', 'PostController@show');
 Route::post('/counterpicks/create_counter', 'CounterpicksController@create_counter');
+
+
 
 Route::get('/players/{id}/{slug}', 'PlayersController@show');
 Route::get('/players_tooltip/{id}', 'PlayersController@tooltip');
@@ -88,91 +115,93 @@ Route::get('/championdownvotes/{id}', 'CounterpicksController@championdownvotes'
 Route::get('/transferlist', 'PlayersController@transferlist');
 
 Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
-	//Matches
-	Route::resource('matches', 'AdminMatchesController');
-    Route::resource('placements', 'AdminPlacementsController');
-    Route::resource('leagues', 'AdminLeaguesController');
-	Route::resource('vips', 'AdminVipsController');
-	Route::resource('skins', 'AdminSkinsController');
-	Route::resource('teams', 'AdminTeamsController');
-	Route::resource('players', 'AdminPlayersController');
-	Route::resource('champions', 'AdminChampionsController');
-	Route::resource('counterpicks', 'AdminCounterpicksController');
-	Route::resource('articles', 'AdminArticlesController');
-	
-	// League
-	Route::get('/standings/{id}/edit', 'AdminLeaguesController@edit_standing');
-	Route::get('/leaguestandings/new', 'AdminLeaguesController@new_standing');
-	Route::post('/leaguestandings/save', 'AdminLeaguesController@create_standing');
-	Route::post('/leaguestandings/{id}/update', 'AdminLeaguesController@update_standing');
-	
-	// Categories
-	Route::get('/categories', 'AdminCategoriesController@index');
-	Route::get('/categories/new', 'AdminCategoriesController@create');
-	Route::get('/categories/delete/{id}', 'AdminCategoriesController@destroy');
-	Route::get('/categories/edit/{id}', 'AdminCategoriesController@edit');
-	Route::post('/categories/update', 'AdminCategoriesController@update');
-	Route::post('/categories/save', 'AdminCategoriesController@save');
-	
-	// Pictures
-	Route::get('/pictures', 'AdminPicturesController@index');
-	Route::get('/pictures/create', 'AdminPicturesController@create');
-	Route::get('/pictures/delete/{id}', 'AdminPicturesController@destroy');
-	Route::get('/pictures/edit/{id}', 'AdminPicturesController@edit');
-	Route::post('/pictures/update', 'AdminPicturesController@update');
-	Route::post('/pictures/save', 'AdminPicturesController@save');
-	
-	// News	
-	Route::get('/news', 'AdminPostsController@index');
-	Route::get('/news/create', 'AdminPostsController@create');
-	Route::get('/news/delete/{id}', 'AdminPostsController@destroy');
-	Route::get('/news/edit/{id}', 'AdminPostsController@edit');
-	Route::post('/news/update', 'AdminPostsController@update');
-	Route::post('/news/save', 'AdminPostsController@save');
-	
-	// Galery	
-	Route::get('/galleries', 'AdminGalleriesController@index');
-	Route::get('/galleries/create', 'AdminGalleriesController@create');
-	Route::get('/galleries/delete/{id}', 'AdminGalleriesController@destroy');
-	Route::get('/galleries/edit/{id}', 'AdminGalleriesController@edit');
-	Route::post('/galleries/update', 'AdminGalleriesController@update');
-	Route::post('/galleries/save', 'AdminGalleriesController@save');
-	
-	// Users
-	Route::get('/users', 'AdminUsersController@index');
-	Route::get('/users/create', 'AdminUsersController@create');
-	Route::get('/users/delete/{id}', 'AdminUsersController@destroy');
-	Route::get('/users/edit/{id}', 'AdminUsersController@edit');
-	Route::post('/users/update', 'AdminUsersController@update');
-	Route::post('/users/save', 'AdminUsersController@save');
-	
-	// Settings
-	Route::get('/settings', 'AdminSettingsController@index');
-	Route::get('/settings/edit/{id}', 'AdminSettingsController@edit');
-	Route::post('/settings/update', 'AdminSettingsController@update');
-	
-	// Sliders
-	Route::get('/sliders', 'AdminSlidersController@index');
-	Route::get('/sliders/create', 'AdminSlidersController@create');
-	Route::get('/sliders/delete/{id}', 'AdminSlidersController@destroy');
-	Route::get('/sliders/edit/{id}', 'AdminSlidersController@edit');
-	Route::post('/sliders/update', 'AdminSlidersController@update');
-	Route::post('/sliders/save', 'AdminSlidersController@save');
-	
-	// FeaturedContents
-	Route::get('/featuredContents', 'AdminFeaturedContentsController@index');
-	Route::get('/featuredContents/create', 'AdminFeaturedContentsController@create');
-	Route::get('/featuredContents/delete/{id}', 'AdminFeaturedContentsController@destroy');
-	Route::get('/featuredContents/edit/{id}', 'AdminFeaturedContentsController@edit');
-	Route::post('/featuredContents/update', 'AdminFeaturedContentsController@update');
-	Route::post('/featuredContents/save', 'AdminFeaturedContentsController@save');
-	
-	
-    Route::get('/', 'AdminController@index');
-	Route::get('/logout', 'AdminController@logout');
-	Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));
-	Route::post('/admin/news/save', array('uses' => 'AdminController@save_news'));
-	
+
+    if(Auth::check() && Auth::user()->hasRole("admin")) {
+        //Matches
+        Route::resource('matches', 'AdminMatchesController');
+        Route::resource('placements', 'AdminPlacementsController');
+        Route::resource('leagues', 'AdminLeaguesController');
+        Route::resource('vips', 'AdminVipsController');
+        Route::resource('skins', 'AdminSkinsController');
+        Route::resource('teams', 'AdminTeamsController');
+        Route::resource('players', 'AdminPlayersController');
+        Route::resource('champions', 'AdminChampionsController');
+        Route::resource('counterpicks', 'AdminCounterpicksController');
+        Route::resource('articles', 'AdminArticlesController');
+
+        // League
+        Route::get('/standings/{id}/edit', 'AdminLeaguesController@edit_standing');
+        Route::get('/leaguestandings/new', 'AdminLeaguesController@new_standing');
+        Route::post('/leaguestandings/save', 'AdminLeaguesController@create_standing');
+        Route::post('/leaguestandings/{id}/update', 'AdminLeaguesController@update_standing');
+
+        // Categories
+        Route::get('/categories', 'AdminCategoriesController@index');
+        Route::get('/categories/new', 'AdminCategoriesController@create');
+        Route::get('/categories/delete/{id}', 'AdminCategoriesController@destroy');
+        Route::get('/categories/edit/{id}', 'AdminCategoriesController@edit');
+        Route::post('/categories/update', 'AdminCategoriesController@update');
+        Route::post('/categories/save', 'AdminCategoriesController@save');
+
+        // Pictures
+        Route::get('/pictures', 'AdminPicturesController@index');
+        Route::get('/pictures/create', 'AdminPicturesController@create');
+        Route::get('/pictures/delete/{id}', 'AdminPicturesController@destroy');
+        Route::get('/pictures/edit/{id}', 'AdminPicturesController@edit');
+        Route::post('/pictures/update', 'AdminPicturesController@update');
+        Route::post('/pictures/save', 'AdminPicturesController@save');
+
+        // News
+        Route::get('/news', 'AdminPostsController@index');
+        Route::get('/news/create', 'AdminPostsController@create');
+        Route::get('/news/delete/{id}', 'AdminPostsController@destroy');
+        Route::get('/news/edit/{id}', 'AdminPostsController@edit');
+        Route::post('/news/update', 'AdminPostsController@update');
+        Route::post('/news/save', 'AdminPostsController@save');
+
+        // Galery
+        Route::get('/galleries', 'AdminGalleriesController@index');
+        Route::get('/galleries/create', 'AdminGalleriesController@create');
+        Route::get('/galleries/delete/{id}', 'AdminGalleriesController@destroy');
+        Route::get('/galleries/edit/{id}', 'AdminGalleriesController@edit');
+        Route::post('/galleries/update', 'AdminGalleriesController@update');
+        Route::post('/galleries/save', 'AdminGalleriesController@save');
+
+        // Users
+        Route::get('/users', 'AdminUsersController@index');
+        Route::get('/users/create', 'AdminUsersController@create');
+        Route::get('/users/delete/{id}', 'AdminUsersController@destroy');
+        Route::get('/users/edit/{id}', 'AdminUsersController@edit');
+        Route::post('/users/update', 'AdminUsersController@update');
+        Route::post('/users/save', 'AdminUsersController@save');
+
+        // Settings
+        Route::get('/settings', 'AdminSettingsController@index');
+        Route::get('/settings/edit/{id}', 'AdminSettingsController@edit');
+        Route::post('/settings/update', 'AdminSettingsController@update');
+
+        // Sliders
+        Route::get('/sliders', 'AdminSlidersController@index');
+        Route::get('/sliders/create', 'AdminSlidersController@create');
+        Route::get('/sliders/delete/{id}', 'AdminSlidersController@destroy');
+        Route::get('/sliders/edit/{id}', 'AdminSlidersController@edit');
+        Route::post('/sliders/update', 'AdminSlidersController@update');
+        Route::post('/sliders/save', 'AdminSlidersController@save');
+
+        // FeaturedContents
+        Route::get('/featuredContents', 'AdminFeaturedContentsController@index');
+        Route::get('/featuredContents/create', 'AdminFeaturedContentsController@create');
+        Route::get('/featuredContents/delete/{id}', 'AdminFeaturedContentsController@destroy');
+        Route::get('/featuredContents/edit/{id}', 'AdminFeaturedContentsController@edit');
+        Route::post('/featuredContents/update', 'AdminFeaturedContentsController@update');
+        Route::post('/featuredContents/save', 'AdminFeaturedContentsController@save');
+
+
+        Route::get('/', 'AdminController@index');
+        Route::get('/logout', 'AdminController@logout');
+        Route::post('/categories/save', array('uses' => 'AdminCategoriesController@save'));
+        Route::post('/admin/news/save', array('uses' => 'AdminController@save_news'));
+    }
 });
 
 // Route group for Esports

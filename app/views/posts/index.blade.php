@@ -29,7 +29,7 @@
 								<h2><a href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></h2>
 								{{ $post->excerpt }}
 								<div class="meta">
-									<span class="comments_count"><a class="disqus-comment-count" href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread" data-disqus-identifier="/news/{{ $post->id }}/{{ $post->slug }}">0 Kommentare</a></span> - <a href="/users/{{ $post->user->id }}">{{ $post->user->username }}</a> - {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
+									<span class="comments_count"><a class="disqus-comment-count" href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->comments->count() }} Kommentare</a></span> - <a href="/users/{{ $post->user->username }}">{{ $post->user->username }}</a> - {{ $post->created_at->format('d.m.Y') }} - {{ $post->created_at->format('H:i') }} Uhr
 								</div>
 							  </div>
 							  <div class="clear"></div>
@@ -47,7 +47,7 @@
 								<tr class="{{ $class }}">
 									<td width="40"><a href="/news/{{ $post->id }}/{{ $post->slug }}"><img src="<?=Croppa::url('/uploads/news/'.$post->image, 50, null)?>" alt="{{ $post->title }}" style="margin-left: 10px;margin-right: 10px;" /></a></td>
 									<td width="90"><span class="meta">{{ Helpers::diffForHumans($post->created_at) }}&nbsp;&nbsp;</span></td>
-									<td width="80"><span class="comments_count"><a class="disqus-comment-count" href="/news/{{ $post->id }}/{{ $post->slug }}#disqus_thread" data-disqus-identifier="/news/{{ $post->id }}/{{ $post->slug }}">0 Kommentare</a></span></td>
+									<td width="80"><span class="comments_count"><a class="disqus-comment-count" href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->comments->count() }} Kommentare</a></span></td>
 									<td><a class="small_headline" href="/news/{{ $post->id }}/{{ $post->slug }}">{{ $post->title }}</a></td>
 								</tr>
 							</table>

@@ -17,4 +17,4 @@
 </div>
 @endif
 <br/>
-@include("layouts.disqus")
+@include("posts.comments")

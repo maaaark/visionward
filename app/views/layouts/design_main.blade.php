@@ -12,11 +12,27 @@
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 
+	@if(defined("STATS_SECTION"))
+	<!-- Summoner -->
+	<link rel="stylesheet" href="/css/stats/page_index.css">
+	<link rel="stylesheet" href="/css/stats/summoner.css">
+	<link rel="stylesheet" href="/css/stats/summoner_current_game.css">
+	<link rel="stylesheet" href="/css/stats/summoner_matchhistory.css">
+	<link rel="stylesheet" href="/css/stats/summoner_league.css">
+	@endif
+
+	@if(defined("ESPORTS_SECTION"))
+	<!-- Esports -->
+	<link rel="stylesheet" href="/css/flashignite_lightbox.css">
+	<link rel="stylesheet" href="/css/esports/esports_main.css">
+	<link rel="stylesheet" href="/css/esports/league.css">
+	@endif
+
 	<link rel="stylesheet" href="/css/jquery.mCustomScrollbar.css">
 	<link rel="stylesheet" href="/css/jquery.runepageBuilder.css">
 	<link rel="stylesheet" href="/css/jquery.masteriesBuilder.css">
-	<link rel="stylesheet" href="/css/flashignite_lightbox.css">
-	<link rel="stylesheet" href="/css/esports/league.css">
+
+	@yield('head_addition')
 
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>

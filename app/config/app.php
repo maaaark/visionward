@@ -110,6 +110,7 @@ return array(
 		'Bkwld\Croppa\ServiceProvider',
 		'Greggilbert\Recaptcha\RecaptchaServiceProvider',
 		'Roumen\Sitemap\SitemapServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 	),
 
 	/*

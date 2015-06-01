@@ -1,19 +1,41 @@
+.league_tournaments .tournament_tabs {
+	background: #202528;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
 .league_tournaments .tournament_tabs .tab {
-	float: left;
-	padding: 10px;
+	padding: 5px;
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid #333a3e;
 	cursor: pointer;
+	color: #fff;
+	background: #202528;
 }
 
 .league_tournaments .tournament_tabs .tab.active {
-	font-weight: bold;
+	background: #333a3e;
+	color: #fff;
 }
 
 .league_tournaments .tournament_contents .tab_content {
 	display: none;
+	border: 1px solid #333a3e;
+	border-top: none;
+	padding: 10px;
 }
 
 .league_tournaments .tournament_contents .tab_content.active {
 	display: block;
+}
+
+.league_tournaments .tournament_contents .tab_content .tournament_el {
+	padding: 5px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.league_tournaments .tournament_contents .tab_content .tournament_el:last-child {
+	border-bottom: none;
 }
 
 /* Turnier Matches */
@@ -27,7 +49,7 @@
 
 .match_box_holder .bg {
 	background: #f3f3f3;
-	box-shadow: 0 0 3px 1px rgba(0,0,0,0.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.6);
 	padding: 20px;
 }
 
@@ -47,6 +69,19 @@
 	border: 1px solid rgba(0,0,0,0.2);
 	background: rgba(0,0,0,0.1);
 	position: relative;
+	transition: all 200ms;
+}
+
+.match_box.clickable {
+	cursor: pointer;
+}
+
+.match_box.clickable:hover {
+	background: rgba(153, 153, 153, 0.1);
+}
+
+.match_box.clickable:hover .top_bar {
+	background: #777676;
 }
 
 .match_box .top_bar {
@@ -55,6 +90,7 @@
 	padding-left: 8px;
 	padding-right: 8px;
 	color: #fff;
+	transition: 200ms;
 }
 
 .match_box .top_bar .date {
@@ -64,6 +100,12 @@
 
 .match_box .match_content {
 	padding: 10px;
+}
+
+.match_box .match_content .no_teams {
+	color: rgba(0,0,0,0.5);
+	text-align: center;
+	padding: 30px;
 }
 
 .match_box .match_content .team_logo {
@@ -131,4 +173,317 @@
 .matches_main_holder h1 span {
 	color: rgba(0,0,0,0.5);
 	font-size: 18px;
+}
+
+/* Match Spiele Tabs */
+.games_holder .game_element {
+	display: none;
+	padding: 10px;
+    box-shadow: 0 1px 6px 1px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 4;
+    padding-top: 25px;
+}
+
+.games_holder .game_element.open {
+	display: block;
+}
+
+.games_holder .games_navi .game_tab {
+	padding: 10px;
+	padding-bottom: 8px;
+	padding-left: 16px;
+	padding-right: 16px;
+	margin-left: 15px;
+	background: rgba(0,0,0,0.05);
+	border: 1px solid rgba(0,0,0,0.1);
+	border-bottom: 0px;
+	float: left;
+	cursor: pointer;
+	transition: all 200ms;
+	font-size: 15px;
+}
+
+.games_holder .games_navi .game_tab:hover {
+	background: rgba(0,0,0,0.1);
+}
+
+.games_holder .games_navi .game_tab.open {
+	position: relative;
+    z-index: 5;
+    background: #fff;
+    box-shadow: 0px -2px 5px -2px rgba(0,0,0,0.3);
+    font-weight: bold;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-bottom: none;
+    cursor: default;
+}
+
+.games_holder .games_navi .game_tab.open:hover {
+	background: #fff;
+}
+
+.game_element .youtube_video {
+	float: right;
+}
+
+button.esports_button {
+	background: #f25825;
+	border: none;
+	padding: 12px;
+	padding-left: 16px;
+	padding-right: 16px;
+	color: #fff;
+	outline: none;
+	box-shadow: none;
+	font-size: 16px;
+	transition: all 200ms;
+	cursor: pointer;
+}
+
+button.esports_button:hover {
+	background: #FC8243;
+}
+
+.match_detail {
+	padding-top: 20px;
+	padding-bottom: 40px;
+}
+
+.match_detail .team_icon {
+	height: 150px;
+	width: 150px;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: 150px;
+}
+
+.match_detail .team_icon.team1_icon {
+	float: left;
+	margin-left: 80px;
+}
+
+.match_detail .team_icon.team2_icon {
+	float: right;
+	margin-right: 80px;
+}
+
+.match_detail .info_block {
+	width: 100%;
+	height: 150px;
+	max-width: 600px;
+	margin: auto;
+	text-align: center;
+}
+
+.match_detail .info_block .match_name {
+	font-size: 14px;
+	color: rgba(0,0,0,0.6);
+	padding-top: 20px;
+}
+
+.match_detail .info_block .match_points {
+	padding-top: 15px;
+	font-size: 30px;
+}
+
+.match_detail .info_block .match_winner_team {
+	font-size: 14px;
+	padding-top: 10px;
+	color: rgba(0,0,0,0.7);
+}
+
+/* Esports Spoiler: Diese Elemente sind am Anfang nicht sichtbar */
+.esports_spoiler {
+	display: none;
+}
+
+/* Tabellen */
+.standings_box {
+	/*box-shadow: 0 0 4px 1px rgba(0,0,0,0.3);*/
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.standings_box .title {
+	font-size: 30px;
+	color: rgba(0,0,0,0.7);
+	padding: 15px;
+    padding-left: 0;
+	padding-bottom: 5px;
+}
+
+.standings_box .title span {
+	color: rgba(0,0,0,0.5);
+	font-size: 18px;
+}
+
+.standings_box .title .league_icon {
+	height: 40px;
+	margin-right: 15px;
+	margin-left: 6px;
+}
+
+.standings_box table.standings {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.standings_box table.standings td {
+	padding: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.standings_box table.standings tr {
+	background: rgba(0,0,0,0.1);
+}
+
+.standings_box table.standings tr:nth-child(even) {
+	background: rgba(142, 142, 142, 0.1);
+}
+
+.standings_box table.standings td.team_icon {
+	width: 35px;
+	text-align: center;
+}
+
+.standings_box table.standings td.team_icon img.team_icon_element {
+	height: 30px;
+	width: 30px;
+}
+
+.standings_box table.standings td.rank {
+	width: 30px;
+	text-align: center;
+	color: rgba(0,0,0,0.5);
+}
+
+.standings_box table.standings td.wins, .standings_box table.standings td.losses {
+	width: 40px;
+	text-align: left;
+}
+
+.standings_box table.standings td.wins {
+	color: green;
+}
+
+.standings_box table.standings td.losses {
+	color: red;
+}
+
+.standings_box table.standings td.points {
+	color: #000;
+	width: 70px;
+}
+
+.standings_box table.standings thead, .standings_box table.standings thead tr, .standings_box table.standings thead td, .standings_box table.standings thead th {
+	background: rgba(0,0,0,0);
+}
+
+.standings_box table.standings thead th {
+	font-size: 14px;
+	color: rgba(0,0,0,0.5);
+	font-weight: 200;
+	padding-left: 10px;
+}
+
+/* Startseite */
+.league_images_holder {
+	/*box-shadow: 0 0 6px 1px rgba(0,0,0,0.3); */
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.league_images_holder .name {
+	text-align: left;
+	font-size: 30px;
+	color: rgba(0,0,0,0.7);
+	padding: 15px;
+	padding-bottom: 10px;
+}
+
+.league_images_holder .name span {
+    color: rgba(0,0,0,0.5);
+    font-size: 18px;
+}
+
+.league_images_holder .holder {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: rgba(0,0,0,0.1);
+	text-decoration: none !important;
+}
+
+
+.league_images_holder .holder a {
+	text-decoration: none !important;
+}
+
+.league_images_holder .holder img {
+	height: 108px;
+	transition: all 200ms;
+	position: relative;
+}
+
+.league_images_holder .holder img:hover {
+	margin-top: -10px;
+}
+
+/* Matches - Spieltage */
+.spieltag_tabs {
+	margin-top: 30px;
+}
+
+.spieltag_tabs .spieltag_tab {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	float: left;
+	border-bottom: 1px solid orange;
+	cursor: pointer;
+}
+
+.spieltag_tabs .spieltag_tab.show {
+	font-weight: bold;
+	background: rgba(0,0,0,0.1);
+}
+
+.spieltag_tabs .spieltag_tab.not_played {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.spieltag_match {
+	display: none;
+}
+
+.spieltag_match.show {
+	display: block;
+}
+
+/* Team-Seite */
+.team_player_holder {
+	width: 20%;
+	padding: 10px;
+	box-sizing: border-box;
+	float: left;
+}
+
+.team_player_holder .team_player .pic {
+	width: 100%;
+	height: 115px;
+	background-size: auto 115px;
+	background-position: center center;
+}
+
+.team_player_holder .team_player .name {
+	font-size: 16px;
+	text-align: center;
+	padding-top: 4px;
+}
+
+.team_player_holder .team_player .name .role {
+	font-size: 13px;
+	color: rgba(0,0,0,0.6);
 }

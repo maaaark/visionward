@@ -214,8 +214,21 @@ a.button:hover {
 .navigation ul li:hover ul {
 	display: block;
 }
+.login_submenu li {
+    height: 300px;
+}
+.right_navigation li {
+    float: right !important;
+}
+.right_navigation li a {
+    display: inline-block !important;
+    padding: 0;
+}
 .navigation ul li:hover ul.submenu_mobile li {
 	clear: both;
+}
+.sub_submenu li a {
+    display: block;
 }
 .navigation ul li:hover ul.submenu_mobile ul.sub_submenu_mobile li {
 	margin-right: 0;
@@ -335,11 +348,23 @@ a.red {
 	margin-top: 50px;
 	height: 120px;
 }
+.small {
+    font-size: 10px;
+    color: #9a9a9a;
+}
+.comment_bottom {
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e7e7e7;
+}
 .fixed {
     position: fixed;
     top:0; left:0;
     width: 100%; 
 	z-index: 100;
+}
+.badge a {
+    color: #fff;
 }
 .news_list {
 	list-style: none;
@@ -470,6 +495,11 @@ a.red {
 	border-radius: 5px;
 	margin-top: 0px;
 	position: relative;
+    padding: 5px;
+    padding-bottom: 5px !important;
+}
+.loginform {
+    padding: 5px;
 }
 .server_region {
 	position: absolute;

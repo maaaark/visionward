@@ -95,6 +95,10 @@ class CurrentGameView {
 							}
 						}
 
+						// Live Search Count hochzählen
+						$summoner->searched_live = $summoner->searched_live + 1;
+						$summoner->save();
+
 						$template = View::make('stats.summoner.current_game.detail', [
 							'game'  => $json,
 							'team1' => $team1,

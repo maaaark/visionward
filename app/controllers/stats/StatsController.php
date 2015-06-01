@@ -42,7 +42,7 @@ class StatsController extends BaseController {
 				$summoner_data     = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.4/summoner/by-name/".$clean_summoner_name."?api_key=".$api_key;
 				$json = @file_get_contents($summoner_data);
 				if($json === FALSE) {
-					return Redirect::to("/")->with("error", "There was an error with the Riot API, please try again later! Code: 005");
+					return Redirect::to("/")->with("error", "Der Summoner wurde nicht gefunden.");
 				} else {
 					$obj = json_decode($json, true);
 					$summoner = Summoner::where("name","=",$obj[$clean_summoner_name]["name"])->where("region","=",$region)->first();
