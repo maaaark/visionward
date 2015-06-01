@@ -72,14 +72,30 @@ class EsportsController extends BaseController {
 
 		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->orderBy("date", "ASC")->get();
 		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d h:i:s"))->orderBy("date", "DESC")->get();
-		return View::make('esports.tournament.matches', array(
-			"league" 	  		 => $league,
-			"league_tournaments" => $league_tournaments,
-			"tournament" 		 => $tournament,
-			"league_url" 		 => $league_url,
-			"matches_upcoming" 	 => $matches_upcoming,
-			"matches_past"		 => $matches_past
-		));
+
+		$spieltage = EsportsMatch::where("tournament_id", "=", $tournament_id)->groupBy('tournament_round')->get();
+		$matches   = EsportsMatch::where("tournament_id", "=", $tournament_id)->get();
+		if(count($spieltage) > 1){
+			return View::make('esports.tournament.matches_rounds', array(
+				"league" 	  		 => $league,
+				"league_tournaments" => $league_tournaments,
+				"tournament" 		 => $tournament,
+				"league_url" 		 => $league_url,
+				"matches_upcoming" 	 => $matches_upcoming,
+				"matches_past"		 => $matches_past,
+				"matches"			 => $matches,
+				"spieltage"			 => $spieltage
+			));
+		} else {
+			return View::make('esports.tournament.matches', array(
+				"league" 	  		 => $league,
+				"league_tournaments" => $league_tournaments,
+				"tournament" 		 => $tournament,
+				"league_url" 		 => $league_url,
+				"matches_upcoming" 	 => $matches_upcoming,
+				"matches_past"		 => $matches_past
+			));
+		}
 	}
 
 	public function tournamentMatchDetail($league_key, $tournament_id, $match_id){
