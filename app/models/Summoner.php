@@ -469,6 +469,8 @@ class Summoner extends \Eloquent {
                 $diff    = abs(strtotime($date2) - strtotime($date1));
                 $mins    = floor($diff / 60);
 
+                Session::put('summoner_id', $data["summoner_id"]);
+
                 if($mins < $this->summoner_update_interval){
                     $need_api_request = false;
                 }

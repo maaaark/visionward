@@ -121,7 +121,7 @@ class UsersController extends \BaseController {
                     return Redirect::to("/register/step1")
                         ->withInput()
                         ->withErrors($validation)
-                        ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
+                        ->with('error', 'Der Beschw&ouml;rer wurde nicht gefunden.')->with('input', Input::all())->with('messages', $messages);
                 }
             } else {
                 return Redirect::to('/register/step1')->with("error", "Dieser Summoner gehört bereits zu einem Account");
@@ -132,7 +132,7 @@ class UsersController extends \BaseController {
             return Redirect::to("/register/step1")
                 ->withInput()
                 ->withErrors($validation)
-                ->with('error', 'There were validation errors.')->with('input', Input::all())->with('messages', $messages);
+                ->with('error', 'Der Beschw&ouml;rer wurde nicht gefunden.')->with('input', Input::all())->with('messages', $messages);
         }
     }
 
