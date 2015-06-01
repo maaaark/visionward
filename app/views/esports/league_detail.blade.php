@@ -1,5 +1,5 @@
 @extends('layouts.design_main')
-@section('title', "Esports")
+@section('title', $league->label ." - Esports")
 @section('esports_navi_elements')
 		<div class="element active">Turnierliste</div>
 		@if(isset($league->default_tournament) AND $league->default_tournament > 0)
@@ -89,7 +89,6 @@
                             <thead>
                                 <th colspan="3"></th>
                                 <th colspan="2">Spiele</th>
-                                <th>Punkte</th>
                             </thead>
                             <tbody>
                             @foreach($standings as $element)
@@ -97,10 +96,9 @@
                                 <tr>
                                     <td class="team_icon"><img src="{{ $team_data["logo_riot"] }}" class="team_icon_element"></td>
                                     <td class="rank">{{ $element->rank }}.</td>
-                                    <td class="team_name"><a href="#">{{ $team_data["name"] }}</a></td>
+                                    <td class="team_name"><a href="/esports/team/{{ $team_data["acronym"] }}">{{ $team_data["name"] }}</a></td>
                                     <td class="wins">{{ $element->wins }}</td>
                                     <td class="losses">{{ $element->losses }}</td>
-                                    <td class="points">{{ intval($element->wins * 3) }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
