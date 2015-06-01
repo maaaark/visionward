@@ -429,3 +429,35 @@ button.esports_button:hover {
 .league_images_holder .holder img:hover {
 	margin-top: -10px;
 }
+
+/* Matches - Spieltage */
+.spieltag_tabs {
+	margin-top: 30px;
+}
+
+.spieltag_tabs .spieltag_tab {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	box-sizing: border-box;
+	text-align: center;
+	float: left;
+	border-bottom: 1px solid orange;
+	cursor: pointer;
+}
+
+.spieltag_tabs .spieltag_tab.show {
+	font-weight: bold;
+	background: rgba(0,0,0,0.1);
+}
+
+.spieltag_tabs .spieltag_tab.not_played {
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.spieltag_match {
+	display: none;
+}
+
+.spieltag_match.show {
+	display: block;
+}
