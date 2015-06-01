@@ -1,4 +1,5 @@
 @extends('layouts.design_main')
+@section('title', "Beschwörer suchen")
 @section('opener')
 	<div class="index_search_layer">
 		<div class="search_box">
