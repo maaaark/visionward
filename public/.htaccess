@@ -1,3 +1,8 @@
+AuthName "developer"
+AuthType Basic
+AuthUserFile /home/mark/visionward/public/.htpasswd
+require valid-user
+
 <IfModule mod_rewrite.c>
 	<IfModule mod_negotiation.c>
     	Options -MultiViews
