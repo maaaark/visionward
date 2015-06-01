@@ -233,4 +233,9 @@ class Helpers {
       }
       return null;
     }
+
+    /* Esports Standings */
+    public static function getTournamentStandings($id){
+      return EsportsStandings::where("tournament_id", "=", $id)->get();
+    }
 }

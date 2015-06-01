@@ -1,19 +1,41 @@
+.league_tournaments .tournament_tabs {
+	background: #202528;
+	border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
 .league_tournaments .tournament_tabs .tab {
-	float: left;
-	padding: 10px;
+	padding: 5px;
+	display: inline-block;
+	margin: 5px;
+	border: 1px solid #333a3e;
 	cursor: pointer;
+	color: #fff;
+	background: #202528;
 }
 
 .league_tournaments .tournament_tabs .tab.active {
-	font-weight: bold;
+	background: #333a3e;
+	color: #fff;
 }
 
 .league_tournaments .tournament_contents .tab_content {
 	display: none;
+	border: 1px solid #333a3e;
+	border-top: none;
+	padding: 10px;
 }
 
 .league_tournaments .tournament_contents .tab_content.active {
 	display: block;
+}
+
+.league_tournaments .tournament_contents .tab_content .tournament_el {
+	padding: 5px;
+	border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.league_tournaments .tournament_contents .tab_content .tournament_el:last-child {
+	border-bottom: none;
 }
 
 /* Turnier Matches */
