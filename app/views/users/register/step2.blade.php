@@ -18,8 +18,7 @@
             </td>
             <td valign="top">
                 <h3 style="margin:0; padding: 0;">{{ $summoner->name }}</h3>
-                Level {{ $summoner->summonerLevel }} - {{ $summoner->region  }}<br/>
-                Summoner ID: {{ $summoner->summoner_id }}
+                <div style="padding-top: 5px;">Level {{ $summoner->summonerLevel }} - {{ strtoupper($summoner->region) }}</div>
             </td>
         </tr>
     </table>

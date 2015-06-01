@@ -469,6 +469,8 @@ class Summoner extends \Eloquent {
                 $diff    = abs(strtotime($date2) - strtotime($date1));
                 $mins    = floor($diff / 60);
 
+                Session::put('summoner_id', $data["summoner_id"]);
+
                 if($mins < $this->summoner_update_interval){
                     $need_api_request = false;
                 }
@@ -496,15 +498,13 @@ class Summoner extends \Eloquent {
                         }
                         $summoner->summoner_id = $obj[$clean_summoner_name]["id"];
 
-                        $this->summoner_id = $obj[$clean_summoner_name]["id"];
-                        $this->save();
-
                         $summoner->name = $obj[$clean_summoner_name]["name"];
                         $summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
                         $summoner->summonerLevel = $obj[$clean_summoner_name]["summonerLevel"];
                         $summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
                         $summoner->region = $region;
                         $summoner->last_update_maindata = date('Y-m-d H:i:s');
+
                         $summoner_stats = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=".$this->current_season."&api_key=".$api_key;
                         $json2 = @file_get_contents($summoner_stats);
                         if($json2 === FALSE) {
@@ -544,7 +544,7 @@ class Summoner extends \Eloquent {
                     return true;
                 }
             }
-
+            return true;
         } else {
             //echo "gesperrte region";
             return false;
