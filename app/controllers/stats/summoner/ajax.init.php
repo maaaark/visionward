@@ -69,6 +69,7 @@ if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 		$summoner = Summoner::where('summoner_id', '=', trim($sID))->first();
 		if(isset($summoner["id"]) && $summoner["id"] > 0){
 			$summoner->last_update_detail_data = date('Y-m-d H:i:s');
+			$summoner->updated_count           = $summoner->updated_count + 1;
 			$summoner->save();
 		}
 	}
