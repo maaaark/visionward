@@ -199,6 +199,22 @@ class Helpers {
     	}
     	return false;
     }
+    
+    public static function getTournamentData($id){
+    	$data = EsportsTournament::where("tournament_id", "=", $id)->first();
+    	if($data){
+    		return $data;
+    	}
+    	return false;
+    }
+    
+    public static function getLeagueData($id){
+    	$data = EsportsLeague::where("league_id", "=", $id)->first();
+    	if($data){
+    		return $data;
+    	}
+    	return false;
+    }
 
     /* Esports Current Season */
     public static function getCurrentSeason(){
@@ -216,5 +232,10 @@ class Helpers {
         return $champ;
       }
       return null;
+    }
+
+    /* Esports Standings */
+    public static function getTournamentStandings($id){
+      return EsportsStandings::where("tournament_id", "=", $id)->get();
     }
 }

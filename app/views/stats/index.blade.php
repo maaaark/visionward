@@ -1,4 +1,4 @@
-@extends('stats.header')
+@extends('layouts.design_main')
 @section('opener')
 	<div class="index_search_layer">
 		<div class="search_box">

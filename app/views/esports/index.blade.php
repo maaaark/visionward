@@ -1,4 +1,4 @@
-@extends('layouts.header_esports')
+@extends('layouts.design_main')
 @section('title', "Esports")
 @section('opener')
    <div class="esports_opener_navi">
@@ -80,7 +80,8 @@
 					@foreach($recent_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
-								Best of {{ $match->max_games }}
+								<?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
+								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
 								@if($match->date)
 									<div class="date">{{ date("d.m. - H:i", strtotime($match->date)) }} Uhr</div>
 								@endif
@@ -130,7 +131,8 @@
 					@foreach($upcoming_matches as $match)
 						<div class="match_box">
 							<div class="top_bar">
-								Best of {{ $match->max_games }}
+                        <?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
+								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
 								@if($match->date)
 									<div class="date">{{ date("d.m. - H:i", strtotime($match->date)) }} Uhr</div>
 								@endif

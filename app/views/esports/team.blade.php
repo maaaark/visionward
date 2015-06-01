@@ -1,4 +1,4 @@
-@extends('layouts.header_esports')
+@extends('layouts.design_main')
 @section('title', $team->name)
 @section('opener')
     <div class="esports_opener_navi">
