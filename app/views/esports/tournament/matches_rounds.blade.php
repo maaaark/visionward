@@ -1,5 +1,5 @@
 @extends('layouts.design_main')
-@section('title', "Esports")
+@section('title', $tournament->name." - Matches - Esports")
 @section('esports_navi_elements')
 		@include('esports.tournament.navi')
 @stop
@@ -76,17 +76,15 @@
 						<div class="team2_info team_info">
 							<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 							<div class="win_infos">
-								<div>3 gewonnen</div>
-								<div>2 verloren</div>
-								<div>9 Punkte</div>
+								<div>{{ Helpers::getTournamentTeamWins($tournament["tournament_id"], $team2["team_id"]) }} gewonnen</div>
+								<div>{{ Helpers::getTournamentTeamLosses($tournament["tournament_id"], $team2["team_id"]) }} verloren</div>
 							</div>
 						</div>
 						<div class="team1_info team_info">
 							<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
 							<div class="win_infos">
-								<div>3 gewonnen</div>
-								<div>2 verloren</div>
-								<div>9 Punkte</div>
+								<div>{{ Helpers::getTournamentTeamWins($tournament["tournament_id"], $team1["team_id"]) }} gewonnen</div>
+								<div>{{ Helpers::getTournamentTeamLosses($tournament["tournament_id"], $team1["team_id"]) }} verloren</div>
 							</div>
 						</div>
 						<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>

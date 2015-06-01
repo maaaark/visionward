@@ -243,4 +243,42 @@ class Helpers {
     public static function getGameById($id){
       return EsportsGame::where("game_id", "=", $id)->first();
     }
+
+    /* Tournamtn Team Wins */
+    public static function getTournamentTeamWins($tournament, $team){
+		$count    = 0;
+    	$matches1 = EsportsMatch::where("tournament_id", "=", $tournament)->where("team1_id", "=", $team)->get();
+    	$matches2 = EsportsMatch::where("tournament_id", "=", $tournament)->where("team2_id", "=", $team)->get();
+
+    	foreach($matches1 as $match){
+    		if(isset($match["winner"]) && $match["winner"] > 0 && $match["winner"] == $team){
+    			$count++;
+    		}
+    	}
+    	foreach($matches2 as $match){
+    		if(isset($match["winner"]) && $match["winner"] > 0 && $match["winner"] == $team){
+    			$count++;
+    		}
+    	}
+    	return $count;
+    }
+
+    /* Tournamtn Team Losses */
+    public static function getTournamentTeamLosses($tournament, $team){
+    	$count    = 0;
+    	$matches1 = EsportsMatch::where("tournament_id", "=", $tournament)->where("team1_id", "=", $team)->get();
+    	$matches2 = EsportsMatch::where("tournament_id", "=", $tournament)->where("team2_id", "=", $team)->get();
+
+    	foreach($matches1 as $match){
+    		if(isset($match["winner"]) && $match["winner"] > 0 && $match["winner"] != $team){
+    			$count++;
+    		}
+    	}
+    	foreach($matches2 as $match){
+    		if(isset($match["winner"]) && $match["winner"] > 0 && $match["winner"] != $team){
+    			$count++;
+    		}
+    	}
+    	return $count;
+    }
 }

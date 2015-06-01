@@ -1,5 +1,5 @@
 @extends('layouts.design_main')
-@section('title', "Esports")
+@section('title', $match->name." - ".$tournament->name." - Esports")
 @section('esports_navi_elements')
 		@include('esports.tournament.navi')
 @stop

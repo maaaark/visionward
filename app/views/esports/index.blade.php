@@ -98,15 +98,15 @@
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
-											<div>{{ $team1->wins_riot }} gewonnen</div>
-											<div>{{ $team1->losses_riot }} verloren</div>
+											<div>{{ Helpers::getTournamentTeamWins($match->tournament_id, $team2["team_id"]) }} gewonnen</div>
+											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team2["team_id"]) }} verloren</div>
 										</div>
 									</div>
 									<div class="team1_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
 										<div class="win_infos">
-											<div>{{ $team2->wins_riot }} gewonnen</div>
-											<div>{{ $team2->losses_riot }} verloren</div>
+											<div>{{ Helpers::getTournamentTeamWins($match->tournament_id, $team1["team_id"]) }} gewonnen</div>
+											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team1["team_id"]) }} verloren</div>
 										</div>
 									</div>
 									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
@@ -149,15 +149,15 @@
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
-                                            <div>0 gewonnen</div>
-                                            <div>0 verloren</div>
+											<div>{{ Helpers::getTournamentTeamWins($match->tournament_id, $team2["team_id"]) }} gewonnen</div>
+											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team2["team_id"]) }} verloren</div>
 										</div>
 									</div>
 									<div class="team1_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team1["acronym"])) }}">{{ $team1["name"] }}</a></div>
 										<div class="win_infos">
-                                            <div>0 gewonnen</div>
-                                            <div>0 verloren</div>
+											<div>{{ Helpers::getTournamentTeamWins($match->tournament_id, $team1["team_id"]) }} gewonnen</div>
+											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team1["team_id"]) }} verloren</div>
 										</div>
 									</div>
 									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
