@@ -56,7 +56,7 @@
 		</div>
 	@endif
 
-	<div class="league_images_holder">
+	<div class="league_images_holder" id="leagues">
 		<h2 class="headline">
 			Ligen
 		</h2>
@@ -73,7 +73,7 @@
 		</div>
 	</div>
     <br/>
-	<div class="row">
+	<div class="row" id="matches">
 		<div class="col-md-6">
 			<div class="standings_box">
 				<h2 class="headline">

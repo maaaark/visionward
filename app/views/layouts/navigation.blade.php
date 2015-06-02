@@ -13,10 +13,11 @@
 				</li>
 				<li><a href="#">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
-						<li><a href="http://{{ MAIN_URL }}/teams">PRO TEAMS</a></li>
+						<!--<li><a href="http://{{ MAIN_URL }}/teams">PRO TEAMS</a></li>-->
 						<!--<li><a href="/vips">CASTER / HOSTS</a></li>-->
-						<li><a href="http://{{ MAIN_URL }}/matches">MATCHES</a></li>
-						<li><a href="http://{{ MAIN_URL }}/transferlist">TRANSFERLISTE</a></li>
+						<li><a href="http://{{ MAIN_URL }}/esports/#matches">MATCHES</a></li>
+						<li><a href="http://{{ MAIN_URL }}/esports/#leagues">LIGEN</a></li>
+						<!--<li><a href="http://{{ MAIN_URL }}/transferlist">TRANSFERLISTE</a></li>-->
 					</ul>
 				</li>
 				<li><a href="http://{{ MAIN_URL }}/categories/pbe">PBE</a></li>
@@ -38,12 +39,12 @@
 				<li><a href="http://{{ MAIN_URL }}/categories/videos">VIDEOS</a></li>
 			</ul>
 		</li>
-		<li {{ Request::is('categories/esports') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/categories/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+		<li {{ Request::is('/esports*') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 			<ul class="submenu">
-				<li><a href="http://{{ MAIN_URL }}/teams">PRO TEAMS</a></li>
+				<!--<li><a href="http://{{ MAIN_URL }}/teams">PRO TEAMS</a></li>-->
 				<!--<li><a href="/vips">CASTER / HOSTS</a></li>-->
-				<li><a href="http://{{ MAIN_URL }}/matches">MATCHES</a></li>
-				<li style="margin-right: 0px;"><a href="/transferlist">TRANSFERLISTE</a></li>
+				<li><a href="http://{{ MAIN_URL }}/esports/#matches">MATCHES</a></li>
+				<li style="margin-right: 0px;"><a href="/esports/#leagues">LIGEN</a></li>
 			</ul>
 		</li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/categories/pbe">PBE</a></li>
