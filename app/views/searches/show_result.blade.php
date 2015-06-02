@@ -10,10 +10,10 @@
 		<div class="summoner_search">
 			<table>
 				<tr>
-					<td width="65"><a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" class="img-circle" width="50"></a></td>
+					<td width="65"><a href="http://summoner.{{ MAIN_URL }}/{{ $summoner->region }}/{{ $summoner->name }}"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $summoner->profileIconId }}.png" class="img-circle" width="50"></a></td>
 					<td valign="top">
-						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
-						<a href="/summoner/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
+						<a href="http://summoner.{{ MAIN_URL }}/{{ $summoner->region }}/{{ $summoner->name }}"><strong>{{ $summoner->name }}</strong></a><br/>
+						<a href="http://summoner.{{ MAIN_URL }}/{{ $summoner->region }}/{{ $summoner->name }}">Level {{ $summoner->summonerLevel }} - {{ $summoner->region }}</a>
 					</td>
 					<td width="50px"></td>
 					@if($summoner->solo_tier == 'none')
