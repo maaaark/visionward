@@ -229,7 +229,7 @@
 					    		html += '<tr>'
 					    		html += '<td class="champ_info"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/'+element["championKey"]+'.png" class="champ_icon"> ';
 					    		html += '<span>'+element["championName"]+'</span></td>';
-					    		html += '<td>'+element["totalSessionsPlayed"]+' ('+element["totalSessionsWon"]+' / '+element["totalSessionsLost"]+')</td>';
+					    		html += '<td><span style="font-weight:bold;">'+element["totalSessionsPlayed"]+'</span> (<span style="color:green;">'+element["totalSessionsWon"]+'</span> / <span style="color:red;">'+element["totalSessionsLost"]+'</span>)</td>';
 					    		html += '<td>'+(element["totalSessionsWon"] / element["totalSessionsPlayed"] * 100).toFixed(2)+' %</td>';
 					    		html += '<td>'+(element["totalChampionKills"] / element["totalSessionsPlayed"]).toFixed(1)+'</td>';
 					    		html += '<td>'+(element["totalDeathsPerSession"] / element["totalSessionsPlayed"]).toFixed(1)+'</td>';
