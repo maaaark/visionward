@@ -63,7 +63,11 @@
 		<div style="text-align: center;">
 		@foreach($leagues as $league)
 			<a href="/esports/{{ str_replace(" ", "_", trim(strtolower($league["short_name"]))) }}" style="margin-right: 10px;">
-				<img src="{{ $league["league_image"] }}" width="85" height="85">
+            @if(isset($league["custom_league_image"]) AND trim($league["custom_league_image"]) != "")
+               <img src="{{ $league["custom_league_image"] }}" width="85" height="85">
+            @else
+               <img src="{{ $league["league_image"] }}" width="85" height="85">
+            @endif
 			</a>
 		@endforeach
 		</div>
@@ -78,7 +82,11 @@
 				<div>
 				@if(isset($recent_matches) AND $recent_matches AND count($recent_matches) > 0)
 					@foreach($recent_matches as $match)
-						<div class="match_box">
+                  <?php
+                     $tournament_temp = Helpers::getTournamentData($match["tournament_id"]);
+                     $league_temp     = Helpers::getLeagueData($tournament_temp["league_id"]);
+                  ?>
+						<div class="match_box clickable" onclick="self.location.href='/esports/{{ str_replace(" ", "_", trim(strtolower($league_temp->short_name))) }}/tournament/{{ $tournament_temp->tournament_id }}/match/{{ $match->match_id }}'">
 							<div class="top_bar">
 								<?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
 								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
@@ -94,7 +102,11 @@
 										$team1 = Helpers::getTeamData($match->team1_id);
 										$team2 = Helpers::getTeamData($match->team2_id);
 									?>
-									<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+									@if(isset($team2["custom_logo"]) AND trim($team2["custom_logo"]) != "")
+                              <div class="team2 team_logo" style="background-image:url({{ $team2["custom_logo"] }});"></div>
+                           @else
+                              <div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+                           @endif
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
@@ -109,7 +121,11 @@
 											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team1["team_id"]) }} verloren</div>
 										</div>
 									</div>
-									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+									@if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
+                              <div class="team1 team_logo" style="background-image:url({{ $team1["custom_logo"] }});"></div>
+                           @else
+                              <div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+                           @endif
 								@endif
 							</div>
 						</div>
@@ -129,7 +145,11 @@
 				<div>
 				@if(isset($upcoming_matches) AND $upcoming_matches AND count($upcoming_matches) > 0)
 					@foreach($upcoming_matches as $match)
-						<div class="match_box">
+						<?php
+                     $tournament_temp = Helpers::getTournamentData($match["tournament_id"]);
+                     $league_temp     = Helpers::getLeagueData($tournament_temp["league_id"]);
+                  ?>
+						<div class="match_box clickable" onclick="self.location.href='/esports/{{ str_replace(" ", "_", trim(strtolower($league_temp->short_name))) }}/tournament/{{ $tournament_temp->tournament_id }}/match/{{ $match->match_id }}'">
 							<div class="top_bar">
                         <?php $tournament_info = Helpers::getTournamentData($match->tournament_id) ?>
 								Best of {{ $match->max_games }} | {{ $tournament_info->name }}
@@ -145,7 +165,11 @@
 										$team1 = Helpers::getTeamData($match->team1_id);
 										$team2 = Helpers::getTeamData($match->team2_id);
 									?>
-									<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+									@if(isset($team2["custom_logo"]) AND trim($team2["custom_logo"]) != "")
+                              <div class="team2 team_logo" style="background-image:url({{ $team2["custom_logo"] }});"></div>
+                           @else
+                              <div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+                           @endif
 									<div class="team2_info team_info">
 										<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 										<div class="win_infos">
@@ -160,7 +184,11 @@
 											<div>{{ Helpers::getTournamentTeamLosses($match->tournament_id, $team1["team_id"]) }} verloren</div>
 										</div>
 									</div>
-									<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+									@if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
+                              <div class="team1 team_logo" style="background-image:url({{ $team1["custom_logo"] }});"></div>
+                           @else
+                              <div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+                           @endif
 								@endif
 							</div>
 						</div>

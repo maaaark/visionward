@@ -4,7 +4,11 @@
     <div class="esports_opener_navi">
         <div class="holder">
             <a href="/esports/{{ str_replace(" ", "_", trim("LCS")) }}">
-                <div class="league_icon" style="background-image: url({{ $team->logo_riot }});"></div>
+                @if(isset($team->custom_logo) AND trim($team->custom_logo) != "")
+                  <div class="league_icon" style="background-image: url({{ $team->custom_logo }});"></div>
+                @else
+                  <div class="league_icon" style="background-image: url({{ $team->logo_riot }});"></div>
+                @endif
             </a>
             <div class="league_name">
                 {{$team->name}}

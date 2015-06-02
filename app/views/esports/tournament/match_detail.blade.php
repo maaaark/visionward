@@ -10,8 +10,16 @@
 	<script>$(".esports_opener_navi .esports_header_navi .element.matches").addClass("active");</script>
 
 	<div class="match_detail">
-		<div class="team1_icon team_icon" style="background-image: url({{ $team1->logo_riot }})"></div>
-		<div class="team2_icon team_icon" style="background-image: url({{ $team2->logo_riot }})"></div>
+      @if(isset($team1->custom_logo) AND trim($team1->custom_logo) != "")
+         <div class="team1_icon team_icon" style="background-image: url({{ $team1->custom_logo }})"></div>
+      @else
+         <div class="team1_icon team_icon" style="background-image: url({{ $team1->logo_riot }})"></div>
+      @endif
+		@if(isset($team2->custom_logo) AND trim($team2->custom_logo) != "")
+         <div class="team2_icon team_icon" style="background-image: url({{ $team2->custom_logo }})"></div>
+      @else
+         <div class="team2_icon team_icon" style="background-image: url({{ $team2->logo_riot }})"></div>
+      @endif
 
 		<div class="info_block">
 			@if($team1 AND $team2 AND isset($team1->name) AND isset($team2->name) AND trim($team1->name) != "" AND trim($team2->name) != "")

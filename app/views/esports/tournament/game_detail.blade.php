@@ -24,7 +24,11 @@
 					</div>
 				@endif
 				<div class="team_name">
-					<img class="team_icon" src="{{ $team1->logo_riot }}">
+               @if(isset($team1->custom_logo) AND trim($team1->custom_logo) != "")
+                  <img class="team_icon" src="{{ $team1->custom_logo }}">
+               @else
+                  <img class="team_icon" src="{{ $team1->logo_riot }}">
+               @endif
 					<div class="info">
 						{{ $team1->name }}
 						@if($game->winner > 0)
@@ -41,7 +45,11 @@
 				</div>
 			@else
 				<div class="team_name">
-					<img class="team_icon" src="{{ $team2->logo_riot }}">
+					@if(isset($team2->custom_logo) AND trim($team2->custom_logo) != "")
+                  <img class="team_icon" src="{{ $team2->custom_logo }}">
+               @else
+                  <img class="team_icon" src="{{ $team2->logo_riot }}">
+               @endif
 					<div class="info">
 						{{ $team2->name }}
 						@if($game->winner > 0)
