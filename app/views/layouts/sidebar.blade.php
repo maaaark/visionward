@@ -153,23 +153,23 @@ $settingsArray = array();
                            $team1 = Helpers::getTeamData($match->team1_id);
                            $team2 = Helpers::getTeamData($match->team2_id);
                         ?>
-                        <tr>
-                           <td width="170"><a href="/matches/{{ $match->id }}">
+                        <tr onclick="self.location.href = '/esports/{{ str_replace(" ", "_", strtolower(trim($league_temp->short_name))) }}/tournament/{{ trim($tournament_temp->tournament_id) }}/match/{{ trim($match["match_id"]) }}'" style="cursor: pointer;">
+                           <td width="170">
                               @if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
                                  <img src="{{ $team1["custom_logo"] }}" style="height: 20px;margin-right: 5px;">
                               @else
                                  <img src="{{ $team1["logo_riot"] }}" style="height: 20px;margin-right: 5px;">
                               @endif
-                              {{ trim($team1->name) }}</a>
+                              {{ trim($team1->name) }}
                            </td>
-                           <td width="20"><a href="/matches/{{ $match->id }}">vs.</a></td>
-                           <td width="170"><a href="/matches/{{ $match->id }}">
+                           <td width="20">vs.</td>
+                           <td width="170">
                               @if(isset($team2["custom_logo"]) AND trim($team2["custom_logo"]) != "")
                                  <img src="{{ $team2["custom_logo"] }}" style="height: 20px;margin-right: 5px;">
                               @else
                                  <img src="{{ $team2["logo_riot"] }}" style="height: 20px;margin-right: 5px;">
                               @endif
-                              {{ trim($team2->name) }}</a>
+                              {{ trim($team2->name) }}
                            </td>
                         </tr>
                         @endforeach
