@@ -2,7 +2,7 @@
 @section('title', "User")
 @section('content')
 
-    <table class="table table-striped">
+    <!--<table class="table table-striped">
         <tr>
             <th>ID</th>
             <th>User</th>
@@ -26,6 +26,7 @@
             </tr>
         @endforeach
     </table>
-    <a href="/admin/users/create" class="btn btn-primary">Neuen User anlegen</a>
+    <a href="/admin/users/create" class="btn btn-primary">Neuen User anlegen</a>-->
+    Work in progress
 
 @stop
