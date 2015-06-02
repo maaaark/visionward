@@ -281,4 +281,10 @@ class Helpers {
     	}
     	return $count;
     }
+    
+    /* Next Esports Matches */
+    public static function getNextEsportsMatches($limit = 5){
+      $matches = $upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->limit($limit)->get();
+      return $matches;
+    }
 }

@@ -142,20 +142,39 @@ $settingsArray = array();
 
 
             <div class="block">
-                <h2 class="headline_no_border">Pro Spiele</h2>
+                <h2 class="headline_no_border">Die n&auml;chsten Pro Spiele</h2>
                 <div class="content">
                     <table class="table table-striped visionward_font">
-                        @foreach($global_matches as $match)
-                            @if($match->parent_game == 0)
-                                <tr>
-                                    <td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team->name }}</a></td>
-                                    <td width="20"><a href="/matches/{{ $match->id }}">vs.</a></td>
-                                    <td width="170"><a href="/matches/{{ $match->id }}"><img src="<?=Croppa::url('/img/teams/logos/'.$match->team2->logo, 20, null)?>" height="20" />&nbsp;&nbsp;{{ $match->team2->name }}</a></td>
-                                </tr>
-                            @endif
+                        <?php $next_matches = Helpers::getNextEsportsMatches(); ?>
+                        @foreach($next_matches as $match)
+                        <?php
+                           $tournament_temp = Helpers::getTournamentData($match["tournament_id"]);
+                           $league_temp     = Helpers::getLeagueData($tournament_temp["league_id"]);
+                           $team1 = Helpers::getTeamData($match->team1_id);
+                           $team2 = Helpers::getTeamData($match->team2_id);
+                        ?>
+                        <tr onclick="self.location.href = '/esports/{{ str_replace(" ", "_", strtolower(trim($league_temp->short_name))) }}/tournament/{{ trim($tournament_temp->tournament_id) }}/match/{{ trim($match["match_id"]) }}'" style="cursor: pointer;">
+                           <td width="170">
+                              @if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
+                                 <img src="{{ $team1["custom_logo"] }}" style="height: 20px;margin-right: 5px;">
+                              @else
+                                 <img src="{{ $team1["logo_riot"] }}" style="height: 20px;margin-right: 5px;">
+                              @endif
+                              {{ trim($team1->name) }}
+                           </td>
+                           <td width="20">vs.</td>
+                           <td width="170">
+                              @if(isset($team2["custom_logo"]) AND trim($team2["custom_logo"]) != "")
+                                 <img src="{{ $team2["custom_logo"] }}" style="height: 20px;margin-right: 5px;">
+                              @else
+                                 <img src="{{ $team2["logo_riot"] }}" style="height: 20px;margin-right: 5px;">
+                              @endif
+                              {{ trim($team2->name) }}
+                           </td>
+                        </tr>
                         @endforeach
                         <tr>
-                            <td colspan="3" style="text-align: right;"><a href="/matches" class="red">Zeige alle Spiele</a></td>
+                            <td colspan="3" style="text-align: right;"><a href="/esports" class="red">Zeige alle Spiele</a></td>
                         </tr>
                     </table>
                 </div>
@@ -179,5 +198,4 @@ $settingsArray = array();
                     </table>
                 </div>
             </div>
-
 </div>
