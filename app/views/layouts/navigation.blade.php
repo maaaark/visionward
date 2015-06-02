@@ -50,6 +50,7 @@
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/categories/pbe">PBE</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/champions">CHAMPIONS</a></li>
 		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/counterpicks">KONTERPICKS</a></li>
+		<li><a href="http://summoner.{{ MAIN_URL }}/">BESCHW&Ouml;RER</a></li>
 	    </ul>
     </div>
 	<div class="col-md-4">
@@ -93,7 +94,7 @@
             <ul class="submenu">
                 <li style="height: 55px;">
                     <div class="searchbox">
-                        <form action="/search" method="post">
+                        <form action="http://{{ MAIN_URL }}/search" method="post">
                             <input type="text" placeholder="Summoner, News, Champion, ..." class="multisearch" name="search" />
                             <input type="submit" class="search_button" value="Suchen" />
                             <select class="server_region" name="server_region">
