@@ -73,7 +73,11 @@
 							$team1 = Helpers::getTeamData($match->team1_id);
 							$team2 = Helpers::getTeamData($match->team2_id);
 						?>
-						<div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+						@if(isset($team2["custom_logo"]) AND trim($team2["custom_logo"]) != "")
+                     <div class="team2 team_logo" style="background-image:url({{ $team2["custom_logo"] }});"></div>
+                  @else
+                     <div class="team2 team_logo" style="background-image:url({{ $team2["logo_riot"] }});"></div>
+                  @endif
 						<div class="team2_info team_info">
 							<div><a href="/esports/team/{{ trim(strtolower($team2["acronym"])) }}">{{ $team2["name"] }}</a></div>
 							<div class="win_infos">
@@ -88,7 +92,11 @@
 								<div>{{ Helpers::getTournamentTeamLosses($tournament["tournament_id"], $team1["team_id"]) }} verloren</div>
 							</div>
 						</div>
-						<div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+						@if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
+                     <div class="team1 team_logo" style="background-image:url({{ $team1["custom_logo"] }});"></div>
+                  @else
+                     <div class="team1 team_logo" style="background-image:url({{ $team1["logo_riot"] }});"></div>
+                  @endif
 					@endif
 				</div>
 			</div>
