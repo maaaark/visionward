@@ -153,6 +153,7 @@ $settingsArray = array();
                            $team1 = Helpers::getTeamData($match->team1_id);
                            $team2 = Helpers::getTeamData($match->team2_id);
                         ?>
+			@if(isset($team1) && $team1 && isset($team2) && $team2 && isset($team1->name) && isset($team2->name))
                         <tr onclick="self.location.href = '/esports/{{ str_replace(" ", "_", strtolower(trim($league_temp->short_name))) }}/tournament/{{ trim($tournament_temp->tournament_id) }}/match/{{ trim($match["match_id"]) }}'" style="cursor: pointer;">
                            <td width="170">
                               @if(isset($team1["custom_logo"]) AND trim($team1["custom_logo"]) != "")
@@ -172,6 +173,7 @@ $settingsArray = array();
                               {{ trim($team2->name) }}
                            </td>
                         </tr>
+			@endif
                         @endforeach
                         <tr>
                             <td colspan="3" style="text-align: right;"><a href="/esports" class="red">Zeige alle Spiele</a></td>
