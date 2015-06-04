@@ -19,7 +19,7 @@ class EsportsController extends BaseController {
         
         $dLimit_before    = date("Y-m-d H:i:s", time() - 60 * 50);
         $dLimit_after     = date("Y-m-d H:i:s", time() + 60 * 50);
-        $live_match       = EsportsMatch::where("is_finished", "=", 0)->where("team2_id", ">", 0)->where("team1_id", ">", 0)->where("date", ">", $dLimit_before)->where("date", "<", $dLimit_after)->orderBy("date", "DESC")->first();
+        $live_match       = EsportsMatch::where("is_finished", "=", 0)->where("team2_id", ">", 0)->where("team1_id", ">", 0)->where("date", ">", $dLimit_before)->where("date", "<", $dLimit_after)->orderBy("date", "ASC")->first();
         
 		$category = Category::where('slug','=', 'esports')->first();
 		return View::make('esports.index', array(
