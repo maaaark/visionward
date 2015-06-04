@@ -14,16 +14,21 @@ class EsportsController extends BaseController {
 			$standings[] = $temp;
 		}
 
-		$recent_matches   = EsportsMatch::where("date", "<=", date("Y-m-d h:i:s"))->orderBy("date", "DESC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
-		$upcoming_matches = EsportsMatch::where("date", ">", date("Y-m-d h:i:s"))->orderBy("date", "ASC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
-
+		$recent_matches   = EsportsMatch::where("date", "<=", date("Y-m-d H:i:s"))->orderBy("date", "DESC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
+		$upcoming_matches = EsportsMatch::where("date", ">", date("Y-m-d H:i:s"))->orderBy("date", "ASC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
+        
+        $dLimit_before    = date("Y-m-d H:i:s", time() - 60 * 50);
+        $dLimit_after     = date("Y-m-d H:i:s", time() + 60 * 50);
+        $live_match       = EsportsMatch::where("is_finished", "=", 0)->where("team2_id", ">", 0)->where("team1_id", ">", 0)->where("date", ">", $dLimit_before)->where("date", "<", $dLimit_after)->orderBy("date", "DESC")->first();
+        
 		$category = Category::where('slug','=', 'esports')->first();
 		return View::make('esports.index', array(
 			"leagues"   	   => $leagues,
 			"standings" 	   => $standings,
 			"category"		   => $category,
 			"recent_matches"   => $recent_matches,
-			"upcoming_matches" => $upcoming_matches
+			"upcoming_matches" => $upcoming_matches,
+			"live_match"       => $live_match
 		));
 	}
 
@@ -70,8 +75,8 @@ class EsportsController extends BaseController {
 		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
 
-		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->orderBy("date", "ASC")->get();
-		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d h:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->orderBy("date", "DESC")->get();
+		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d H:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->orderBy("date", "ASC")->get();
+		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d H:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->orderBy("date", "DESC")->get();
 
 		$spieltage = EsportsMatch::where("tournament_id", "=", $tournament_id)->groupBy('tournament_round')->get();
 		$matches   = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "!=", "1970-01-01 01:00:00")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->get();
@@ -97,6 +102,11 @@ class EsportsController extends BaseController {
 			));
 		}
 	}
+	
+	public function __toString()
+    {
+        return 'I am a foo object';
+    }
 
 	public function tournamentMatchDetail($league_key, $tournament_id, $match_id){
 		$league_url  = $league_key;
@@ -131,7 +141,7 @@ class EsportsController extends BaseController {
 								"player"			 => json_decode($esports_game->players, true),
 								"team1"				 => $team1,
 								"team2"				 => $team2
-							));
+							))->render();
 			if($esports_game["winner"] == $team1["team_id"]){
 				$team1_points++;
 			} elseif($esports_game["winner"] == $team2["team_id"]){

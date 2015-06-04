@@ -13,7 +13,10 @@
    </div>
 @stop
 @section('content')
-
+    @if(isset($live_match) AND $live_match AND isset($live_match["tournament_id"]) AND $live_match["tournament_id"] > 0)
+        {{ $live_match["name"] }}
+    @endif
+    
 	@if(isset($standings) AND $standings AND count($standings) > 0)
 		<?php
 			$col_size = floor(12 / count($standings));

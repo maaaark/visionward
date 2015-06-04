@@ -1,4 +1,4 @@
-@if($game->winner > 0)
+@if($game->winner > 0 AND isset($team1->name) AND isset($team2->name) AND isset($team1->team_id) AND isset($team2->team_id))
 	<div class="game_element" data-gamecount="{{ $game_count }}" id="game_element_{{ $game_count }}">
 	@for($i = 100; $i <= 200; $i = $i + 100)
 			@if($i == 100)
@@ -27,10 +27,17 @@
                @if(isset($team1->custom_logo) AND trim($team1->custom_logo) != "")
                   <img class="team_icon" src="{{ $team1->custom_logo }}">
                @else
-                  <img class="team_icon" src="{{ $team1->logo_riot }}">
+                  @if(isset($team1->logo_riot) AND $team1->logo_riot AND trim($team1->logo_riot) != "")
+                    <img class="team_icon" src="{{ $team1->logo_riot }}">
+                  @endif
                @endif
 					<div class="info">
-						{{ $team1->name }}
+                        @if(isset($team1->name) AND $team1->name AND trim($team1->name) != "")
+                            {{ $team1->name }}
+                        @else
+                            Unbekanntes Team
+                        @endif
+                        
 						@if($game->winner > 0)
 							@if($game->winner == $team1->team_id)
 								<div class="winner win esports_spoiler">Gewinner dieses Spiels</div>
@@ -48,7 +55,9 @@
 					@if(isset($team2->custom_logo) AND trim($team2->custom_logo) != "")
                   <img class="team_icon" src="{{ $team2->custom_logo }}">
                @else
-                  <img class="team_icon" src="{{ $team2->logo_riot }}">
+                  @if(isset($team2->logo_riot) AND $team2->logo_riot AND trim($team2->logo_riot) != "")
+                    <img class="team_icon" src="{{ $team2->logo_riot }}">
+                  @endif
                @endif
 					<div class="info">
 						{{ $team2->name }}
