@@ -14,7 +14,30 @@
 @stop
 @section('content')
     @if(isset($live_match) AND $live_match AND isset($live_match["tournament_id"]) AND $live_match["tournament_id"] > 0)
+        <?php
+            $team1 = Helpers::getTeamData($live_match["team1_id"]);
+            $team2 = Helpers::getTeamData($live_match["team2_id"]);
+            $tournament = Helpers::getTournamentData($live_match["tournament_id"]);
+        ?>
         
+        @if(isset($team1["team_id"]) AND $team1["team_id"] > 0 AND isset($team2["team_id"]) AND $team2["team_id"] > 0 AND isset($tournament["tournament_id"]) AND $tournament["tournament_id"] > 0)
+        <div class="esports_live_link">
+            <div class="top_bar">Gerade Live: {{ $team1["name"] }} gegen {{ $team2["name"] }} | {{ $tournament["name"] }}</div>
+            <div class="team_col first">
+                <img src="{{ $team1['logo_riot'] }}" class="team_icon">
+                <div class="team_name">{{ $team1["name"] }}</div>
+            </div>
+            <div class="team_col second">
+                <img src="{{ $team2['logo_riot'] }}" class="team_icon">
+                <div class="team_name">{{ $team2["name"] }}</div>
+            </div>
+            
+            <div class="center_col">
+                <div class="vs">vs.</div>
+                <button class="esports_button" onclick="self.location.href = 'http://watch.euw.lolesports.com/de_DE'">Live-Stream einschalten</button>
+            </div>
+        </div>
+        @endif
     @endif
     
 	@if(isset($standings) AND $standings AND count($standings) > 0)

@@ -1,3 +1,56 @@
+.esports_live_link {
+    background-image: url(../../img/esports/esports_live.jpg);
+    height: 380px;
+    width: 100%;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.esports_live_link .top_bar {
+    padding: 3px;
+    background: rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+}
+
+.esports_live_link .center_col {
+    padding-top: 160px;
+    position: relative;
+    z-index: 6;
+}
+
+.esports_live_link .center_col .vs {
+    font-size: 48px;
+    color: orange;
+    font-weight: bold;
+    font-family: 'Fjalla One';
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0,0,0,1);
+}
+
+.esports_live_link .team_col {
+    position: absolute;
+    width: 50%;
+    top: 0px;
+    z-index: 5;
+}
+
+.esports_live_link .team_col.second {
+    right: 0px;
+}
+
+.esports_live_link .team_col img.team_icon {
+    max-height: 200px;
+    margin-top: 80px;
+}
+
+.esports_live_link .team_col .team_name {
+    padding-top: 5px;
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 0 6px rgba(0,0,0,1);
+}
+
 .esports_opener_navi {
 	background: #000;
 	width: 100%;
