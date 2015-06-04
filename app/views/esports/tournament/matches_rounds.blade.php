@@ -24,6 +24,7 @@
 		$last_day = false;
 		$status   = false;
 	?>
+	<div id="temp_error_message"></div>
 	<div class="matches_container"> 
 		<?php
 			$last_day = false;
@@ -107,8 +108,14 @@
 
 	<script>
 	$(document).ready(function(){
+		$("#temp_error_message").html("");
 		$(".spieltag_tabs .spieltag_tab").click(function(){
+            $("#temp_error_message").html("");
 			$(".matches_container .show").removeClass("show");
+			
+			if($(".matches_container .match_box_holder.spieltag"+$(this).attr("data-spieltag").trim()).length < 1){
+                $("#temp_error_message").html('<div style="padding-top: 40px;padding-bottom: 55px;font-size: 28px;text-align: center;">Es wurden noch keine Spiele f&uuml;r diesen Spieltag bekanntgegeben.</div>');
+			}
 			$(".matches_container .match_box_holder.spieltag"+$(this).attr("data-spieltag").trim()).addClass("show");
 			$(".spieltag_tabs .show").removeClass("show");
 			$(this).addClass("show");
@@ -129,7 +136,6 @@
 		});
 
 		if(already_set_start == false){
-			console.log("asd");
 			temp = null;
 			$(".spieltag_tabs .spieltag_tab").each(function(){
 				temp = $(this);

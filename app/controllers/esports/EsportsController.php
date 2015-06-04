@@ -14,8 +14,8 @@ class EsportsController extends BaseController {
 			$standings[] = $temp;
 		}
 
-		$recent_matches   = EsportsMatch::where("winner", ">", "0")->orderBy("date", "DESC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->limit(5)->get();
-		$upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->limit(5)->get();
+		$recent_matches   = EsportsMatch::where("winner", ">", "0")->orderBy("date", "DESC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
+		$upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->where("date", "!=", "1970-01-01 01:00:00")->limit(5)->get();
 
 		$category = Category::where('slug','=', 'esports')->first();
 		return View::make('esports.index', array(
@@ -70,11 +70,11 @@ class EsportsController extends BaseController {
 		$league_tournaments = EsportsTournament::where("league_id", "=", $league["league_id"])->orderBy("tournament_id", "DESC")->get();
 		$tournament = EsportsTournament::where("tournament_id", "=", $tournament_id)->first();
 
-		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->orderBy("date", "ASC")->get();
-		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d h:i:s"))->orderBy("date", "DESC")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->get();
+		$matches_upcoming = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", ">", date("Y-m-d h:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->orderBy("date", "ASC")->get();
+		$matches_past 	  = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "<=", date("Y-m-d h:i:s"))->where("date", "!=", "1970-01-01 01:00:00")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->orderBy("date", "DESC")->get();
 
 		$spieltage = EsportsMatch::where("tournament_id", "=", $tournament_id)->groupBy('tournament_round')->get();
-		$matches   = EsportsMatch::where("tournament_id", "=", $tournament_id)->get();
+		$matches   = EsportsMatch::where("tournament_id", "=", $tournament_id)->where("date", "!=", "1970-01-01 01:00:00")->where("team1_id", ">", 0)->where("team2_id", ">", 0)->get();
 		if(count($spieltage) > 1){
 			return View::make('esports.tournament.matches_rounds', array(
 				"league" 	  		 => $league,
