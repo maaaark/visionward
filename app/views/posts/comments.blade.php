@@ -22,7 +22,8 @@
         <strong><a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}">{{ $comment->user->summoner->name }}</a></strong><br/>
         <a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}"><img width="50" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $comment->user->summoner->profileIconId }}.png" class="img-circle" alt="{{ $comment->user->summoner->name }}" /></a>
         <div class="badge"><a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}">Level {{ $comment->user->level }}</a></div><br/>
-        @if($comment->user->summoner)
+        <!--
+            @if($comment->user->summoner)
             @if($comment->user->summoner->solo_tier != "none")
                 <a href="http://summoner.flashignite.com/{{ $comment->user->summoner->region }}/{{ $comment->user->summoner->name }}"><img height="50" src="http://summoner.flashignite.com/img/stats/tiers/{{ $comment->user->summoner->solo_tier }}_I.png" alt=""></a><br/>
                 {{ $comment->user->summoner->solo_tier }} {{ $comment->user->summoner->solo_division }}
@@ -31,6 +32,7 @@
             @endif
 
         @endif
+                -->
         @else
             Gelöschter User
         @endif
