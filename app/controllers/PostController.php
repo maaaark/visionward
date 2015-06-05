@@ -25,23 +25,25 @@ class PostController extends BaseController {
 	}
 
     public function saveComment() {
-        $input = Input::all();
-        $post_id = Input::get('post_id');
-        $news = Post::find($post_id);
-        $validation = Validator::make($input, Comment::$rules);
+        if(Auth::check()) {
+            $input = Input::all();
+            $post_id = Input::get('post_id');
+            $news = Post::find($post_id);
+            $validation = Validator::make($input, Comment::$rules);
 
-        if ($validation->passes())
-        {
-            $input["user_id"] = Auth::user()->id;
-            Comment::create($input);
-            Auth::user()->addExp(50);
-            return Redirect::to('/news/'.$post_id."/".$news->slug)->with("success", "Kommentar wurde erstellt");
-        } else {
-            $messages = $validation->messages();
-            return Redirect::to("/news/".$post_id."/".$news->slug)
-                ->withInput()
-                ->withErrors($validation)
-                ->with('error', 'There were validation errors.')->with('input', Input::all());
+            if ($validation->passes())
+            {
+                $input["user_id"] = Auth::user()->id;
+                Comment::create($input);
+                Auth::user()->addExp(50);
+                return Redirect::to('/news/'.$post_id."/".$news->slug)->with("success", "Kommentar wurde erstellt");
+            } else {
+                $messages = $validation->messages();
+                return Redirect::to("/news/".$post_id."/".$news->slug)
+                    ->withInput()
+                    ->withErrors($validation)
+                    ->with('error', 'There were validation errors.')->with('input', Input::all());
+            }
         }
     }
 
