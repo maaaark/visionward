@@ -65,16 +65,20 @@
 
             @if(Auth::check())
                 <ul class="sub_submenu" style="">
-                    <li>
-                        <a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" /></a>
-                        <a style="padding: 0px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}"><img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt=""></a>
-                        <a href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}">Profil</a>
+                    <li style="width: 100%;">
+                        <a style="padding: 0px; padding-left: 10px;" href="http://summoner.flashignite.com/{{ Auth::user()->summoner->region }}/{{ Auth::user()->summoner->name }}">
+                            <img width="35" height="35" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ Auth::user()->summoner->profileIconId }}.png" class="img-circle" alt="{{ Auth::user()->summoner->name }}" />
+                            @if(isset(Auth::user()->summoner->solo_tier) AND Auth::user()->summoner->solo_tier AND trim(Auth::user()->summoner->solo_tier) != "none")
+                                <img width="35" height="35" src="http://summoner.flashignite.com/img/stats/tiers/{{ Auth::user()->summoner->solo_tier }}_I.png" alt="">
+                            @endif
+                            <span style="padding-left: 3px;">Profil</span>
+                        </a>
                     </li>
                     <!-- <li><a href="/einstellungen">Einstellungen</a></li> -->
                     @if(Auth::user()->hasRole("admin"))
-                        <li><a href="http://{{ MAIN_URL }}/admin">Admin Panel</a></li>
+                        <li style="width: 100%;"><a href="http://{{ MAIN_URL }}/admin">Admin Panel</a></li>
                     @endif
-                    <li><a href="http://{{ MAIN_URL }}/logout">Ausloggen</a></li>
+                    <li style="width: 100%;"><a href="http://{{ MAIN_URL }}/logout">Ausloggen</a></li>
                 </ul>
             @else
                 <a href="http://{{ MAIN_URL }}/login">LOGIN</a>
