@@ -26,6 +26,8 @@
 	<meta property="og:url" content="{{ Request::url() }}" />
 	@if(isset($post))
 	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
+	
+    <script src="/js/jquery.min.js"></script>
 	@endif
   </head>
   <body>
@@ -96,7 +98,6 @@
     }());
     </script>
     
-    <script src="/js/jquery.min.js"></script>
 	<script src="/js/tooltipsy.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>

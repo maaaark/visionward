@@ -31,7 +31,7 @@ class PostController extends BaseController {
             $news = Post::find($post_id);
             $validation = Validator::make($input, Comment::$rules);
 
-            if ($validation->passes())
+            if($validation->passes() && trim(Input::get("comment")) != "")
             {
                 $input["user_id"] = Auth::user()->id;
                 Comment::create($input);
@@ -42,7 +42,7 @@ class PostController extends BaseController {
                 return Redirect::to("/news/".$post_id."/".$news->slug)
                     ->withInput()
                     ->withErrors($validation)
-                    ->with('error', 'There were validation errors.')->with('input', Input::all());
+                    ->with('error', 'Der Kommentar wurde nicht erstellt.')->with('input', Input::all());
             }
         }
     }

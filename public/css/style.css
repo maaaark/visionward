@@ -352,11 +352,6 @@ a.red {
     font-size: 10px;
     color: #9a9a9a;
 }
-.comment_bottom {
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #e7e7e7;
-}
 .fixed {
     position: fixed;
     top:0; left:0;
@@ -822,4 +817,101 @@ img.grayscale:hover {
     font-weight: bold;
     background: #f25825;
     text-decoration: none;
+}
+
+
+/* Kommentare */
+.comment_textarea {
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 3px;
+    resize: none;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 120px;
+    outline: none;
+}
+
+.comment_element {
+    padding-bottom: 25px;
+    font-size: 14px;
+    color: #000;
+}
+
+.comment_element .comment_summoner {
+    font-weight: bold;
+}
+
+.comment_element .comment_user_icon {
+    width: 100%;
+    border-radius: 7px;
+}
+
+.comment_element .comment_bull {
+    color: rgba(0,0,0,0.4);
+    font-size: 12px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+.comment_element .comment_date {
+    color: rgba(0,0,0,0.4);
+}
+
+.comment_element .comment_bar {
+    padding-top: 6px;
+    -webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.comment_element .comment_bar .answer {
+    padding: 5px;
+    padding-top: 1px;
+    padding-bottom: 3px;
+    border-radius: 5px;
+    background: #F25824;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+    border: 1px solid rgba(0,0,0,0);
+}
+
+.comment_element .comment_bar .answer.active {
+    border: 1px solid rgba(0,0,0,0.5);
+}
+
+.comment_element .comment_bar .answer:hover {
+    background: #ED7A53;
+}
+
+.comment_element .comment_answers .write_answer {
+    display: none;
+    padding-top: 15px;
+}
+
+.comment_element .comment_answers .answer_input {
+    border: 1px solid rgba(0,0,0,0.5);
+    border-radius: 3px;
+    resize: none;
+    padding: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 80px;
+    outline: none;
+}
+
+.comment_element .comment_answers .comment_answer {
+    padding-top: 15px;
+}
+
+.comment_write_user {
+    padding: 10px;
+    padding-right: 0px;
+}
+
+.comment_write_user .comment_write_icon {
+    width: 100%;
+    border-radius: 5px;
 }
