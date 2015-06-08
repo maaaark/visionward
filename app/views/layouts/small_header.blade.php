@@ -24,10 +24,10 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Flashignite" />
 	<meta property="og:url" content="{{ Request::url() }}" />
+    <script src="/js/jquery.min.js"></script>
+
 	@if(isset($post))
 	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
-	
-    <script src="/js/jquery.min.js"></script>
 	@endif
   </head>
   <body>
