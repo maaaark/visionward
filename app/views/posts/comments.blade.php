@@ -28,8 +28,10 @@
 @endif
 <br/>
 <h2 class="headline">Kommentare</h2>
+<?php $comments_status = false; ?>
 @foreach($post->comments as $comment)
     @if($comment->parent_comment == 0)
+    <?php $comments_status = true; ?>
     <div class="row comment_element">
         <div class="col-md-1 center" style="padding-right: 0px;">
             @if($comment->user)
@@ -50,9 +52,12 @@
             </div>
             <div class="comment_content">{{ $comment->comment }}</div>
             <div class="comment_bar">
+            	@if(Auth::check())
                 <span class="answer">Auf Kommentar antworten</span>
+                @endif
             </div>
             <div class="comment_answers">
+            	@if(Auth::check())
                 <div class="write_answer">
                     <!-- Dieser Service ist momentan noch deaktiviert.-->
                     {{ Form::open(array('action' => 'PostController@saveComment', 'method' => 'post')) }}
@@ -62,6 +67,7 @@
                     <div>{{ Form::submit("Antwort absenden", array('class' => 'btn btn-primary')) }}</div>
                     {{ Form::close() }}
                 </div>
+                @endif
                 @foreach($post->comments as $answer)
                     @if($answer->parent_comment == $comment->id)
                         <div class="row comment_answer">
@@ -94,6 +100,12 @@
     </div>
     @endif
 @endforeach
+
+@if($comments_status == false)
+	<div style="padding: 25px;color: rgba(0,0,0,0.6);text-align: center;">
+		Es wurden noch keine Kommentare gepostet.
+	</div>
+@endif
 
 <script>
     $(document).ready(function(){
