@@ -12,7 +12,7 @@ class CreateCommentRatings extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('champions_stats', function(Blueprint $table)
+		Schema::create('comments_ratings', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('user');
