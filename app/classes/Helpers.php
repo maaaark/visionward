@@ -287,4 +287,28 @@ class Helpers {
       $matches = $upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->limit($limit)->get();
       return $matches;
     }
+    
+    /* Comments */
+    public static function checkCommentVoted($type, $comment){
+      if(Auth::check()){
+         $rate = CommentRating::where("comment", "=", $comment)->where("type", "=", $type)->where("user", "=", Auth::user()->id)->first();
+         if(isset($rate->id) && $rate->id > 0){
+            return true;
+         }
+      }
+      return false;
+    }
+    
+    public static function getCommentVotes($comment){
+      $count = 0;
+      $rate = CommentRating::where("comment", "=", $comment)->get();
+      foreach($rate as $element){
+         if($element->type == "up"){
+            $count++;
+         } else {
+            $count--;
+         }
+      }
+      return $count;
+    }
 }

@@ -53,6 +53,23 @@
             <div class="comment_content">{{ $comment->comment }}</div>
             <div class="comment_bar">
             	@if(Auth::check())
+                <span class="rate">
+                  @if(Helpers::getCommentVotes($comment->id) != 0)
+                     <span class="current_vote">{{ Helpers::getCommentVotes($comment->id) }}</span>
+                  @endif
+                  @if(Helpers::checkCommentVoted("up", $comment->id))
+                     <div class="vote_btn up active" data-id="{{ $comment->id }}" data-type="up"><i class="fa fa-chevron-up"></i></div>
+                  @else
+                     <div class="vote_btn up" data-id="{{ $comment->id }}" data-type="up"><i class="fa fa-chevron-up"></i></div>
+                  @endif
+                 |
+                  @if(Helpers::checkCommentVoted("down", $comment->id))
+                     <div class="vote_btn down active" data-id="{{ $comment->id }}" data-type="down"><i class="fa fa-chevron-down"></i></div>
+                  @else
+                     <div class="vote_btn down" data-id="{{ $comment->id }}" data-type="down"><i class="fa fa-chevron-down"></i></div>
+                  @endif
+                </span>
+                <span class="comment_bull">&bull;</span>
                 <span class="answer">Auf Kommentar antworten</span>
                 @endif
             </div>
@@ -91,6 +108,26 @@
                                 <div class="comment_content">
                                     {{{ $answer->comment }}}
                                 </div>
+                                <div class="comment_bar">
+                                    @if(Auth::check())
+                                     <span class="rate">
+                                       @if(Helpers::getCommentVotes($answer->id) != 0)
+                                          <span class="current_vote">{{ Helpers::getCommentVotes($answer->id) }}</span>
+                                       @endif
+                                       @if(Helpers::checkCommentVoted("up", $answer->id))
+                                          <div class="vote_btn up active" data-id="{{ $answer->id }}" data-type="up"><i class="fa fa-chevron-up"></i></div>
+                                       @else
+                                          <div class="vote_btn up" data-id="{{ $answer->id }}" data-type="up"><i class="fa fa-chevron-up"></i></div>
+                                       @endif
+                                      |
+                                       @if(Helpers::checkCommentVoted("down", $answer->id))
+                                          <div class="vote_btn down active" data-id="{{ $answer->id }}" data-type="down"><i class="fa fa-chevron-down"></i></div>
+                                       @else
+                                          <div class="vote_btn down" data-id="{{ $answer->id }}" data-type="down"><i class="fa fa-chevron-down"></i></div>
+                                       @endif
+                                     </span>
+                                     @endif
+                                 </div>
                             </div>
                         </div>
                     @endif
@@ -117,6 +154,27 @@
                 $(this).parent().parent().find(".write_answer").show();
                 $(this).addClass("active");
             }
+        });
+        
+        $(".comment_element .comment_bar .rate .vote_btn").click(function(){
+            if($(this).hasClass("active")){
+               // Aktuelle Wertung ausgewählt -> nichts machen
+            } else {
+               var element = $(this);
+               $.post("/comment/rateComment", {type: $(this).attr("data-type"), id: $(this).attr("data-id") }).done(function(data){
+                  current_vote = element.parent().find(".current_vote");
+                  if(typeof current_vote != "undefined" && typeof current_vote.html() && current_vote.html()){
+                     current_vote.html(data);
+                  } else {
+                     console.log("update");
+                     element.parent().html('<span class="current_vote">'+data+'</span> '+element.parent().html());
+                  }
+               });
+            }
+            $(this).parent().find(".active").removeClass("active");
+            $(this).addClass("active");
+            
+            
         });
     });
 </script>

@@ -46,5 +46,32 @@ class PostController extends BaseController {
             }
         }
     }
+    
+    public function rateComment(){
+      if(Auth::check() && Input::get("id") && Input::get("type")){
+           $type    = Input::get("type");
+           $comment = Comment::where("id", "=", Input::get("id"))->first();
+           if(isset($comment["id"]) && $comment["id"] > 0){
+              if($type == "up" || $type == "down"){
+                  $rating = CommentRating::where("comment", "=", $comment["id"])->where("user", "=", Auth::user()->id)->first();
+                  if(isset($rating) && isset($rating->id) && $rating->id > 0){
+                     $rating->type = trim($type);
+                  } else {
+                     $rating          = new CommentRating();
+                     $rating->type    = $type;
+                     $rating->user    = Auth::user()->id;
+                     $rating->comment = $comment["id"];
+                  }
+                  $rating->save();
+              }
+           }
+        }
+        
+        if(isset($comment["id"]) && $comment["id"] > 0){
+            echo Helpers::getCommentVotes($comment["id"]);
+        } else {
+            echo "0";
+        }
+    }
 
 }

@@ -89,6 +89,7 @@ Route::get('/articles/{id}/{slug}', 'ArticlesController@show');
 
 // News
 Route::post('/comment/saveComment', 'PostController@saveComment');
+Route::post('/comment/rateComment', 'PostController@rateComment');
 Route::get('/news/{id}/{slug}', 'PostController@show');
 Route::post('/counterpicks/create_counter', 'CounterpicksController@create_counter');
 
