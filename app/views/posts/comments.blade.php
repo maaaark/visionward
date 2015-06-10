@@ -44,6 +44,8 @@
             <div class="comment_info">
                 @if($comment->user)
                     <a href="http://summoner.flashignite.com/{{ trim(strtolower($comment->user->summoner->region)) }}/{{ trim($comment->user->summoner->name) }}"><span class="comment_summoner">{{ trim($comment->user->summoner->name) }}</span></a>
+                    <span class="comment_bull">&bull;</span>
+                    <span class="comment_user_level">Level {{ $comment->user["level"] }}</span>
                 @else
                     <span style="font-weight: bold;color: #555;">Gel&ouml;schter User</span>
                 @endif
