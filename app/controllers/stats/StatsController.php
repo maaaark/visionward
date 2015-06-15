@@ -124,9 +124,11 @@ class StatsController extends BaseController {
 					$array["queue"] 		= $entry["queue"];
 					$ranked_data[$array["queue"]] = $array;
 
-					$summoner->solo_division = $entry["entries"][0]["division"];
-					$summoner->solo_tier	 = $entry["tier"];
-					$summoner->solo_name	 = str_replace("'", "&lsquo;", $entry["name"]);
+					if(trim($array["queue"]) == "RANKED_SOLO_5x5"){
+						$summoner->solo_division = $entry["entries"][0]["division"];
+						$summoner->solo_tier	 = $entry["tier"];
+						$summoner->solo_name	 = str_replace("'", "&lsquo;", $entry["name"]);
+					}
 				}
 				$json_encode = json_encode($ranked_data);
 				$summoner->ranked_summary = $json_encode;
