@@ -10,6 +10,7 @@
     <title>Flashignite.com - @yield('title')</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
 	<link rel="stylesheet" href="/css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Fjalla+One' rel='stylesheet' type='text/css'>
@@ -24,6 +25,8 @@
 	<meta property="og:type" content="website" />
 	<meta property="og:site_name" content="Flashignite" />
 	<meta property="og:url" content="{{ Request::url() }}" />
+    <script src="/js/jquery.min.js"></script>
+
 	@if(isset($post))
 	<meta property="og:image" content="{{URL::to('/')}}/uploads/news/{{$post->image}}" />
 	@endif
@@ -96,7 +99,6 @@
     }());
     </script>
     
-    <script src="/js/jquery.min.js"></script>
 	<script src="/js/tooltipsy.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 	<script src="/js/custom.js"></script>
