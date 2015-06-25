@@ -3,11 +3,12 @@
 @section('opener')
    <div class="esports_opener_navi">
         <div class="holder">
-            <a href="/esports/{{ str_replace(" ", "_", trim("LCS")) }}">
-                <div class="league_icon" style="background-image: url('http://riot-web-cdn.s3-us-west-1.amazonaws.com/lolesports/s3fs-public/EU_LCS_Logo_RGB_72dpi.png');"></div>
-            </a>
+            <div class="league_icon" style="background-image: url(/img/esports/esports_index_icon.png);"></div>
             <div class="league_name">
                 League of Legends eSports
+                <div style="paddig-top: 5px;padding-left: 40px;font-size: 20px;">
+                    Startseite
+                </div>
             </div>
         </div>
    </div>

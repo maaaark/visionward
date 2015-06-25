@@ -11,7 +11,7 @@
 						<li><a href="http://{{ MAIN_URL }}/matches">VIDEOS</a></li>
 					</ul>
 				</li>
-				<li><a href="#">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
+				<li><a href="http://{{ MAIN_URL }}/esports">ESPORTS&nbsp;&nbsp;<img src="/img/down.png" width="10"></a>
 					<ul class="sub_submenu_mobile">
 						<!--<li><a href="http://{{ MAIN_URL }}/teams">PRO TEAMS</a></li>-->
 						<!--<li><a href="/vips">CASTER / HOSTS</a></li>-->
