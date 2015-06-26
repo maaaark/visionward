@@ -6,6 +6,35 @@
 			$settingsArray[$setting->key] = $setting->value;  
 		?>
 	@endforeach
+	
+	@if(isset($live_match) AND $live_match AND isset($live_match["tournament_id"]) AND $live_match["tournament_id"] > 0)
+        <?php
+            $team1 = Helpers::getTeamData($live_match["team1_id"]);
+            $team2 = Helpers::getTeamData($live_match["team2_id"]);
+            $tournament = Helpers::getTournamentData($live_match["tournament_id"]);
+        ?>
+        
+        @if(isset($team1["team_id"]) AND $team1["team_id"] > 0 AND isset($team2["team_id"]) AND $team2["team_id"] > 0 AND isset($tournament["tournament_id"]) AND $tournament["tournament_id"] > 0)
+        <h2 class="headline">Gerade Live:</h2>
+        <div class="index_esports_live_link">
+            <div class="top_bar">Gerade Live: {{ $team1["name"] }} gegen {{ $team2["name"] }} | {{ $tournament["name"] }}</div>
+            <div class="team_col first">
+                <img src="{{ $team1['logo_riot'] }}" class="team_icon">
+                <div class="team_name">{{ $team1["name"] }}</div>
+            </div>
+            <div class="team_col second">
+                <img src="{{ $team2['logo_riot'] }}" class="team_icon">
+                <div class="team_name">{{ $team2["name"] }}</div>
+            </div>
+            
+            <div class="center_col">
+                <div class="vs">vs.</div>
+                <button class="esports_button" onclick="self.location.href = '/esports'">Zum Esports-Bereich</button>
+            </div>
+        </div>
+        @endif
+    @endif
+	
 	@if($settingsArray['eil_switch'] === "1")
         <h2 class="headline">EILMELDUNG</h2>
         <div class="eilmeldung">

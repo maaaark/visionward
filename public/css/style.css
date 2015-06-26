@@ -946,3 +946,97 @@ img.grayscale:hover {
    padding-right: 5px;
    font-size: 13px;
 }
+
+/* INDEX Esports   Live match */
+.index_esports_live_link {
+    background-image: url(../img/esports/esports_live.jpg);
+    height: 240px;
+    width: 100%;
+    margin-top: 5px;
+    text-align: center;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.index_esports_live_link  .top_bar {
+    padding: 3px;
+    background: rgba(255,255,255,0.1);
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+}
+
+.index_esports_live_link  .center_col {
+    padding-top: 30px;
+    position: relative;
+    z-index: 6;
+}
+
+.index_esports_live_link  .center_col .vs {
+    font-size: 48px;
+    color: orange;
+    font-weight: bold;
+    font-family: 'Fjalla One';
+    margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(0,0,0,1);
+}
+
+.index_esports_live_link  .team_col {
+    position: absolute;
+    width: 50%;
+    top: 0px;
+    z-index: 5;
+}
+
+.index_esports_live_link  .team_col.second {
+    right: 0px;
+}
+
+.index_esports_live_link  .team_col img.team_icon {
+    max-height: 100px;
+    margin-top: 60px;
+}
+
+.index_esports_live_link  .team_col .team_name {
+    padding-top: 5px;
+    text-align: center;
+    color: rgba(255,255,255,0.9);
+    text-shadow: 0 0 6px rgba(0,0,0,1);
+}
+
+.index_esports_live_link .esports_button {
+    background: #F25824;
+    color: #fff;
+    font-family: 'Fjalla One';
+    font-size: 14px;
+    border: none;
+    outline: none;
+    padding: 10px;
+    transition: all 250ms;
+}
+
+.index_esports_live_link .esports_button:hover {
+    background: #FA8259;
+}
+
+@media(max-width: 600px){
+    .index_esports_live_link {
+        height: auto;
+    }
+    
+    .index_esports_live_link .esports_button {
+        width: 100%;
+        bottom: 0px;
+    }
+
+    .index_esports_live_link  .center_col {
+        padding-top: 200px;
+    }
+    
+    .index_esports_live_link  .team_col img.team_icon {
+        margin-top: 70px;
+    }
+    
+    .index_esports_live_link  .center_col .vs {
+        display: none;
+    }
+}

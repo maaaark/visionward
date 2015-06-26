@@ -7,7 +7,11 @@ class PostController extends BaseController {
 		$posts = Post::orderBy('created_at', 'DESC')->where("published", "=", 1)->paginate(13);
 		$slider = Slider::where("published", "=", 1)->orderBy("order", "ASC")->get();
 		
-		return View::make('posts.index', compact('posts', 'slider'));
+        $dLimit_before    = date("Y-m-d H:i:s", time() - 60 * 50);
+        $dLimit_after     = date("Y-m-d H:i:s", time() + 60 * 50);
+        $live_match       = EsportsMatch::where("is_finished", "=", 0)->where("team2_id", ">", 0)->where("team1_id", ">", 0)->where("date", ">", $dLimit_before)->where("date", "<", $dLimit_after)->orderBy("date", "ASC")->first();
+
+		return View::make('posts.index', compact('posts', 'slider', 'live_match'));
 	}
 	
 	public function show($id, $slug)

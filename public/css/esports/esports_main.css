@@ -51,6 +51,30 @@
     text-shadow: 0 0 6px rgba(0,0,0,1);
 }
 
+@media(max-width: 600px){
+    .esports_live_link {
+        height: auto;
+    }
+    
+    .esports_live_link .esports_button {
+        width: 100%;
+        bottom: 0px;
+    }
+
+    .esports_live_link  .center_col {
+        padding-top: 200px;
+    }
+    
+    .esports_live_link  .team_col img.team_icon {
+        margin-top: 70px;
+        max-height: 100px;
+    }
+    
+    .esports_live_link  .center_col .vs {
+        display: none;
+    }
+}
+
 .esports_opener_navi {
 	background: #000;
 	width: 100%;
