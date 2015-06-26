@@ -33,14 +33,14 @@
     @if($comment->parent_comment == 0)
     <?php $comments_status = true; ?>
     <div class="row comment_element">
-        <div class="col-md-1 center" style="padding-right: 0px;">
+        <div class="col-xs-1 center" style="padding-right: 0px;">
             @if($comment->user)
                 <a href="http://summoner.flashignite.com/{{ trim(strtolower($comment->user->summoner->region)) }}/{{ trim($comment->user->summoner->name) }}"><img class="comment_user_icon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $comment->user->summoner->profileIconId }}.png" class="img-circle" alt="{{ $comment->user->summoner->name }}" /></a>
             @else
                 <img class="comment_user_icon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/1.png">
             @endif
         </div>
-        <div class="col-md-11 ">
+        <div class="col-xs-11 ">
             <div class="comment_info">
                 @if($comment->user)
                     <a href="http://summoner.flashignite.com/{{ trim(strtolower($comment->user->summoner->region)) }}/{{ trim($comment->user->summoner->name) }}"><span class="comment_summoner">{{ trim($comment->user->summoner->name) }}</span></a>
@@ -52,7 +52,7 @@
                 <span class="comment_bull">&bull;</span>
                 <span class="comment_date">{{ trim(Helpers::diffForHumans($comment->created_at)) }}</span>
             </div>
-            <div class="comment_content">{{ $comment->comment }}</div>
+            <div class="comment_content">{{ strip_tags($comment->comment) }}</div>
             <div class="comment_bar">
             	@if(Auth::check())
                 <span class="rate">
@@ -90,14 +90,14 @@
                 @foreach($post->comments as $answer)
                     @if($answer->parent_comment == $comment->id)
                         <div class="row comment_answer">
-                            <div class="col-md-1 center" style="padding-right: 0px;">
+                            <div class="col-xs-1 center" style="padding-right: 0px;">
                                 @if($answer->user)
                                     <a href="http://summoner.flashignite.com/{{ trim(strtolower($answer->user->summoner->region)) }}/{{ trim($answer->user->summoner->name) }}"><img class="comment_user_icon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/{{ $answer->user->summoner->profileIconId }}.png" class="img-circle" alt="{{ $answer->user->summoner->name }}" /></a>
                                 @else
                                     <img class="comment_user_icon" src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/profileicon/1.png">
                                 @endif
                             </div>
-                            <div class="col-md-11 ">
+                            <div class="col-xs-11 ">
                                 <div class="comment_info">
                                     @if($answer->user)
                                         <a href="http://summoner.flashignite.com/{{ trim(strtolower($answer->user->summoner->region)) }}/{{ trim($answer->user->summoner->name) }}"><span class="comment_summoner">{{ trim($answer->user->summoner->name) }}</span></a>
@@ -110,7 +110,7 @@
                                     <span class="comment_date">{{ trim(Helpers::diffForHumans($answer->created_at)) }}</span>
                                 </div>
                                 <div class="comment_content">
-                                    {{{ $answer->comment }}}
+                                    {{{ strip_tags($answer->comment) }}}
                                 </div>
                                 <div class="comment_bar">
                                     @if(Auth::check())
