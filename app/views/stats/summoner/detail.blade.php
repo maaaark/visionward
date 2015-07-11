@@ -164,7 +164,7 @@
 			$("#summoner_tabs_content .loader").each(function(){
 				html  = '<div style="text-align:center;padding: 35px;">';
 				html += "<img src='{{ URL::asset('img/stats/ajax-loader.gif') }}' style='width: 70%;max-width: 150px;'>";
-				html += "<div style='color: rgba(0,0,0,0.6);margin-top: 25px;'>Einen moment bitte, die Daten werden geladen ...</div>";
+				html += "<div style='color: rgba(0,0,0,0.6);margin-top: 25px;'>Einen Moment bitte, die Daten werden geladen ...</div>";
 				html += "</div>";
 				$(this).html(html);
 			});
