@@ -26,10 +26,15 @@ Route::resource('vips', 'VipsController');
 Route::resource('articles', 'ArticlesController');
 
 // Url-Analysieren und TLD+Domain-Namen rausfinden
+/*
+ * */
 $parsedUrl = parse_url(Request::root());
+$parsedUrl = parse_url("http://flashignite.com");
 $host_data = explode('.', $parsedUrl['host']);
 $main_url  = $host_data[count($host_data)-2];
+//$main_url  = "http://flashignite.com";
 $tld       = $host_data[count($host_data)-1];
+
 define("MAIN_URL", $main_url.".".$tld);
 Route::group(array('domain' => 'summoner.'.trim($main_url).".".trim($tld)), function(){
 	include 'routes_stats.php';
