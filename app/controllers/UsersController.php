@@ -171,6 +171,7 @@ class UsersController extends \BaseController {
                 $summoner_found = $user->addSummoner(Input::get('region'), Input::get('summoner_name'), $user);
                 if($summoner_found) {
                     $user->password = Hash::make(Input::get('password'));
+                    $user->region = Session::get("region");
                     $user->verify_string = str_random(10);
                     $user->save();
                     return Redirect::to('/login')->with("success", "User erstellt - Bitte einloggen");

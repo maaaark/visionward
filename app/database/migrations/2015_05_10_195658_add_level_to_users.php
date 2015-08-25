@@ -15,7 +15,6 @@ class AddLevelToUsers extends Migration {
 		Schema::connection('mysql2')->table('users', function(Blueprint $table)
 		{
 			$table->integer("level")->default(1);
-
 		});
 	}
 
