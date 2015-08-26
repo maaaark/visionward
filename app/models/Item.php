@@ -2,6 +2,7 @@
 
 class Item extends \Eloquent {
 
+	protected $connection = 'mysql2';
 
 	// Add your validation rules here
 	public static $rules = [
