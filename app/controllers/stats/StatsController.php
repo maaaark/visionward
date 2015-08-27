@@ -32,7 +32,7 @@ class StatsController extends BaseController {
 				}
 			}
 			
-			if($need_api_request){
+			if($need_api_request = true){
 				$clean_summoner_name = str_replace(" ", "", $summoner_name);
 				$clean_summoner_name = strtolower($clean_summoner_name);
 				$clean_summoner_name = mb_strtolower($clean_summoner_name, 'UTF-8');
@@ -49,6 +49,8 @@ class StatsController extends BaseController {
 					if(!$summoner) {
 						$summoner = new Summoner;
 					}
+
+
 					$summoner->summoner_id = $obj[$clean_summoner_name]["id"];
 					$summoner->name = $obj[$clean_summoner_name]["name"];
 					$summoner->profileIconId = $obj[$clean_summoner_name]["profileIconId"];
@@ -56,6 +58,14 @@ class StatsController extends BaseController {
 					$summoner->revisionDate = $obj[$clean_summoner_name]["revisionDate"];
 					$summoner->region = $region;
 					$summoner->last_update_maindata = date('Y-m-d H:i:s');
+					$summoner->save();
+
+					/* Duplikate löschen: Können bei Summonernamechanges auftreten */
+					$other_summoners_with_this_id = Summoner::where("region", "=", $region)->where("summoner_id", "=", $summoner->summoner_id)->where("id", "!=", $summoner->id)->get();
+					foreach($other_summoners_with_this_id as $duplicate){
+						$duplicate->delete();
+					}
+
 					$summoner_stats = $this->allowed_regions[$region]["api_endpoint"]."/api/lol/".$region."/v1.3/stats/by-summoner/".$summoner->summoner_id."/summary?season=".$this->current_season."&api_key=".$api_key;
 					$json2 = @file_get_contents($summoner_stats);
 					if($json2 === FALSE) {
