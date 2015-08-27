@@ -10,7 +10,7 @@ class BBCode {
 	public static function league_of_legends($string){
 		$pattern = '#\[(.*)\](.*)\[/(.*)\]#isU';
    		preg_match_all($pattern, $string, $array);
-   		//echo "<pre>", print_r($array), "</pre>";
+   		echo "<pre>", print_r($array), "</pre>";
 
    		if($array && is_array($array) && isset($array[0]) && isset($array[3])){
    			for($i = 0; $i < count($array[0]); $i++){
@@ -18,6 +18,9 @@ class BBCode {
 					$type = strtoupper(trim($array[3][$i]));
 					if($type == "SKILL"){
 						$string = BBCode::handle_lol_skill($string, $array, $i);
+					}
+					elseif($type == "CHAMPION"){
+						$string = BBCode::handle_lol_champ($string, $array, $i);
 					}
    				}
    			}
@@ -46,9 +49,9 @@ class BBCode {
 				if(isset($skill->id) && $skill->id > 0){
 					$replace  = '<a class="skill_tooltip bbcode" href="/skills/'.$skill->id.'" rel="'.$skill->id.'" title="">';
 					if($spell_type == "passive"){
-						$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/passive/'.$skill->icon.'" class="img-circle" style="height: 18px;"> ';
+						$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/passive/'.$skill->icon.'" class="img-circle" style="height: 1em;"> ';
 					} else {
-						$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/spell/'.$skill->icon.'" class="img-circle" style="height: 18px;"> ';
+						$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/spell/'.$skill->icon.'" class="img-circle" style="height: 1em;"> ';
 					}
 					$replace .= '('.strtoupper($skill->hotkey).') '.trim($skill->name);
 					$replace .= '</a>';
@@ -56,5 +59,18 @@ class BBCode {
 			}
 		}
 		return str_replace($array[0][$i], $replace, $string);
+	}
+
+	public static function handle_lol_champ($string, $array, $i){
+		$patchversion = Helpers::patchversion();
+		$replace = "Unbekannter Champion";
+		$champion = Champion::where("name", "LIKE", trim($array[2][$i]))->orWhere("key", "=", trim($array[2][$i]))->first();
+		if(isset($champion->id) && $champion->id > 0){
+			$replace  = '<a href="/champions/'.$champion->key.'" class="bbcode">';
+			$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/champion/'.$champion->key.'.png" class="img-circle" style="height: 1em;"> ';
+			$replace .= $champion->name;
+			$replace .= '</a>';
+		}
+		return str_replace($array[0][$i], $replace, $string); 
 	}
 }
