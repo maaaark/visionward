@@ -11,7 +11,7 @@
 			<div style="text-align: center;">
 				<a href="/users/{{ $user->username }}"><img src="/img/team/{{ $user->image }}" class="img-circle" width="150" height="150" /></a><br/><br/>
 			</div>
-			<strong>Summoner: </strong><a href="/summoner/euw/{{ $user->username }}">{{ $user->username }}</a><br/>
+			<strong>Summoner: </strong><a href="http://summoner.flashignite.com/euw/{{ $user->username }}">{{ $user->username }}</a><br/>
 			<strong>Aufgabe: </strong>{{ $user->task }}<br/>
 			<br/>
 			{{ $user->description }}
