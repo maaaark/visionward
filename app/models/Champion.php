@@ -3,7 +3,8 @@
 class Champion extends \Eloquent {
 	
 	protected $guarded = array('id', 'champion_id');
-	
+    protected $connection = 'mysql2';
+
 	public function skins()
     {
         return $this->hasMany('Skin');
