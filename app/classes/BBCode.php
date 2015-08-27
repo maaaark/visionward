@@ -10,7 +10,7 @@ class BBCode {
 	public static function league_of_legends($string){
 		$pattern = '#\[(.*)\](.*)\[/(.*)\]#isU';
    		preg_match_all($pattern, $string, $array);
-   		echo "<pre>", print_r($array), "</pre>";
+   		//echo "<pre>", print_r($array), "</pre>";
 
    		if($array && is_array($array) && isset($array[0]) && isset($array[3])){
    			for($i = 0; $i < count($array[0]); $i++){
