@@ -284,7 +284,7 @@ class Helpers {
     
     /* Next Esports Matches */
     public static function getNextEsportsMatches($limit = 5){
-      $matches = $upcoming_matches = EsportsMatch::where("winner", "=", "0")->orderBy("date", "ASC")->limit($limit)->get();
+      $matches = $upcoming_matches = EsportsMatch::where("winner", "=", "0")->where("team1_id", ">", "0")->where("team2_id", ">", "0")->where("date", ">", date("Y-m-d H:i:s"))->orderBy("date", "ASC")->limit($limit)->get();
       return $matches;
     }
     

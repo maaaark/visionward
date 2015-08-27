@@ -22,7 +22,6 @@
 				</li>
 				<li><a href="http://{{ MAIN_URL }}/categories/pbe">PBE</a></li>
 				<li><a href="http://{{ MAIN_URL }}/champions">CHAMPIONS</a></li>
-				<li><a href="http://{{ MAIN_URL }}/counterpicks">KONTERPICKS</a></li>
 			</ul>
 		</li>
 		<li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
@@ -49,7 +48,6 @@
 		</li>
 		<li {{ Request::is('categories/pbe') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/categories/pbe">PBE</a></li>
 		<li {{ Request::is('champions/*') ? ' class="active"' : '' }} {{ Request::is('champions') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/champions">CHAMPIONS</a></li>
-		<li {{ Request::is('counterpicks/*') ? ' class="active"' : '' }} {{ Request::is('counterpicks') ? ' class="active"' : '' }}><a href="http://{{ MAIN_URL }}/counterpicks">KONTERPICKS</a></li>
 		<li><a href="http://summoner.{{ MAIN_URL }}/">BESCHW&Ouml;RER</a></li>
 	    </ul>
     </div>
