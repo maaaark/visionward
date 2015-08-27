@@ -319,4 +319,15 @@ class Helpers {
       }
       return "5.12.1";
     }
+
+    public static function html_umlaute_zurueck($string){
+      $string = str_replace("&Uuml;", "Ü", $string);
+      $string = str_replace("&uuml;", "ü", $string);
+      $string = str_replace("&Auml;", "A", $string);
+      $string = str_replace("&auml;", "a", $string);
+      $string = str_replace("&Öuml;", "Ö", $string);
+      $string = str_replace("&ouml;", "ö", $string);
+      $string = str_replace("&szlig;", "ß", $string);
+      return $string;
+    }
 }

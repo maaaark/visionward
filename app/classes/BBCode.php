@@ -22,11 +22,12 @@ class BBCode {
 					elseif($type == "CHAMPION"){
 						$string = BBCode::handle_lol_champ($string, $array, $i);
 					}
+					elseif($type == "ITEM"){
+						$string = BBCode::handle_lol_item($string, $array, $i);
+					}
    				}
    			}
    		}
-
-   		//die();
    		return $string;
 	}
 
@@ -69,6 +70,19 @@ class BBCode {
 			$replace  = '<a href="/champions/'.$champion->key.'" class="bbcode">';
 			$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/champion/'.$champion->key.'.png" class="img-circle" style="height: 1em;"> ';
 			$replace .= $champion->name;
+			$replace .= '</a>';
+		}
+		return str_replace($array[0][$i], $replace, $string); 
+	}
+
+	public static function handle_lol_item($string, $array, $i){
+		$patchversion = Helpers::patchversion();
+		$replace = "Unbekanntes Item";
+		$item = Item::where("id", "=", $array[2][$i])->orWhere("name", "LIKE", Helpers::html_umlaute_zurueck($array[2][$i]))->first();
+		if(isset($item->id) && $item->id > 0){
+			$replace  = '<a class="item_tooltip bbcode" href="/items/'.$item->item_id.'" rel="'.$item->item_id.'" title="">';
+			$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/item/'.$item->item_id.'.png" class="img-circle" style="height: 1em;"> ';
+			$replace .= $item->name;
 			$replace .= '</a>';
 		}
 		return str_replace($array[0][$i], $replace, $string); 
