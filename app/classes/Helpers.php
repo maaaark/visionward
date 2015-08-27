@@ -311,4 +311,12 @@ class Helpers {
       }
       return $count;
     }
+
+    public static function patchversion(){
+      $setting = Setting::where("key", "=", "patch_number")->first();
+      if(isset($setting->id) && $setting->id > 0 && isset($setting->value) && trim($setting->value) != ""){
+        return $setting->value;
+      }
+      return "5.12.1";
+    }
 }

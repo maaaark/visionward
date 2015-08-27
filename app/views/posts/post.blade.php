@@ -1,5 +1,5 @@
 <div class="article">
-{{ $post->content }}<br/>
+{{ BBCode::render($post->content) }}<br/>
 </div>
 @if($post->show_autorbox == 1)
 <div class="autor_box">
