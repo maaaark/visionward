@@ -35,12 +35,14 @@ if(isset($_GET["data"]) && isset($_GET["sID"]) && $_GET["sID"] > 0){
 
 	// Liga
 	require_once 'league.class.php';
-	$league      	       = new LeagueView($this->allowed_regions, $region, $this->summoner_update_interval);
+	/*$league      	       = new LeagueView($this->allowed_regions, $region, $this->summoner_update_interval);
 	$league_data 	       = $league->show($sID);
 	$array["league"] 	   = $league_data["template"];
 	if(isset($league_data["updated"]) && $league_data["updated"] == true){
 		$updated["league"] = true;
-	}
+	}*/
+	$array["league"] = "Ligen wurden aufgrund von Wartungsarbeiten temporär deaktiviert.";
+
 
 	// Runen
 	require_once 'runes.class.php';
