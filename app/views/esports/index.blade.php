@@ -83,7 +83,8 @@
 		</div>
 	@endif
 
-	<div class="league_images_holder" id="leagues">
+	<div id="leagues" style="position: absolute;margin-top: -55px;"></div>
+	<div class="league_images_holder">
 		<h2 class="headline">
 			Ligen
 		</h2>
@@ -100,7 +101,8 @@
 		</div>
 	</div>
     <br/>
-	<div class="row" id="matches">
+    <div id="matches" style="height: 55px;"></div>
+	<div class="row">
 		<div class="col-md-6">
 			<div class="standings_box">
 				<h2 class="headline">
