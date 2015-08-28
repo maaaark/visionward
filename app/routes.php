@@ -29,7 +29,7 @@ Route::resource('articles', 'ArticlesController');
 /*
  * */
 $parsedUrl = parse_url(Request::root());
-$parsedUrl = parse_url("http://flashignite.com");
+//$parsedUrl = parse_url("http://flashignite.com");
 $host_data = explode('.', $parsedUrl['host']);
 $main_url  = $host_data[count($host_data)-2];
 //$main_url  = "http://flashignite.com";

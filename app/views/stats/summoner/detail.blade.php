@@ -221,7 +221,7 @@
 					    	ranked_stats = JSON.parse(json["ranked_stats"]);
 					    	html  = '<table class="table table-bordered ranked_data_table sortable" id="ranked_stats_data_table">';
 					    	html += '<thead>'
-					    	html += '<th>Champion</th><th>Spiele (Gewonnen / Verloren)</th><th>Winrate</th><th>Kills &#216; </th><th>Tode &#216;</th><th>Assists &#216;</th><th>Lasthits &#216;</th>';
+					    	html += '<th>Champion</th><th>Spiele</th><th>Gewonnen</th><th>Verloren</th><th>Winrate</th><th>Kills &#216; </th><th>Tode &#216;</th><th>Assists &#216;</th><th>Lasthits &#216;</th>';
 					    	html += '</thead><tbody>';
 					    	for(key in ranked_stats){
 					    		element = ranked_stats[key];
@@ -229,7 +229,9 @@
 					    		html += '<tr>'
 					    		html += '<td class="champ_info"><img src="http://ddragon.leagueoflegends.com/cdn/{{ $patchversion }}/img/champion/'+element["championKey"]+'.png" class="champ_icon"> ';
 					    		html += '<span>'+element["championName"]+'</span></td>';
-					    		html += '<td><span style="font-weight:bold;">'+element["totalSessionsPlayed"]+'</span> (<span style="color:green;">'+element["totalSessionsWon"]+'</span> / <span style="color:red;">'+element["totalSessionsLost"]+'</span>)</td>';
+					    		html += '<td><span>'+element["totalSessionsPlayed"]+'</span></td>';
+					    		html += '<td><span style="color:green;">'+element["totalSessionsWon"]+'</span></td>';
+					    		html += '<td><span style="color:red;">'+element["totalSessionsLost"]+'</span></td>';
 					    		html += '<td>'+(element["totalSessionsWon"] / element["totalSessionsPlayed"] * 100).toFixed(2)+' %</td>';
 					    		html += '<td>'+(element["totalChampionKills"] / element["totalSessionsPlayed"]).toFixed(1)+'</td>';
 					    		html += '<td>'+(element["totalDeathsPerSession"] / element["totalSessionsPlayed"]).toFixed(1)+'</td>';
