@@ -65,7 +65,7 @@ class BBCode {
 	public static function handle_lol_champ($string, $array, $i){
 		$patchversion = Helpers::patchversion();
 		$replace = "Unbekannter Champion";
-		$champion = Champion::where("name", "LIKE", trim($array[2][$i]))->orWhere("key", "=", trim($array[2][$i]))->first();
+		$champion = Champion::where("name", "LIKE", strip_tags(trim($array[2][$i])))->orWhere("key", "=", strip_tags(trim($array[2][$i])))->first();
 		if(isset($champion->id) && $champion->id > 0){
 			$replace  = '<a href="/champions/'.$champion->key.'" class="bbcode">';
 			$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/champion/'.$champion->key.'.png" class="img-circle" style="height: 1em;"> ';
@@ -78,7 +78,7 @@ class BBCode {
 	public static function handle_lol_item($string, $array, $i){
 		$patchversion = Helpers::patchversion();
 		$replace = "Unbekanntes Item";
-		$item = Item::where("id", "=", $array[2][$i])->orWhere("name", "LIKE", Helpers::html_umlaute_zurueck($array[2][$i]))->first();
+		$item = Item::where("id", "=", strip_tags($array[2][$i]))->orWhere("name", "LIKE", Helpers::html_umlaute_zurueck(strip_tags($array[2][$i])))->first();
 		if(isset($item->id) && $item->id > 0){
 			$replace  = '<a class="item_tooltip bbcode" href="/items/'.$item->item_id.'" rel="'.$item->item_id.'" title="">';
 			$replace .= '<img src="http://ddragon.leagueoflegends.com/cdn/'.$patchversion.'/img/item/'.$item->item_id.'.png" class="img-circle" style="height: 1em;"> ';
