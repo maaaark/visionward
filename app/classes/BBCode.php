@@ -34,7 +34,7 @@ class BBCode {
 	public static function handle_lol_skill($string, $array, $i){
 		$patchversion = Helpers::patchversion();
 		$replace = "Unbekannte F&auml;higkeit";
-		$champion = Champion::where("name", "LIKE", trim($array[2][$i]))->orWhere("key", "=", trim($array[2][$i]))->first();
+		$champion = Champion::where("name", "LIKE", strip_tags(trim($array[2][$i])))->orWhere("key", "=", strip_tags(trim($array[2][$i])))->first();
 		if(isset($champion->id) && $champion->id > 0){
 			if(strpos($array[1][$i], "=") > 0){
 				$spell_type = trim(substr($array[1][$i], strpos($array[1][$i], "=") + 1));
